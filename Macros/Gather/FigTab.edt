@@ -1,0 +1,17 @@
+// FigTab.edt
+// ===============
+// Parse %!? for the Caption
+// =================================
+
+    PushTagsandRegisters;
+
+    LetReg(0,"%!?");
+    SubstituteInString("%!0","\\label\{*\}","",1);
+    FindInString("%!0","\\caption\{\(+{@{\{*\}}^{\}}}\)*\}",1,2,1);
+    IfOK(!'LetReg(1,"%#0");',!'Assign("FigTabGather","?");PopTagsandRegisters;Exit;');
+    FormatString("%!1",1,"whitespace trimboth");
+    Assign("FigTabGather","%!1");
+
+    PopTagsandRegisters;
+
+End;

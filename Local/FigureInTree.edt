@@ -1,0 +1,20 @@
+// -*- ASCII:EDT -*-
+// FigureInTree.edt
+// (schlicht 20040422)
+/////////////////////////
+
+TreeGetFileName(1);
+GetDocAsString(1,"%!1",0,0);
+TreeGetLineNumber(0);
+CLToIndex(1,%!0,2,"%!1");
+FindInString("%!1","<@^{%%|\\end\{%$('FigureInTreeType');}\\end\{%$('FigureInTreeType');@{\*}\}",0,3,1011,%!2+1);
+ExtractByIndex(0,"%!1",%!2,%!3);
+FindInString("%!0","\\caption{\[\(+{>|@{\[*\]}^{\]}}\)\]}|{\{\(+{>|@{\{*\}}^{\}}}\)*\}}",0,1,1);
+IfOK(!"GetTag(0,0);>
+   Loop(!'SetOK(1);>
+      FindInString(""%!0"",""{\\label\{*\}}|{@{%%*}>}"",1,2,1);>
+      IfOK(!""ReplaceInString(|%!0|,| |,%!1,%!2,0,0);"",>
+            ""Stop;"");');>
+   FormatString('%!0',0,'whitespace trimboth');",>
+  "LetReg(0,'???');");
+Assign("FigureInTreeCaption","%!0");

@@ -1,0 +1,56 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 20. avgust 2014, 00:06)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 13.\,04.\,2009 ]
+  \WinEdt{<untitled project>}{(98 h, 17 min.)}{T}{09:28-11:45}
+  \WinEdt{!KrNeki}{( 1 h, 14 min.)}{T}{11:46-13:00}
+  \WinEdt{Jaka}{( -->  3 h, 18 min.)}{W}{00:00-01:16}
+  \WinEdt{Jaka}{( --> )}{T}{21:58-23:59}
+  \WinEdt{!KrNeki}{( 4 h, 47 min.)}{W}{11:01-15:48}
+  \WinEdt{!KrNeki}{( 0 h, 34 min.)}{W}{20:00-20:34}
+  \WinEdt{RintroNIB}{( 0 h, 43 min.)}{W}{21:21-22:04}
+  \WinEdt{SweavePres}{( 1 h, 11 min.)}{W}{22:04-23:15}
+  \WinEdt{SweavePres}{( 0 h, 05 min.)}{Th}{13:56-14:01}
+  \WinEdt{I2R}{( 2 h, 58 min.)}{Th}{14:01-16:59}
+  \WinEdt{I2R}{( 0 h, 23 min.)}{F}{20:16-20:39}
+  \WinEdt{ARRS}{( 3 h, 09 min.)}{F}{20:39-23:48}
+  \WinEdt{ARRS}{( 0 h, 03 min.)}{Sa}{22:18-22:21}
+  \WinEdt{<untitled project>}{( 0 h, 07 min.)}{Sa}{22:18-22:25}
+  \WinEdt{!KrNeki}{(23 h, 54 min.)}{Su}{22:25-22:19}
+  \WinEdt{ARRS}{( 0 h, 39 min.)}{Su}{22:20-22:59}
+  \WinEdt{<untitled project>}{(74 h, 16 min.)}{ponedeljek}{10:25-12:41}
+  \WinEdt{KG130116}{( 0 h, 20 min.)}{ponedeljek}{12:42-13:02}
+  \WinEdt{KG130116}{( 1 h, 14 min.)}{ponedeljek}{21:59-23:13}
+  \WinEdt{<untitled project>}{( 1 h, 17 min.)}{ponedeljek}{21:59-23:16}
+  \WinEdt{<untitled project>}{( 0 h, 01 min.)}{ponedeljek}{23:17-23:18}
+\end{schedule}
+ 
+\end{document}

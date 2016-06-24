@@ -1,0 +1,83 @@
+////////////////////////////////////////////////////////
+// GotoRChunk.edt
+// Go to R Chunk number Reg0
+// $Revision: 1.1 $
+// $Date: 2007-03-12 22:27:51+01 $
+//
+// A. Blejec
+// Limitations:
+//
+// To be done:
+//
+//
+//
+/////////////////////////////////////////////////////////
+//
+CMD("Go To Beginning Of File");
+
+PushTagsandRegisters;
+
+    MUIReset('Go to R chunk');
+      // Main Form Size and Position
+  MUISet('','width','250');
+  MUISet('','height','100');
+  MUISet('','position','1'); // Main Form Center
+
+    // MUIAdd, MUISet and MUIGet to create the dialog
+
+    MUIAdd(0,0,250,200, 'MyPanel','TPanel');
+    MUIAdd(5,5,0,0, 'lNumberLabel','TLabel','MyPanel');
+      MUISet('lNumberLabel','caption','Chunk # ');
+    MUIAdd(50,5,0,0, 'lNumber','TEdit','MyPanel');
+      MUISet('lNumber', 'caption', '1');
+//   MUIAdd(5,35,0,0, 'MyEdit2','TEdit','MyPanel');
+//       MUISet('MyEdit2', 'caption', 'Another Edit Box')
+
+    // More MUIAdd, MUISet and MUIGet
+//      MUIGet('lNumber','height',7);
+//      MUIAdd(0,%!7+1,0,0, 'Modal_Panel','TPanel');
+//      MUISet('Modal_Panel','aligned', 'alRight');
+      MUIAdd(5,40,0,0, 'OK','TButton','MyPanel','&OK');
+        MUISet('OK','default', '1');
+        MUISet('OK','on click', !'MUIHide(1);Call("goto");');
+      MUIGet('OK','width',7);
+      MUIAdd(%!7+8,40,0,0, 'Cancel','TButton','MyPanel','Cancel');
+        MUISet('Cancel','cancel', '1'); // ESCAPE
+        MUISet('Cancel','on click', !'MUIHide(2);');
+
+
+    JMP('event_end');
+
+    :goto:: ===========================================================
+    // Handling macros
+     MUIGet('lNumber','text',0);
+    // Prompt("%!0");
+    // LetRegNum(0,2);
+SetFindStr(">>=");
+SetSearchForward(1);
+SetSearchCaseSensitive(0);
+SetSearchEntire(0);
+SetSearchCyclic(0);
+SetSearchRelaxed(0);
+SetSearchWholeWords(0);
+SetSearchInline(0);
+SetSearchCurrentDoc;
+SetRegEx(0);
+SearchReset;
+Repeat(%!0,!'Find;CMD("Line Down");');
+CMD("Go To Beginning Of Line");
+ScrollDown(12,1);
+    Exit;
+
+    :event_b:: ===========================================================
+    // Handling macros
+    Return;
+
+    :event_end:: =========================================================
+
+    MUIShow; // Show Modal Dialog
+
+    IfOK('Relax;','PopTagsandRegisters;Exit;');
+    // Do something
+
+PopTagsandRegisters;

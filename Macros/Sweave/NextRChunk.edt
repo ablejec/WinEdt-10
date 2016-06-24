@@ -1,0 +1,32 @@
+////////////////////////////////////////////////////////
+// NextRChunk.edt
+// Got to first line of next R Chunk
+// $Revision: 1.1 $
+// $Date: 2007-03-12 22:27:51+01 $
+//
+// A. Blejec
+// Limitations:
+//
+// To be done:
+//
+//
+//
+/////////////////////////////////////////////////////////
+//
+// GlobalMark(); // ne deluje dobro
+SetFindStr("<<");
+SetSearchForward(1);
+SetSearchCaseSensitive(0);
+SetSearchEntire(0);
+SetSearchCyclic(0);
+SetSearchRelaxed(0);
+SetSearchWholeWords(0);
+SetSearchInline(0);
+SetSearchCurrentDoc;
+SetRegEx(0);
+SearchReset;
+Find;
+// CMD("Find...");
+CMD("Line Down");
+CMD("Go To Beginning Of Line");
+CMD("Set Mark");

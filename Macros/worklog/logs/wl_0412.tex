@@ -1,0 +1,45 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 12.\,04.\,2010 ]
+  \WinEdt{StatIzp}{( 0 h, 01 min.)}{M}{14:57-14:58}
+  \WinEdt{KG090511}{( 1 h, 07 min.)}{M}{14:58-16:05}
+  \WinEdt{KG090511}{( 3 h, 05 min.)}{M}{20:48-23:53}
+  \WinEdt{KG090511}{( 9 h, 47 min.)}{T}{09:36-19:23}
+  \WinEdt{KG090511}{( 7 h, 28 min.)}{W}{12:00-19:28}
+  \WinEdt{KG090511}{( 0 h, 11 min.)}{F}{12:47-12:58}
+  \WinEdt{SemUcBiol}{( 3 h, 47 min.)}{F}{12:58-16:45}
+  \WinEdt{SemUcBiol}{( 4 h, 29 min.)}{Sa}{11:58-16:27}
+  \WinEdt{Upgrade6}{( 0 h, 14 min.)}{Su}{22:17-22:31}
+  \WinEdt{metode}{(26 h, 24 min.)}{Friday}{10:07-12:31}
+\end{schedule}
+ 
+\end{document}

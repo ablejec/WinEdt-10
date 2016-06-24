@@ -1,0 +1,141 @@
+// -*- ASCII:EDT -*-
+// worklog_open.edt
+// (schlicht 20010323)
+// ($Revision: 1.10 $)
+// (created by worklog_install.edt
+//   on 11. april 2016, 11:49)
+////////////////////////////////////
+
+IfStr("%$('wl_status');","started","=",>
+   "Prompt('Logging is already started.%\',2,1);Exit;");
+ 
+LetRegNum(9,%8);
+GetDate(4,"dd");
+GetDate(5,"hh");
+GetDate(6,"nn");
+LetRegNum(8,"%!5+(%!4*24)");
+LetRegNum(8,"%!6+(%!8*60)");
+LetStr(8,"%!8");
+
+GetDate(2,"yy");
+GetDate(3,"mm");
+
+LetRegNum(8,0);
+Loop(!"IfNum(%!9,1440,'<','Stop', >
+      'LetRegNum(9,%!9-1440); LetRegNum(8,%!8+1);')");
+IfNum("%!8","%!4","=",>
+   "LetRegNum(9,0);",>
+   "LetRegNum(9,1);");
+ 
+StartWorking("Worklog...");
+IfNum("%!9","0","=",>
+  !|ReadFile("%b\Macros\worklog\logs\%!2%!3.worklog",0);>
+    OpenOutput("%b\Macros\worklog\logs\%!2%!3.worklog"); WrS("%!0"); >
+      WrS("%!4., %!5:%!6    -    "); >
+    CloseOutput; >
+   |,>
+  !|IfFileExists("%b\Macros\worklog\logs\%!2%!3.worklog",>
+      !"ReadFile('%b\Macros\worklog\logs\day.worklog',9);>
+        LetRegNum(8,0);>
+        LetRegNum(9,%!9,2,2);>
+        Loop(!'IfNum(%!9,60,''<'',''Stop'',>
+             ''LetRegNum(8,%!8+1); LetRegNum(9,%!9-60,2,2); '')');>
+        ReadFile('%b\Macros\worklog\logs\%!2%!3.worklog',0);>
+        OpenOutput('%b\Macros\worklog\logs\%!2%!3.worklog'); WrS('%!0');>
+          WrL('--------- %!8 h, %!9 min.'); >
+          WrS('%!4., %!5:%!6    -    '); >
+        CloseOutput;>
+        OpenOutput('%b\Macros\worklog\logs\day.worklog'); >
+          WrS('0'); >
+        CloseOutput;>
+       ",>
+      !"OpenOutput('%b\Macros\worklog\logs\%!2%!3.worklog');>
+          WrL('************************** worklog *****************************');>
+          WrL('************************** %!3.20%!2 *****************************%\');>
+          WrL('--Opened-------------Closed-------Uptime----------Subject-------');>
+          WrL('----------------------------------------------------------------');>
+          WrS('%!4., %!5:%!6    -    '); >
+        CloseOutput;>
+        IfNum('%!3','1','=','LetRegNum(3,12); LetRegNum(2,%!2-1,2,2);',>
+              !'LetRegNum(3,%!3-1,2,2);');>
+        LetRegNum(8,31);>
+        IfNum('%!3','2', '=', 'LetRegNum(8,28)','');>
+        IfNum('%!3','4', '=', 'LetRegNum(8,30)','');>
+        IfNum('%!3','6', '=', 'LetRegNum(8,30)','');>
+        IfNum('%!3','9', '=', 'LetRegNum(8,30)','');>
+        IfNum('%!3','11', '=','LetRegNum(8,30)','');>
+        ReadFile('%b\Macros\worklog\logs\day.worklog',9); >
+        ReadFile('%b\Macros\worklog\logs\month.worklog',5); >
+        LetRegNum(7,%!5/%!8); >
+        LetRegNum(8,0); >
+        Loop(!'IfNum(%!9,60,''<'',''Stop'',>
+             ''LetRegNum(8,%!8+1); LetRegNum(9,%!9-60,2,2);'')');>
+        LetRegNum(6,0); >
+        Loop(!'IfNum(%!7,60,''<'',''Stop'',>
+             ''LetRegNum(6,%!6+1); LetRegNum(7,%!7-60,2,2);'')');>
+        LetRegNum(4,0); >
+        Loop(!'IfNum(%!5,60,''<'',''Stop'',>
+             ''LetRegNum(4,%!4+1); LetRegNum(5,%!5-60,2,2); '')');>
+        ReadFile('%b\Macros\worklog\logs\%!2%!3.worklog',0);>
+        OpenOutput('%b\Macros\worklog\logs\%!2%!3.worklog'); WrS('%!0'); >
+          WrL('--------- %!8 h, %!9 min.'); WrL(' ');>
+          WrL('****************************************************************');>
+          WrL('Total: %!4 h, and %!5 min.'); >
+          WrL('            (approx. %!6 h, %!7 min. / day)'); WrL(' '); WrL(' '); WrL(' ');>
+        CloseOutput;>
+        ReadFile('%b\Macros\worklog\logs\total.worklog',9);>
+        OpenOutput('%b\Macros\worklog\logs\total.worklog');>
+          WrS('%!9');>
+          WrL('%!3.%!2:     Total: %!4 h, and %!5 min.        =        approx. %!6 h, %!7 min. / day'); >
+          WrL('                  -----------------                         ------------');>
+        CloseOutput;>
+        ReadFile('%b\Macros\worklog\logs\%!2%!3.worklog',0);>
+        OpenOutput('%b\Macros\worklog\logs\%!2%!3.worklog'); >
+          WrL('%!0');>
+          WrL('----------------------------------------------------------------');>
+          LetRegNum(2,0);>
+          Loop(!'LetRegNum(6,0); LetRegNum(7,0);>
+             FindInString(''%!0'','' : *>'',1,2,1001,%!2);>
+             IfOK(>
+              !''ExtractByIndex(9,||%!0||,%!1+3,%!2-2); >
+                 LetRegNum(4,0);>
+                 Loop(!||>
+                    SetOK(1);>
+                    FindInString(`%!0`,`: %!9`,3,4,1000,%!4);>
+                    IfOK(!`>
+                        ReplaceInString(``%!0``,````,%!3,%!4,0,0); >
+                        ExtractByIndex(8,``%!0``,%!3-15, %!3-13);>
+                        LetRegNum(7,``%!7+(%!8*60)``);>
+                        ExtractByIndex(8, ``%!0``, %!3-9, %!3-7);>
+                        LetRegNum(7,%!7+%!8);>
+                        LetRegNum(6,%!6+1,2);`,>
+                       `Stop;`);>
+                 ||);>
+                 LetRegNum(8,0,2);>
+                 Loop(!||>
+                     IfNum(%!7,60,`<`,`Stop`,>
+                       `LetRegNum(8,%!8+1,2); LetRegNum(7,%!7-60); `)||);>
+                 LetRegNum(7,%!7,2,2);>
+                 WrL(||%!8 h, %!7 min. (%!6 x) :  %!9||);'',>
+               ''Stop;'');>
+          ');>
+        CloseOutput;>
+        OpenOutput('%b\Macros\worklog\logs\day.worklog'); >
+          WrS('0'); >
+        CloseOutput;>
+        OpenOutput('%b\Macros\worklog\logs\month.worklog');>
+          WrS('0'); >
+        CloseOutput;>
+      ")>
+   |>
+);
+Assign("wl_status","started");
+
+LetReg(0,""); LetReg(1,""); LetReg(2,""); LetReg(3,""); LetReg(4,"");
+LetReg(5,""); LetReg(6,""); LetReg(7,""); LetReg(8,""); LetReg(9,"");
+
+StopWorking;
+
+Exe("%b\Macros\worklog\wl_status.edt");
+
+End;

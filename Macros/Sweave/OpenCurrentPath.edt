@@ -1,0 +1,3 @@
+// Andrej Blejec
+// open explorer window in current files path
+WinExe("","Explorer /n, %p","","",10000);

@@ -1,0 +1,43 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 27.\,09.\,2010 ]
+  \WinEdt{<untitled project>}{( --> 36 h, 49 min.)}{T}{00:00-10:18}
+  \WinEdt{<untitled project>}{( --> )}{M}{21:29-23:59}
+  \WinEdt{INRA}{( 5 h, 39 min.)}{T}{10:18-15:57}
+  \WinEdt{INRA}{( 1 h, 49 min.)}{Th}{10:40-12:29}
+  \WinEdt{INRA}{( 0 h, 03 min.)}{Sa}{22:37-22:40}
+  \WinEdt{javno}{( --> 15 h, 29 min.)}{Friday}{00:00-14:43}
+  \WinEdt{javno}{( --> )}{Friday}{23:14-23:59}
+  \WinEdt{javno}{( 0 h, 48 min.)}{Friday}{14:44-15:32}
+\end{schedule}
+ 
+\end{document}

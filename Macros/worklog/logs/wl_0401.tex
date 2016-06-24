@@ -1,0 +1,39 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 20. avgust 2014, 00:06)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 01.\,04.\,2015 ]
+  \WinEdt{Rakitna}{( 0 h, 02 min.)}{sreda}{18:34-18:36}
+  \WinEdt{Rakitna}{( 0 h, 02 min.)}{sreda}{18:42-18:44}
+  \WinEdt{Rakitna}{( 0 h, 04 min.)}{sreda}{20:17-20:21}
+  \WinEdt{Rakitna}{( 2 h, 21 min.)}{sreda}{21:34-23:55}
+\end{schedule}
+ 
+\end{document}

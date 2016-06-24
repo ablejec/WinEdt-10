@@ -1,0 +1,5 @@
+GlobalMark(0)
+SelToBeginningOfFile;
+Copy;
+Exe('%b\Macros\R\send2R--sdi.edt');
+GlobalReturn;

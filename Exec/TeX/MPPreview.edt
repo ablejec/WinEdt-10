@@ -1,0 +1,118 @@
+// -*- ASCII:EDT -*-
+// MPPreview.edt
+//
+// This macro outputs a .PDF file with a preview of all or selected
+// figures from the current metapost .mp file.
+
+  PushTagsandRegisters;
+
+  IfFileExists("%O\%N_preview.pdf",!"DeleteFile('%O\%N_preview.pdf')");
+
+  // Determine whether the output is in the form .mps or .1, .2, etc.
+  GetPreamble("beginfig(",9);
+  FindInString("%!9",!'"%j-%c.mps"',-1,-1);
+  IfOK(!"Assign('format','0');",!"Assign('format','1');");
+
+  // If the option to show all figures is off (determined by the menu command chosen),
+  // ask for the figure number to show and put it in a register.
+  // Check if the corresponding figure file exists.
+
+  IfStr("%$('showall');","1","=",!"JMP('Create_List');");
+  GetString("Which figure to show?","MetaPost Preview","1");
+  IfStr("%$('format');","1","=",>
+       !"Assign('fignum','%N.%!?');",!"Assign('fignum','%N-%!?.mps');");
+  IfFileExists("%O\%$('fignum');",!"Relax;",>
+       !"Prompt('Figure %!? does not exist!');PopTagsandRegisters;Exit;");
+
+:Create_List:: ======================================================
+
+  // Next section puts an ordered list of files in
+  // an intermediate auxiliary file.
+
+  OpenOutput("%O\%N_MPfilelist.tmp");
+  IfStr("%$('format');","1","=",!"JMP('Check_numeric');");
+  ListFolderFiles(0,'%O','.mps',0,1);
+  LstEnum('%!0','%\');
+  LstGetCount(1);
+  Repeat(%!1,>
+    !`LstGetItem(2,%!c-1);>
+      GetFileName('%!2',3);>
+      FindInString('%!3','<%N-+$Numeric$~$~[]$',5,6,1);>
+      IfOK(!|WrL("%!2");|);>
+      ProcessMessages;>
+     `);
+  LstRelease;
+  JMP('Close_Output');
+:Check_numeric:: ====================================================
+  ListFolderFiles(0,'%O','',0,1);
+  LstEnum('%!0','%\');
+  LstGetCount(1);
+  Repeat(%!1,>
+    !`LstGetItem(2,%!c-1);>
+      GetFileName('%!2',3);>
+      GetFileType('%!2',4);>
+      FindInString('%!4','<\.+$Numeric$~$~[]$',5,6,1);>
+      IfOK(!|IfStr('%!3','%N','=',!'WrL("%!2");');|);>
+      ProcessMessages;>
+     `);
+  LstRelease;
+:Close_Output:: =====================================================
+  CloseOutput;
+
+  // Read the file list back into memory and sort it alphabetically.
+
+  ReadFile("%O\%N_MPfilelist.tmp",2);
+  SortLines("%!2",1001,0,0);
+  DeleteFile("%O\%N_MPfilelist.tmp");
+
+  // For each element in the file list, put a corresponding \includegraphics command in a
+  // .tex document, the source for the preview generation.
+  // If the "show all figures" option is off, only the requested figure is put in the .tex file.
+
+  OpenOutput("%O\%N_preview.tex");
+  WrL('\documentclass{article}');
+  WrL('\pagestyle{empty}');
+  WrL('\usepackage{graphicx}');
+  WrL('\usepackage[margin=1cm]{geometry}');
+  WrL('\begin{document}');
+  WrL('\centering');
+  LstEnum('%!0','%\');
+  LstGetCount(1);
+  Repeat(%!1,>
+    !`LstGetItem(2,%!c-1);>
+      IfStr('%$(|showall|);','0','=',>
+           !'IfStr(|%!2|,|%$("fignum");|,|=|,>
+                  !|WrL("\includegraphics{%!2} \\");WrL("%!2\\\vspace{.8cm}");|);',>
+            'WrL("\includegraphics{%!2} \\");WrL("%!2\\\vspace{.8cm}");');>
+      ProcessMessages;>
+     `);
+  LstRelease;
+  WrL('\end{document}');
+  CloseOutput;
+
+  // Execute latex and dvi2pdf on the .tex source file to generate the .pdf preview...
+  // Clean up temporary files afterwards.
+
+  StartWorking("Producing MetaPost preview...");
+  WinExe('','latex "%O\%N_preview.tex"','%O','',011100);
+  WinExe('','dvipdfmx -p a4 "%O\%N_preview.dvi"','%O','',011100);
+  DeleteFile("%O\%N_preview.log");
+  DeleteFile("%O\%N_preview.aux");
+  DeleteFile("%O\%N_preview.dvi");
+  DeleteFile("%O\%N_preview.tex");
+  StopWorking;
+  UpdateStatus;
+
+  // Show the preview in PDF Viewer
+
+  IfFileExists("%O\%N_preview.pdf",>
+         !`Run('%$(|PDF-View|); "%O\%N_preview.pdf"','%O',0,0,'',1,1);`,>
+         !`Prompt('Preview PDF file could not be generated!');`);
+
+  Release("showall");
+  Release("fignum");
+  Release("format");
+
+  PopTagsandRegisters;
+
+End;

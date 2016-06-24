@@ -1,0 +1,51 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 06.\,12.\,2008 ]
+  \WinEdt{ITAP}{( 0 h, 51 min.)}{sobota}{22:17-23:08}
+  \WinEdt{ITAP}{( 0 h, 01 min.)}{sobota}{23:08-23:09}
+  \WinEdt{<untitled project>}{(120 h, 25 min.)}{T}{17:11-17:36}
+  \WinEdt{Bioinformatika}{( 4 h, 07 min.)}{T}{17:36-21:43}
+  \WinEdt{Bioinformatika}{( -->  2 h, 41 min.)}{W}{00:00-00:25}
+  \WinEdt{Bioinformatika}{( --> )}{T}{21:44-23:59}
+  \WinEdt{Bioinformatika}{( 0 h, 07 min.)}{W}{0:42-00:49}
+  \WinEdt{Bioinformatika}{( 0 h, 03 min.)}{W}{11:30-11:33}
+  \WinEdt{!KrNeki}{( 1 h, 04 min.)}{W}{11:57-13:01}
+  \WinEdt{<untitled project>}{( --> 22 h, 39 min.)}{Th}{00:00-10:36}
+  \WinEdt{<untitled project>}{( --> )}{W}{11:57-23:59}
+  \WinEdt{cene3}{( 1 h, 24 min.)}{Th}{10:36-12:00}
+  \WinEdt{cene3}{( 4 h, 40 min.)}{Th}{12:02-16:42}
+  \WinEdt{Lek-Jamnikar}{( -->  2 h, 27 min.)}{Thursday}{00:00-00:21}
+  \WinEdt{Lek-Jamnikar}{( --> )}{Thursday}{21:54-23:59}
+  \WinEdt{Lek-Jamnikar}{( 2 h, 24 min.)}{Thursday}{11:46-14:10}
+\end{schedule}
+ 
+\end{document}

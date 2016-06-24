@@ -1,0 +1,301 @@
+// Compiles Selected Text based on the preferences in the Execution Modes
+// Compiles Selected Text with [PDF]TeXify on "_temp" file.
+
+  Requires(20080413); // Requires this build of WinEdt to work properly
+  // Already Compiling Selected Text...
+  IfStr("%N",!"_temp","=",!">
+    ShowConsole(1);Exit;");
+  // Already Running...
+  IfConsoleRunning(!"ShowConsole(1);>
+    Prompt('Another application is already running in WinEdt''s Console.');>
+    ShowConsole(1);FocusConsole(1);Exit;");
+
+  PushTagsandRegisters;
+
+  SetOK(1);  // Just in case ...
+  SetErrorFlag(0);
+
+  Assign('Compile-Flag','');
+  Assign('Main_File','%!F');
+// change AB use .tex version of current (.rnw) file
+  IfStr("%!m","TeX:Rnw","=","SetMainFile('%p\%n.tex');","Relax;");
+  Assign('old_src','%0');
+  SetExitHandler('exit_handler');
+
+  LetReg(7,'%P');
+  LetReg(6,'%T');
+  // New Document without Main file Set (why not?!)
+  IfStr('%!7','','=',!'LetReg(7,"%b\Temp");CreateFolders("%!7")');
+  IfStr('%!6','','=',!'LetReg(6,".tex");');
+
+  // Delete the working output files...
+  IfFileExists("%b\_Err.log",!"DeleteFile('%b\_Err.log')");
+  IfFileExists("%b\_Out.log",!"DeleteFile('%b\_Out.log')");
+  IfFileExists("%!7\_temp%!6",!"DeleteFile('%!7\_temp%!6')");
+  IfFileExists("%P\_temp.tex",!"DeleteFile('%P\_temp.tex')");
+  IfFileExists("%P\_temp.log",!"DeleteFile('%P\_temp.log')");
+  IfFileExists("%P\_temp.aux",!"DeleteFile('%P\_temp.aux')");
+  IfFileExists("%P\_temp.blg",!"DeleteFile('%P\_temp.blg')");
+  IfFileExists("%P\_temp.bbl",!"DeleteFile('%P\_temp.bbl')");
+  IfFileExists("%P\_temp.idx",!"DeleteFile('%P\_temp.idx')");
+  IfFileExists("%P\_temp.ind",!"DeleteFile('%P\_temp.ind')");
+  IfFileExists("%P\_temp.out",!"DeleteFile('%P\_temp.out')");
+  IfFileExists("%P\_temp.dvi",!"DeleteFile('%P\_temp.dvi')");
+  IfFileExists("%P\_temp.pdf",!"DeleteFile('%P\_temp.pdf')");
+  IfFileExists("%P\_temp.ps",!"DeleteFile('%P\_temp.ps')");
+  IfFileExists("%O\_temp.tex",!"DeleteFile('%O\_temp.tex')");
+  IfFileExists("%O\_temp.log",!"DeleteFile('%O\_temp.log')");
+  IfFileExists("%O\_temp.aux",!"DeleteFile('%O\_temp.aux')");
+  IfFileExists("%O\_temp.blg",!"DeleteFile('%O\_temp.blg')");
+  IfFileExists("%O\_temp.bbl",!"DeleteFile('%O\_temp.bbl')");
+  IfFileExists("%O\_temp.idx",!"DeleteFile('%O\_temp.idx')");
+  IfFileExists("%O\_temp.ind",!"DeleteFile('%O\_temp.ind')");
+  IfFileExists("%O\_temp.out",!"DeleteFile('%O\_temp.out')");
+  IfFileExists("%O\_temp.dvi",!"DeleteFile('%O\_temp.dvi')");
+  IfFileExists("%O\_temp.pdf",!"DeleteFile('%O\_temp.pdf')");
+  IfFileExists("%O\_temp.ps",!"DeleteFile('%O\_temp.ps')");
+  JMP('start');
+
+:exit_handler:: =======================================================
+// Restore the Main File and Current Execution Modes even if execution
+// is canceled or goes badly wrong for some reason ...
+  SetMainFile("%$(|Main_File|);");   // Reset the Main File
+  LetStr(0,"%$(|old_src|);");
+  Exe("%b\Exec\%!C\ExeMode.edt");
+  FocusConsole(-1);
+  PopTagsandRegisters;
+  StopWorking;
+  UpdateStatus;
+  Assign('Compile-Flag','');
+Return;
+
+:start:: ==============================================================
+
+  StartWorking("Compile selected text ...");
+
+  // Create Temporary File...
+  OpenOutput("%!7\_temp%!6");        // Open temporary TeX file
+  GetSel(1,9);                       // Get Selected Text in %!9
+  Translate(2,"%!m","%!9",9);        // Translate Output?
+ IfFileUTF8('%f',!"Ansi2UTF('%!9',9);"); // UTF-8?
+  FindInString("%!9",!"<\\begin\{document\}",1,1,11);
+  IfOK("JMP('no_Preamble');");       // Main File already contains \begin{document}
+  GetPreamble("\begin{document}",8); // Get Preamble in Register 8
+  // Default Preamble (if necessary add more packages terminated with %\>):
+  IfOK(!'Relax;',!|LetReg(8,'>
+\documentclass{article}%\>
+\usepackage{amsmath}%\>
+');|);
+  Translate(2,"%!M","%!8",8);        // Translate Output?
+  IfFileUTF8('%F',!"Ansi2UTF('%!8',8);"); // UTF-8?
+  WrL("%!8");                        // Write String
+  WrL("\begin{document}");           // LaTeX begin...
+  WrL;                               // Empty Line (just in case)
+:no_Preamble:: ========================================================
+  WrL("%!9");                        // Write String
+  WrL;                               // Empty Line (just in case)
+  WrL("\end{document}");             // LaTeX end...
+  CloseOutput;                       // Close temporary file
+
+  SetMainFile("%!7\_temp%!6"); // Reset the Main File
+  LetStr(0,''); // No SRC Specials for Compiled Selected
+  UpdateStatus;
+
+  // Debugging: see the _temp file:
+  //  Open('%F');
+  // Prompt('Main File Set to: "%F"');
+  //  Exit;
+
+  IfFileExists("%P\_temp.log",!"DeleteFile('%P\_temp.log')");
+  IfFileExists("%P\_temp.aux",!"DeleteFile('%P\_temp.aux')");
+  IfFileExists("%P\_temp.blg",!"DeleteFile('%P\_temp.blg')");
+  IfFileExists("%P\_temp.bbl",!"DeleteFile('%P\_temp.bbl')");
+  IfFileExists("%P\_temp.idx",!"DeleteFile('%P\_temp.idx')");
+  IfFileExists("%P\_temp.ind",!"DeleteFile('%P\_temp.ind')");
+  IfFileExists("%P\_temp.out",!"DeleteFile('%P\_temp.out')");
+  IfFileExists("%P\_temp.dvi",!"DeleteFile('%P\_temp.dvi')");
+  IfFileExists("%P\_temp.pdf",!"DeleteFile('%P\_temp.pdf')");
+  IfFileExists("%P\_temp.ps",!"DeleteFile('%P\_temp.ps')");
+  IfFileExists("%O\_temp.log",!"DeleteFile('%O\_temp.log')");
+  IfFileExists("%O\_temp.aux",!"DeleteFile('%O\_temp.aux')");
+  IfFileExists("%O\_temp.blg",!"DeleteFile('%O\_temp.blg')");
+  IfFileExists("%O\_temp.bbl",!"DeleteFile('%O\_temp.bbl')");
+  IfFileExists("%O\_temp.idx",!"DeleteFile('%O\_temp.idx')");
+  IfFileExists("%O\_temp.ind",!"DeleteFile('%O\_temp.ind')");
+  IfFileExists("%O\_temp.out",!"DeleteFile('%O\_temp.out')");
+  IfFileExists("%O\_temp.dvi",!"DeleteFile('%O\_temp.dvi')");
+  IfFileExists("%O\_temp.pdf",!"DeleteFile('%O\_temp.pdf')");
+  IfFileExists("%O\_temp.ps",!"DeleteFile('%O\_temp.ps')");
+
+// Detached Execution (especially for Compile Selected)...
+// Change Execution Modes ========================================
+  Release(!"TeXify-GUI");
+  Release(!"TeXify-High_Priority");
+  Assign(!"TeXify-Wait", !|1|);
+  Release(!"TeXify-Errors");
+  Release(!"TeXify-Warnings");
+  Release(!"TeXify-ExitCode");
+  Assign(!"TeXify-Viewer", !|1|);
+  Release(!"TeXify-View_Search");
+  Release(!"TeXify-STD_IO");
+  Assign(!"TeXify-No_Interaction", !|1|);
+  Assign(!"TeXify-Clean_Build", !|1|);
+  Assign(!"TeXify-WinEdt_Console", !|1|);
+  Assign(!"TeXify-Hidden_Window", !|1|);
+  Assign(!"TeXify-Background_Window", !|1|);
+  Assign(!"TeXify-Pause", !|1|);
+
+  Release(!"dvi2ps-GUI");
+  Release(!"dvi2ps-High_Priority");
+  Assign(!"dvi2ps-Wait", !|1|);
+  Release(!"dvi2ps-Errors");
+  Release(!"dvi2ps-Warnings");
+  Release(!"dvi2ps-ExitCode");
+  Assign(!"dvi2ps-Viewer", !|1|);
+  Release(!"dvi2ps-View_Search");
+  Release(!"dvi2ps-STD_IO");
+  Assign(!"dvi2ps-Clean_Build", !|1|);
+  Assign(!"dvi2ps-WinEdt_Console", !|1|);
+  Assign(!"dvi2ps-Hidden_Window", !|1|);
+  Assign(!"dvi2ps-Background_Window", !|1|);
+  Assign(!"dvi2ps-Pause", !|1|);
+
+  Release(!"ps2pdf-GUI");
+  Release(!"ps2pdf-High_Priority");
+  Assign(!"ps2pdf-Wait", !|1|);
+  Release(!"ps2pdf-Errors");
+  Release(!"ps2pdf-Warnings");
+  Release(!"ps2pdf-ExitCode");
+  Assign(!"ps2pdf-Viewer", !|1|);
+  Release(!"ps2pdf-View_Search");
+  Release(!"ps2pdf-STD_IO");
+  Assign(!"ps2pdf-Clean_Build", !|1|);
+  Assign(!"ps2pdf-WinEdt_Console", !|1|);
+  Assign(!"ps2pdf-Hidden_Window", !|1|);
+  Assign(!"ps2pdf-Background_Window", !|1|);
+  Assign(!"ps2pdf-Pause", !|1|);
+
+  Release(!"dvi2pdf-GUI");
+  Release(!"dvi2pdf-High_Priority");
+  Assign(!"dvi2pdf-Wait", !|1|);
+  Release(!"dvi2pdf-Errors");
+  Release(!"dvi2pdf-Warnings");
+  Release(!"dvi2pdf-ExitCode");
+  Assign(!"dvi2pdf-Viewer", !|1|);
+  Release(!"dvi2pdf-View_Search");
+  Release(!"dvi2pdf-STD_IO");
+  Assign(!"dvi2pdf-Clean_Build", !|1|);
+  Assign(!"dvi2pdf-WinEdt_Console", !|1|);
+  Assign(!"dvi2pdf-Hidden_Window", !|1|);
+  Assign(!"dvi2pdf-Background_Window", !|1|);
+  Assign(!"dvi2pdf-Pause", !|1|);
+// Execution Modes Reset =========================================
+
+  IfStr("%$('CS-Output');","1","=",!|JMP('dvi');|);
+  IfStr("%$('CS-Output');","2","=",!|JMP('ps');|);
+
+:pdf:: ================================================================
+
+  Release(!"PDFTeXify-GUI");
+  Release(!"PDFTeXify-High_Priority");
+  Assign(!"PDFTeXify-Wait", !|1|);
+  Release(!"PDFTeXify-Errors");
+  Release(!"PDFTeXify-Warnings");
+  Release(!"PDFTeXify-ExitCode");
+  Assign(!"PDFTeXify-Viewer", !|1|);
+  Release(!"PDFTeXify-View_Search");
+  Release(!"PDFTeXify-STD_IO");
+  Assign(!"PDFTeXify-No_Interaction", !|1|);
+  Assign(!"PDFTeXify-Clean_Build", !|1|);
+  Assign(!"PDFTeXify-WinEdt_Console", !|1|);
+  Assign(!"PDFTeXify-Hidden_Window", !|1|);
+  Assign(!"PDFTeXify-Background_Window", !|1|);
+  Assign(!"PDFTeXify-Pause", !|1|);
+  // different output folder?
+  IfStr('%O','%P','<>',!|Assign('PDFTeXify-Viewer',"0");|);
+  Exe('%b\Exec\TeX\PDFTeXify.edt');
+  IfStr("%$('Compile Status');",!"OK",!"<>",!"JMP('cleanup');");
+  IfFileExists("%P\_temp.dvi",!"DeleteFile('%P\_temp.dvi')");
+  IfFileExists("%P\_temp.ps",!"DeleteFile('%P\_temp.ps')");
+  IfFileExists("%P\_temp.pdf",!"Relax;",!|JMP('cleanup');|);
+  // move pdf to a to different output folder?
+  IfStr('%O','%P','=',!|JMP('cleanup');|);
+  LetReg(0,'%P');
+  CopyFile("%!0\_temp%T","%O\_temp%T",1,1);
+  SetMainFile("%O\_temp%T");         // Reset the Main File
+  DeleteFile("%!0\_temp%T");
+  Exe('%b\Exec\PDF\PDFCloseDoc.edt');
+  CopyFile("%!0\_temp.pdf","%P\_temp.pdf",1,1);
+  DeleteFile("%!0\_temp.pdf");
+  // Only if it exists!
+  IfFileExists("%P\%N.pdf",!"Relax;",!"JMP('cleanup');");
+  Exe('%b\Exec\PDF\PDF Preview.edt');
+  JMP('cleanup');
+
+:dvi:: ================================================================
+
+  Assign(!"TeXify-Viewer", !|1|);
+  Exe('%b\Exec\TeX\TeXify.edt');
+  // DVI should not be moved (it may contain graphics or ps specials)
+  JMP('cleanup');
+
+:ps:: =================================================================
+
+  Assign(!"TeXify-Viewer", !|0|);
+  Exe('%b\Exec\TeX\TeXify.edt');
+  IfStr("%$('Compile Status');",!"OK",!"<>",!"JMP('cleanup');");
+  IfFileExists("%P\%N.dvi",!"Relax;",!"JMP('cleanup');");
+  IfStr('%O','%P','<>',!|Assign('dvi2ps-Viewer',"0");|);
+  Exe('%b\Exec\TeX\dvi2ps.edt');
+  IfStr("%$('Compile Status');",!"OK",!"<>",!"JMP('cleanup');");
+  IfFileExists("%P\_temp.dvi",!"DeleteFile('%P\_temp.dvi')");
+  IfFileExists("%P\_temp.ps",!"Relax;",!|JMP('cleanup');|);
+  // move ps to a to different output folder?
+  IfStr('%O','%P','=',!|JMP('cleanup');|);
+  LetReg(0,'%P');
+  CopyFile("%!0\_temp%T","%O\_temp%T",1,1);
+  SetMainFile("%O\_temp%T");         // Reset the Main File
+  DeleteFile("%!0\_temp%T");
+  CopyFile("%!0\_temp.ps","%P\_temp.ps",1,1);
+  DeleteFile("%!0\_temp.ps");
+  // Only if it exists!
+  IfFileExists("%P\%N.ps",!"Relax;",!"JMP('cleanup');");
+  Exe('%b\Exec\TeX\GSView.edt');
+  JMP('cleanup');
+
+:cleanup:: ============================================================
+
+  // Delete the working output files...
+  IfFileExists("%b\_Err.log",!"DeleteFile('%b\_Err.log')");
+  IfFileExists("%b\_Out.log",!"DeleteFile('%b\_Out.log')");
+  IfFileExists("%F",!"DeleteFile('%F')");
+  IfFileExists("%P\_temp.tex",!"DeleteFile('%P\_temp.tex')");
+  IfFileExists("%P\_temp.log",!"DeleteFile('%P\_temp.log')");
+  IfFileExists("%P\_temp.aux",!"DeleteFile('%P\_temp.aux')");
+  IfFileExists("%P\_temp.blg",!"DeleteFile('%P\_temp.blg')");
+  IfFileExists("%P\_temp.bbl",!"DeleteFile('%P\_temp.bbl')");
+  IfFileExists("%P\_temp.idx",!"DeleteFile('%P\_temp.idx')");
+  IfFileExists("%P\_temp.ind",!"DeleteFile('%P\_temp.ind')");
+  IfFileExists("%P\_temp.out",!"DeleteFile('%P\_temp.out')");
+  IfFileExists("%O\_temp.tex",!"DeleteFile('%O\_temp.tex')");
+  IfFileExists("%O\_temp.log",!"DeleteFile('%O\_temp.log')");
+  IfFileExists("%O\_temp.aux",!"DeleteFile('%O\_temp.aux')");
+  IfFileExists("%O\_temp.blg",!"DeleteFile('%O\_temp.blg')");
+  IfFileExists("%O\_temp.bbl",!"DeleteFile('%O\_temp.bbl')");
+  IfFileExists("%O\_temp.idx",!"DeleteFile('%O\_temp.idx')");
+  IfFileExists("%O\_temp.ind",!"DeleteFile('%O\_temp.ind')");
+  IfFileExists("%O\_temp.out",!"DeleteFile('%O\_temp.out')");
+
+  SetMainFile("%$(|Main_File|);");   // Reset the Main File
+  Exe("%b\Exec\%!C\ExeMode.edt");
+  LetStr(0,"%$(|old_src|);");
+  UpdateStatus;
+  FocusConsole(-1);
+
+  SetExitHandler;
+
+  PopTagsandRegisters;
+  StopWorking;
+  Assign('Compile-Flag','');
+
+End;

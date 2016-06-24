@@ -1,0 +1,46 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 31.\,10.\,2011 ]
+  \WinEdt{Bioinformatika}{( 0 h, 52 min.)}{M}{19:27-20:19}
+  \WinEdt{Bioinformatika}{( 1 h, 07 min.)}{W}{07:31-08:38}
+  \WinEdt{Bioinformatika}{( 0 h, 02 min.)}{W}{10:24-10:26}
+  \WinEdt{<untitled project>}{( 3 h, 45 min.)}{W}{07:31-11:16}
+  \WinEdt{Bioinformatika}{( 0 h, 01 min.)}{W}{11:28-11:29}
+  \WinEdt{<untitled project>}{( 0 h, 01 min.)}{W}{11:28-11:29}
+  \WinEdt{cene3}{( 4 h, 24 min.)}{W}{11:29-15:53}
+  \WinEdt{cene3}{( 0 h, 47 min.)}{Th}{14:06-14:53}
+  \WinEdt{cene3}{( 1 h, 09 min.)}{F}{0:20-01:29}
+  \WinEdt{!KrNeki}{( 3 h, 27 min.)}{F}{09:42-13:09}
+  \WinEdt{cene3}{( 1 h, 54 min.)}{F}{13:09-15:03}
+\end{schedule}
+ 
+\end{document}

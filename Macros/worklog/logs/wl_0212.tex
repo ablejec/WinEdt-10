@@ -1,0 +1,40 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 12.\,02.\,2012 ]
+  \WinEdt{<untitled project>}{( --> 214 h, 01 min.)}{Sunday}{00:00-18:25}
+  \WinEdt{<untitled project>}{( --> )}{Sunday}{20:24-23:59}
+  \WinEdt{KG090511}{( -->  0 h, 43 min.)}{Tuesday}{00:00-00:11}
+  \WinEdt{KG090511}{( --> )}{Tuesday}{23:28-23:59}
+  \WinEdt{KG090511}{(13 h, 26 min.)}{Tuesday}{10:19-23:45}
+\end{schedule}
+ 
+\end{document}

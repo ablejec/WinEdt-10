@@ -1,0 +1,41 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 30.\,07.\,2012 ]
+  \WinEdt{I2R}{( 0 h, 41 min.)}{Monday}{09:43-10:24}
+  \WinEdt{I2R}{( 2 h, 40 min.)}{Monday}{11:48-14:28}
+  \WinEdt{KG130116}{( --> 11 h, 52 min.)}{Tuesday}{00:00-10:07}
+  \WinEdt{KG130116}{( --> )}{Tuesday}{22:15-23:59}
+  \WinEdt{I2R}{( 0 h, 06 min.)}{Tuesday}{10:07-10:13}
+  \WinEdt{KG130116}{( 4 h, 44 min.)}{Tuesday}{10:13-14:57}
+\end{schedule}
+ 
+\end{document}

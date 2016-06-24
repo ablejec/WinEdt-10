@@ -1,0 +1,12 @@
+// WinEdt Local Startup Macro
+
+  Requires(20060724);
+
+// Any Global Initialization for all users?
+// If required placed there by a system administrator or a power user...
+  IfFileExists('%B\Local\StartupEx.edt',>
+    !|Exe('%B\Local\StartupEx.edt');|);
+
+// Here you can add any extras required for your use of WinEdt....
+
+End;

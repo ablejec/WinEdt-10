@@ -1,0 +1,54 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 09.\,03.\,2009 ]
+  \WinEdt{UNG}{( -->  1 h, 05 min.)}{M}{00:00-00:18}
+  \WinEdt{UNG}{( --> )}{M}{23:13-23:59}
+  \WinEdt{UNG}{( 0 h, 48 min.)}{M}{21:36-22:24}
+  \WinEdt{!KrNeki}{( 0 h, 10 min.)}{W}{09:43-09:53}
+  \WinEdt{!KrNeki}{( 0 h, 23 min.)}{W}{09:55-10:18}
+  \WinEdt{!KrNeki}{( 0 h, 01 min.)}{Th}{13:02-13:03}
+  \WinEdt{lek}{(25 h, 55 min.)}{F}{13:03-14:58}
+  \WinEdt{lek}{( 2 h, 23 min.)}{F}{21:35-23:58}
+  \WinEdt{lek}{( 0 h, 31 min.)}{Sa}{0:03-00:34}
+  \WinEdt{lek}{( 0 h, 44 min.)}{Sa}{18:49-19:33}
+  \WinEdt{<untitled project>}{( 0 h, 44 min.)}{Sa}{18:49-19:33}
+  \WinEdt{Rpackage}{( 0 h, 01 min.)}{Sa}{19:34-19:35}
+  \WinEdt{pkg}{( 3 h, 02 min.)}{Sa}{19:35-22:37}
+  \WinEdt{pkg}{( 0 h, 42 min.)}{Sa}{22:37-23:19}
+  \WinEdt{pkg}{( 0 h, 04 min.)}{Sa}{23:19-23:23}
+  \WinEdt{!KrNeki}{( -->  1 h, 11 min.)}{Su}{00:00-00:35}
+  \WinEdt{!KrNeki}{( --> )}{Sa}{23:24-23:59}
+  \WinEdt{UNG}{( 3 h, 45 min.)}{Su}{14:34-18:19}
+  \WinEdt{geNorm}{( 0 h, 02 min.)}{Friday}{10:31-10:33}
+\end{schedule}
+ 
+\end{document}

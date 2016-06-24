@@ -1,0 +1,40 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 18.\,01.\,2010 ]
+  \WinEdt{Rpackage}{( 0 h, 07 min.)}{M}{16:46-16:53}
+  \WinEdt{Rpackage}{( 0 h, 07 min.)}{W}{12:01-12:08}
+  \WinEdt{Rpackage}{( 0 h, 01 min.)}{Th}{15:05-15:06}
+  \WinEdt{Jaka}{( 0 h, 35 min.)}{Th}{15:06-15:41}
+  \WinEdt{KG090511}{( 0 h, 11 min.)}{Friday}{0:13-00:24}
+\end{schedule}
+ 
+\end{document}

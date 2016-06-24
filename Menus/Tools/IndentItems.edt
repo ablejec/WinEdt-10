@@ -1,0 +1,22 @@
+// Indent \item
+// A. Blejec  20100401
+//
+Requires(20050201);
+GlobalMark();
+SetFindStr("<@{ }\\item ");
+SetReplaceStr("<  \\item ");
+SetSearchForward(1);
+SetSearchCaseSensitive(0);
+SetSearchEntire(0);
+SetSearchCyclic(0);
+SetSearchRelaxed(0);
+SetSearchWholeWords(0);
+SetSearchInline(0);
+SetSearchSelected;
+SetRegEx(1);
+SetReplaceRespectCaps(0);
+SetReplacePrompt(0);
+SearchReset;
+ReplaceAll;
+GlobalReturn;
+End;

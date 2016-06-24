@@ -1,0 +1,51 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 26.\,04.\,2010 ]
+  \WinEdt{Upgrade6}{( -->  1 h, 58 min.)}{M}{00:00-00:00}
+  \WinEdt{Upgrade6}{( --> )}{M}{22:02-23:59}
+  \WinEdt{SemUcBiol}{( 0 h, 01 min.)}{M}{0:00-00:01}
+  \WinEdt{Upgrade6}{( 0 h, 18 min.)}{M}{0:01-00:19}
+  \WinEdt{Upgrade6}{( 0 h, 12 min.)}{M}{0:19-00:31}
+  \WinEdt{SemUcBiol}{( 0 h, 29 min.)}{M}{0:31-01:00}
+  \WinEdt{SemUcBiol}{( 0 h, 15 min.)}{M}{21:21-21:36}
+  \WinEdt{_KrNeki}{( 1 h, 17 min.)}{M}{21:36-22:53}
+  \WinEdt{_KrNeki}{( 0 h, 06 min.)}{Th}{16:57-17:03}
+  \WinEdt{stat-dok}{( 4 h, 03 min.)}{Th}{17:03-21:06}
+  \WinEdt{stat-dok}{( -->  1 h, 28 min.)}{F}{00:00-00:57}
+  \WinEdt{stat-dok}{( --> )}{Th}{23:29-23:59}
+  \WinEdt{meta}{( 2 h, 22 min.)}{Thursday}{10:51-13:13}
+  \WinEdt{!KrNeki}{( 0 h, 53 min.)}{Friday}{10:38-11:31}
+  \WinEdt{cene3}{( 0 h, 41 min.)}{Friday}{12:12-12:53}
+  \WinEdt{KG130116}{( 2 h, 19 min.)}{Friday}{12:53-15:12}
+\end{schedule}
+ 
+\end{document}

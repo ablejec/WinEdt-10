@@ -1,0 +1,234 @@
+////////////////////////////////////
+//
+// LaTeX to markdown translation
+// 11. 2. 2014
+// A. Blejec <andrej.blejec@nib.si>
+//
+///////////////////////////////////
+//
+// Replacements
+// title
+SetFindStr("\\title\{\(*\)\}");
+SetReplaceStr("# \0");
+SetSearchForward(1);
+SetSearchCaseSensitive(0);
+SetSearchEntire(1);
+SetSearchCyclic(0);
+SetSearchRelaxed(0);
+SetSearchWholeWords(0);
+SetSearchInline(0);
+SetSearchCurrentDoc;
+SetRegEx(1);
+SetReplaceRespectCaps(0);
+SetReplacePrompt(0);
+SetReplaceNotify(0);
+SetNotFoundNotify(0);
+SearchReset;
+ReplaceAll;
+// ReplaceDialog;
+// author
+SetFindStr("\\author\{\(*\)\}");
+SetReplaceStr("## Author: \0");
+SetSearchForward(1);
+SetSearchCaseSensitive(0);
+SetSearchEntire(1);
+SetSearchCyclic(0);
+SetSearchRelaxed(0);
+SetSearchWholeWords(0);
+SetSearchInline(0);
+SetSearchCurrentDoc;
+SetRegEx(1);
+SetReplaceRespectCaps(0);
+SetReplacePrompt(0);
+SetReplaceNotify(0);
+SetNotFoundNotify(0);
+SearchReset;
+ReplaceAll;
+// ReplaceDialog;
+// author
+SetFindStr("\\date\{\(*\)\}");
+SetReplaceStr("Date: \0");
+SetSearchForward(1);
+SetSearchCaseSensitive(0);
+SetSearchEntire(1);
+SetSearchCyclic(0);
+SetSearchRelaxed(0);
+SetSearchWholeWords(0);
+SetSearchInline(0);
+SetSearchCurrentDoc;
+SetRegEx(1);
+SetReplaceRespectCaps(0);
+SetReplacePrompt(0);
+SetReplaceNotify(0);
+SetNotFoundNotify(0);
+SearchReset;
+ReplaceAll;
+// ReplaceDialog;
+// section
+SetFindStr("\\section\{\(*\)\}");
+SetReplaceStr("## \0");
+SetSearchForward(1);
+SetSearchCaseSensitive(0);
+SetSearchEntire(1);
+SetSearchCyclic(0);
+SetSearchRelaxed(0);
+SetSearchWholeWords(0);
+SetSearchInline(0);
+SetSearchCurrentDoc;
+SetRegEx(1);
+SetReplaceRespectCaps(0);
+SetReplacePrompt(0);
+SetReplaceNotify(0);
+SetNotFoundNotify(0);
+SearchReset;
+ReplaceAll;
+// ReplaceDialog;
+// subsection
+SetFindStr("\\subsection\{\(*\)\}");
+SetReplaceStr("### \0");
+SetSearchForward(1);
+SetSearchCaseSensitive(0);
+SetSearchEntire(1);
+SetSearchCyclic(0);
+SetSearchRelaxed(0);
+SetSearchWholeWords(0);
+SetSearchInline(0);
+SetSearchCurrentDoc;
+SetRegEx(1);
+SetReplaceRespectCaps(0);
+SetReplacePrompt(0);
+SetReplaceNotify(0);
+SetNotFoundNotify(0);
+SearchReset;
+ReplaceAll;
+// ReplaceDialog;
+// subsubsection
+SetFindStr("\\subsubsection\{\(*\)\}");
+SetReplaceStr("### \0");
+SetSearchForward(1);
+SetSearchCaseSensitive(0);
+SetSearchEntire(1);
+SetSearchCyclic(0);
+SetSearchRelaxed(0);
+SetSearchWholeWords(0);
+SetSearchInline(0);
+SetSearchCurrentDoc;
+SetRegEx(1);
+SetReplaceRespectCaps(0);
+SetReplacePrompt(0);
+SetReplaceNotify(0);
+SetNotFoundNotify(0);
+SearchReset;
+ReplaceAll;
+// ReplaceDialog;
+// \begin{abstract}
+SetFindStr("\\begin\{abstract\}");
+SetReplaceStr("## Abstract>>");
+SetSearchForward(1);
+SetSearchCaseSensitive(0);
+SetSearchEntire(1);
+SetSearchCyclic(0);
+SetSearchRelaxed(0);
+SetSearchWholeWords(0);
+SetSearchInline(0);
+SetSearchCurrentDoc;
+SetRegEx(1);
+SetReplaceRespectCaps(0);
+SetReplacePrompt(0);
+SetReplaceNotify(0);
+SetNotFoundNotify(0);
+SearchReset;
+ReplaceAll;
+// delete all other commands
+SetFindStr("<\\*");
+SetReplaceStr("");
+SetSearchForward(1);
+SetSearchCaseSensitive(0);
+SetSearchEntire(1);
+SetSearchCyclic(0);
+SetSearchRelaxed(0);
+SetSearchWholeWords(0);
+SetSearchInline(0);
+SetSearchCurrentDoc;
+SetRegEx(1);
+SetReplaceRespectCaps(0);
+SetReplacePrompt(0);
+SetReplaceNotify(0);
+SetNotFoundNotify(0);
+SearchReset;
+ReplaceAll;
+// comments
+SetFindStr("%*");
+SetReplaceStr("");
+SetSearchForward(1);
+SetSearchCaseSensitive(0);
+SetSearchEntire(1);
+SetSearchCyclic(0);
+SetSearchRelaxed(0);
+SetSearchWholeWords(0);
+SetSearchInline(0);
+SetSearchCurrentDoc;
+SetRegEx(1);
+SetReplaceRespectCaps(0);
+SetReplacePrompt(0);
+SetReplaceNotify(0);
+SetNotFoundNotify(0);
+SearchReset;
+ReplaceAll;
+
+// comments
+SetFindStr("render_sweave()");
+SetReplaceStr("render_markdown()");
+SetSearchForward(1);
+SetSearchCaseSensitive(0);
+SetSearchEntire(1);
+SetSearchCyclic(0);
+SetSearchRelaxed(0);
+SetSearchWholeWords(0);
+SetSearchInline(0);
+SetSearchCurrentDoc;
+SetRegEx(1);
+SetReplaceRespectCaps(0);
+SetReplacePrompt(0);
+SetReplaceNotify(0);
+SetNotFoundNotify(0);
+SearchReset;
+ReplaceAll;
+
+//// code chunks
+//SetFindStr("\<\<\(*\)\>\>=@");
+//SetReplaceStr("```\{r \0\}");
+//SetSearchForward(1);
+//SetSearchCaseSensitive(0);
+//SetSearchEntire(1);
+//SetSearchCyclic(0);
+//SetSearchRelaxed(0);
+//SetSearchWholeWords(0);
+//SetSearchInline(0);
+//SetSearchCurrentDoc;
+//SetRegEx(1);
+//SetReplaceRespectCaps(0);
+//SetReplacePrompt(0);
+//SetReplaceNotify(0);
+//SetNotFoundNotify(0);
+//SearchReset;
+//ReplaceAll;
+//
+//// code chunks
+//SetFindStr("\@");
+//SetReplaceStr("```>");
+//SetSearchForward(1);
+//SetSearchCaseSensitive(0);
+//SetSearchEntire(1);
+//SetSearchCyclic(0);
+//SetSearchRelaxed(0);
+//SetSearchWholeWords(0);
+//SetSearchInline(0);
+//SetSearchCurrentDoc;
+//SetRegEx(1);
+//SetReplaceRespectCaps(0);
+//SetReplacePrompt(0);
+//SetReplaceNotify(0);
+//SetNotFoundNotify(0);
+//SearchReset;
+//ReplaceAll;

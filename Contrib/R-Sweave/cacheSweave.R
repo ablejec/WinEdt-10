@@ -1,0 +1,5 @@
+filename <- commandArgs(TRUE)
+require(cacheSweave)
+dir.create("Cache_", showWarnings = FALSE)
+setCacheDir("Cache_")
+Sweave(filename, driver = cacheSweaveDriver)

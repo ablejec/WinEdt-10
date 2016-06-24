@@ -1,0 +1,49 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 25.\,10.\,2010 ]
+  \WinEdt{GEO}{( 0 h, 01 min.)}{M}{09:52-09:53}
+  \WinEdt{<untitled project>}{( 0 h, 02 min.)}{M}{09:52-09:54}
+  \WinEdt{statpred}{( 0 h, 01 min.)}{M}{09:54-09:55}
+  \WinEdt{<untitled project>}{(28 h, 00 min.)}{T}{09:54-13:54}
+  \WinEdt{KIS}{( 0 h, 06 min.)}{T}{13:55-14:01}
+  \WinEdt{KIS}{( 0 h, 02 min.)}{T}{21:28-21:30}
+  \WinEdt{!KrNeki}{( 0 h, 07 min.)}{T}{21:30-21:37}
+  \WinEdt{!KrNeki}{( 0 h, 56 min.)}{T}{21:52-22:48}
+  \WinEdt{!KrNeki}{( 0 h, 05 min.)}{T}{22:48-22:53}
+  \WinEdt{<untitled project>}{( 0 h, 33 min.)}{W}{09:19-09:52}
+  \WinEdt{Bioinformatika}{( 1 h, 59 min.)}{W}{10:14-12:13}
+  \WinEdt{Bioinformatika}{( 1 h, 23 min.)}{W}{12:31-13:54}
+  \WinEdt{<untitled project>}{( --> 85 h, 32 min.)}{Thursday}{00:00-13:05}
+  \WinEdt{<untitled project>}{( --> )}{Thursday}{23:33-23:59}
+\end{schedule}
+ 
+\end{document}

@@ -1,0 +1,38 @@
+// -*- ASCII:EDT -*-
+// wl_read.edt
+// (schlicht 20010302)
+// ($Revision: 1.10 $)
+// (created by worklog_install.edt
+//   on 11. april 2016, 11:49)
+////////////////////////////////////
+
+Exe("%b\Macros\worklog\wl_status.edt");
+
+LetReg(5,"%p");
+GetDate(2,"yy");
+GetDate(3,"mm");
+EnterReg(2,"Which Year (00-%!2 ,  ""t"" for total ,  ""c"" for chart)?","worklog");
+ 
+IfStr("%!2","c","=",>
+   !"LetRegNum(4,31); >
+     Loop(!'>
+        IfFileExists(''%b\Macros\worklog\logs\wl_%!3%!4.tex'', ''Stop;'',>
+         !''IfNum(%!4,1,|=|,>
+             !|LetRegNum(4,31); LetRegNum(3,%!3-1,2,2);|,>
+             !|LetRegNum(4,%!4-1,2,2);|);'')');>
+     Run('latex.exe ""%b\Macros\worklog\logs\wl_%!3%!4.tex""','%b\Macros\worklog\logs',0);>
+     WaitForFocus(2000);>
+     Run('yap.exe -1 ""%b\Macros\worklog\logs\wl_%!3%!4.dvi""','%b\Macros\worklog\logs',0);>
+     LetReg(1,''); LetReg(2,''); LetReg(3,'');LetReg(4,'');>
+     Exit;");
+ 
+IfStr("%!2","t","=",>
+   !"Open('%b\Macros\worklog\logs\total.worklog');",>
+   !"EnterReg(3,'Which Month (00-12)?','worklog');>
+     Open('%b\Macros\worklog\logs\%!2%!3.worklog');>
+     SetReadonly(1);");
+
+ChDir("%!5");
+LetReg(1,""); LetReg(2,""); LetReg(3,""); LetReg(4,""); LetReg(5,"");
+
+End;

@@ -1,0 +1,10 @@
+// Project Open Event Handler
+
+  Requires(20040806);
+  PushTagsandRegisters;
+  Exe("%b\Local\Events\Prj-Open.edt")
+  BuildTree;
+
+  PopTagsandRegisters;
+
+End;

@@ -1,0 +1,48 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 24.\,04.\,2012 ]
+  \WinEdt{!KrNeki}{( 0 h, 02 min.)}{Tuesday}{14:09-14:11}
+  \WinEdt{!KrNeki}{( 0 h, 30 min.)}{Tuesday}{14:14-14:44}
+  \WinEdt{!KrNeki}{( 1 h, 42 min.)}{Tuesday}{21:13-22:55}
+  \WinEdt{rps}{( 0 h, 04 min.)}{Wednesday}{0:38-00:42}
+  \WinEdt{MainMenu}{( 0 h, 43 min.)}{Wednesday}{0:47-01:30}
+  \WinEdt{uspešen migrate}{( 0 h, 05 min.)}{Wednesday}{01:49-01:54}
+  \WinEdt{rps}{( 0 h, 29 min.)}{Wednesday}{01:55-02:24}
+  \WinEdt{rps}{( 0 h, 09 min.)}{Wednesday}{13:09-13:18}
+  \WinEdt{rps}{( 0 h, 11 min.)}{Wednesday}{13:19-13:30}
+  \WinEdt{rps}{( 1 h, 27 min.)}{Wednesday}{20:18-21:45}
+  \WinEdt{rps}{( 0 h, 05 min.)}{Wednesday}{21:47-21:52}
+  \WinEdt{rps}{( 0 h, 01 min.)}{Wednesday}{21:57-21:58}
+  \WinEdt{Private}{( 0 h, 41 min.)}{Wednesday}{21:58-22:39}
+\end{schedule}
+ 
+\end{document}

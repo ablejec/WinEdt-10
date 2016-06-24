@@ -1,0 +1,40 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 20.\,12.\,2008 ]
+  \WinEdt{GFLV}{( 0 h, 58 min.)}{sobota}{16:58-17:56}
+  \WinEdt{_KrNeki}{( 0 h, 56 min.)}{sobota}{17:56-18:52}
+  \WinEdt{malacic}{( -->  0 h, 23 min.)}{M}{00:00-00:00}
+  \WinEdt{malacic}{( --> )}{M}{23:37-23:59}
+  \WinEdt{malacic}{( 3 h, 36 min.)}{M}{09:40-13:16}
+\end{schedule}
+ 
+\end{document}

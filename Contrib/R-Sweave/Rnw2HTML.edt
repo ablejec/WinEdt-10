@@ -1,0 +1,169 @@
+////////////////////////////////////
+//
+// LaTeX to markdown translation
+// 11. 2. 2014
+// A. Blejec <andrej.blejec@nib.si>
+//
+// How to use:
+//
+// 1. open myfile.Rnw file (preferably knitr, use Sweave2knitr if to convert Sweave file to knitr file)
+// 2. Select Macros / Execute macro script (or: ctrl + F9)
+//    and run macro TeX2Rmd.edt
+//
+// you will get file myfile.Rmd which can be processed further
+//
+// next use R:
+//
+// knit("myfile.Rmd",output="myfile.md")
+// markdownToHTML("myfile.md","myfile.html")
+// shell.exec("myfile.html")
+//
+///////////////////////////////////
+//
+CloseFile("%P\%N.Rmd",1);
+SaveDocCopyAs("%P\%N.Rmd");
+Open("%P\%N.Rmd");
+// Replacements
+BeginGroup;
+// title
+SetFindStr("\\title\{\(*\)\}");
+SetReplaceStr("# \0");
+SetSearchForward(1);
+SetSearchCaseSensitive(0);
+SetSearchEntire(1);
+SetSearchCyclic(0);
+SetSearchRelaxed(0);
+SetSearchWholeWords(0);
+SetSearchInline(0);
+SetSearchCurrentDoc;
+SetRegEx(1);
+SetReplaceRespectCaps(0);
+SetReplacePrompt(0);
+SetReplaceNotify(0);
+SetNotFoundNotify(0);
+//SearchReset;
+ReplaceAll;
+// ReplaceDialog;
+// author
+SetFindStr("\\author\{\(*\)\}");
+SetReplaceStr("## Author: \0");
+ReplaceAll;
+// ReplaceDialog;
+// author
+SetFindStr("\\date\{\(*\)\}");
+SetReplaceStr("Date: \0");
+ReplaceAll;
+// ReplaceDialog;
+// section
+SetFindStr("\\section*\{\(*\)\}");
+SetReplaceStr("## \0");
+ReplaceAll;
+// ReplaceDialog;
+// subsection
+SetFindStr("\\subsection*\{\(*\)\}");
+SetReplaceStr("### \0");
+ReplaceAll;
+// ReplaceDialog;
+// subsubsection
+SetFindStr("\\subsubsection*\{\(*\)\}");
+SetReplaceStr("### \0");
+ReplaceAll;
+// ReplaceDialog;
+// \begin{abstract}
+SetFindStr("\\begin\{abstract\}");
+SetReplaceStr("## Abstract>>");
+ReplaceAll;
+// typeface bold
+SetFindStr("\\textbf\{\(*\)\}");
+SetReplaceStr("\*\*\0\*\*");
+ReplaceAll;
+// typeface italic
+SetFindStr("\\textit\{\(*\)\}");
+SetReplaceStr("\*\0\*");
+ReplaceAll;
+// typeface tt
+SetFindStr("\\texttt\{\(*\)\}");
+SetReplaceStr("`\0`");
+ReplaceAll;
+// code
+SetFindStr("\\code\{\(*\)\}");
+SetReplaceStr("`\0`");
+ReplaceAll;
+// verb
+SetFindStr("\\\\verb'\(*\)'");
+SetReplaceStr("`\0`");
+ReplaceAll;
+//  url
+SetFindStr("\\url\{\(*\)\}");
+SetReplaceStr("\0");
+ReplaceAll;
+// href
+SetFindStr("\\href\{\(1*\)\}*\{\(2*\)\}");
+SetReplaceStr("\[\2\](\1)");
+ReplaceAll;
+// small
+SetFindStr("\\small");
+SetReplaceStr("");
+ReplaceAll;
+// toLatex(sessionInfo())
+SetFindStr("toLatex(\(*\))");
+SetReplaceStr("\0");
+ReplaceAll;
+
+// comments
+SetFindStr("%*>");
+SetReplaceStr("");
+ReplaceAll;
+
+// comments
+SetFindStr("render_sweave()");
+SetReplaceStr("render_markdown()");
+ReplaceAll;
+//
+// Sweave stuff
+//
+// out.width  1:code, 2: spaces=*, 3: comma or end of chunk
+SetFindStr("\(1out.width\)\(2@[ ]=*\)\(3[,\>\>]\)");
+SetReplaceStr("\1=400\3");
+ReplaceAll;
+
+// code chunks
+SetFindStr("\<\<\(**\)\>\>=@");
+SetReplaceStr("```\{r \0\}");
+ReplaceAll;
+
+// text chunks
+SetFindStr("<+\@");
+SetReplaceStr("```");
+ReplaceAll;
+
+// paragraphs
+SetFindStr("\\\\>");
+SetReplaceStr(">");
+ReplaceAll;
+
+// Sexpr
+SetFindStr("\\Sexpr\{\(**\)\}");
+SetReplaceStr("`r \0`");
+ReplaceAll;
+
+
+// delete all other TeX commands
+//SetFindStr("<\\**\}>");
+//SetFindStr("<\\*");
+// single line commands, braces at and
+SetFindStr("<\\*[\}>]*>");
+SetReplaceStr("");
+ReplaceAll;
+// no braces commands
+SetFindStr("<\\+$Alpha$>");
+SetReplaceStr("");
+ReplaceAll;
+// multiline commands, braces at end
+SetFindStr("<\\**\}>");
+SetReplaceStr("");
+ReplaceAll;
+//
+SearchReset;
+EndGroup;
+SaveDoc(0);

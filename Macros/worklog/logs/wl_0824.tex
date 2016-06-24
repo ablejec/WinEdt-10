@@ -1,0 +1,42 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 20 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 24.\,08.\,2009 ]
+  \WinEdt{<untitled project>}{( --> 324 h, 33 min.)}{Th}{00:00-12:05}
+  \WinEdt{<untitled project>}{( --> )}{W}{23:32-23:59}
+  \WinEdt{<untitled project>}{( 0 h, 01 min.)}{Th}{17:38-17:39}
+  \WinEdt{!KrNeki}{( 0 h, 43 min.)}{Th}{17:39-18:22}
+  \WinEdt{<untitled project>}{(52 h, 03 min.)}{Sa}{17:39-21:42}
+  \WinEdt{GEO}{( 1 h, 53 min.)}{Sa}{21:43-23:36}
+  \WinEdt{<untitled project>}{(25 h, 14 min.)}{Su}{21:43-22:57}
+\end{schedule}
+ 
+\end{document}

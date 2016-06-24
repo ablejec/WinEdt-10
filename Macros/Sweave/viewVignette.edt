@@ -1,0 +1,30 @@
+////////////////////////////////////////////////////////
+// Browse current .Rnw file code chunks with viewVignette
+//
+// $Revision: 1.1 $
+// $Date: 2007-03-12 22:28:25+01 $
+//
+// A. Blejec
+// Limitations:
+//
+// To be done:
+//
+//
+/////////////////////////////////////////////////////////
+// Direct call
+// LetReg(8,'viewVignette("Code chunk viewer","%!n","%f")');
+// Catch nonexistent package
+// LetReg(8, 'if(class(try(viewVignette))=="try-error") cat("Error:
+//   package tkWidgets not loaded\n") else viewVignette("Code chunk
+//   viewer","%!n","%f")');
+// Load necessary package (tkWidgets)
+ LetReg(8, 'if(class(try(viewVignette,TRUE))=="try-error") library(tkWidgets); viewVignette("Code chunk viewer","%!N","%F")');
+// Prompt("Before: %!8",0,1);
+ SubstituteInString("%!8", "\","/",0,8);
+// Prompt("After substituting \ with /: %!8");
+ ReplaceInString("1", ">", 0, 1, 1, 9);
+ CopyToClipboard('%!8%!9', 0);
+ LetReg(9,"");
+ LetReg(8,"");
+ Exe("%b\send2R.edt")
+ End;

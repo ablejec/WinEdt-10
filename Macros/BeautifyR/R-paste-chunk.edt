@@ -1,0 +1,27 @@
+////////////////////////////////////////////////////////
+// R-paste-chunk.edt
+// Paste selected text or entire Chunk to R
+// $Revision: 1.1 $
+// $Date: 2007-03-12 22:28:25+01 $
+//
+// A. Blejec
+// Limitations:
+//
+// To be done:
+//
+//
+/////////////////////////////////////////////////////////
+//
+//Prompt("%t");
+IfIStr("%t",".Rnw","=",>
+    |IfSel("0","=",'Exe("%b\macros\BeautifyR\SelectRChunk.edt")',"GetSel(0,0)");|,"Relax;");
+IfIStr("%t",".R","=",>
+    |IfSel("0","=",'Exe("%b\macros\BeautifyR\SelectRTangledChunk.edt")',"GetSel(0,0)");|,"Relax;");
+// Exe("%b\macros\BeautifyR\SelectRChunk.edt");
+Exe("%b\Macros\R\R-paste.edt");
+SetFocus("");
+CMD("Reset Selection");
+IfIStr("%t",".Rnw","=",>
+    |IfSel("0","=",'Exe("%b\macros\BeautifyR\NextRChunk.edt")',"GetSel(0,0)");|,"Relax;");
+IfIStr("%t",".R","=",>
+    |IfSel("0","=",'Exe("%b\macros\BeautifyR\NextRTangledChunk.edt")',"GetSel(0,0)");|,"Relax;");

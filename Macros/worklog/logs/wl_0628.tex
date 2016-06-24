@@ -1,0 +1,44 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 28.\,06.\,2010 ]
+  \WinEdt{hana}{( -->  1 h, 18 min.)}{W}{00:00-00:58}
+  \WinEdt{hana}{( --> )}{T}{23:40-23:59}
+  \WinEdt{hana}{( 0 h, 02 min.)}{W}{0:58-01:00}
+  \WinEdt{hana}{( 0 h, 02 min.)}{W}{23:49-23:51}
+  \WinEdt{ICOTS-8}{( --> 25 h, 59 min.)}{Th}{00:00-01:50}
+  \WinEdt{ICOTS-8}{( --> )}{W}{23:51-23:59}
+  \WinEdt{ICOTS-8}{( 2 h, 39 min.)}{Th}{19:08-21:47}
+  \WinEdt{ICOTS-8}{( 0 h, 36 min.)}{F}{16:06-16:42}
+  \WinEdt{ICOTS-8}{( 0 h, 06 min.)}{Sa}{23:16-23:22}
+\end{schedule}
+ 
+\end{document}

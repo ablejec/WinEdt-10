@@ -1,0 +1,57 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 13.\,09.\,2010 ]
+  \WinEdt{<untitled project>}{( -->  0 h, 07 min.)}{T}{00:00-00:06}
+  \WinEdt{<untitled project>}{( --> )}{M}{23:59-23:59}
+  \WinEdt{Inremos}{( 0 h, 03 min.)}{T}{0:06-00:09}
+  \WinEdt{Inremos}{( 6 h, 11 min.)}{T}{09:32-15:43}
+  \WinEdt{<untitled project>}{(35 h, 59 min.)}{W}{09:32-21:31}
+  \WinEdt{AS2010}{( 0 h, 49 min.)}{W}{21:31-22:20}
+  \WinEdt{<untitled project>}{( 0 h, 49 min.)}{W}{21:31-22:20}
+  \WinEdt{AS2009}{( 0 h, 07 min.)}{W}{22:20-22:27}
+  \WinEdt{<untitled project>}{( 0 h, 07 min.)}{W}{22:20-22:27}
+  \WinEdt{AS2010}{( -->  2 h, 41 min.)}{Th}{00:00-01:08}
+  \WinEdt{AS2010}{( --> )}{W}{22:27-23:59}
+  \WinEdt{<untitled project>}{( --> 22 h, 40 min.)}{Th}{00:00-21:07}
+  \WinEdt{<untitled project>}{( --> )}{W}{22:27-23:59}
+  \WinEdt{Inremos}{( 1 h, 01 min.)}{Th}{21:07-22:08}
+  \WinEdt{<untitled project>}{( --> 42 h, 45 min.)}{Sa}{00:00-15:52}
+  \WinEdt{<untitled project>}{( --> )}{F}{21:07-23:59}
+  \WinEdt{AS2010}{( 0 h, 04 min.)}{Sa}{15:52-15:56}
+  \WinEdt{<untitled project>}{( --> 10 h, 02 min.)}{Su}{00:00-01:54}
+  \WinEdt{<untitled project>}{( --> )}{Sa}{15:52-23:59}
+  \WinEdt{AS2009}{( 0 h, 03 min.)}{Su}{01:54-01:57}
+  \WinEdt{<untitled project>}{( 0 h, 03 min.)}{Su}{01:54-01:57}
+  \WinEdt{AS2010}{( 0 h, 34 min.)}{Su}{01:58-02:32}
+\end{schedule}
+ 
+\end{document}

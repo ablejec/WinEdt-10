@@ -1,0 +1,44 @@
+// Insert frame environment
+// adapted after description in:
+// C:\Program Files\WinEdt Team\WinEdt\Macros\Samples\0Samples.txt
+BeginGroup;
+IfSel("0","=",>
+  "InsLine;>
+   Mark(0);>
+   InsLine;>
+   NewLine;>
+   Ins('\begin{frame}[fragile]');>
+   NewLine;>
+   Ins('\frametitle{}');>
+   NewLine;>
+   CMD('Insert Bullet');>
+   NewLine;>
+   Ins('\end{frame}');>
+   NewLine;>
+   InsLine;>
+   Goto(0);>
+   CMD('Next Bullet')",>
+   "GetSel(0,0);>
+   CMD('Backspace');>
+   InsLine;>
+   NewLine;>
+   Ins('\begin{frame}[fragile]');>
+   NewLine;>
+   Ins('\frametitle{}');>
+   InsLine;>
+   Ins('%%!0');>
+   InsLine;>
+   Ins('\end{frame}');>
+   NewLine;>
+   InsLine;>
+   Loop('SetSel(0);>
+     CMD(""Select Char Right"");>
+     GetSel(0,0);>
+     IfStr(""%%%%!0"","" "",""="",>
+       ""CMD(''Backspace'')"",>
+       ""Stop;"">
+     )>
+   ');>
+");
+EndGroup;
+End;

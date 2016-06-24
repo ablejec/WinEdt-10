@@ -1,0 +1,169 @@
+// -*- ASCII:EDT -*-
+// TeX: PDFTeXify ...
+
+  Requires(20080326); // Requires this build of WinEdt to work properly
+
+  IfConsoleRunning("Relax;","JMP('not_Running');");
+  ShowConsole(1);
+  Prompt("Another Application is already running in WinEdt's Console.>
+ Terminate the application or wait for the execution to finish!");
+  FocusConsole(1);
+  Exit;
+
+:not_Running:: ========================================================
+  // Clean the files
+  IfFileExists("%O\%N.blg",!"DeleteFile('%O\%N.blg')");
+  IfFileExists("%O\%N.ilg",!"DeleteFile('%O\%N.ilg')");
+  IfStr("%$('PDFTeXify-Clean_Build');",!"1",!"=",>
+    !|IfFileExists("%O\%N.bbl",!"DeleteFile('%O\%N.bbl')");>
+      IfFileExists("%O\%N.ind",!"DeleteFile('%O\%N.ind')");>
+      IfFileExists("%O\%N.aux",!"DeleteFile('%O\%N.aux')");>
+      IfFileExists("%O\%N.idx",!"DeleteFile('%O\%N.idx')");>
+     |);
+
+  IfStr("%$('PDFTeXify-WinEdt_Console');",'1','<>',!'JMP(!"Console-OK");');
+  // Use Execution Modes to determine the flow of execution...
+  // Running from TeXify / Compile Macro?
+  IfStr("%$('Compile-Flag');",'','=',>
+   !|>
+      IfStr("%$('PDFTeXify-Hidden_Window');",'1','=',!"ResetConsole;",!"ResetConsole;ShowConsole(1);");>
+      IfStr("%$('PDFTeXify-Background_Window');",'1','=',!"FocusConsole(-1);",!"FocusConsole(1);");>
+    |);
+
+:Console-OK:: ===============================================
+
+  IfStr("%$('Compile-Flag');",'','=',>
+    !|IfStr("%$('PDFTeXify--STD_IO');","1","=",!"ResetConsole;");|);
+
+  IfStr("%$('PDFTeXify-Method');","1","=",!|JMP('dvi2pdf');|);
+  IfStr("%$('PDFTeXify-Method');","2","=",!|JMP('dvi2pdf');|);
+  JMP('PDFLaTeX');
+
+:dvi2pdf:: =======================================================
+
+  SetExitHandler('exit_handler');
+  JMP('start');
+
+:exit_handler:: ==================================================
+// Restore the Execution Modes even if execution
+// is canceled or goes badly wrong for some reason ...
+  Assign('Compile-Flag'); // Not inside a (multiple conversion) compile...
+  Exe("%b\Exec\%$('TeX System');\ExeMode.edt");
+  StopWorking;
+  SetExitHandler;
+Return;
+
+:start:: =========================================================
+
+  // TeXify
+  Assign('Compile-Flag','1');
+  Assign("TeXify-Wait","1");
+  Assign("TeXify-Viewer","0");
+  Exe('%b\Exec\TeX\TeXify.edt');
+  IfStr("%$('Compile Status');",!"OK",!"<>",!"Exit;');");
+  IfFileExists("%P\%N.dvi",!"Relax;",!"Exit;");
+  IfStr("%$('PDFTeXify-Method');","2","=",!|JMP('dvi2ps');|);
+
+  // dvi2pdf
+  Assign('Compile-Flag','1');
+  Assign("dvi2pdf-Wait","1");
+  Assign("dvi2pdf-Viewer","%$('PDFTeXify-Viewer');");
+  Assign("dvi2pdf-Clean_Build","1");
+  Assign("dvi2pdf-GUI","0");
+  Exe('%b\Exec\TeX\dvi2pdf.edt');
+Exit;
+
+:dvi2ps:: ========================================================
+
+  // dvi2pdf
+  Assign('Compile-Flag','1');
+  Assign("dvi2ps-Wait","1");
+  Assign("dvi2ps-Viewer","0");
+  Assign("dvi2ps-Clean_Build","1");
+  Assign("dvi2ps-GUI","0");
+  Exe('%b\Exec\TeX\dvi2ps.edt');
+  IfStr("%$('Compile Status');",!"OK",!"<>",!"Exit;');");
+  IfFileExists("%P\%N.ps",!"Relax;",!"Exit;");
+
+  // ps2pdf
+  Assign('Compile-Flag','1');
+  Assign("ps2pdf-Wait","1");
+  Assign("ps2pdf-Viewer","%$('PDFTeXify-Viewer');");
+  Assign("ps2pdf-Clean_Build","1");
+  Assign("ps2pdf-GUI","0");
+  Exe("%b\Exec\TeX\ps2pdf.edt")
+Exit;
+
+:PDFLaTeX:: ======================================================
+
+  PushTagsandRegisters;
+  Assign('ExitCode-OK','0'); // OK Exit Code
+  LetReg(9,'PDFTeXify');// Execution Modes Compiler
+  LetReg(8,'log');      // Log File (or empty)
+  LetReg(7,'pdf');      // Output Format
+  LetReg(6,'%P');       // Startup Folder
+  LetReg(5,'');         // Command Line: Empty for Generic Command
+
+  // MiKTeX's texify.exe?
+  Assign(!'TeX-Opt',!'--tex-option=');
+  IfStr("%$('%!9-Executable');",!"texify.exe",!"=",!"LetReg(6,'%O');",!"Assign(!'TeX-Opt');");
+
+  // Requires Custom Command Line ...
+  // Display a Dialog for Extra Switches:
+  IfStr("%$('%!9-GUI');","1","=",>
+    !|GetString("Switches: ","%!9 Switches","%$('%!9--Switches');");>
+      IfOK(!`Assign('%!9--Switches','%!?');`,!`PopTagsandRegisters;Exit;`);|,>
+    !|Release('%!9--Switches');|);
+  LetReg(3, "%$('%!9-Executable'); %$('%!9-Switches');");
+  IfStr("%$('%!9-Executable');",!"texify.exe",!"<>",!"JMP('noBatch');");
+  IfStr("%$('%!9-No_Interaction');","1",!"=",!|LetReg(3,'%!3 --batch');|);
+:noBatch:: =======================================================
+  LetReg(4);
+  IfStr("%$('%!9-C-style-errors');","1",!"=",!|LetReg(4,'%!4 %$("TeX-Opt");-file-line-error');|);
+  IfStr("%$('%!9-No_Interaction');","1",!"=",!|LetReg(4,'%!4 %$("TeX-Opt");-interaction=nonstopmode');|);
+  // Output Directory?
+  LetReg(5);
+  IfStr('%O','%P','<>',>
+    !|LetReg(5, !'%$("TeX-Opt");-aux-directory="%~O" %$("TeX-Opt");-output-directory="%~P"');>
+      Exe('%b\Exec\TeX\CreateAUX.edt');|);
+  Assign('Sync');
+  IfStr('%0',!'--src',!'<>',!'JMP("noSync");');
+  IfStr('%$("PDF-SyncTeX");',!'1',!'<>',!'JMP("noSync");');
+  IfStr('%$("PDF-Sync");',!'',!'=',!'JMP("noSync");');
+  Assign('Sync','%$("TeX-Opt");%$("PDF-Sync");');
+:noSync:: ========================================================
+  LetReg(5, "%!3 %!4 %!5 %$('Sync'); %$('%!9--Switches'); %$('%!9-Parameters');");
+
+:Execute:: =======================================================
+  Assign("TeXify-Iterations","%$('Max-TeXify-Iterations');");
+
+:TeXify-Iterate:: ================================================
+  LetReg(3,"%$('TeXify-Iterations');");
+  IfNum("%!3",!"0",!">",!|Exe('%b\Exec\TeX\BibTeXify.edt');|);
+  // Use Execution Modes to determine the flow of execution...
+  Assign(!"Compile-Flag",!"3");
+  Exe('%b\Exec\ExeCompiler.edt');
+  IfStr("%$('Compile Status');",!"OK",!"<>",!"JMP('TeXify-Done');");
+  LetReg(3,"%$('TeXify-Iterations');");
+  LetRegNum(3,"%!3-1");
+  Assign("TeXify-Iterations","%!3");
+  IfNum("%!3",!"0",!">",!"JMP('TeXify-Iterate');");
+
+:TeXify-Done:: ===================================================
+// .synctex file should be in %P (next to .pdf)!
+// MiKTeX Creates it in its Startup Folder!
+  IfStr('%O','%P','=','JMP("Sync_OK");');
+  IfFileExists("%O\%N.synctex","Relax;","JMP('Sync_OK');");
+  IfFileExists("%P\%N.synctex","Relax;","JMP('Sync_Copy');");
+  IfFileOlder("%O\%N.synctex","%P\%N.synctex","JMP('Sync_OK');");
+:Sync_Copy:: =====================================================
+  CopyFile("%O\%N.synctex","%P\%N.synctex",1);
+  IfOK(!'DeleteFile("%O\%N.synctex");');
+:Sync_OK:: =======================================================
+  FocusConsole(-1);
+  PopTagsandRegisters;
+  // Just in case restore the execution modes ...
+  Exe("%b\Exec\%$('TeX System');\ExeMode.edt");
+  Assign('Compile-Flag','');
+
+End;

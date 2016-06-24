@@ -1,0 +1,66 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 11.\,05.\,2009 ]
+  \WinEdt{booklet}{( 0 h, 04 min.)}{M}{0:13-00:17}
+  \WinEdt{booklet}{( 0 h, 02 min.)}{M}{22:05-22:07}
+  \WinEdt{booklet}{( 0 h, 02 min.)}{M}{22:05-22:07}
+  \WinEdt{booklet}{( 0 h, 02 min.)}{M}{22:05-22:07}
+  \WinEdt{booklet}{( 0 h, 14 min.)}{M}{22:55-23:09}
+  \WinEdt{booklet}{( 0 h, 01 min.)}{M}{23:12-23:13}
+  \WinEdt{!KrNeki}{( 0 h, 11 min.)}{M}{23:13-23:24}
+  \WinEdt{!KrNeki}{( -->  0 h, 34 min.)}{T}{00:00-00:00}
+  \WinEdt{!KrNeki}{( --> )}{M}{23:26-23:59}
+  \WinEdt{!KrNeki}{( 0 h, 22 min.)}{T}{0:01-00:23}
+  \WinEdt{!KrNeki}{( 0 h, 21 min.)}{T}{11:41-12:02}
+  \WinEdt{I2R}{( 0 h, 11 min.)}{T}{13:03-13:14}
+  \WinEdt{booklet}{( 0 h, 27 min.)}{T}{13:14-13:41}
+  \WinEdt{booklet}{( 0 h, 25 min.)}{T}{13:41-14:06}
+  \WinEdt{I2R}{( 1 h, 40 min.)}{T}{14:28-16:08}
+  \WinEdt{I2R}{( 1 h, 12 min.)}{T}{16:08-17:20}
+  \WinEdt{I2R}{( 0 h, 01 min.)}{Th}{12:02-12:03}
+  \WinEdt{!KrNeki}{( 0 h, 35 min.)}{Th}{12:03-12:38}
+  \WinEdt{!KrNeki}{( 0 h, 03 min.)}{Th}{22:58-23:01}
+  \WinEdt{<untitled project>}{( 0 h, 04 min.)}{Th}{22:58-23:02}
+  \WinEdt{man}{( 0 h, 17 min.)}{Th}{23:02-23:19}
+  \WinEdt{!KrNeki}{( 0 h, 01 min.)}{Th}{23:19-23:20}
+  \WinEdt{man}{( -->  0 h, 52 min.)}{F}{00:00-00:12}
+  \WinEdt{man}{( --> )}{Th}{23:20-23:59}
+  \WinEdt{<untitled project>}{(44 h, 33 min.)}{Sa}{0:12-20:45}
+  \WinEdt{CI}{( 1 h, 34 min.)}{Sa}{20:46-22:20}
+  \WinEdt{KG090511}{(23 h, 57 min.)}{Su}{20:46-20:43}
+  \WinEdt{KG090511}{( 2 h, 43 min.)}{Su}{20:43-23:26}
+  \WinEdt{angleR}{( 0 h, 05 min.)}{Friday}{09:42-09:47}
+  \WinEdt{meta}{( 5 h, 50 min.)}{Friday}{09:47-15:37}
+  \WinEdt{meta}{( 1 h, 00 min.)}{Friday}{22:09-23:09}
+\end{schedule}
+ 
+\end{document}

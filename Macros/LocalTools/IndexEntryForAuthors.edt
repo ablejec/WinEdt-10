@@ -1,0 +1,22 @@
+// A. Blejec 10. 5. 2009
+//
+// add index entry for author name
+// replace "Janez Kdorkoli" -> Janez Kdorkoli \index{Kdorkoli, J.}"
+//
+//
+SetFindStr("\([a-z]\)\(1+[a-z]\) \(2+[a-z]\)");
+SetReplaceStr("\0\1 \2 \\index\{\2, \0\.\}");
+SetSearchForward(1);
+SetSearchCaseSensitive(0);
+SetSearchEntire(0);
+SetSearchCyclic(0);
+SetSearchRelaxed(0);
+SetSearchWholeWords(0);
+SetSearchInline(0);
+SetSearchSelected;
+SetRegEx(1);
+SetReplaceRespectCaps(0);
+SetReplacePrompt(1);
+SearchReset;
+ReplaceAll;
+// CMD("Replace...");

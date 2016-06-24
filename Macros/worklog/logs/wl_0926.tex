@@ -1,0 +1,43 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 26.\,09.\,2011 ]
+  \WinEdt{AS2010}{( 0 h, 19 min.)}{W}{10:01-10:20}
+  \WinEdt{<untitled project>}{( 4 h, 05 min.)}{W}{10:01-14:06}
+  \WinEdt{compositions}{( 4 h, 11 min.)}{W}{14:06-18:17}
+  \WinEdt{<untitled project>}{( --> 46 h, 51 min.)}{F}{00:00-12:57}
+  \WinEdt{<untitled project>}{( --> )}{Th}{14:06-23:59}
+  \WinEdt{Lek-Blas}{( 2 h, 57 min.)}{F}{12:57-15:54}
+  \WinEdt{AS2013}{( 0 h, 07 min.)}{Thursday}{17:36-17:43}
+  \WinEdt{AS2013}{( 0 h, 05 min.)}{Thursday}{23:09-23:14}
+\end{schedule}
+ 
+\end{document}

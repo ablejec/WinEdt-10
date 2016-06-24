@@ -1,0 +1,11 @@
+//
+// A. Blejec 1.3.2010
+//
+// Embrace line with ( ) - enables expression print in R
+//
+CMD("Go To Beginning Of Line");
+Chr(40,"(");
+CMD("Go To End Of Line");
+Chr(41,")");
+CMD("Go To Beginning Of Line");
+Do("[IfScrollLock(!""ScrollDown(1);"",!""CMD('Line Down');"");]");

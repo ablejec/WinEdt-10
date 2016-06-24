@@ -1,0 +1,43 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 01.\,02.\,2010 ]
+  \WinEdt{Jaka}{( 2 h, 10 min.)}{W}{0:07-02:17}
+  \WinEdt{Jaka}{( 2 h, 43 min.)}{W}{09:03-11:46}
+  \WinEdt{Jaka}{( -->  2 h, 31 min.)}{Th}{00:00-00:16}
+  \WinEdt{Jaka}{( --> )}{W}{21:45-23:59}
+  \WinEdt{Jaka}{( 6 h, 30 min.)}{Th}{12:33-19:03}
+  \WinEdt{cene3}{( 0 h, 06 min.)}{Wednesday}{15:41-15:47}
+  \WinEdt{KG090511}{( 0 h, 12 min.)}{Friday}{01:00-01:12}
+  \WinEdt{KG090511}{( 3 h, 25 min.)}{Friday}{12:03-15:28}
+\end{schedule}
+ 
+\end{document}

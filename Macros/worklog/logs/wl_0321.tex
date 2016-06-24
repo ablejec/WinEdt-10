@@ -1,0 +1,54 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 21.\,03.\,2011 ]
+  \WinEdt{MU}{( 2 h, 45 min.)}{M}{13:44-16:29}
+  \WinEdt{MU}{( 0 h, 34 min.)}{M}{20:22-20:56}
+  \WinEdt{chersicola}{( -->  3 h, 04 min.)}{T}{00:00-00:00}
+  \WinEdt{chersicola}{( --> )}{M}{20:56-23:59}
+  \WinEdt{chersicola}{( 0 h, 24 min.)}{W}{12:15-12:39}
+  \WinEdt{chersicola}{( 0 h, 01 min.)}{W}{12:59-13:00}
+  \WinEdt{cene3}{( 1 h, 49 min.)}{W}{13:00-14:49}
+  \WinEdt{<untitled project>}{( 1 h, 50 min.)}{W}{13:00-14:50}
+  \WinEdt{cene3}{( 0 h, 09 min.)}{W}{14:51-15:00}
+  \WinEdt{cene3}{( 0 h, 05 min.)}{W}{22:36-22:41}
+  \WinEdt{ARRS}{( 0 h, 41 min.)}{W}{22:41-23:22}
+  \WinEdt{chersicola}{( 0 h, 22 min.)}{W}{23:22-23:44}
+  \WinEdt{chersicola}{( 0 h, 02 min.)}{Th}{0:12-00:14}
+  \WinEdt{chersicola}{( 0 h, 01 min.)}{Th}{0:37-00:38}
+  \WinEdt{OMIKE}{( 1 h, 04 min.)}{Th}{0:38-01:42}
+  \WinEdt{OMIKE}{( 0 h, 44 min.)}{Th}{10:08-10:52}
+  \WinEdt{cene3}{( 4 h, 46 min.)}{Th}{10:53-15:39}
+  \WinEdt{!KrNeki}{( 0 h, 02 min.)}{Wednesday}{22:55-22:57}
+  \WinEdt{Gorjanc}{( 3 h, 47 min.)}{Thursday}{09:51-13:38}
+\end{schedule}
+ 
+\end{document}

@@ -1,0 +1,41 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 20. avgust 2014, 00:06)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 23.\,06.\,2013 ]
+  \WinEdt{AS2013}{( 0 h, 13 min.)}{Sunday}{22:18-22:31}
+  \WinEdt{<untitled project>}{(342 h, 10 min.)}{Sa}{14:45-20:55}
+  \WinEdt{<untitled project>}{( --> 12 h, 31 min.)}{torek}{00:00-00:33}
+  \WinEdt{<untitled project>}{( --> )}{torek}{12:02-23:59}
+  \WinEdt{ICSB}{( 2 h, 05 min.)}{torek}{0:33-02:38}
+  \WinEdt{ICSB}{( 0 h, 02 min.)}{torek}{09:27-09:29}
+\end{schedule}
+ 
+\end{document}

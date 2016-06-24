@@ -1,0 +1,61 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 08.\,03.\,2010 ]
+  \WinEdt{Bilten}{( 4 h, 36 min.)}{M}{08:31-13:07}
+  \WinEdt{Bilten}{( 0 h, 12 min.)}{M}{21:18-21:30}
+  \WinEdt{!KrNeki}{( -->  3 h, 47 min.)}{T}{00:00-01:17}
+  \WinEdt{!KrNeki}{( --> )}{M}{21:30-23:59}
+  \WinEdt{Bilten}{( 0 h, 31 min.)}{T}{01:17-01:48}
+  \WinEdt{Bilten}{( 0 h, 19 min.)}{T}{09:36-09:55}
+  \WinEdt{Verk}{( 1 h, 20 min.)}{T}{09:55-11:15}
+  \WinEdt{Bilten}{( 1 h, 09 min.)}{T}{11:15-12:24}
+  \WinEdt{Bilten}{( 1 h, 38 min.)}{T}{12:24-14:02}
+  \WinEdt{!KrNeki}{( 1 h, 00 min.)}{W}{11:20-12:20}
+  \WinEdt{Inremos}{( 5 h, 42 min.)}{Th}{08:51-14:33}
+  \WinEdt{Inremos}{( 0 h, 42 min.)}{F}{09:44-10:26}
+  \WinEdt{<untitled project>}{( 0 h, 01 min.)}{F}{11:50-11:51}
+  \WinEdt{Inremos}{( 2 h, 03 min.)}{F}{13:20-15:23}
+  \WinEdt{Inremos}{( 0 h, 01 min.)}{Sa}{23:18-23:19}
+  \WinEdt{Inremos}{( 0 h, 11 min.)}{Su}{18:09-18:20}
+  \WinEdt{vzorcenje}{( 4 h, 53 min.)}{Su}{18:20-23:13}
+  \WinEdt{<untitled project>}{( --> 39 h, 25 min.)}{Thursday}{00:00-13:04}
+  \WinEdt{<untitled project>}{( --> )}{Thursday}{21:39-23:59}
+  \WinEdt{Inremos}{( 0 h, 53 min.)}{Thursday}{13:04-13:57}
+  \WinEdt{<untitled project>}{( 0 h, 54 min.)}{Thursday}{13:04-13:58}
+  \WinEdt{geNorm}{( 1 h, 23 min.)}{Thursday}{13:58-15:21}
+  \WinEdt{<untitled project>}{( --> 36 h, 46 min.)}{Friday}{00:00-10:19}
+  \WinEdt{<untitled project>}{( --> )}{Friday}{21:33-23:59}
+  \WinEdt{!KrNeki}{( 0 h, 25 min.)}{Friday}{10:19-10:44}
+  \WinEdt{animatoR}{( 3 h, 53 min.)}{Friday}{10:44-14:37}
+\end{schedule}
+ 
+\end{document}

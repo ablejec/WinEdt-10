@@ -1,0 +1,18 @@
+// !Mode:: "ASCII:EDT"
+// %b\Local\CleanTree.edt
+// remove unused Branches from the Tree
+// (schlicht 20080204)
+// ------------------------------------------------
+// Installation:
+// * add the following line (without "//") to
+//   %b\Local\Events\BuildTreeAfter.edt:
+// Exe("%b\Local\CleanTree.edt");
+
+PushTagsandRegisters;
+GetTreeEx(0);
+LetRegNum(1,-1);
+Loop(!`>
+   FindInString("%!0<","<\<\(0*\):\[\(1+[0-9]\)\]><\<",1,2,1011,%!1+1);>
+   IfOK(!"SetTreeEx('<%#0:[%#1]-');","Stop;");`);
+PopTagsandRegisters;
+End;

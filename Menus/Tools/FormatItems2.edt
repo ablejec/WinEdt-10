@@ -1,0 +1,51 @@
+// Format items...
+Requires(20050201);
+Exe("%b/Menus/Tools/IndentItems.edt");
+SaveFind;
+SetSearchCurrentDoc;
+SetSearchEntire(0);
+SetSearchForward(1);
+SetSearchCaseSensitive(1);
+SetNotFoundNotify(0);
+SetReplacePrompt(0);
+SetRegEx(1);
+// only at the beginning or indented: one long line.
+SetFindStr('<@{ }\\item *>');
+SearchReset;
+BeginGroup;
+SetTracking(0);
+LetRegNum(0,0);
+LetRegNum(1,0);
+
+Loop(!|Find;IfOK(!"Call('Format');",!"JMP('Done');");|);
+
+:Format:: ==========================
+LetRegNum(0,%!0+1); // counter
+SetSel(1);
+Mark;
+CMD('Caret <-> Select');
+// Line Up should not be necessary but there is a small bug and
+// mark does not behave right in this case (when \item is indented)
+CMD('Line Up'); // Bug fix...
+Mark(1);
+CMD('Line Down');
+CMD('Select From Mark');
+CMD('Format Paragraph');
+Goto(1);
+CMD('Line Down');
+CMD('Line Down');
+CMD('Select From Mark');
+IfSel(0,'=','Return;'); // it was already formatted
+LetRegNum(1,%!1+1); // counter
+CMD('Caret <-> Select');
+Repeat(6,!"CMD('Move Right');"); // indent the rest
+CMD('Format Paragraph'); // and reformat again...
+Return;
+// =================================
+
+:Done::
+EndGroup;
+SetTracking(1);
+RestoreFind;
+Prompt('%!1 out of %!0 items have been formatted');
+End;

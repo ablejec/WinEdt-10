@@ -1,0 +1,42 @@
+// ZoomReset.edt
+// ===============
+
+    IfStr("%$('Zooming');","","=",!"Assign('Zooming','1');",!"Exit;");
+
+    PushTagsandRegisters;
+
+    IfFileExists('%b\ConfigEx\Font.ini',>
+      !'ReadFile("%b\ConfigEx\Font.ini",0);',>
+      !'ReadFile("%B\ConfigEx\Font.ini",0);');
+
+    FindInString("%!0","FONT_SIZE=\(+$Numeric$\)",-1,-1,11);
+    IfOK(!"Relax;",!"PopTagsandRegisters;Exit;");
+    LetRegNum(1,"%#0");
+
+    ExportPreferences("%b\ConfigEx\UserPreferences.ini");
+    ReadFile("%b\ConfigEx\UserPreferences.ini",0);
+
+    FindInString("%!0","FONT_SIZE=+$Numeric$",-1,-1,11);
+    IfOK(!"Relax;",!"PopTagsandRegisters;Exit;");
+    SubstituteInString("%!0","FONT_SIZE=+$Numeric$","FONT_SIZE=%!1",11);
+    WriteFile("%b\ConfigEx\UserPreferences.ini","%!0");
+    LoadConfig("ConfigEx\UserPreferences.ini");
+    LoadConfig("ConfigEx\Fonts.ini");
+
+    IfFileExists('%b\ConfigEx\Fonts.ini',!'Relax;',>
+      !'CopyFile("%B\ConfigEx\Fonts.ini","%b\ConfigEx\Fonts.ini",1,1);');
+    ReadFile("%b\ConfigEx\Fonts.ini",0);
+
+    FindInString("%!0","FONT_SIZE=+$Numeric$",-1,-1,11);
+    IfOK(!"Relax;",!"PopTagsandRegisters;Exit;");
+    SubstituteInString("%!0","FONT_SIZE=+$Numeric$","FONT_SIZE=%!1",11);
+    WriteFile("%b\ConfigEx\Fonts.ini","%!0");
+    LoadConfig("ConfigEx\Fonts.ini");
+
+    SetInfo(13,"Font %!1pt",!"Exe('%b\Menus\View\ZoomReset.edt');");
+
+    PopTagsandRegisters;
+
+    Release("Zooming");
+
+End;

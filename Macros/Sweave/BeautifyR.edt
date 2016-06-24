@@ -1,0 +1,170 @@
+////////////////////////////////////////////////////////
+// BeutifyR.edt
+// Beautify R source code
+// $Revision: 1.7 $
+// $Date: 2006-12-14 16:28:01+01 $
+//
+// A. Blejec, 2006-12-13
+// Limitations:
+//  complete file is processed
+//  removes blank lines
+//
+// To be done:
+//  process selection
+//
+/////////////////////////////////////////////////////////
+//
+StartWorking( "Indenting R code ..." );
+// reformat delimiters to separate lines
+BeginGroup;
+ CMD("Select All");
+ CMD("Flush Left");
+ SetSearchForward(1);
+ SetSearchCaseSensitive(0);
+ SetSearchEntire(1);
+ SetSearchCyclic(0);
+ SetSearchRelaxed(0);
+ SetSearchWholeWords(0);
+ SetSearchInline(1);
+ SetSearchCurrentDoc;
+ SetRegEx(1);
+ SetReplaceRespectCaps(0);
+ SetReplaceNotify(0);
+ SetNotFoundNotify(0);
+ SetReplacePrompt(0);
+ SetTracking(0);
+  // Move '{' to separate line
+ SetFindStr("\(<{~#}*\#~{\\}\)\{\(2*\)");
+ SetReplaceStr("\0>\{>\2");
+ SearchReset;
+ ReplaceAll;
+ // Move '}' to separate line
+ SetFindStr("\(<{~#}*\#~{\\}\)\}\(2*\)");
+ SetReplaceStr("\0>\}>\2");
+ SearchReset;
+ ReplaceAll;
+ // Remove blank lines and lines with spaces
+ SetFindStr(">@ @>");
+ SetReplaceStr(">");
+ SearchReset;
+ ReplaceAll;
+// spaces around operators (logicals with = are fixed later)
+// no spaces for fractions/divisions (compare dput output)
+SetFindStr("\(1[\>\<\+\-\*\=\!]\)");
+SetReplaceStr(" \1 ");
+// Ni dobro, ker spremeni le en znak v vrstici
+// SetFindStr("\(1<{~#}*\#~{\\}\)\(2[\>\<\+\-\*\=\!]\)");
+// SetReplaceStr("\1 \2 ");
+SearchReset;
+ReplaceAll;
+// space after comma
+SetFindStr(",");
+SetReplaceStr(", ");
+SearchReset;
+ReplaceAll;
+// remove double spaces
+SetFindStr("\ +\ ");
+SetReplaceStr("\ ");
+SearchReset;
+ReplaceAll;
+// brackets ( ) without spaces
+SetFindStr("\ )");
+SetReplaceStr(")");
+SearchReset;
+ReplaceAll;
+SetFindStr("(\ ");
+SetReplaceStr("(");
+SearchReset;
+ReplaceAll;
+// except for control structures if, for, while
+SetFindStr("\([{if}{for}{while}]\)(");
+SetReplaceStr("\0 (");
+SearchReset;
+ReplaceAll;
+// fix < =, > =, ==
+SetFindStr("\([\>\<\=\!]\) \(1[\=]\)");
+SetReplaceStr("\0\1");
+SearchReset;
+ReplaceAll;
+// fix unary minus
+SetFindStr("\([\-\=\(]\)@{ }- ");
+SetReplaceStr("\0 -");
+SearchReset;
+ReplaceAll;
+// replace = with assignment <-
+// "@ @$Alpha+Numeric+[""._""]$@ " matches R object name
+SetFindStr("<\(@ @$Alpha+Numeric+[""._""]$@ \)= ");
+SetReplaceStr("\0\<- ");
+SearchReset;
+ReplaceAll;
+// fix blanked assignments < -
+SetFindStr(" \< -@{ }");
+SetReplaceStr(" \<- ");
+SearchReset;
+ReplaceAll;
+// function goes into separate line
+SetFindStr(" \<- function");
+SetReplaceStr(" \<- >function");
+SearchReset;
+ReplaceAll;
+//
+SetTracking(1)
+EndGroup;
+
+// Prompt("Kaj je s praznimi vrstami?");
+// Scan lines and indent
+BeginGroup;
+CMD("Go To Beginning Of File");
+CMD("Go To Beginning Of Line");
+LetRegNum(8,0);
+:Next::
+ //CMD("Go To Beginning Of Line");
+ CMD("Flush Left");
+ CMD("Select Char Right");
+ CMD("Copy");
+ Do("[IfScrollLock(!""ScrollLeft(1);"",!""CMD('Char Left');"");]");
+ CopyFromClipboard(7);
+ GetLength(1,"%!7");
+ //Prompt("/%!7/ Length: %!1");
+ CMD("Go To Beginning Of Line");
+ CMD("Select To End Of Line");
+ //LetReg(6,"%S");
+ CMD("Copy");
+ CopyFromClipboard(6); // %!6 current line
+ GetLength(2,"%!6");
+ //Prompt("/%!6/ Length: %!2");
+ ExtractByIndex( 2, "%!6", 0, 7 ); // to test for "function"?
+ //Prompt("/%!2/");
+ IfStr("%!2","function","=",'LetRegNum(8,0);','Relax;');
+ IfNum("%!1",1,"=",!'JMP("Indent");','JMP("Done");');
+
+:Indent::
+ IfStr("%!7","{","=",'JMP("FixLeft");','Relax;');
+ IfStr("%!7","}","=",'LetRegNum(8,%!8-1);','Relax;');
+ // Prompt("Character: **%!7**, %!1, Indents: %!8");
+ //Repeat(%!8,!"CMD('Move Right');");
+ //IfStr("%!7","#","=",'JMP("Indented");','Relax;');
+     //Prompt("Character: **%!7**, %!1, Indents: %!8");
+     IfNum("%!8",0,"<",!'JMP("Done");','Relax;');
+     // IfNum("%!8",100,">",!'JMP("Done");','Relax;');
+     Repeat(%!8,!"InsertString('    ',0);");
+ :Indented::
+ CMD("Go To Beginning Of Line");
+ Do("[IfScrollLock(!""ScrollDown(1);"",!""CMD('Line Down');"");]");
+ JMP("Next");
+ EndGroup
+
+:FixLeft::  // move { to the end of previous line
+LetRegNum(8,%!8+1);
+Do("[IfScrollLock(!""ScrollUp(1);"",!""CMD('Line Up');"");]");
+CMD("Go To End Of Line");
+Chr(32," ");
+Do("[Exe(""%b\Menus\Edit\Delete.edt"");]");
+Do("[IfScrollLock(!""ScrollDown(1);"",!""CMD('Line Down');"");]");
+CMD("Go To Beginning Of Line");
+//Prompt("%!8")
+JMP("Next")
+
+:Done::
+StopWorking;
+End;

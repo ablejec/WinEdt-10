@@ -1,0 +1,65 @@
+// -*- ASCII:EDT -*-
+// worklog_close.edt
+// (schlicht 20010302)
+// ($Revision: 1.10 $)
+// (created by worklog_install.edt
+//   on 11. april 2016, 11:49)
+////////////////////////////////////
+
+IfStr("%$('wl_status');","stopped","=",>
+   "Prompt('Logging is already stopped.%\',2,1);Exit;");
+ 
+Exe("%b\Macros\worklog\wl_status.edt");
+
+GetDate(2,"yy");
+GetDate(3,"mm");
+GetDate(4,"dd");
+GetDate(5,"hh");
+LetRegNum(9,"%!5+(%!4*24)");
+GetDate(6,"nn");
+LetRegNum(8,"%!6+(%!9*60)",2);
+
+IfFileExists("%b\Macros\worklog\logs\%!2%!3.worklog","",>
+   !"IfNum(%!3,1,'=','LetRegNum(2,%!2-1,2,2); LetRegNum(3,12);',>
+      !'LetRegNum(3,%!3-1,2,2);');");
+ReadFile("%b\Macros\worklog\logs\%!2%!3.worklog",0);
+IfNum(%!8,%8,">=","",>
+   !"LetRegNum(1,31);>
+     IfNum(%!3, 3,'=','LetRegNum(1,28);');>
+     IfNum(%!3, 5,'=','LetRegNum(1,30);');>
+     IfNum(%!3, 7,'=','LetRegNum(1,30);');>
+     IfNum(%!3,10,'=','LetRegNum(1,30);');>
+     IfNum(%!3,12,'=','LetRegNum(1,30);');>
+     LetRegNum(8,'%!8+%!1*24*60',2);">
+);
+IfNum(%!8,%8,"=",>
+   !"OpenOutput('%b\Macros\worklog\logs\%!2%!3.worklog');>
+       WrS('%!0');>
+       WrL('Closed in the same minute.');>
+     CloseOutput;>
+    ",>
+   !"LetRegNum(7,%!8-%8,2,2); LetRegNum(8,0,2);>
+     ReadFile('%b\Macros\worklog\logs\day.worklog',1);>
+     LetRegNum(1,%!1+%!7);>
+     OpenOutput('%b\Macros\worklog\logs\day.worklog');>
+       WrS('%!1');>
+     CloseOutput;>
+     ReadFile('%b\Macros\worklog\logs\month.worklog',1);>
+     LetRegNum(1,%!1+%!7);>
+     OpenOutput('%b\Macros\worklog\logs\month.worklog');>
+       WrS('%!1');>
+     CloseOutput;>
+     Loop(!'IfNum(%!7,60,''<'',''Stop;'',>
+          !''LetRegNum(8,%!8+1,2);LetRegNum(7,%!7-60,2,2);'')');>
+     IfStr('%!n','WinEdt','=',>
+        !'LetReg(1,''%N''); EnterReg(1,''Up Time: %!8 h, %!7 min. / Subject? -:'',''worklog'');',>
+        !'LetReg(1,''%!n'');');>
+     OpenOutput('%b\Macros\worklog\logs\%!2%!3.worklog');>
+       WrS('%!0');>
+       WrL('%!4., %!5:%!6  (%!8 h, %!7 min.) :  %!1');>
+     CloseOutput;>
+     Exe('%b\Macros\worklog\wl_chart.edt');>
+");
+Assign("wl_status","stopped");
+
+End;

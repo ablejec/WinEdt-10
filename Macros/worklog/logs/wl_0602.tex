@@ -1,0 +1,53 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 02.\,06.\,2013 ]
+  \WinEdt{KG130116}{( 0 h, 02 min.)}{Sunday}{20:31-20:33}
+  \WinEdt{KG130116}{( 0 h, 33 min.)}{Sunday}{20:47-21:20}
+  \WinEdt{!KrNeki}{( 1 h, 26 min.)}{Sunday}{21:20-22:46}
+  \WinEdt{KG130116}{( 0 h, 16 min.)}{Sunday}{22:46-23:02}
+  \WinEdt{Actuar}{( 0 h, 03 min.)}{M}{09:34-09:37}
+  \WinEdt{Inremos}{( 5 h, 52 min.)}{M}{10:21-16:13}
+  \WinEdt{Actuar}{( -->  4 h, 00 min.)}{T}{00:00-01:16}
+  \WinEdt{Actuar}{( --> )}{M}{21:16-23:59}
+  \WinEdt{Inremos}{( 4 h, 39 min.)}{T}{10:26-15:05}
+  \WinEdt{<untitled project>}{( 7 h, 39 min.)}{T}{10:26-18:05}
+  \WinEdt{spike}{( 0 h, 26 min.)}{T}{18:05-18:31}
+  \WinEdt{Actuar}{( -->  5 h, 27 min.)}{W}{00:00-01:42}
+  \WinEdt{Actuar}{( --> )}{T}{20:15-23:59}
+  \WinEdt{Actuar}{( 0 h, 24 min.)}{W}{09:39-10:03}
+  \WinEdt{<untitled project>}{( 0 h, 24 min.)}{W}{09:39-10:03}
+  \WinEdt{knitr}{( 0 h, 41 min.)}{W}{10:03-10:44}
+  \WinEdt{Actuar}{( -->  5 h, 31 min.)}{Su}{00:00-00:23}
+  \WinEdt{Actuar}{( --> )}{Sa}{18:52-23:59}
+\end{schedule}
+ 
+\end{document}

@@ -1,0 +1,62 @@
+// git
+//
+// Author: Andrej Blejec
+// Date: 15. 2. 2013
+//
+////////////////////////////////////////////////
+//  Prompt("%!0 %!9 %!p")
+  IfFileExists("%!p\.git\HEAD",>
+    "JMP('DoIt')",>
+    "Prompt('%!p\.git not found.%\%\Use git init first!');JMP('Exit')");
+:DoIt::
+  SaveAllDoc;
+  ResetConsole;
+  SetConsoleText(">> git: %!p%\%\"); // Where am I?
+//  What to do?
+  IfStr("%!0","commit","=","JMP('Commit')","Relax");
+  IfStr("%!0","checkout","=","JMP('Checkout')","Relax");
+  IfStr("%!0","branch","=","JMP('Branch')","Relax");
+  IfStr("%!0","tag","=","JMP('Tag')","Relax");
+:Simple::
+// Simple git command (no options)
+  RunConsole("git %!0","%!p","Git",1);
+  RunConsole("git status -s","%!p","Git",1);
+  JMP("Done");
+:Commit::
+// git commit -am"Reg9"
+  LetReg(9,'');
+  EnterReg(9,'Message:','Git Commit');
+  RunConsole('git %!0 -am"%!9"',"%!p","Git",1);
+  JMP("Done");
+:Checkout::
+// git checkout Reg9
+  LetReg(9,'');
+  RunConsole("git branch","%!p","Git",1)
+  EnterReg(9,'Which branch to checkout?','Git Checkout');
+  RunConsole('git %!0 %!9',"%!p","Git",1);
+  JMP("Done");
+:Branch::
+// git branch Reg9
+  LetReg(9,'');
+  RunConsole("git branch -v","%!p","Git",1)
+  EnterReg(9,'Type new branch name','Git Branch');
+  IfStr("%!9","","=",'JMP("Done")',"Relax");
+  RunConsole('git %!0 %!9',"%!p","Git",1);
+  JMP("Done");
+:Tag::
+// git tag -a Reg9 -m Reg8
+  LetReg(9,'');
+  LetReg(8,"");
+  RunConsole("git tag -l -n1","%!p","Git",1)
+  EnterReg(9,'Enter tag','Git Tag');
+  EnterReg(8,'Enter message for annnotated tag%\Leave blank for simple tag"','Git Tag');
+  IfStr("%!8","","=",'RunConsole("git tag %!9 ","%!p","Git",1)',>
+  'RunConsole("git tag -a %!9 -m ""%!8"" ","%!p","Git",1)');
+  RunConsole("git tag -l -n1","%!p","Git",1);
+  JMP("Done");
+:Done::
+// if not yet described, describe now
+  IfStr("%!0","describe","=","Relax",'RunConsole("git describe","%!p","Git",1)');  // describe
+  RunConsole("git branch","%!p","Git",1);
+:Exit::
+End;

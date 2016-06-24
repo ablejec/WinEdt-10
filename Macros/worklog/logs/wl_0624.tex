@@ -1,0 +1,41 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 24.\,06.\,2012 ]
+  \WinEdt{pkg1}{(53 h, 35 min.)}{Sunday}{16:40-22:15}
+  \WinEdt{pkg1}{( 0 h, 10 min.)}{Sunday}{22:36-22:46}
+  \WinEdt{pkg1}{( 0 h, 32 min.)}{Sunday}{22:51-23:23}
+  \WinEdt{pkg1}{( 0 h, 12 min.)}{Sunday}{23:23-23:35}
+  \WinEdt{pkg1}{( 0 h, 02 min.)}{Sunday}{23:35-23:37}
+  \WinEdt{AS2013}{( 8 h, 13 min.)}{Monday}{12:27-20:40}
+\end{schedule}
+ 
+\end{document}

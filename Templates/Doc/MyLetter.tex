@@ -1,0 +1,38 @@
+% ----------------------------------------------------------------
+% MyLetter ---------------------------------------------------------
+% ----------------------------------------------------------------
+\documentclass[a4paper,12pt,slovene]{letter}
+\usepackage{babel}
+\usepackage[cp1250]{inputenc}
+\usepackage{graphicx}
+    \topmargin      -1in
+    \textheight=    10.0in
+\pagestyle{empty}
+% ----------------------------------------------------------------
+\signature{Andrej Blejec}
+\address{ % Return Address
+  {Andrej Blejec}\\
+  {National Institute of Biology}   \\
+  {Vecna pot 111 POB 141}\\
+  {SI-1000 Ljubljana, Slovenia}\\
+  {E-mail: andrej.blejec@nib.si}
+}
+%\makelabels
+\begin{document}
+% ----------------------------------------------------------------
+\begin{letter}{ % Addressee
+Miha Mihav \\
+1000 Ljubljana\\
+Slovenija \\
+}
+% ----------------------------------------------------------------
+\opening{Zadeva: \\
+\\Dragi Miha}
+
+Tole ti pišem za poskus
+
+\closing{Lep pozdrav,}
+\end{letter}
+% ----------------------------------------------------------------
+\end{document}
+% ----------------------------------------------------------------

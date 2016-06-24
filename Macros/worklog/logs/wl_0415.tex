@@ -1,0 +1,48 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 20. avgust 2014, 00:06)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 15.\,04.\,2012 ]
+  \WinEdt{Actuar}{(100 h, 24 min.)}{Sunday}{09:46-14:10}
+  \WinEdt{Actuar}{( 0 h, 04 min.)}{Sunday}{21:54-21:58}
+  \WinEdt{Actuar}{( 0 h, 06 min.)}{Sunday}{22:06-22:12}
+  \WinEdt{Lek-Blas}{( 0 h, 17 min.)}{Sunday}{22:12-22:29}
+  \WinEdt{<untitled project>}{( 1 h, 30 min.)}{Sunday}{22:12-23:42}
+  \WinEdt{metode}{( 0 h, 01 min.)}{Monday}{11:20-11:21}
+  \WinEdt{!KrNeki}{( 2 h, 20 min.)}{Monday}{11:21-13:41}
+  \WinEdt{!KrNeki}{( 1 h, 06 min.)}{Monday}{16:46-17:52}
+  \WinEdt{Rakitna}{( 0 h, 35 min.)}{sreda}{07:47-08:22}
+  \WinEdt{Rakitna}{( 0 h, 48 min.)}{sreda}{09:25-10:13}
+  \WinEdt{ENTOMO}{( 2 h, 06 min.)}{sreda}{10:13-12:19}
+  \WinEdt{Rakitna}{( 0 h, 25 min.)}{sreda}{12:19-12:44}
+  \WinEdt{Rakitna}{( 0 h, 16 min.)}{sreda}{14:50-15:06}
+\end{schedule}
+ 
+\end{document}

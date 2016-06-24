@@ -1,0 +1,59 @@
+//
+// Convert graphics from clipboard and save it to file.
+// Insert appropriate includegraphics command
+//
+// WinExe("","C:\Program Files\IrfanView\i_view32.exe /clippaste /convert=c:\test2.jpg","C:\");
+PushTagsandRegisters;
+
+MUIReset('Save clipboard image to file and include');
+MUIAdd(0,0,150,50, 'MyPanel','TPanel');
+
+  MUIAdd(5,5,0,0, 'file','TEdit','MyPanel');
+      MUISet('file', 'caption', 'Enter file name');
+
+      // OK/Cancel (aligned -> independent of the dialog size) ------------
+
+  // Modal OK and Cancel Buttons (aligned bottom right)
+  MUIAdd(0,0,0,40, 'Bottom_Panel','TPanel');
+    MUISet('Bottom_Panel','aligned', 'alBottom');
+    MUISet('Bottom_Panel','inner bevel', '0');
+    MUISet('Bottom_Panel','outer bevel', '0');
+    MUIAdd(0,0,164,0, 'Modal_Panel','TPanel','Bottom_Panel');
+      MUISet('Modal_Panel','aligned', 'alRight');
+      MUIAdd(0,8,0,0, 'OK','TButton','Modal_Panel','&OK');
+        MUISet('OK','default', '1');
+        MUISet('OK','on click', !'MUIHide(1);');
+      MUIGet('OK','width',7);
+      MUIAdd(%!7+8,8,0,0, 'Cancel','TButton','Modal_Panel','Cancel');
+        MUISet('Cancel','cancel', '1'); // ESCAPE
+        MUISet('Cancel','on click', !'MUIHide(2);');
+      LetRegNum(6,16+2*%!7);
+      MUISet('Modal_Panel','width','%!6');
+      MUIGet('OK','height',7);
+      LetRegNum(6,16+%!7);
+      MUISet('Bottom_Panel','height','%!6');
+
+
+MUIShow;
+IfOK('Relax;','PopTagsandRegisters;Exit;');
+//
+MUIGet("file","text", 1);
+//
+Prompt("%!P\clp\capture_%!1.jpg");
+WinExe("","D:\Program Files (x86)\IrfanView\i_view32.exe /clippaste /convert=%!P\clp\capture-%!1.jpg","D:\");
+InsText("  \begin{center}");
+NewLine;
+InsText("\fbox{");
+NewLine;
+InsText( "\includegraphics[width=\textwidth]{./clp/capture-%!1.jpg}" );
+NewLine;
+InsText("}");
+NewLine;
+InsText("\hfill{\tiny{\file{./clp/capture-%!1.jpg}}}");
+NewLine;
+InsText("\end{center}");
+
+PopTagsandRegisters;
+
+End;
+

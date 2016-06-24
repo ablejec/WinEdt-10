@@ -1,0 +1,47 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 20. avgust 2014, 00:06)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 18.\,11.\,2008 ]
+  \WinEdt{Trinkhaus}{( -->  2 h, 21 min.)}{torek}{00:00-01:06}
+  \WinEdt{Trinkhaus}{( --> )}{torek}{22:45-23:59}
+  \WinEdt{Trinkhaus}{( 0 h, 06 min.)}{torek}{09:04-09:10}
+  \WinEdt{geNorm}{( 2 h, 31 min.)}{torek}{09:10-11:41}
+  \WinEdt{lek}{( 0 h, 18 min.)}{torek}{11:41-11:59}
+  \WinEdt{EC_lenart}{( 0 h, 01 min.)}{Sunday}{18:05-18:06}
+  \WinEdt{_KrNeki}{( 0 h, 16 min.)}{Monday}{20:41-20:57}
+  \WinEdt{ENTOMO}{( -->  2 h, 12 min.)}{torek}{00:00-01:27}
+  \WinEdt{ENTOMO}{( --> )}{torek}{23:15-23:59}
+  \WinEdt{ENTOMO}{( 0 h, 55 min.)}{torek}{10:48-11:43}
+  \WinEdt{fito}{( 1 h, 34 min.)}{torek}{11:44-13:18}
+  \WinEdt{Rome}{( 1 h, 01 min.)}{torek}{22:57-23:58}
+\end{schedule}
+ 
+\end{document}

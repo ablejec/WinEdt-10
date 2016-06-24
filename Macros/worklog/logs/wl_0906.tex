@@ -1,0 +1,48 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 06.\,09.\,2010 ]
+  \WinEdt{<untitled project>}{(72 h, 55 min.)}{W}{22:17-23:12}
+  \WinEdt{!KrNeki}{( 0 h, 39 min.)}{W}{23:12-23:51}
+  \WinEdt{hana}{( -->  0 h, 14 min.)}{Th}{00:00-00:05}
+  \WinEdt{hana}{( --> )}{W}{23:51-23:59}
+  \WinEdt{hana}{( 0 h, 06 min.)}{Th}{13:47-13:53}
+  \WinEdt{hana}{( -->  0 h, 01 min.)}{F}{00:00-00:00}
+  \WinEdt{hana}{( --> )}{Th}{23:59-23:59}
+  \WinEdt{Inremos}{( 0 h, 10 min.)}{F}{0:00-00:10}
+  \WinEdt{Lek-Blas}{( -->  1 h, 10 min.)}{Thursday}{00:00-00:35}
+  \WinEdt{Lek-Blas}{( --> )}{Thursday}{23:25-23:59}
+  \WinEdt{Lezije}{( -->  2 h, 08 min.)}{Friday}{00:00-00:33}
+  \WinEdt{Lezije}{( --> )}{Friday}{22:25-23:59}
+  \WinEdt{Lezije}{( 3 h, 15 min.)}{Friday}{08:54-12:09}
+\end{schedule}
+ 
+\end{document}

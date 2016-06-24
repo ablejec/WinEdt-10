@@ -1,0 +1,178 @@
+// -*- ASCII:EDT -*-
+// Transform a Rnw file into a LaTeX file with Sweave (or cacheSweave) and
+// and then pdfLaTeX it ...
+// author: Gilbert Ritschard (gilbert.ritschard at unige.ch)
+
+
+// arguments:
+// Reg 6 : if set to "pdf", pdfLaTeX is done directly after Sweave when it ends without error
+//         if set to "dvi"  LaTeXify is done directly
+//         if set to "R" Stangle is run instead of Sweave
+//         if set to "md" knitr markdown is used
+// Reg 7 : should contain the path to the bin directory of your R implementation
+// Reg 8 : if set to "cache", cacheSweave is called instead of Sweave
+// Reg 9 : if set to "open" r Gui is started
+//
+
+//
+// Modified by A. Blejec (andrej.blejec at nib.si) for Sweave Beamer (26. 4. 2010)
+// Reg 9 : "S" for beamer slides, "A" for Beamer article ( file %nS.tex or %nA.tex needed )
+// Reg 8 : stores name of main .Rnw file for reopening
+// Rgui is opened with working directory %!p\r or %!p\wd if they exist
+//
+// From R 2.13.1 bin directory changed to /bin/i386
+// check the Rgui start batch for correct command path
+//
+// 15. 3. 2012 modification for knitr
+//
+// 24. 4. 2012 Run patchSynctex.R for reverse lookup
+//
+// 07. 02. 2014 reg(4) added to tangle R call
+//
+// 11. 02. 2014 markdown option is added
+
+
+Requires(20070913); // Requires this build of WinEdt to work properly
+SetOK(1);  // Just in case ...
+SetErrorFlag(0);
+SaveAllDoc;
+// First we retrieve the R install path
+LetReg(5,"Install path");
+// Prompt("%!5",0,1);
+// ne vem zakaj spodnji ukaz vidi pravzaprav 'HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\R-core\R' ??? AntiVirus??
+LetReg(5,|%@('HKEY_LOCAL_MACHINE','Software\R-core\R','InstallPath')|);
+// Prompt("%!5",0,1);
+  //// The path to the R binaries can be set before calling the macro (in the menu setup)
+  //// for example: LetReg(7,"c:\Program Files\R\R-2.7.1\bin\")
+// IfIStr("%!7","","=","LetReg(7,'%!5\bin\i386\');");
+IfIStr("%!7","","=","LetReg(7,'%!5\bin\x64\');"); // for 64 bit version
+
+// Prompt("%!7",0,1);
+
+// Open RGui in subdirectory /R, /wd or in the main if it doesn't exists
+// Modified by A. Blejec 25. 4. 2010
+IfIStr("%!9","open","=","Relax","JMP('runR')");
+    IfFileExists('%!p\r\',"LetReg(9,'%!p\r')","LetReg(9,'%p')");
+    IfFileExists('%!p\wd\',"LetReg(9,'%!p\wd')","Relax");
+    IfFileExists('%!7RGui.exe',"Run('%!7RGui.exe','%!9')","Prompt('%!7RGui.exe does not exist / Set Reg7 in Sweave.edt and check Rguistart.bat',0,1)");
+JMP('exit');
+
+:runR:
+//  ResetConsole;
+//  ShowConsole(1);
+//  FocusConsole(1);
+  CloseFile("%b\_Run.log",1);
+  CloseFile("%b\_Err.log",1);
+  IfFileExists("%b\_Err.log",!"DeleteFile('%b\_Err.log')");
+  IfFileExists("%b\_Run.log",!"DeleteFile('%b\_Run.log')");
+
+
+
+SetOK(1); // Just in case
+
+  IfIStr("%!6","R","=","JMP('tangle');");
+  IfIStr("%!6","md","<>","JMP('nonRmd');");
+  IfIStr("%t","Rmd","<>","Exe('%b\macros\Sweave\TeX2Rmd.edt');");
+
+:nonRmd:
+  // Set LetReg(8,"cache") for cacheSweave
+
+  IfFileExists('%b\Contrib\R-Sweave\%!8Sweave.R',"",>
+       !"WrL('%%%%%% => %b\Contrib\R-Sweave\%!8Sweave.R not found <= ');");
+
+
+  CloseFile('%p\%n.tex');
+//  Open("%b\_Run.log");
+//  CloseFile(%b\_Run.log");
+//  Prompt("%!4");
+  WinExe('','"%!7Rscript" "%b\Contrib\R-Sweave\%!8Sweave.R" "%n%t" "%!4" "%n" "%!6" "%b/Contrib/R-Sweave/"','%p',>
+         'Sweave ...',0110,0,"", "", "%b\_Err.log", 110);
+//         'Sweave ...',1110,0,"", "%b\_Run.log", "%b\_Err.log", 111);
+  GetExitCode( 4 );
+//  IfFileExists('%p\%n.tex',"Open('%p\%n.tex');");
+
+//  Prompt("%!4");
+  IfNum("%!4",0,"=","JMP('next');","JMP('exit');");
+//-nolog   Open("%b\_Err.log");
+//-nolog  SearchReset;
+//-nolog  SetSearchCurrentDoc;
+//-nolog  SetSearchEntire(1);
+//-nolog  SetSearchForward(1);
+//-nolog  SetSearchCaseSensitive(1);
+//-nolog  //SetSearchInline(1);
+//-nolog   //SetFindStr("You can now run LaTeX on"); // safer, but works only in English
+//-nolog   SetFindStr("Error");
+//-nolog   IfFound("Open('%b\_Run.log');Open('%b\_Err.log');JMP('exit');","JMP('next');");
+:next:
+
+ SearchReset;
+
+  CloseFile("%b\_Err.log");
+//  Reg 9: S and A for Beamer slide and article modes , "" if ordinary mode
+//  Prompt("Register 9: %!9");
+  LetReg(8,"%N.Rnw")  // save base Rnw file name AB
+//  Prompt("%!F %F %f");
+  IfIStr("%!6","md","=","LetReg(6,'MD');");
+  IfIStr("%!6","MD","=","JMP('markdown');");
+  IfIStr("%!6","HTML","=","JMP('markdown');");
+  Open('%p\%N%!9.tex');
+//  Prompt("Register 6: %!6");
+// If Reg 6 is set to "dvi", TeXify %N,
+// if set to "pdf" pdfTeXify,
+// if set to "md" knitr markdown is executed
+// if empty or "Stop" just set focus on the generated LaTeX file.
+// "LetReg(6,'xxx');" should be set before launching the macro.
+
+  IfIStr("%!6","","=","LetReg(6,'Stop');");
+  IfIStr("%!6","pdf","=","LetReg(6,'PDF');");
+  IfIStr("%!6","Direct","=","LetReg(6,'PDF');"); // just for backward compatibility
+  IfIStr("%!6","dvi","=","LetReg(6,'');");
+
+
+  IfIStr("%!6","Stop","=",>
+     "Open('%p\%N.tex');",>
+     "Exe('%%b\Exec\MikTeX\%!6TeXify.edt');CloseFile('%p\%N.tex');Open('%p\%!8');");  // open base Rnw file
+ //     "Exe('%%B\Exec\TeX\%!6LaTeX.edt');Open('%p\%!8');");  // open base Rnw file - another option, not needed
+ // run patchSweave
+     WinExe('','"%!7Rscript" "%b\Contrib\R-Sweave\patchSynctex.R" "%N.Rnw"  >
+         "%!4"','%p', 'patchSynctex ...',0110,0,"", "", "%b\_Err.log", 110);
+  JMP('exit');
+
+:markdown
+
+  JMP('exit');
+
+:tangle: ==========================
+
+  LetReg(6,'%n.R');
+  IfFileExists('%b\Contrib\R-Sweave\Stangle.R',"",>
+       !"WrL('%%%%%% => %b\Contrib\R-Sweave\Stangle.R not found <= ');");
+
+  CloseFile('%p\%n.R');
+  WinExe('','"%!7Rscript" "%b\Contrib\R-Sweave\Stangle.R" "%n.Rnw"  "%!4"','%p',>
+         'tangle ...',1110,0,"", "%b\_Run.log", "%b\_Err.log", 111);
+
+  IfFileExists('%p\%n.R',"Open('%p\%n.R');");
+
+  Open("%b\_Run.log");
+ SearchReset;
+ SetSearchCurrentDoc;
+ SetSearchEntire(1);
+ SetSearchForward(1);
+ SetSearchCaseSensitive(1);
+ //SetSearchInline(1);
+  //SetFindStr("You can now run LaTeX on"); // safer, but works only in English
+  SetFindStr("%!6");
+  IfFound("CloseFile('%b\_Run.log');JMP('exit');","Open('%b\_Err.log');JMP('exit');");
+
+
+:exit: ============================
+  LetReg(4,'');
+  LetReg(5,"");
+  LetReg(6,"");
+  LetReg(7,"");
+  LetReg(8,"");
+  LetReg(9,"");
+
+  SetOK(1);
+End;

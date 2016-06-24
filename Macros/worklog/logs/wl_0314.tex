@@ -1,0 +1,61 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 14.\,03.\,2011 ]
+  \WinEdt{MU}{( 1 h, 25 min.)}{M}{14:48-16:13}
+  \WinEdt{MU}{( -->  2 h, 18 min.)}{T}{00:00-00:51}
+  \WinEdt{MU}{( --> )}{M}{22:33-23:59}
+  \WinEdt{MU}{( 4 h, 36 min.)}{T}{11:43-16:19}
+  \WinEdt{!KrNeki}{( 2 h, 32 min.)}{T}{20:38-23:10}
+  \WinEdt{MU}{( 0 h, 36 min.)}{T}{23:10-23:46}
+  \WinEdt{MU}{( 0 h, 01 min.)}{W}{10:04-10:05}
+  \WinEdt{MU}{( 0 h, 01 min.)}{W}{10:05-10:06}
+  \WinEdt{MU}{( 1 h, 40 min.)}{W}{15:02-16:42}
+  \WinEdt{MU}{( -->  2 h, 47 min.)}{Th}{00:00-00:57}
+  \WinEdt{MU}{( --> )}{W}{22:10-23:59}
+  \WinEdt{MU}{( 2 h, 09 min.)}{Th}{10:12-12:21}
+  \WinEdt{MU}{( 4 h, 47 min.)}{Th}{12:28-17:15}
+  \WinEdt{MU}{( 0 h, 03 min.)}{Th}{21:17-21:20}
+  \WinEdt{_StatHist}{( 1 h, 49 min.)}{Th}{21:20-23:09}
+  \WinEdt{_StatHist}{( 6 h, 02 min.)}{F}{10:13-16:15}
+  \WinEdt{chersicola}{( 0 h, 40 min.)}{Su}{20:14-20:54}
+  \WinEdt{!KrNeki}{( --> 12 h, 21 min.)}{Wednesday}{00:00-00:47}
+  \WinEdt{!KrNeki}{( --> )}{Wednesday}{12:26-23:59}
+  \WinEdt{!KrNeki}{( 1 h, 23 min.)}{Wednesday}{0:50-02:13}
+  \WinEdt{!KrNeki}{( 0 h, 14 min.)}{Wednesday}{15:57-16:11}
+  \WinEdt{!KrNeki}{( 2 h, 02 min.)}{Wednesday}{20:48-22:50}
+  \WinEdt{!KrNeki}{( 0 h, 46 min.)}{Wednesday}{22:57-23:43}
+  \WinEdt{!KrNeki}{( 0 h, 01 min.)}{Wednesday}{23:44-23:45}
+  \WinEdt{!KrNeki}{( 0 h, 09 min.)}{Wednesday}{23:45-23:54}
+  \WinEdt{rps}{( 0 h, 11 min.)}{Thursday}{0:10-00:21}
+\end{schedule}
+ 
+\end{document}

@@ -1,0 +1,53 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 27.\,07.\,2009 ]
+  \WinEdt{<untitled project>}{(75 h, 36 min.)}{T}{09:14-12:50}
+  \WinEdt{I2R}{( 0 h, 20 min.)}{T}{12:50-13:10}
+  \WinEdt{I2R}{( --> 17 h, 28 min.)}{W}{00:00-06:18}
+  \WinEdt{I2R}{( --> )}{T}{12:50-23:59}
+  \WinEdt{<untitled project>}{( 0 h, 05 min.)}{W}{06:28-06:33}
+  \WinEdt{<untitled project>}{( 0 h, 01 min.)}{W}{06:33-06:34}
+  \WinEdt{I2R}{( 0 h, 01 min.)}{W}{06:34-06:35}
+  \WinEdt{<untitled project>}{( 0 h, 02 min.)}{W}{06:34-06:36}
+  \WinEdt{I2R}{( 0 h, 03 min.)}{W}{06:36-06:39}
+  \WinEdt{I2R}{( -->  9 h, 38 min.)}{Th}{00:00-00:34}
+  \WinEdt{I2R}{( --> )}{W}{14:56-23:59}
+  \WinEdt{I2R}{( 4 h, 24 min.)}{Th}{09:06-13:30}
+  \WinEdt{I2R}{( 3 h, 40 min.)}{Th}{13:30-17:10}
+  \WinEdt{I2R}{( 0 h, 59 min.)}{F}{01:37-02:36}
+  \WinEdt{I2R}{( 8 h, 08 min.)}{F}{09:04-17:12}
+  \WinEdt{I2R}{( 0 h, 07 min.)}{Friday}{0:00-00:07}
+  \WinEdt{I2R}{( -->  0 h, 09 min.)}{Saturday}{00:00-00:00}
+  \WinEdt{I2R}{( --> )}{Saturday}{23:51-23:59}
+\end{schedule}
+ 
+\end{document}

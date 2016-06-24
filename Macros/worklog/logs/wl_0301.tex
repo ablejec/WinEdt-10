@@ -1,0 +1,59 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 20. avgust 2014, 00:06)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 01.\,03.\,2010 ]
+  \WinEdt{Stritih}{( 0 h, 59 min.)}{M}{0:25-01:24}
+  \WinEdt{Stritih}{( 0 h, 06 min.)}{M}{01:24-01:30}
+  \WinEdt{Stritih}{( 0 h, 01 min.)}{M}{21:14-21:15}
+  \WinEdt{!KrNeki}{( -->  2 h, 59 min.)}{T}{00:00-00:14}
+  \WinEdt{!KrNeki}{( --> )}{M}{21:15-23:59}
+  \WinEdt{!KrNeki}{( -->  1 h, 56 min.)}{W}{00:00-00:50}
+  \WinEdt{!KrNeki}{( --> )}{T}{22:54-23:59}
+  \WinEdt{<untitled project>}{( -->  2 h, 09 min.)}{W}{00:00-01:03}
+  \WinEdt{<untitled project>}{( --> )}{T}{22:54-23:59}
+  \WinEdt{Inremos}{( 1 h, 42 min.)}{W}{01:03-02:45}
+  \WinEdt{Inremos}{( 0 h, 49 min.)}{W}{08:37-09:26}
+  \WinEdt{Inremos}{( 0 h, 01 min.)}{W}{23:39-23:40}
+  \WinEdt{Jaka}{( 0 h, 06 min.)}{W}{23:40-23:46}
+  \WinEdt{Jaka}{( 0 h, 01 min.)}{Su}{23:21-23:22}
+  \WinEdt{Jaka}{( 0 h, 01 min.)}{Su}{23:22-23:23}
+  \WinEdt{Jaka}{( 0 h, 04 min.)}{Su}{23:26-23:30}
+  \WinEdt{<untitled project>}{( 0 h, 06 min.)}{Su}{23:26-23:32}
+  \WinEdt{Bilten}{( 0 h, 14 min.)}{Su}{23:32-23:46}
+  \WinEdt{Lek-Blas}{( --> 50 h, 56 min.)}{Thursday}{00:00-01:03}
+  \WinEdt{Lek-Blas}{( --> )}{Thursday}{22:07-23:59}
+  \WinEdt{Lek-Blas}{( 7 h, 16 min.)}{Thursday}{12:05-19:21}
+  \WinEdt{StatER}{( --> 75 h, 32 min.)}{nedelja}{00:00-00:39}
+  \WinEdt{StatER}{( --> )}{nedelja}{21:07-23:59}
+  \WinEdt{<untitled project>}{(19 h, 33 min.)}{nedelja}{0:39-20:12}
+\end{schedule}
+ 
+\end{document}

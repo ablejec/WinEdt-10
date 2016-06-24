@@ -1,0 +1,38 @@
+// -*- ASCII:EDT -*-
+// wl_status.edt
+// (schlicht 20010302)
+// ($Revision: 1.10 $)
+// (created by worklog_install.edt
+//   on 11. april 2016, 11:49)
+////////////////////////////////////
+
+GetDate(1,"dd");
+GetDate(3,"hh");
+ LetRegNum(3,"%!3+(%!1*24)");
+GetDate(1,"nn");
+ LetRegNum(3,"%!1+(%!3*60)");
+
+IfNum(%!3,%8,">=",>
+   "LetRegNum(3,%!3-%8);",>
+  !"GetDate(2,'mm');>
+    LetRegNum(1,31);>
+    IfNum(%!2, 3,'=','LetRegNum(1,28);');>
+    IfNum(%!2, 5,'=','LetRegNum(1,30);');>
+    IfNum(%!2, 7,'=','LetRegNum(1,30);');>
+    IfNum(%!2,10,'=','LetRegNum(1,30);');>
+    IfNum(%!2,12,'=','LetRegNum(1,30);');>
+    LetRegNum(3,'(%!3+%!1*24*60)-%8');">
+);
+
+ReadFile("%b\Macros\worklog\logs\day.worklog",2);
+LetRegNum(1,0); LetRegNum(4,0);
+
+Loop(!"IfNum(%!2,60,'<','Stop',>
+      'LetRegNum(2,%!2-60);LetRegNum(1,%!1+1);')");
+Loop(!"IfNum(%!3,60,'<','Stop',>
+      'LetRegNum(3,%!3-60);LetRegNum(4,%!4+1);')");
+SetInfo(1,"%!1'%!2''+%!4'%!3''",'Exe("%b\Macros\worklog\wl_status.edt")');
+
+LetReg(1,""); LetReg(2,""); LetReg(3,""); LetReg(4,"");
+
+End;

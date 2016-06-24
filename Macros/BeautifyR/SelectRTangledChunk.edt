@@ -1,0 +1,53 @@
+////////////////////////////////////////////////////////
+// SelectRChunk.edt
+// Select R Chunk
+// $Revision: 1.1 $
+// $Date: 2007-03-12 22:27:51+01 $
+//
+// A. Blejec
+// Limitations:
+//
+// To be done:
+//  return focus to WinEdt
+//  return cursor to original position
+//
+/////////////////////////////////////////////////////////
+//
+// GlobalMark(); // ne deluje dobro
+
+SetFindStr("chunk");
+SetSearchForward(0);
+SetSearchCaseSensitive(0);
+SetSearchEntire(0);
+SetSearchCyclic(0);
+SetSearchRelaxed(0);
+SetSearchWholeWords(0);
+SetSearchInline(0);
+SetSearchCurrentDoc;
+SetRegEx(1);
+SearchReset;
+IfFound('Relax','Exe("%b\macros\BeautifyR\NextRChunk.edt");CMD("Line Up");');
+// CMD("Find...");
+CMD("Line Up");
+CMD("Go To Beginning Of Line");
+CMD("Set Mark");
+CMD("Line Down");
+CMD("Line Down");
+CMD("Line Down");
+SetFindStr("########");
+SetSearchForward(1);
+SetSearchCaseSensitive(0);
+SetSearchEntire(0);
+SetSearchCyclic(0);
+SetSearchRelaxed(0);
+SetSearchWholeWords(0);
+SetSearchInline(0);
+SetSearchCurrentDoc;
+SetRegEx(1);
+SearchReset;
+Find;
+CMD("Line Up");
+CMD("Line Up");
+CMD("Go To End Of Line");
+CMD("Select From Mark");
+// GlobalReturn;

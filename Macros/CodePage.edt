@@ -1,0 +1,56 @@
+// CodePage.edt
+// ===============
+// Insert the right Code Page
+// =================================
+
+    PushTagsandRegisters;
+
+    Interface("Choose Code Page");
+
+    Item("437    OEM United States","LetRegNum(0,437);Assign('Last-Item','1');");
+    Item("708    OEM Arabic (ASMO 708)","LetRegNum(0,708);Assign('Last-Item','2');");
+    Item("709    OEM Arabic (ASMO 449+, BCON V4)","LetRegNum(0,709);Assign('Last-Item','3');");
+    Item("710    OEM Arabic (Transparent Arabic)","LetRegNum(0,710);Assign('Last-Item','4');");
+    Item("720    OEM DOS Arabic (Transparent ASMO)","LetRegNum(0,720);Assign('Last-Item','5');");
+    Item("737    OEM DOS Greek (formerly 437G)","LetRegNum(0,737);Assign('Last-Item','6');");
+    Item("775    OEM DOS Baltic","LetRegNum(0,775);Assign('Last-Item','7');");
+    Item("850    OEM DOS Latin 1 (Western European)","LetRegNum(0,850);Assign('Last-Item','8');");
+    Item("852    OEM DOS Latin 2 (Central European)","LetRegNum(0,852);Assign('Last-Item','9');");
+    Item("855    OEM Cyrillic (primarily Russian)","LetRegNum(0,855);Assign('Last-Item','10');");
+    Item("857    OEM DOS Turkish","LetRegNum(0,857);Assign('Last-Item','11');");
+    Item("860    OEM DOS Portuguese","LetRegNum(0,860);Assign('Last-Item','12');");
+    Item("861    OEM DOS Icelandic","LetRegNum(0,861);Assign('Last-Item','13');");
+    Item("862    OEM DOS Hebrew","LetRegNum(0,862);Assign('Last-Item','14');");
+    Item("863    OEM DOS French Canadian","LetRegNum(0,863);Assign('Last-Item','15');");
+    Item("864    OEM Arabic","LetRegNum(0,864);Assign('Last-Item','16');");
+    Item("865    OEM DOS Nordic","LetRegNum(0,865);Assign('Last-Item','17');");
+    Item("866    OEM DOS Russian","LetRegNum(0,866);Assign('Last-Item','18');");
+    Item("869    OEM DOS Modern Greek","LetRegNum(0,869);Assign('Last-Item','19');");
+    Item("874    ANSI/OEM Thai","LetRegNum(0,874);Assign('Last-Item','20');");
+    Item("932    ANSI/OEM Japanese","LetRegNum(0,932);Assign('Last-Item','21');");
+    Item("936    ANSI/OEM Simplified Chinese (PRC, Singapore)","LetRegNum(0,936);Assign('Last-Item','22');");
+    Item("949    ANSI/OEM Korean (Unified Hangul Code)","LetRegNum(0,949);Assign('Last-Item','23');");
+    Item("950    ANSI/OEM Traditional Chinese (Taiwan, Hong Kong SAR, PRC)","LetRegNum(0,950);Assign('Last-Item','24');");
+    Item("1250  ANSI Windows Latin 2 (Central European)","LetRegNum(0,1250);Assign('Last-Item','25');");
+    Item("1251  ANSI Windows Cyrillic","LetRegNum(0,1251);Assign('Last-Item','26');");
+    Item("1252  ANSI Windows Latin 1 (Western European)","LetRegNum(0,1252);Assign('Last-Item','27');");
+    Item("1253  ANSI Windows Greek","LetRegNum(0,1253);Assign('Last-Item','28');");
+    Item("1254  ANSI Windows Turkish","LetRegNum(0,1254);Assign('Last-Item','29');");
+    Item("1255  ANSI Windows Hebrew","LetRegNum(0,1255);Assign('Last-Item','30');");
+    Item("1256  ANSI Windows Arabic","LetRegNum(0,1256);Assign('Last-Item','31');");
+    Item("1257  ANSI Windows Baltic","LetRegNum(0,1257);Assign('Last-Item','32');");
+    Item("1258  ANSI/OEM  Vietnamese","LetRegNum(0,1258);Assign('Last-Item','33');");
+    Item("1361  OEM Korean (Johab)","LetRegNum(0,1361);Assign('Last-Item','34');");
+    Item("Non-listed (you will be prompted)","LetRegNum(0,0);Assign('Last-Item','35');");
+
+    ShowList(0,1,"Do('%%?')","PopTagsandRegisters;Exit;","%$('Last-Item');");
+
+    IfNum(%!0,0,!"=",!"EnterReg(0,'Code Page','Choose Code Page');");
+
+    ReadFile('%f',9,0,1,%!0);
+    WriteFile('%f','%!9',4);
+    UpdateFile('%f');
+
+    PopTagsandRegisters;
+
+End;

@@ -1,0 +1,45 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 24.\,10.\,2011 ]
+  \WinEdt{janez}{( -->  0 h, 29 min.)}{M}{00:00-00:21}
+  \WinEdt{janez}{( --> )}{M}{23:52-23:59}
+  \WinEdt{janez}{( 1 h, 05 min.)}{M}{22:52-23:57}
+  \WinEdt{Bioinformatika}{( 0 h, 55 min.)}{T}{20:42-21:37}
+  \WinEdt{Bioinformatika}{( 0 h, 06 min.)}{W}{01:21-01:27}
+  \WinEdt{<untitled project>}{( 0 h, 09 min.)}{W}{01:21-01:30}
+  \WinEdt{Lek-Blas}{( 0 h, 27 min.)}{W}{01:30-01:57}
+  \WinEdt{Lek-Blas}{( 3 h, 23 min.)}{W}{09:45-13:08}
+  \WinEdt{Bioinformatika}{( 4 h, 03 min.)}{W}{13:08-17:11}
+  \WinEdt{Bioinformatika}{( 0 h, 29 min.)}{W}{22:45-23:14}
+\end{schedule}
+ 
+\end{document}

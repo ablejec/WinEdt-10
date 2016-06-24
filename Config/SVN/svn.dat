@@ -1,0 +1,21 @@
+MAIN MENU: 170
+
+MENU:&SVN
+  Flags:0
+  Hint:SVN versioning system.
+  Macro:395
+    Item:SVN Add
+    Hint:SVN Add
+    Path:%p
+    Definition:LetReg(0,'add');Exe('%B\Config\SVN\svn.edt');
+  Macro:395
+    Item:SVN Update
+    Hint:SVN Update
+    Path:%p
+    Definition:LetReg(0,'update');Exe('%B\Config\SVN\svn.edt');
+  Macro:395
+    Item:SVN Commit
+    Hint:SVN Commit
+    Path:%p
+    Definition:LetReg(9,'');EnterReg(9,"Message? (Enter for no message.)","Log Message");LetReg(0,'commit');Exe('%B\Config\SVN\svn.edt');
+END Menu:&CVS

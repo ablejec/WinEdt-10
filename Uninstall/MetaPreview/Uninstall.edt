@@ -1,0 +1,59 @@
+// -*- ASCII:EDT -*-
+
+    ClearCheckList;
+      IfFileExists('%b\Uninstall\MetaPreview\MFPreview\',>
+        !'AddCheckList("Uninstall MetaFont Preview",1);',>
+        !'AddCheckList("Uninstall MetaFont Preview",0,1);'
+      IfFileExists('%b\Uninstall\MetaPreview\MPPreview\',>
+        !'AddCheckList("Uninstall MetaPost Preview",1);',>
+        !'AddCheckList("Uninstall MetaPost Preview",0,1);'
+    ShowCheckList('MetaPreview package',200,200);
+    IfOK(!'Relax;',!'Exit;');
+    IfChecked(0,!'Assign("MetaFont","1");',!'Assign("MetaFont","0");');
+    IfChecked(1,!'Assign("MetaPost","1");',!'Assign("MetaPost","0");');
+
+    Assign("Main","MetaPreview");
+
+    PushTagsandRegisters;
+
+    StartWorking('Uninstalling...');
+    ProcessMessages;
+
+    ShowConsole(1,1);
+    ResetConsole;
+    SetConsoleText("Uninstalling...%\%\",1);
+    IfStr("%$(|MetaFont|);","1","=",!"Exe('%C\MFPreview\Uninstall.edt');");
+    IfStr("%$(|MetaPost|);","1","=",!"Exe('%C\MPPreview\Uninstall.edt');");
+    Call('Uninstall_Task');
+    SetConsoleText("%\Done...%\",1,1);
+
+    PopTagsandRegisters;
+
+    StopWorking;
+
+    Prompt("Uninstallation Complete! See the Console for uninstall info.",0,1);
+
+    Release("MetaFont");
+    Release("MetaPost");
+    Release("Main");
+
+Exit;
+
+:Uninstall_Task:: ===================================================
+
+    CloseFile("%X");
+
+    // Delete uninstall files
+    ListFolderFiles(0,"%b\Uninstall\%$(|Main|);","",1,1);
+    LstEnum("%!0","%\");
+    LstGetCount(1);
+    IfNum(%!1,1,"=",!"DeleteFile('%b\Uninstall\%$(|Main|);\Uninstall.edt');");
+    LstRelease;
+
+    // Extra Task
+    SetFolder("%b");
+    Exe('%b\Config\Cleanup.edt');
+    RemoveDirectory("%b\Uninstall\%$(|Main|);");
+    RemoveDirectory("%b\Uninstall");
+
+Return;

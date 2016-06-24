@@ -1,0 +1,22 @@
+// -*- ASCII:EDT -*-
+// wl_open.edt
+// (schlicht 20010302)
+// ($Revision: 1.10 $)
+// (created by worklog_install.edt
+//   on 11. april 2016, 11:49)
+////////////////////////////////////
+
+Exe("%b\Macros\worklog\wl_status.edt");
+LetReg(5,"%p");
+GetDate(2,"yy");
+GetDate(3,"mm");
+IfFileExists("%b\Macros\worklog\logs\%!2%!3.worklog","",>
+   !"IfNum(%!3,1,'=','LetRegNum(2,%!2-1,2,2),LetRegNum(3,12);',>
+      !'LetRegNum(3,%!3-1,2,2);')");
+Open("%b\Macros\worklog\logs\%!2%!3.worklog");
+SetReadonly(1);
+ChDir("%!5");
+
+LetReg(1,""); LetReg(2,""); LetReg(3,""); LetReg(5,"");
+
+End;

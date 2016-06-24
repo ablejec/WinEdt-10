@@ -1,0 +1,46 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 20 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 03.\,08.\,2009 ]
+  \WinEdt{<untitled project>}{(82 h, 54 min.)}{T}{09:04-19:58}
+  \WinEdt{geNorm}{( 2 h, 38 min.)}{T}{19:58-22:36}
+  \WinEdt{<untitled project>}{(51 h, 01 min.)}{Th}{19:58-22:59}
+  \WinEdt{diploma}{( -->  1 h, 17 min.)}{F}{00:00-00:16}
+  \WinEdt{diploma}{( --> )}{Th}{22:59-23:59}
+  \WinEdt{<untitled project>}{( --> 22 h, 28 min.)}{F}{00:00-21:27}
+  \WinEdt{<untitled project>}{( --> )}{Th}{22:59-23:59}
+  \WinEdt{Jaka}{( 0 h, 28 min.)}{F}{21:27-21:55}
+  \WinEdt{Jaka}{( --> 16 h, 29 min.)}{Sa}{00:00-14:43}
+  \WinEdt{Jaka}{( --> )}{F}{22:14-23:59}
+  \WinEdt{Jaka}{( 0 h, 24 min.)}{Sa}{21:20-21:44}
+\end{schedule}
+ 
+\end{document}

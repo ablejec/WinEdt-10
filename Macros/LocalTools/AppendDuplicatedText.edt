@@ -1,0 +1,27 @@
+// Duplicate selected text or line at the end of document
+// A. Blejec 31. 8. 2006
+//
+BeginGroup;
+IfSel("0","=",>
+    "CMD('Go To Beginning Of Line');>
+CMD('Select Line Up');>
+CMD('Copy');>
+CMD('Go To End Of File');>
+CMD('Paste')>
+",>
+"GetSel(0,0);>
+   CMD('Backspace');>
+   Ins('%%!0');>
+//CMD('Line Down');>
+   NewLine;>
+   // Ins('## Duplicated');>
+   CMD('Go To End Of File');>
+   Ins('%%!0');>
+   NewLine;>
+   // InsLine;>
+   // Ins('## Duplicated above');>
+   // InsLine;>
+   // CMD('Backspace');>
+   ");
+EndGroup;
+End;

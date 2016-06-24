@@ -1,0 +1,62 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 20. avgust 2014, 00:06)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 25.\,05.\,2009 ]
+  \WinEdt{<untitled project>}{( --> 87 h, 20 min.)}{M}{00:00-10:11}
+  \WinEdt{<untitled project>}{( --> )}{M}{18:51-23:59}
+  \WinEdt{UNG}{( 2 h, 21 min.)}{M}{10:11-12:32}
+  \WinEdt{UNG}{( 0 h, 03 min.)}{M}{18:42-18:45}
+  \WinEdt{UNG}{( 1 h, 13 min.)}{T}{11:57-13:10}
+  \WinEdt{I2R}{( 0 h, 30 min.)}{T}{13:10-13:40}
+  \WinEdt{I2R}{( 3 h, 15 min.)}{T}{14:07-17:22}
+  \WinEdt{I2R}{( 0 h, 48 min.)}{W}{09:36-10:24}
+  \WinEdt{KG090511}{( 5 h, 10 min.)}{W}{10:24-15:34}
+  \WinEdt{KG090511}{( 0 h, 04 min.)}{W}{15:36-15:40}
+  \WinEdt{KG090511}{( 2 h, 59 min.)}{W}{20:17-23:16}
+  \WinEdt{KG090511}{( -->  1 h, 39 min.)}{Th}{00:00-01:10}
+  \WinEdt{KG090511}{( --> )}{W}{23:31-23:59}
+  \WinEdt{lek}{( 0 h, 03 min.)}{Th}{01:10-01:13}
+  \WinEdt{KG090511}{( 0 h, 18 min.)}{Th}{01:13-01:31}
+  \WinEdt{KG090511}{( 3 h, 31 min.)}{Th}{13:38-17:09}
+  \WinEdt{KG090511}{( 0 h, 02 min.)}{Th}{22:04-22:06}
+  \WinEdt{lek}{( 0 h, 01 min.)}{Th}{22:06-22:07}
+  \WinEdt{KG090511}{( -->  3 h, 28 min.)}{F}{00:00-01:35}
+  \WinEdt{KG090511}{( --> )}{Th}{22:07-23:59}
+  \WinEdt{!KrNeki}{( 0 h, 21 min.)}{F}{14:59-15:20}
+  \WinEdt{!KrNeki}{( 0 h, 12 min.)}{Sa}{22:25-22:37}
+  \WinEdt{KG090511}{( 0 h, 10 min.)}{Sa}{22:37-22:47}
+  \WinEdt{Rakitna}{( 0 h, 09 min.)}{ponedeljek}{15:02-15:11}
+  \WinEdt{Rakitna}{( 0 h, 40 min.)}{ponedeljek}{22:24-23:04}
+  \WinEdt{Dobnik}{( 0 h, 08 min.)}{ponedeljek}{23:41-23:49}
+  \WinEdt{Decathlon}{( 0 h, 02 min.)}{ponedeljek}{23:49-23:51}
+\end{schedule}
+ 
+\end{document}

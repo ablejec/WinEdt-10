@@ -1,0 +1,16 @@
+////////////////////////////////////////////////////////
+// R-paste-chunk.edt
+// Select R Chunk and paste to R
+// $Revision: 1.7 $
+// $Date: 2006-12-14 16:28:01+01 $
+//
+// A. Blejec, 2006-12-13
+// Limitations:
+//
+// To be done:
+//
+//
+/////////////////////////////////////////////////////////
+//
+Exe("%b\macros\BeautifyR\SelectRChunk.edt");
+Exe("%b\Macros\R\s-paste-go.edt");

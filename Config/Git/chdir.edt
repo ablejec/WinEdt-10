@@ -1,0 +1,17 @@
+//  Prompt('Current Directory is: %\%p');
+PushTagsandRegisters;
+//  LetReg(1,'%p');
+  IfFileExists("%!p\.git\HEAD",>
+    "JMP('DoIt')",>
+    "Prompt('%!p\.git not found.');JMP('Exit')");
+:DoIt::
+//ChDir("%!p");
+//  Prompt('Current Directory is: %\%p');
+  ResetConsole;
+  SetConsoleText(">> git: %!p%\%\",);
+  RunConsole("git describe","%!p","Git",1);
+//ChDir("%!1");
+:Exit::
+//  Prompt('Current Directory is: %\%p');
+PopTagsandRegisters;
+End;

@@ -1,0 +1,42 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 20. avgust 2014, 00:06)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 18.\,12.\,2008 ]
+  \WinEdt{lek}{( 0 h, 04 min.)}{èetrtek}{10:01-10:05}
+  \WinEdt{GFLV}{( 4 h, 53 min.)}{èetrtek}{10:05-14:58}
+  \WinEdt{Bioinformatika}{( 0 h, 02 min.)}{Tuesday}{09:15-09:17}
+  \WinEdt{Bioinformatika}{( 5 h, 35 min.)}{Tuesday}{10:17-15:52}
+  \WinEdt{<untitled project>}{(12 h, 23 min.)}{Tuesday}{10:17-22:40}
+  \WinEdt{Bioinformatika}{( --> 40 h, 40 min.)}{èetrtek}{00:00-15:42}
+  \WinEdt{Bioinformatika}{( --> )}{èetrtek}{23:02-23:59}
+\end{schedule}
+ 
+\end{document}

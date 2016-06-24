@@ -1,0 +1,51 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 23.\,05.\,2011 ]
+  \WinEdt{literacy}{( -->  3 h, 07 min.)}{M}{00:00-01:38}
+  \WinEdt{literacy}{( --> )}{M}{22:31-23:59}
+  \WinEdt{<untitled project>}{(22 h, 31 min.)}{T}{0:26-22:57}
+  \WinEdt{literacy}{( -->  1 h, 26 min.)}{W}{00:00-00:23}
+  \WinEdt{literacy}{( --> )}{T}{22:57-23:59}
+  \WinEdt{literacy}{( -->  4 h, 01 min.)}{Th}{00:00-00:47}
+  \WinEdt{literacy}{( --> )}{W}{20:46-23:59}
+  \WinEdt{literacy}{( 3 h, 18 min.)}{Th}{13:12-16:30}
+  \WinEdt{literacy}{( 1 h, 10 min.)}{F}{0:49-01:59}
+  \WinEdt{literacy}{( 0 h, 02 min.)}{F}{02:01-02:03}
+  \WinEdt{literacy}{( 0 h, 07 min.)}{F}{09:04-09:11}
+  \WinEdt{literacy}{( 0 h, 09 min.)}{F}{09:04-09:13}
+  \WinEdt{Lek-Blas}{( -->  2 h, 37 min.)}{Wednesday}{00:00-01:11}
+  \WinEdt{Lek-Blas}{( --> )}{Wednesday}{22:34-23:59}
+  \WinEdt{Inremos}{( 5 h, 55 min.)}{Wednesday}{09:33-15:28}
+  \WinEdt{KG130116}{( 9 h, 04 min.)}{Thursday}{05:58-15:02}
+\end{schedule}
+ 
+\end{document}

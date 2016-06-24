@@ -1,0 +1,7 @@
+// underline environment
+
+  IfisMode('TeX;BibTeX','%!m',!'InsLabel("\underline","{","}");Exit;');
+  IfisMode('HTML;XML;PHP','%!m',!'InsLabel("","<u>","</u>");Exit;');
+  SelWord(1);
+  InsLabel("\underline","{","}");
+End;

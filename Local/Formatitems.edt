@@ -1,0 +1,22 @@
+// Find a line with an \item, put the content into tag \0:
+GetTag(0,0);
+// correct indentation:
+LetReg(0,"   %!0");
+GetLength(3,"%!0");
+LetRegNum(2,70);
+Loop(!"
+    // the (rest of the) string is shorter than the desired line length
+    IfNum(%!2,%!3,'<',
+      !'SetOK(1);
+        // find the last space on the line
+        FindInString(''%!0'','' '',1,2,1101,%!2);
+        IfOK(!''
+           // insert new line and indentation
+           InsertByIndex(0,|%!0|,|%\        |,%!2);
+           // update numbers
+           LetRegNum(3,%!3+8);
+           LetRegNum(2,%!2+70);'');',
+      // we're done: set the tag to the resulting string:
+      !'SetTag(0,''%!0%\'');Stop;');
+");
+End;

@@ -1,0 +1,47 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 03.\,11.\,2008 ]
+  \WinEdt{geNorm}{( -->  6 h, 13 min.)}{ponedeljek}{00:00-02:42}
+  \WinEdt{geNorm}{( --> )}{ponedeljek}{20:29-23:59}
+  \WinEdt{geNorm}{( 1 h, 27 min.)}{ponedeljek}{09:39-11:06}
+  \WinEdt{geNorm}{( 0 h, 52 min.)}{ponedeljek}{12:28-13:20}
+  \WinEdt{Bioconductor}{( 0 h, 25 min.)}{ponedeljek}{13:20-13:45}
+  \WinEdt{geNorm}{( 0 h, 11 min.)}{ponedeljek}{13:45-13:56}
+  \WinEdt{NIB2007}{( 1 h, 45 min.)}{ponedeljek}{21:58-23:43}
+  \WinEdt{javno}{( -->  2 h, 42 min.)}{Sunday}{00:00-00:21}
+  \WinEdt{javno}{( --> )}{Sunday}{21:39-23:59}
+  \WinEdt{<untitled project>}{(24 h, 27 min.)}{Sunday}{21:39-22:06}
+  \WinEdt{Rxx}{( 0 h, 01 min.)}{Sunday}{22:06-22:07}
+  \WinEdt{javno}{( 1 h, 36 min.)}{Sunday}{22:21-23:57}
+\end{schedule}
+ 
+\end{document}

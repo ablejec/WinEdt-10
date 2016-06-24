@@ -1,0 +1,6 @@
+BeginGroup;
+SaveDoc;
+ChDir('%p');
+IfIStr("%!0","commit","=", "Run(`%@('HKM','SOFTWARE\TortoiseSVN','ProcPath'); /command:%!0 /path:""%p\%n%t"" /logmsg:""%!9"" /notempfile /closeonend:1`,'%p');","Run(`%@('HKM','SOFTWARE\TortoiseSVN','ProcPath'); /command:%!0 /path:""%p\%n%t"" /notempfile /closeonend:1`,'%p');");
+EndGroup;
+End;

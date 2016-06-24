@@ -1,0 +1,685 @@
+
+Bibliografija Oddelka za raziskovanje sladkovodnih in kopenskih
+ekosistemov za leto 2007 Vir: vzajemna baza podatkov COBIB.SI
+
+
+
+Bibliografski povzetek
+    Bibliographic Summary
+znanstveni èlanki   18  scientific articles strokovni in poljudni
+èlanki    35  professional and popular articles objavljeni prispevki
+z znanst. in strok. sreèanj    4   published conference papers
+povzetki z znanstvenih in strokovnih sreèanj    14  published
+conference paper abstracts knjige  2   books poglavja v knjigah  1
+chapters in books magisteriji 0   master's theses doktorati   1
+dissertation theses poroèila    15  reports patenti 0   patents
+drugo   6   other
+
+
+
+
+ÈLANKI IN DRUGI SESTAVNI DELI
+
+
+}\NIBbibitems{Izvirni  znanstveni  èlanek }{Original Scientific
+Article }{
+
+BRANCELJ, Anton, DUMONT, Henri. A review of the diversity,
+adaptations and groundwater colonization pathwaysin Cladocera and
+Calanoida (Crustacea), two rare and contrasting groups of
+stygobionts. Arch. Hydrobiol., 2007, letn. 168, št. 1, str. 3-17.
+[COBISS.SI-ID 22454489] JCR IF (2006): 1.362, IFmax: 1.439, IFmin:
+0.898, x: 1.209; limnology; 7/17
+
+GERM, Mateja, KREFT, Ivan, STIBILJ, Vekoslava, URBANC-BERÈIÈ, Olga.
+Combined effects of selenium and drought on photosynthesis and
+mitochondrial respiration in potato. Plant physiol. biochem.
+(Paris). [Print ed.], 2007, vol. 45, str. 162-167. [COBISS.SI-ID
+4918905] JCR IF (2006): 1.847, IFmax: 19.837, IFmin: 1.82, x: 1.615;
+plant sciences; 36/147
+
+GERM, Mateja, STIBILJ, Vekoslava, OSVALD, Jože, KREFT, Ivan. Effect
+of selenium foliar application on chicory (Cichorium intybus L.). J.
+agric. food chem., 2007, vol. 55, no. 3, str. 795-798. [COBISS.SI-ID
+4858233] JCR IF (2006): 2.322, IFmax: 2.322, IFmin: 0.861, x: 0.589;
+agriculture, multidisciplinary; 1/31
+
+KAPLA, Andrej, VREZEC, Al. Morfološke znaèilnosti, razširjenost in
+opis habitata vrste Dolichus halensis v Sloveniji (Coleoptera:
+Carabidae): krešièi v agrarnih sistemih = Morphological
+characteristics, distribution and habitat description of Dolichus
+halensis in Slovenia (Coleoptera: Carabidae): carabids in
+agricultural systems. Acta entomol. slov. (Ljubl.), jul. 2007, vol.
+15, št./No. 1, str. 57-64, ilustr., zvd. [COBISS.SI-ID 592629]
+
+KRŽIÈ, Nina, GERM, Mateja, URBANC-BERÈIÈ, Olga, KUHAR, Urška,
+JANAUER, G.A., GABERŠÈIK, Alenka. The quality of the aquatic
+environment and macrophytes of karstic watercourses. Plant ecol.
+(Dordr.), 2007, vol. 192, str. 107-118. [COBISS.SI-ID 1656399] JCR
+IF (2006): 1.383, IFmax: 2.903, IFmin: 1.383, x: 1.031; forestry;
+9/35
+
+SIMÈIÈ, Tatjana, BRANCELJ, Anton. The effect of light on oxygen
+consumption in two amphipod crustaceans-the hypogean Niphargus
+stygius and the epigean Gammarus fossarum. Mar. freshw. behav.
+physiol. (Print), 2007, vol. 40, no. 2, str. 141-150. [COBISS.SI-ID
+1734991] JCR IF (2006): 0.604, IFmax: 0.775, IFmin: 0, x: 1.325;
+marine & freshwater biology; 65/79
+
+SIMÈIÈ, Tatjana, MORI, Nataša. Intensity of mineralization in the
+hyporheic zone of the prealpine river Baèa (West Slovenia).
+Hydrobiologia (Den Haag), 2007, vol. 586, str. 221-234.
+[COBISS.SI-ID 1729871] JCR IF (2006): 1.049, IFmax: 1.176, IFmin:
+0.778, x: 1.325; marine & freshwater biology; 45/79
+
+TADINA, Nataša, GERM, Mateja, KREFT, Ivan, BREZNIK, Barbara,
+GABERŠÈIK, Alenka. Effects of water deficit and selenium on common
+buckwheat (Fagopyrum esculentum Moench.) plants. Photosyntetica,
+2007, letn. 45, št. 3, str. 472-476. [COBISS.SI-ID 22961113] JCR IF
+(2006): 0.782, IFmax: 0.954, IFmin: 0.528, x: 1.615; plant sciences;
+86/147
+
+TOME, Davorin. Nest defense and some rare breeding events in
+long-eared owls (Asio otus). J. raptor res., 2007, letn. 41, št. 2,
+str. 170-173. [COBISS.SI-ID 23074777] JCR IF (2006): 0.448, IFmax:
+0.448, IFmin: 0, x: 0.851; ornithology; 16/19
+
+TOME, Davorin. Rast mladièev repaljšèice Saxicola rubetra na
+Ljubljanskem barju (osrednja Slovenija) = Growth of young Whinchats
+Saxicola rubetra on Ljubljansko barje (central Slovenia).
+Acrocephalus, 2007, letn. 28, št. 133, str. 51-55. [COBISS.SI-ID
+237679872]
+
+URBANIÈ, Gorazd, REMEC-REKAR, Špela, KOSI, Gorazd, GERM, Mateja,
+BRICELJ, Mihael, PODGORNIK, Samo. Tipologija jezer v Sloveniji =
+Typology of lakes in Slovenia. Nat. Slov.. [Tiskana izd.], 2007,
+letn. 9, št. 1, str. 5-13. [COBISS.SI-ID 22929113]
+
+VREZEC, Al. Status brazdarja (Rhysodes sulcatus) v Sloveniji
+(Coleoptera: Rhysodidae): dosedanje poznavanje in raziskovalne
+perspektive. Acta entomol. slov. (Ljubl.), jul. 2007, vol. 15,
+št./No. 1, str. 51-56, ilustr. [COBISS.SI-ID 592373]
+
+VREZEC, Al, KAPLA, Andrej. Kvantitativno vzorèenje hrošèev
+(Coleoptera) v Sloveniji: referenèna študija = Quantitative beetle
+(Coleoptera) sampling in Slovenia: a reference study. Acta entomol.
+slov. (Ljubl.), dec. 2007, vol. 15, št./No. 2, str. 131-160,
+ilustr., tab. [COBISS.SI-ID 626933]
+
+VREZEC, Al, KAPLA, Andrej. Naravovarstveno vrednotenje favne hrošèev
+(Coleoptera) krajinskega parka Boè-Donaèka gora v obèini Rogaška
+Slatina: kvantitativna varstvenofavnistièna analiza = Conservational
+evaluation of the beetle (Coleoptera) fauna in Boè-Donaèka
+goranature park within the Rogaška Slatina municipality:
+quantitative conservational and faunistic analysis. Varst. narave,
+2007, letn. 20, str. 61-82. [COBISS.SI-ID 23613401]
+
+ŽNIDARÈIÈ, Dragan, VIDRIH, Rajko, GERM, Mateja, BAN, Dean, TRDAN,
+Stanislav. Relationship between water-soluble carbohydrate
+composition of cabbage (Brassica oleracea L. var. capitata) and
+damage levels of onion thrips = Vpliv vodotopnih ogljikovih hidratov
+v zelju (Brassica oleraceae L. var. capitata) na poškodbe, ki jih
+povzroèa tobakov resar. Acta agric. Slov.. [Tiskana izd.], 2007,
+let. 89, št. 1, str. 25-33.
+http://aas.bf.uni-lj.si/avgust2007/03znidarcic.pdf. [COBISS.SI-ID
+5185145]
+
+
+}\NIBbibitems{Pregledni  znanstveni  èlanek }{Review Article }{
+
+GERM, Mateja, STIBILJ, Vekoslava. Selenium and plants = Selen v
+rastlinah. Acta agric. Slov.. [Tiskana izd.], 2007, let. 89, št. 1,
+str. 65-71. http://aas.bf.uni-lj.si/avgust2007/08germ.pdf.
+[COBISS.SI-ID 5230457]
+
+GERM, Mateja, STIBILJ, Vekoslava, KREFT, Ivan. Metabolic importance
+of selenium for plants. The European journal of plant science and
+biotechnology, 2007, vol. 1, no. 1, str. 91-97. [COBISS.SI-ID
+1769807]
+
+
+}\NIBbibitems{Kratki  znanstveni  prispevek }{Short Scientific
+Article }{
+
+VREZEC, Al, VRH VREZEC, Petra. Delež levcistiène oblike
+'immutabilis' laboda grbca Cygnus olor v prezimujoèi subpopulaciji
+na Zbiljskem jezeru (osrednja Slovenija). Acrocephalus, 2007, letn.
+28, št. 133, str. 57-59, ilustr. [COBISS.SI-ID 237680640]
+
+
+}\NIBbibitems{Strokovni  èlanek }{Professional Article }{
+
+KOCE, Urša. Repaljšèica povezuje švicarske in slovenske ornitologe.
+Svet ptic, 2007, letn. 13, št. 1, str. 42-43. [COBISS.SI-ID
+22573785]
+
+PAGON, Polona. Priložnost za Cerknico. Notranjsko-kraške novice, 26.
+okt. 2007, letn. 6, št. 19, str. 22, fotogr. [COBISS.SI-ID 7174840]
+
+PAGON, Polona. Težimo k trajnostnemu razvoju. Notranjsko-kraške
+novice, 26. okt. 2007, letn. 6, št. 19, str. 22. [COBISS.SI-ID
+7175096]
+
+TOME, Davorin. Dolgo, vroèe poletje : globalne podnebne spremembe in
+živa narava. Polet (2002), 2007, letn. 6, št. 41, str. 28-29.
+[COBISS.SI-ID 23621849]
+
+TOME, Davorin. Ekologija - deklica za vse : ali se ekologi res
+ukvarjajo s pobiranjem smeti in proizvodnjo energijsko uèinkovitih
+strojev?. Polet (2002), 15. feb. 2007, letn. 6, št. 6, str. 28-29.
+[COBISS.SI-ID 22439129]
+
+TOME, Davorin. Fitnes : ali smo ljudje uspešna vrsta?. Polet (2002),
+2007, letn. 6, št. 37, str. 26-27. [COBISS.SI-ID 23623129]
+
+TOME, Davorin. Gôri na gôri gorí : druga plat naravnih katastrof.
+Polet (2002), 2007, letn. 6, št. 39, str. 30. [COBISS.SI-ID
+23622617]
+
+TOME, Davorin. Kdo bo koga?. Polet (2002), 2007, letn. 6, št. 16,
+str. 28-29. [COBISS.SI-ID 22932953]
+
+TOME, Davorin. Krvoskrunstvo. Polet (2002), 2007, letn. 6, št. 24,
+str. 28. [COBISS.SI-ID 22933465]
+
+TOME, Davorin. Mars napada. Polet (2002), 2007, letn. 6, št. 22,
+str. 26. [COBISS.SI-ID 22933721]
+
+TOME, Davorin. Miss varstva narave : najpomembnejši
+naravovarstveniki v Angliji. Polet (2002), 2007, letn. 6, št. 27,
+str. 26. [COBISS.SI-ID 23624153]
+
+TOME, Davorin. Naravovarstveni misijonarji. Polet (2002), 2007,
+letn. 6, št. 12, str. 28-29. [COBISS.SI-ID 22933209]
+
+TOME, Davorin. Naše predstave o naravi. Polet (2002), 2007, letn. 6,
+št. 17, str. 22-23. [COBISS.SI-ID 22933977]
+
+TOME, Davorin. Odpustki : kako resno jemljemo podnebne spremembe?.
+Polet (2002), 2007, letn. 6, št. 31, str. 26-27. [COBISS.SI-ID
+23624409]
+
+TOME, Davorin. Sovražnik mojega sovražnika je moj prijatelj :
+prehranjevalni odnosi in dinamièna stabilnost v naravi. Polet
+(2002), 2007, letn. 6, št. 35, str. 30-31. [COBISS.SI-ID 23623897]
+
+TOME, Davorin. Varstvo narave : ali narava res potrebuje nekoga, da
+jo varuje? : neprijetna resnica. Delo (Ljubl.), 8. mar. 2007, leto
+6, št. 9, str. 24-25. [COBISS.SI-ID 1704015]
+
+VREZEC, Al. Endemizem ptic. Svet ptic, 2007, letn. 13, št. 1, str.
+6-11, ilustr. [COBISS.SI-ID 22573273]
+
+VREZEC, Al. Ptice naših krajev. Svet ptic, 2007, letn. 13, št. 1,
+str. 4-5, ilustr. [COBISS.SI-ID 22573017]
+
+VREZEC, Al. Ptice naših krajev. Svet ptic, 2007, letn. 13, št. 4,
+str. 4-5. [COBISS.SI-ID 23966425]
+
+VREZEC, Al. Rakunasti pes ali enok (Nyctereutes procyonoides) na
+Krimu (osrednja Slovenija) - drugi podatek za Slovenijo. Nat. Slov..
+[Tiskana izd.], 2007, letn. 9, št. 1, str. 47, ilustr. [COBISS.SI-ID
+237912064]
+
+VREZEC, Al. Rumeni vrtnik Hippolais icterina = Icterine Warbler.
+Acrocephalus, 2007, letn. 28, št. 132, str. 42. [COBISS.SI-ID
+23535577]
+
+VREZEC, Al. Sredozemski akcijski naèrt za varstvo morskih in obalnih
+ptic. Svet ptic, 2007, letn. 13, št. 4, str. 14-17. [COBISS.SI-ID
+23966681]
+
+VREZEC, Al. Za sovami na Finsko. Svet ptic, 2007, letn. 13, št. 3,
+str. 10-13, ilustr. [COBISS.SI-ID 23534809]
+
+VRH VREZEC, Petra, VREZEC, Al. Tenerife - endemièno ptièje obmoèje.
+Svet ptic, 2007, letn. 13, št. 1, str. 12-15. [COBISS.SI-ID
+22573529]
+
+VRH VREZEC, Petra, VREZEC, Al. Zelenonogi martinec Tringa nebularia
+= Greenshank. Acrocephalus, 2007, letn. 28, št. 132, str. 41.
+[COBISS.SI-ID 23535321]
+
+
+}\NIBbibitems{Poljudni  èlanek }{Popular Article }{
+
+BRANCELJ, Anton. Kaj vemo o Bohinjskem jezeru?. Svet pod Triglav.,
+2007, št. 8, str. 8. [COBISS.SI-ID 22873305]
+
+KOCE, Urša. Siva vrana. Svet ptic, 2007, letn. 13, št. 2, str.
+36-37. [COBISS.SI-ID 22962137]
+
+VREZEC, Al. Ptice naših krajev. Svet ptic, 2007, letn. 13, št. 2,
+str. 4-5, ilustr. [COBISS.SI-ID 22961625]
+
+VREZEC, Al. Sova in èuk. Tabor (Ljubl., Tisk. izd.). [Tiskana izd.],
+2007, letn. 52, št. 2, str. 4-5. [COBISS.SI-ID 22436313]
+
+VREZEC, Al. Strokovna delavnica o kozaèi v narodnem parku Bavarski
+gozd. Svet ptic, 2007, letn. 13, št. 1, str. 43. [COBISS.SI-ID
+22574041]
+
+VREZEC, Al. Zimsko spanje. Otroci (Ljubno ob Savinji), 2007, letn.
+6, str. 17-18, ilustr. [COBISS.SI-ID 23576281]
+
+VREZEC, Al. Al, pojoèi znanstvenik. Otroci (Ljubno ob Savinji),
+2007, letn. 6, str. 4-6. [COBISS.SI-ID 22872793]
+
+VRH VREZEC, Petra, VREZEC, Al. Kdo se skriva v smreèji senci?.
+Otroci (Ljubno ob Savinji), 2007, letn. 8, str. 17-18, ilustr.
+[COBISS.SI-ID 23576025]
+
+VRH VREZEC, Petra, VREZEC, Al. Ptièji vrvež na obloženi krmilnici.
+Otroci (Ljubno ob Savinji), 2007/2008, str. 17-18. [COBISS.SI-ID
+23967705]
+
+VRH VREZEC, Petra, VREZEC, Al. Ste že prisluhnili glasovom jesenske
+noèi?. Otroci (Ljubno ob Savinji), 2007, letn. 6, str. 17-18.
+[COBISS.SI-ID 23575513]
+
+
+}\NIBbibitems{Objavljeni  znanstveni  prispevek  na  konferenci
+}{Published Scientific Conference Contribution }{
+
+GERM, Mateja, BREZNIK, Barbara. Responses of common buckwheat
+(Fagopyrum esculentum) to enhanced UV-B radiation and selenium. V:
+YAN, Chai (ur.), ZONGWEN, Zhang (ur.). Proceedings of the 10th
+International Symposium on Buckwheat, August 14 - 18, 2007,
+Yangling, Shaanxi, People's Republic of China. Advances in Buckwheat
+Research : proceedings of the 10th International Symposium on
+Buckwheat, August 14-18, 2007, Yangling, Shaanxi, People's Republic
+of China. Yangling: Northwest A & F University Press, 2007, str.
+127-131. [COBISS.SI-ID 1764175]
+
+VREZEC, Al. The Ural owl (Strix uralensis macroura) - status and
+overview of studies in Slovenia. V: MÜLLER, Jörg, editor (ur.),
+SCHERZINGER, Wolfgang (ur.), MONING, Christoph (ur.). European Ural
+owl workshop : Bavarian forest national park : Nationalpark
+Bayerischer Wald. Prag: Graphischer atelier H, 2007, str. 16-31,
+ilustr. [COBISS.SI-ID 23555545]
+
+
+}\NIBbibitems{Objavljeni  strokovni  prispevek  na  konferenci
+}{Published Professional Conference Contribution }{
+
+KAPLA, Andrej. Poroèilo o delu koleopterološke skupine. V: POLAJNAR,
+Jernej (ur.), STANKOVIÆ, David. Raziskovalni tabor študentov
+biologije, Lovrenc na Pohorju 2005. Ljubljana: Društvo študentov
+biologije, 2007, str. 56-62. [COBISS.SI-ID 23580889]
+
+KOCE, Urša. Poroèilo o delu skupine za kobilice, RTŠB Dekani 2004.
+V: POLAJNAR, Jernej (ur.), STANKOVIÆ, David. Raziskovalni tabor
+študentov biologije, Lovrenc na Pohorju 2005. Ljubljana: Društvo
+študentov biologije, 2007, str. 44-55. [COBISS.SI-ID 23580633]
+
+
+}\NIBbibitems{Objavljeni  povzetek  znanstvenega  prispevka  na
+konferenci }{Published Scientific Conference Contribution Abstract
+}{
+
+BRANCELJ, Anton, MORI, Nataša. Abundance and diversity of
+invertebrates in hyporheic and phreatic zone from four ruvers in
+cental Slovenia. V: RIBEIRO, Luís (ur.), CHAMBEL, António (ur.),
+CONDESSO DE MELO, M. Teresa (ur.). 35th Congress of the IAH.
+Groundwater and Ecosystems, Lisbon, 17-21 September 2007. Abstract
+book. Lisbon: International Association of Hydrogeologists, 2007,
+str. 299. [COBISS.SI-ID 23311065]
+
+CUDERMAN, Petra, KREFT, Ivan, GERM, Mateja, STIBILJ, Vekoslava.
+Determination of Se species in Se enriched and drought exposed
+potatoes by HPLC-ICP-MS and HPLC-UV-HG-AFS. V: 11th Workshop on
+Progress in Analytical Methodologies for Trace Metal Speciation,
+Münster, Germary. TraceSpec 2007 : final program. [S. l.: s. n.],
+2007, str. 2.6. [COBISS.SI-ID 21133607]
+
+CUDERMAN, Petra, KREFT, Ivan, GERM, Mateja, STIBILJ, Vekoslava.
+Investigation of Se species in Se enriched potatoes by HPLC-ICP-MS
+and HPLC-UV-HG-AFS. V: 14th Young Investigators' Seminar on
+Analytical Chemistry, YISAC'07, Pardubice, June 25-28, 2007.
+YISAC'07 Proceedings. Pardubice: University of Pardubice, 2007,
+2007, str. 60-61. [COBISS.SI-ID 20849959]
+
+GERM, Mateja, MAZEJ, Zdenka. Species presence and abundance in
+relation to nutrient supply and geomorphological characteristics of
+the artificial lake Velenjsko jezero (Slovenia). V: Programme and
+abstracts [of the] sefs-5 - Symposium for European freshwater
+sciences, Palermo, Italy, July 8 - 13, 2007. Palermo: Eurpean
+federation for freshwater sciences (EFFS), 2007, str. 206.
+[COBISS.SI-ID 22965209]
+
+KUHAR, Urška, KRŽIÈ, Nina, GERM, Mateja, URBANC-BERÈIÈ, Olga,
+GABERŠÈIK, Alenka. Macrophytes and quality of aquatic environment of
+watercourses in the transition area between Mediterranean, Alpine,
+Dinaric and Pannonian ecoregions. V: 30th Congress of the
+International Association of Theoretical and Applied Limnology :
+Avgust 12-18, 2007, Palais des Congres de Montréal, Montréal,
+Québec, Canada : abstracts : SIL 2007. Montréal, 2007, str. 33, SS16
+[Ecology of benthic vegetation]. [COBISS.SI-ID 1763663]
+
+MEZEK, Tadej, ARTS, Michael Theodore, SVERKO, Ed, FISK, Aaron T.
+Novel fatty acid biomarkers in zebra and quagga mussels. V: 30th
+Congress of the International Association of Theoretical and Applied
+Limnology : Avgust 12-18, 2007, Palais des Congres de Montréal,
+Montréal, Québec, Canada : abstracts : SIL 2007. Montréal, 2007,
+str. [1]. [COBISS.SI-ID 23369945]
+
+MEZEK, Tadej, ARTS, Michael Theodore, VOVK, Irena, BRANCELJ, Anton.
+Seasonal dynamic of lipid classes in zooplankton species of glacial
+lake Bohinj, Slovenia. V: 30th Congress of the International
+Association of Theoretical and Applied Limnology : Avgust 12-18,
+2007, Palais des Congres de Montréal, Montréal, Québec, Canada :
+abstracts : SIL 2007. Montréal, 2007, str. [1]. [COBISS.SI-ID
+23370201]
+
+MORI, Nataša, BRANCELJ, Anton, SIMÈIÈ, Tatjana. Impact of gravel
+extraction activities on hyporheic processes in a pre-alpine
+turbulent river (W Slovenia). V: RIBEIRO, Luís (ur.), CHAMBEL,
+António (ur.), CONDESSO DE MELO, M. Teresa (ur.). 35th Congress of
+the IAH. Groundwater and Ecosystems, Lisbon, 17-21 September 2007.
+Abstract book. Lisbon: International Association of Hydrogeologists,
+2007, str. 98-99. [COBISS.SI-ID 23310041]
+
+ODER, Martina, BRANCELJ, Anton. Koliformne bakterije fekalnega
+izvora v Bohinjskem jezeru = Fecal coliform bacteria in Lake Bohinj.
+V: KRAIGHER, Alenka (ur.), BERGER, Tatjana (ur.), PIŠKUR-KOSMAÈ,
+Dunja (ur.). 4. slovenski kongres preventivne medicine, Portorož,
+17. do 19. maj 2007. Izzivi javnega zdravja v tretjem tisoèletju :
+knjiga izvleèkov. Ljubljana: Sekcija za preventivno medicino
+Slovenskega zdravniškega društva, 2007, str. 151. [COBISS.SI-ID
+2677099]
+
+SIMÈIÈ, Tatjana, BRANCELJ, Anton. Metabolic activity of amphipod
+populations from different habitats. V: MUSKÓ, Ilona B. (ur.).
+XIIIth International Colloquium on Amphipoda, Tihany, Hungary, 20-25
+May 2007. Programme & abstracts. Tihany: Balaton Limnological
+Research Institute of the Hungarian Academy of Sciences, 2007, str.
+36. [COBISS.SI-ID 22866393]
+
+SIMÈIÈ, Tatjana, BRANCELJ, Anton. Seasonal changes in respiratory
+enzyme activity of microplankton, zooplankton and sediment
+communities in two lakes of different trophic state. V: Programme
+and abstracts [of the] sefs-5 - Symposium for European freshwater
+sciences, Palermo, Italy, July 8 - 13, 2007. Palermo: Eurpean
+federation for freshwater sciences (EFFS), 2007, str. 249.
+[COBISS.SI-ID 22965465]
+
+VREZEC, Al. Competitive exclusion and indirect interactions in the
+forest owl guild. V: World Owl Conference, Groningen, Netherlands,
+31 October through 4 November 2007 : [proceedings]. Groningen, 2007:
+[S.n.], [Št.81]. [COBISS.SI-ID 23578585]
+
+VREZEC, Al. The Ural owl Strix uralensis macroura in Slovenia: an
+overview of current knowledge on species ecology. V: XIV Convegno
+Italiano di Ornitologia, Trieste, 26 - 30 settembre 2007. Riassunti
+del contributi. Trieste: [Convegno Italiano di Ornitologia], 2007,
+str. 16. [COBISS.SI-ID 23996121]
+
+VREZEC, Al, SMOLE, Jakob, VRH VREZEC, Petra. Descriptions of
+European owl species by Scopoli (1769): a problem of overlooked
+European owl names?. V: World Owl Conference, Groningen,
+Netherlands, 31 October through 4 November 2007 : [proceedings].
+Groningen, 2007: [S.n.], [Št.127]. [COBISS.SI-ID 23578329]
+
+
+
+
+
+}\NIBbibitems{Samostojni  strokovni  sestavek  v  monografiji
+}{Independent Professional Component Part in a Monograph }{
+publikaciji
+
+GERM, Mateja. Tatarischer buchweizen in Asien und in Europa. V:
+KREFT, Ivan (ur.), RIES, Christian (ur.), ZEWEN, Christian (ur.).
+Das Buchweizen Buch : mit Rezepten aus aller Welt. 2. überarbeitete
+und erweiterte Aufl. Arzfeld: Islek ohne Grenzen EWIV, 2007, str.
+17-37. [COBISS.SI-ID 5132409]
+
+
+}\NIBbibitems{Recenzija, prikaz  knjige, kritika }{Review, Book
+Review, Critique }{
+
+VREZEC, Al. Organizmi v prostoru in èasu : med knjigami. Znanost
+(Ljubl.), 2007, letn. 49, št. 73, str. 26. [COBISS.SI-ID 22608601]
+
+
+}\NIBbibitems{Predgovor, spremna  beseda }{Preface, Afterword }{
+
+TOME, Davorin. Je pomembno! = It certainly is important!.
+Acrocephalus, 2007, letn. 28, št. 133, str. 49. [COBISS.SI-ID
+23947225]
+
+
+}\NIBbibitems{Drugi  èlanki  ali  sestavki }{Other Articles or
+Component Parts }{
+
+KOCE, Urša. Podeljeni nagradi Aviana in Zlati legat. Svet ptic,
+2007, let. 13, št. 2, str. 22-23, ilustr. [COBISS.SI-ID 592117]
+
+
+MONOGRAFIJE IN DRUGA ZAKLJUÈENA DELA
+
+
+}\NIBbibitems{Strokovna  monografija }{Professional Monograph }{
+
+BRGLEZ, Alja, RUS, Petra, PAGON, Polona. Mednarodna ekološka
+gimnazija Bovec : predlog ustanovitve, (Zbirka Delovni zvezki ICK,
+Posebna serija). Dopolnjena izd. Ljubljana: Inštitut za civilizacijo
+in kulturo - ICK, 2007. 47 str., graf. prikazi. ISBN
+978-961-6554-14-5. [COBISS.SI-ID 232327424]
+
+BRGLEZ, Alja, RUS, Petra, PAGON, Polona. Mednarodna ekološka
+gimnazija Bovec : predlog ustanovitve, (Zbirka Delovni zvezki ICK,
+Posebna serija, 6). Ljubljana: Inštitut za civilizacijo in kulturo -
+ICK, 2007. 44 str., graf. prikazi. ISBN 978-961-6554-13-8.
+[COBISS.SI-ID 230997504]
+
+
+}\NIBbibitems{Doktorska  disertacija }{Doctoral Dissertation }{
+
+DENAC, Damijan. Populacijska dinamika repaljšèice (Saxicola rubetra)
+v mozaiku nižinskih habitatnih tipov : doktorska disertacija. [S.
+l.: D. Denac], 2007. X, 94 str., ilustr. [COBISS.SI-ID 1855823]
+
+
+}\NIBbibitems{Konèno  poroèilo  o  rezultatih  raziskav }{Final
+Research Report }{
+
+AL SAYEGH-PETKOVŠEK, Samar, KOTNIK, Klemen, KUGONIÈ, Nives, ŠAJN,
+Robert, JANŽA, Mitja, KUMELJ, Špela, ŠEŠERKO, Melita, ZALUBERŠEK,
+Marjeta, BOLE, Mojca, DRUKS GAJŠEK, Polonca, PETRIÈ, Metka, KOŠIR,
+Adrijan, KOGOVŠEK, Janja, POLIÈNIK, Helena, ÈATER, Matjaž, LEVANIÈ,
+Tom, BIENELLI-KALPIÈ, Andreja, ÈARNI, Andraž, KOSTADINOVSKI, Mitko,
+KOŠIR, Petra, MATEVSKI, Vlado, ŠILC, Urban, ZELNIK, Igor, JELENKO,
+Ida, BRANCELJ, Anton, TOME, Davorin, SAVINEK, Karin, MIKUŽ, Boštjan,
+MIKLAVŽINA, Iztok, KONÈNIK, Damjan, FLIS, Jelka, REPINC, Urška,
+ŠTROK, Marko, BENEDIK, Ljudmila, LOJEN, Sonja, ÈRNIÈ, Boštjan,
+GOBEC, Sandi, IVANOVSKI, Ljubomir, BLAZEVSKI, Bosko, VELJANOVSKA,
+Andrijana, PAVŠEK, Zoran, POKORNY, Boštjan. Doloèitev vpliva
+vojaškega poligona Krivolak na okolje z namenom njegove ekološke
+sanacije : poroèilo. Velenje: ERICo, 2007. XXXVI, 590 str.,
+fotograf., graf. prikazi. [COBISS.SI-ID 807382]
+
+BRICELJ, Mihael, KOSI, Gorazd, GERM, Mateja, STANIÈ, Karmen.
+Monitoring kakovosti jezer v letu 2006 - biološki parametri.
+Ljubljana: Nacionalni inštitut za biologijo, 2007. 150 str.
+[COBISS.SI-ID 1762639]
+
+GERM, Mateja, GABERŠÈIK, Alenka, KUHAR, Urška. Vrednotenje
+ekološkega stanja rek v skladu z vodno direktivo (Direktiva
+2000/60/ES); popis makrofitov na 20 vzorènih mestih : konèno
+poroèilo. Ljubljana: Nacionalni inštitut za biologijo, 2007. 51 f.,
+ilustr. [COBISS.SI-ID 1814095]
+
+GERM, Mateja, URBANIÈ, Gorazd, GABERŠÈIK, Alenka, KUHAR, Urška,
+ŠIŠKO, Milijan. Prilagoditev trofiènega indeksa zahtevam vodne
+direktive (Direktiva 2000/60/ES) za vrednotenje ekološkega stanja
+rek v Sloveniji na podlagi makrofitov : konèno poroèilo. Ljubljana:
+Nacionalni inštitut za biologijo, 2007. 68 f., pril. CD, ilustr.
+[COBISS.SI-ID 1813583]
+
+JUVANÈIÈ, Luka, MURKO, Polona, ERHART, Vesna, ŽERDIN, Martin,
+KAMENŠEK, Natalija, ŠOT PAVLOVIÈ, Leonida, JERMAN, Barbara, TOME,
+Davorin. Predhodno vrednotenje programa razvoja podeželja republike
+Slovenije za obdobje 2007-2013 : Okoljsko poroèilo. Domžale:
+Univerza v Ljubljani, Biotehniška fakulteta, 2007. 241 str.
+[COBISS.SI-ID 2066824]
+
+KOSI, Gorazd, ŠIŠKO, Milijan, BRICELJ, Mihael, ELERŠEK, Tina,
+STANIÈ, Karmen. Vzorèenja in obdelava 15 vzorcev fitobentosa
+nabranih v rekah hidroekoregije Panonska nižina (po Urbaniè 2006) za
+doloèanje ekološkega stanja vodotokov v Sloveniji : (konèno
+poroèilo). Ljubljana: Nacionalni inštitut za biologijo, 2007. 51 f.,
+pril. CD, tabele. [COBISS.SI-ID 23539673]
+
+KOSI, Gorazd, ŠIŠKO, Milijan, BRICELJ, Mihael, STANIÈ, Karmen.
+Monitoring za ekološko stanje opvršinskih vodotokov v letu 2006 -
+fitobentos : konèno poroèilo. Ljubljana: Nacionalni inštitut za
+biologijo, 2007. 150 f., pril. CD, tabele. [COBISS.SI-ID 23538649]
+
+KOSI, Gorazd, ŠIŠKO, Milijan, ELERŠEK, Tina, STANIÈ, Karmen.
+Vzorèenja in obdelava 15 vzorcev fitobentosa nabranih v rekah
+hidroekoregije Dinaridi (po Urbaniè 2006) za doloèanje ekološkega
+stanja vodotokov v Sloveniji : (konèno poroèilo). Ljubljana:
+Nacionalni inštitut za biologijo, 2007. 52 F., pril. CD, tabele.
+[COBISS.SI-ID 23538905]
+
+LIPEJ, Lovrenc, DOBRAJC, Žiga, FORTE, Janez, MAVRIÈ, Borut,
+ORLANDO-BONACA, Martina, ŠIŠKO, Milijan. Kartiranje habitatnih tipov
+in popis vrst na morskih zavarovanih obmoèjih NS Debeli rtiè, NR
+Strunjan in NS Rt Madona : zakljuèno poroèilo, (Poroèila MBP-Morska
+biološka postaja, 92). Piran: Nacionalni inštitut za biologijo:
+Morska biološka postaja, 2007. 56 str., ilustr. [COBISS.SI-ID
+1711183]
+
+LIPEJ, Lovrenc, MOZETIÈ, Patricija, ORLANDO-BONACA, Martina, MAVRIÈ,
+Borut, ŠIŠKO, Milijan, BETTOSO, Nicola. Opredelitev ekološkega
+stanja morja v skladu z Vodno direktivo (Water Framework Directive,
+2000/60/EC) : dopolnjeno zakljuèno poroèilo, (Poroèila MBP - Morska
+biološka postaja, 96). NIB - Morska biološka postaja; Piran,
+November 2007. 180 str., Pril. I-XII, ilustr. [COBISS.SI-ID 1798991]
+
+MOZETIÈ, Patricija, BAJT, Oliver, ÈERMELJ, Branko, FRANCÉ, Janja,
+KOVAÈ, Nives, LAPAJNE, Slavko, MILAÈIÈ, Radmila, ŠIŠKO, Milijan,
+TURK, Valentina. Monitoring kakovosti morja in voda za življenje in
+rast morskih školjk in morskih polžev v letu 2006 : zakljuèno
+poroèilo, (Poroèila MBP - Morska biološka postaja, 93). Piran:
+Nacionalni inštitut za biologijo: Morska biološka postaja, febr.
+2007. 111 str., graf. prikazi. http://www.arso.gov.si/vode/morje.
+[COBISS.SI-ID 1703759]
+
+URBANC-BERÈIÈ, Olga, GERM, Mateja, POVŽ, Meta, ŠUMER, Suzana. Ocena
+ekološkega stanja reke Ljubljanice : makrofiti in ribe = Evaluation
+of ecological status of the river Ljubljanica : macrophytes and
+fishes. Ljubljana: Nacionalni inštitut za biologijo, 2007. 47 f.
+[COBISS.SI-ID 1839951]
+
+VREZEC, Al, POLAK, Slavko, KAPLA, Andrej, PIRNAT, Aljoša, GROBELNIK,
+Vesna, ŠALAMUN, Ali. Monitoring populacij izbranih ciljnih vrst
+hrošèev - Carabus variolosus, Leptodirus hochenwartii, Lucanus
+cervus, in Morinus funereus, Rosalia alpina : konèno poroèilo.
+Ljubljana: Nacionalni inštitut za biologijo, 2007. 144 f., ilustr.,
+zvd., tab. [COBISS.SI-ID 27212845]
+
+
+}\NIBbibitems{Elaborat, predštudija ,študija }{Treatise, Preliminary
+Study, Study }{
+
+KUS VEENVLIET, Jana, VEENVLIET, Paul, ACCETTO, Marko, PRESETNIK,
+Primož, VREZEC, Al, KAPLA, Andrej, ZAKŠEK, Valerija. Dodatek za
+varovana obmoèja: presoja sprejemljivosti za gradnjo glavne ceste
+G2-108/1186 Hrastnik-Zidani Most in deviacije glavne ceste G1-5
+Rimske Toplice-Zidani Most-Radeèe. Grahovo: Zavod Symbiosis, 2007.
+46 f., tabele, zemljevidi. [COBISS.SI-ID 23968985]
+
+VREZEC, Al, PIRNAT, Aljoša, KAPLA, Andrej, ŠALAMUN, Ali. Zasnova
+spremljanja stanja populacij izbranih ciljnih vrst hrošèev vkljuèno
+z dopolnitvijo predloga obmoèij za vkljuèitev v omrežje NATURA 2000
+: prvo delno poroèilo. Ljubljana: Nacionalni inštitut za biologijo,
+2007. 1 zv. (loè. pag.), ilustr., zvd., tab. [COBISS.SI-ID 27491117]
+
+
+IZVEDENA DELA (DOGODKI)
+
+
+}\NIBbibitems{Radijski  ali  TV dogodek }{Radio or Television Event
+}{
+
+VREZEC, Al. Razkošje v glavi : oddaje dokumentarno feljtonskega
+uredništva, 1. program, Radio Slovenia, 17.03.2007 ob 16.30. 2007.
+[COBISS.SI-ID 22489305]
+
+
+}\NIBbibitems{Prispevek  na  konferenci  brez  natisa }{Unpublished
+Conference Contribution }{
+
+MEZEK, Tadej, HARROD, Chris. Climate change and alpine lake
+ecosystems : INYS Conference on Climate Change, 25-31 March 2007,
+Birmingham. 2007. [COBISS.SI-ID 22788569]
+
+
+}\NIBbibitems{Vabljeno  predavanje  na  konferenci  brez  natisa
+}{Unpublished Invited Conference Lecture }{
+
+
+BRANCELJ, Anton. Life in a permanent darkness. Khon Kaen: Khon Kaen
+University, 2007. [COBISS.SI-ID 23573977]
+
+
+SEKUNDARNO AVTORSTVO
+
+
+Urednik
+
+MORI, Nataša (ur.), PAGON, Polona (ur.), BRANCELJ, Anton (ur.).
+Public lakeshore access and lakeside occupation : practical guide.
+Ljubljana: National Institute of Biology, 2007. ISBN
+978-961-90363-9-6. [COBISS.SI-ID 236905216]
+
+Annales. Series historia naturalis. Tome, Davorin (èlan uredniškega
+odbora 1994-). Koper: Zgodovinsko društvo za južno Primorsko:
+Znanstveno raziskovalno središèe Republike Slovenije = Capodistria:
+Societá storica del Litorale: Centro di ricerche scientifiche della
+Repubblica di Slovenia = Koper: Science and Research Centre of the
+Republic of Slovenia, 1994-. ISSN 1408-533X. [COBISS.SI-ID 71951360]
+
+Falco. Tome, Davorin (èlan uredniškega sveta 1995-). Koper:
+Ornitološko društvo "Ixobrychus", 1987-. ISSN 1318-5411.
+[COBISS.SI-ID 1495857]
+
+Acrocephalus. Vrezec, Al (urednik 1999-). Ljubljana: Društvo za
+opazovanje in prouèevanje ptic Slovenije, 1980-. ISSN 0351-2851.
+[COBISS.SI-ID 7679234]
+
+Svet ptic. Vrezec, Al (èlan uredniškega sveta 2000-). Ljubljana:
+Društvo za opazovanje in prouèevanje ptic Slovenije DOPPS, 2000-.
+ISSN 1580-3600. [COBISS.SI-ID 107164672]
+
+
+Mentor pri doktorskih disertacijah
+
+DENAC, Damijan. Populacijska dinamika repaljšèice (Saxicola rubetra)
+v mozaiku nižinskih habitatnih tipov : doktorska disertacija. [S.
+l.: D. Denac], 2007. X, 94 str., ilustr. [COBISS.SI-ID 1855823]
+(mentor: Davorin Tome)
+
+
+Mentor pri diplomskih delih
+
+BORDJAN, Ana. Vpliv zarašèanja Cerkniškega polja na ptice gnezdilke
+: diplomsko delo : univerzitetni študij = Effects of overgroving of
+Cerkniško polje on breeding birds : graduation thesis : university
+studies. Ljubljana: [A. Bordjan], 2007. XI, 74 f., graf. prikazi,
+pril. + CD. [COBISS.SI-ID 1794383] (mentor: Davorin Tome)
+
+LESKOŠEK, Tina. Posledice naselitve rib v Dvojno jezero (Triglavski
+narodni park) : diplomsko delo : univerzitetni študij = The
+consequences of fish introduction into the lake Dvojno jezero
+(Triglav National Park) : graduation thesis : university studies.
+Ljubljana: [T. Leskošek], 2007. IX, 67 f., graf. prikazi, pril. +
+CD. [COBISS.SI-ID 1816143] (mentor: Anton Brancelj)
+
+ŠTILEC, Katarina. Prehrana male uharice (Asio otus) na Ljubljanskem
+barju : diplomsko delo : univerzitetni študij = Diet of the
+long-eared owl (Asio otus) at Ljubljana moor : graduation thesis :
+university studies. Ljubljana: [K. Štilec], 2007. X, 46 f., graf.
+prikazi, pril. + CD. [COBISS.SI-ID 1811279] (mentor: Davorin Tome)

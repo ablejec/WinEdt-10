@@ -1,0 +1,39 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 20. avgust 2014, 00:06)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 06.\,03.\,2012 ]
+  \WinEdt{I2R}{( --> 18 h, 26 min.)}{Tuesday}{00:00-11:18}
+  \WinEdt{I2R}{( --> )}{Tuesday}{16:52-23:59}
+  \WinEdt{I2R}{( 0 h, 25 min.)}{Wednesday}{21:07-21:32}
+  \WinEdt{ARRS}{(23 h, 54 min.)}{petek}{15:36-15:30}
+\end{schedule}
+ 
+\end{document}

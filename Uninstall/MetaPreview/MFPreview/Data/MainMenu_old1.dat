@@ -1,0 +1,6 @@
+  ITEM="MetaFont"
+    CAPTION="Meta&Font"
+    IMAGE="MetaFont"
+    SAVE_INPUT=1
+    MACRO="Exe('%b\Exec\TeX\MetaFont.edt');"
+    REQ_FILTER=:"%!M=MetaFont"

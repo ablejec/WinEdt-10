@@ -1,0 +1,86 @@
+// -*- ASCII:EDT -*-
+// Transform a Sweave Rnw file into knitr Rnw file
+// Adaptation by Andrej Blejec <andrej.blejec@nib.si> after
+// author: Gilbert Ritschard (gilbert.ritschard at unige.ch)
+
+
+Requires(20070913); // Requires this build of WinEdt to work properly
+SetOK(1);  // Just in case ...
+SetErrorFlag(0);
+SaveAllDoc;
+// First we retrieve the R install path
+LetReg(5,"Install path");
+// Prompt("%!5",0,1);
+// ne vem zakaj spodnji ukaz vidi pravzaprav 'HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\R-core\R' ??? AntiVirus??
+LetReg(5,|%@('HKEY_LOCAL_MACHINE','Software\R-core\R','InstallPath')|);
+// Prompt("%!5",0,1);
+  //// The path to the R binaries can be set before calling the macro (in the menu setup)
+  //// for example: LetReg(7,"c:\Program Files\R\R-2.7.1\bin\")
+// IfIStr("%!7","","=","LetReg(7,'%!5\bin\i386\');");
+IfIStr("%!7","","=","LetReg(7,'%!5\bin\x64\');"); // for 64 bit version
+
+// Prompt("%!7",0,1);
+
+// Open RGui in subdirectory /R, /wd or in the main if it doesn't exists
+// Modified by A. Blejec 25. 4. 2010
+IfIStr("%!9","open","=","Relax","JMP('runR')");
+    IfFileExists('%!p\r\',"LetReg(9,'%!p\r')","LetReg(9,'%p')");
+    IfFileExists('%!p\wd\',"LetReg(9,'%!p\wd')","Relax");
+    IfFileExists('%!7RGui.exe',"Run('%!7RGui.exe','%!9')","Prompt('%!7RGui.exe does not exist / Set Reg7 in Sweave.edt and check Rguistart.bat',0,1)");
+JMP('exit');
+
+:runR:
+//  ResetConsole;
+//  ShowConsole(1);
+//  FocusConsole(1);
+  CloseFile("%b\_Run.log",1);
+  CloseFile("%b\_Err.log",1);
+  IfFileExists("%b\_Err.log",!"DeleteFile('%b\_Err.log')");
+  IfFileExists("%b\_Run.log",!"DeleteFile('%b\_Run.log')");
+
+
+
+SetOK(1); // Just in case
+
+  // Set LetReg(8,"cache") for cacheSweave
+
+  IfFileExists('%b\Contrib\R-Sweave\%!8Sweave.R',"",>
+       !"WrL('%%%%%% => %b\Contrib\R-Sweave\%!8Sweave.R not found <= ');");
+
+
+  WinExe('','"%!7Rscript" "%b\Contrib\R-Sweave\%!8SweaveToKnit.R" "%p\%n%t" "%p\%n-knitr.Rnw" '%p',>
+         'Sweave To knitr ...',0110,0,"", "", "%b\_Err.log", 110);
+  GetExitCode( 4 );
+//  IfFileExists('%p\%n.tex',"Open('%p\%n.tex');");
+
+//  Prompt("%!4");
+  IfNum("%!4",0,"=","JMP('next');","JMP('exit');");
+//-nolog   Open("%b\_Err.log");
+//-nolog  SearchReset;
+//-nolog  SetSearchCurrentDoc;
+//-nolog  SetSearchEntire(1);
+//-nolog  SetSearchForward(1);
+//-nolog  SetSearchCaseSensitive(1);
+//-nolog  //SetSearchInline(1);
+//-nolog   //SetFindStr("You can now run LaTeX on"); // safer, but works only in English
+//-nolog   SetFindStr("Error");
+//-nolog   IfFound("Open('%b\_Run.log');Open('%b\_Err.log');JMP('exit');","JMP('next');");
+:next:
+
+ SearchReset;
+
+  CloseFile("%b\_Err.log");
+
+  Open('%p\%N-knitr.Rnw');
+
+
+:exit: ============================
+  LetReg(4,'');
+  LetReg(5,"");
+  LetReg(6,"");
+  LetReg(7,"");
+  LetReg(8,"");
+  LetReg(9,"");
+
+  SetOK(1);
+End;

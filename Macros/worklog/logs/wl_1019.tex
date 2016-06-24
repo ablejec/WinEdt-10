@@ -1,0 +1,55 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 20 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 19.\,10.\,2009 ]
+  \WinEdt{<untitled project>}{( -->  3 h, 32 min.)}{M}{00:00-00:09}
+  \WinEdt{<untitled project>}{( --> )}{M}{20:37-23:59}
+  \WinEdt{ITAP}{( 0 h, 06 min.)}{M}{0:09-00:15}
+  \WinEdt{I2R}{( 2 h, 45 min.)}{M}{10:20-13:05}
+  \WinEdt{Bioinformatika}{( 3 h, 29 min.)}{T}{09:50-13:19}
+  \WinEdt{<untitled project>}{( 3 h, 30 min.)}{T}{09:50-13:20}
+  \WinEdt{StatVaje}{( 3 h, 13 min.)}{T}{13:20-16:33}
+  \WinEdt{Bioinformatika}{( -->  4 h, 17 min.)}{W}{00:00-01:42}
+  \WinEdt{Bioinformatika}{( --> )}{T}{21:25-23:59}
+  \WinEdt{Bioinformatika}{( 3 h, 18 min.)}{W}{09:48-13:06}
+  \WinEdt{<untitled project>}{( 3 h, 40 min.)}{W}{09:48-13:28}
+  \WinEdt{pseud}{( 1 h, 05 min.)}{W}{13:28-14:33}
+  \WinEdt{pseud}{( 0 h, 34 min.)}{Th}{15:58-16:32}
+  \WinEdt{pseud}{( 0 h, 30 min.)}{Th}{20:38-21:08}
+  \WinEdt{KIS}{( 1 h, 41 min.)}{Th}{21:08-22:49}
+  \WinEdt{KIS}{( 1 h, 25 min.)}{F}{09:21-10:46}
+  \WinEdt{<untitled project>}{( 6 h, 35 min.)}{F}{09:21-15:56}
+  \WinEdt{sweet}{( 0 h, 14 min.)}{F}{15:56-16:10}
+  \WinEdt{<untitled project>}{(49 h, 46 min.)}{Su}{15:56-17:42}
+  \WinEdt{!KrNeki}{( 6 h, 04 min.)}{Su}{17:42-23:46}
+\end{schedule}
+ 
+\end{document}

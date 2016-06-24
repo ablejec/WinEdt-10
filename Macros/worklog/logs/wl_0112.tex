@@ -1,0 +1,71 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 20 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 12.\,01.\,2009 ]
+  \WinEdt{lek}{( -->  6 h, 15 min.)}{M}{00:00-01:46}
+  \WinEdt{lek}{( --> )}{M}{19:31-23:59}
+  \WinEdt{lek}{( 0 h, 01 min.)}{M}{01:46-01:47}
+  \WinEdt{lek}{( 5 h, 27 min.)}{M}{10:47-16:14}
+  \WinEdt{lek}{( 0 h, 07 min.)}{M}{23:25-23:32}
+  \WinEdt{booklet}{( 0 h, 24 min.)}{M}{23:32-23:56}
+  \WinEdt{booklet}{( 1 h, 09 min.)}{T}{09:32-10:41}
+  \WinEdt{Gogala}{( 0 h, 13 min.)}{T}{10:41-10:54}
+  \WinEdt{_KrNeki}{( 2 h, 57 min.)}{T}{10:54-13:51}
+  \WinEdt{_KrNeki}{( 0 h, 14 min.)}{T}{13:51-14:05}
+  \WinEdt{<untitled project>}{( 0 h, 17 min.)}{T}{13:51-14:08}
+  \WinEdt{KIS}{( 0 h, 55 min.)}{T}{14:08-15:03}
+  \WinEdt{KIS}{( 0 h, 12 min.)}{T}{16:27-16:39}
+  \WinEdt{KIS}{( 0 h, 04 min.)}{T}{21:50-21:54}
+  \WinEdt{_KrNeki}{( 0 h, 14 min.)}{T}{21:54-22:08}
+  \WinEdt{amisc}{( 0 h, 48 min.)}{T}{22:08-22:56}
+  \WinEdt{localtexmf}{( 0 h, 29 min.)}{T}{22:56-23:25}
+  \WinEdt{amisc}{( 0 h, 03 min.)}{T}{23:25-23:28}
+  \WinEdt{localtexmf}{( 0 h, 02 min.)}{T}{23:28-23:30}
+  \WinEdt{_KrNeki}{( 0 h, 01 min.)}{T}{23:38-23:39}
+  \WinEdt{_KrNeki}{( 1 h, 01 min.)}{W}{22:14-23:15}
+  \WinEdt{_KrNeki}{( 0 h, 01 min.)}{W}{23:17-23:18}
+  \WinEdt{GFLV}{( 0 h, 13 min.)}{W}{23:18-23:31}
+  \WinEdt{_KrNeki}{( -->  0 h, 39 min.)}{Th}{00:00-00:10}
+  \WinEdt{_KrNeki}{( --> )}{W}{23:31-23:59}
+  \WinEdt{_KrNeki}{( 0 h, 46 min.)}{Th}{09:48-10:34}
+  \WinEdt{_KrNeki}{( 0 h, 51 min.)}{Th}{10:50-11:41}
+  \WinEdt{_KrNeki}{( 0 h, 31 min.)}{Th}{23:00-23:31}
+  \WinEdt{_KrNeki}{( 0 h, 02 min.)}{Th}{23:31-23:33}
+  \WinEdt{_KrNeki}{( 0 h, 37 min.)}{Sa}{20:55-21:32}
+  \WinEdt{!KrNeki}{( 1 h, 41 min.)}{Sa}{21:32-23:13}
+  \WinEdt{!KrNeki}{( 0 h, 01 min.)}{Sa}{23:13-23:14}
+  \WinEdt{<untitled project>}{( --> 22 h, 26 min.)}{Su}{00:00-21:39}
+  \WinEdt{<untitled project>}{( --> )}{Sa}{23:13-23:59}
+  \WinEdt{geNorm}{( 1 h, 57 min.)}{Su}{21:39-23:36}
+  \WinEdt{lek}{( 0 h, 01 min.)}{Su}{23:36-23:37}
+\end{schedule}
+ 
+\end{document}

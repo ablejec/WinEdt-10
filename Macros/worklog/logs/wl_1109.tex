@@ -1,0 +1,57 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 09.\,11.\,2008 ]
+  \WinEdt{geNorm}{( 0 h, 03 min.)}{nedelja}{11:38-11:41}
+  \WinEdt{<untitled project>}{( 0 h, 01 min.)}{nedelja}{11:41-11:42}
+  \WinEdt{sds}{( 0 h, 11 min.)}{nedelja}{11:43-11:54}
+  \WinEdt{Beamer}{( 0 h, 10 min.)}{nedelja}{11:54-12:04}
+  \WinEdt{sds}{( 2 h, 05 min.)}{nedelja}{12:04-14:09}
+  \WinEdt{sds}{( 0 h, 45 min.)}{nedelja}{14:12-14:57}
+  \WinEdt{sds}{( 0 h, 09 min.)}{nedelja}{20:59-21:08}
+  \WinEdt{sds}{( 0 h, 39 min.)}{nedelja}{22:31-23:10}
+  \WinEdt{sds}{( 0 h, 02 min.)}{nedelja}{23:10-23:12}
+  \WinEdt{Jaka}{( 0 h, 01 min.)}{W}{10:43-10:44}
+  \WinEdt{!KrNeki}{( 0 h, 38 min.)}{W}{10:44-11:22}
+  \WinEdt{!KrNeki}{( -->  1 h, 16 min.)}{Th}{00:00-00:00}
+  \WinEdt{!KrNeki}{( --> )}{W}{22:44-23:59}
+  \WinEdt{!KrNeki}{( 1 h, 20 min.)}{Th}{14:57-16:17}
+  \WinEdt{<untitled project>}{( 1 h, 52 min.)}{Th}{14:57-16:49}
+  \WinEdt{!KrNeki}{( 0 h, 05 min.)}{Th}{16:50-16:55}
+  \WinEdt{!KrNeki}{( 0 h, 36 min.)}{Su}{18:30-19:06}
+  \WinEdt{!KrNeki}{( 0 h, 03 min.)}{Su}{21:40-21:43}
+  \WinEdt{lod}{( 0 h, 37 min.)}{Su}{21:43-22:20}
+  \WinEdt{!KrNeki}{( 0 h, 49 min.)}{Su}{22:20-23:09}
+  \WinEdt{Inremos7}{( -->  3 h, 18 min.)}{Friday}{00:00-00:48}
+  \WinEdt{Inremos7}{( --> )}{Friday}{21:30-23:59}
+\end{schedule}
+ 
+\end{document}

@@ -1,0 +1,49 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 20. avgust 2014, 00:06)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 13.\,01.\,2013 ]
+  \WinEdt{<temporary project>}{(56 h, 56 min.)}{Sunday}{12:16-21:12}
+  \WinEdt{_StatHist}{( 0 h, 01 min.)}{Sunday}{21:15-21:16}
+  \WinEdt{<untitled project>}{( 0 h, 01 min.)}{Sunday}{21:15-21:16}
+  \WinEdt{Lezije}{( 2 h, 40 min.)}{M}{13:06-15:46}
+  \WinEdt{Lezije}{( 1 h, 32 min.)}{M}{22:26-23:58}
+  \WinEdt{rps}{( 6 h, 24 min.)}{T}{16:25-22:49}
+  \WinEdt{rps}{( 0 h, 01 min.)}{W}{0:01-00:02}
+  \WinEdt{rps}{( 9 h, 33 min.)}{W}{0:02-09:35}
+  \WinEdt{<untitled project>}{( 9 h, 35 min.)}{W}{0:02-09:37}
+  \WinEdt{ribistvo}{( 0 h, 07 min.)}{W}{09:37-09:44}
+  \WinEdt{rps}{( 0 h, 01 min.)}{W}{09:44-09:45}
+  \WinEdt{ribistvo}{(12 h, 24 min.)}{W}{09:45-22:09}
+  \WinEdt{Jure}{( 0 h, 01 min.)}{F}{10:17-10:18}
+  \WinEdt{rps}{( 4 h, 07 min.)}{torek}{12:02-16:09}
+\end{schedule}
+ 
+\end{document}

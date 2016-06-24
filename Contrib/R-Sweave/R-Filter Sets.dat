@@ -1,0 +1,102 @@
+Filter Sets: 275
+// For R-Sweave support for R-Sweave support
+
+Name:Math2
+  Definition:["+-*/^<>=&\"]
+  Before:0
+  After:0
+  Enabled:1R
+  Strict Priority:0
+  Priority:1
+  Color:5136
+
+Name:Text Delim
+  Definition:[",.:?!""`'"]
+  Before:0
+  After:0
+  Enabled:1R
+  Strict Priority:1
+  Priority:1
+  Color:1025
+
+Name:#
+  Definition:["#"]
+  Before:0
+  After:0
+  Enabled:0
+  Strict Priority:1
+  Priority:1
+  Color:1040
+
+Name:)
+  Definition:[")"]
+  Before:0
+  After:0
+  Enabled:1R
+  Strict Priority:1
+  Priority:5
+  Color:5120
+
+Name:(
+  Definition:["("]
+  Before:0
+  After:0
+  Enabled:1R
+  Strict Priority:1
+  Priority:5
+  Color:5120
+
+Name:[$@]
+  Definition:["$@"]
+  Before:0
+  After:0
+  Enabled:1R
+  Strict Priority:1
+  Priority:5
+  Color:5122
+
+Name:"``"
+  Definition:["``"]
+  Before:0
+  After:0
+  Enabled:1R
+  Strict Priority:0
+  Priority:6
+  Color:1040
+
+Name:"''"
+  Definition:["''"]
+  Before:0
+  After:0
+  Enabled:1R
+  Strict Priority:0
+  Priority:6
+  Color:1028
+
+Name:""""
+  Definition:[""""]
+  Before:0
+  After:0
+  Enabled:1R
+  Strict Priority:0
+  Priority:6
+  Color:1028
+
+Name:PageBreak
+  Definition:[""]
+  Before:0
+  After:0
+  Enabled:1R
+  Strict Priority:1
+  Priority:2
+  Color:34383
+
+Name:~alphanumdot
+  Definition:~(Alpha+Numeric+["._%!@$~/"])
+  Before:0
+  After:0
+  Enabled:1R
+  Strict Priority:0
+  Priority:0
+  Color:1040
+

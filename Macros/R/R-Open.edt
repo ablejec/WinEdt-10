@@ -1,0 +1,17 @@
+//
+// 22. 9. 2009 A. Blejec
+//  start R in /R or /wd
+//
+//
+//
+// Prompt("%p");
+// Prompt("%!p\r");
+//Run('CMDOW /MA');
+IfFileExists('%!p\r\',>
+'Prompt("%!p\r\")',"Prompt('Ga ni')");
+//  "Run('RGui','%p\R')","Relax");
+//  "Run('Rguistart.bat %!p\r')","Relax");
+IfFileExists('%!p\wd\',>
+//'Prompt("%!p\wd\")',"Prompt('Ga ni')");
+  "Run('Rguistart.bat %!p\wd')","Relax");
+End;

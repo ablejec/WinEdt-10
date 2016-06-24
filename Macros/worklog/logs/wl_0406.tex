@@ -1,0 +1,51 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 06.\,04.\,2009 ]
+  \WinEdt{<untitled project>}{( --> 81 h, 05 min.)}{M}{00:00-00:44}
+  \WinEdt{<untitled project>}{( --> )}{M}{15:39-23:59}
+  \WinEdt{spike}{( 1 h, 21 min.)}{M}{0:44-02:05}
+  \WinEdt{spike}{( 9 h, 01 min.)}{M}{09:44-18:45}
+  \WinEdt{spike}{( -->  3 h, 23 min.)}{T}{00:00-01:06}
+  \WinEdt{spike}{( --> )}{M}{21:43-23:59}
+  \WinEdt{spike}{( 7 h, 56 min.)}{W}{10:56-18:52}
+  \WinEdt{spike}{( -->  4 h, 46 min.)}{Th}{00:00-02:40}
+  \WinEdt{spike}{( --> )}{W}{21:54-23:59}
+  \WinEdt{spike}{( 2 h, 02 min.)}{Th}{10:16-12:18}
+  \WinEdt{spike}{( 4 h, 41 min.)}{Th}{14:30-19:11}
+  \WinEdt{spike}{( 0 h, 57 min.)}{F}{0:29-01:26}
+  \WinEdt{spike}{( 1 h, 12 min.)}{F}{09:28-10:40}
+  \WinEdt{I2R}{( -->  0 h, 49 min.)}{Friday}{00:00-00:21}
+  \WinEdt{I2R}{( --> )}{Friday}{23:32-23:59}
+  \WinEdt{Actuar}{(14 h, 10 min.)}{Friday}{0:21-14:31}
+\end{schedule}
+ 
+\end{document}

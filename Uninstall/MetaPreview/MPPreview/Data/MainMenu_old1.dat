@@ -1,0 +1,7 @@
+  ITEM="MetaPost"
+    CAPTION="&MetaPost"
+    IMAGE="MetaPost"
+    SAVE_INPUT=1
+    MACRO="Exe('%b\Exec\TeX\MetaPost.edt');"
+    SHORTCUT="24653::Shift+Ctrl+M"
+    REQ_FILTER=:"%!M=MetaPost"|"%!M=MetaPost:AUX"

@@ -1,0 +1,22 @@
+////////////////////////////////////
+//
+// Rnw > Rmd > md > HTML       --   dodano v Sweave.edt   in Sweave.R
+// 10. 4. 2014
+// A. Blejec <andrej.blejec@nib.si>
+//
+// How to use:
+//
+// 1. open myfile.Rnw file (preferably knitr, use Sweave2knitr if to convert Sweave file to knitr file)
+// 2. Select Macros / Execute macro script (or: ctrl + F9)
+//    and run macro TeX2Rmd.edt
+//
+// you will get file myfile.Rmd which can be processed further
+//
+// next use R:
+// Rnw2Rmd("myfile.Rnw")
+// knit("myfile.Rmd",output="myfile.md")
+// markdownToHTML("myfile.md","myfile.html")
+// shell.exec("myfile.html")
+//
+///////////////////////////////////
+//

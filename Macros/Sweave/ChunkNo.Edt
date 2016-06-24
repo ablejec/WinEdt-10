@@ -1,0 +1,11 @@
+// Set numbers to all non-named Sweave chunks <<>>=
+// Author: A. Blejec
+//
+
+    SaveRegisters(1111111111); // Clean Macro writing...
+    LetRegNum(9,0);
+    
+
+    RestoreRegisters(1111111111); // Clean Macro writing...
+
+End;

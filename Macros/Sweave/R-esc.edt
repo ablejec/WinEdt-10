@@ -1,0 +1,20 @@
+////////////////////////////////////////////////////////
+// R-esc.edt
+// Invoke r help on current word
+// $Revision: 1.1 $
+// $Date: 2012-04-24 $
+//
+// A. Blejec
+// Limitations:
+//
+// To be done:
+//
+//
+/////////////////////////////////////////////////////////
+//
+//   Prompt("%S");
+   CopyToClipboard("%&27;",0);  // put esc to clipboard
+//   Append;
+   Exe("%b\Macros\send2RLF.edt")
+   SetFocus(""); // Back to WinEdt
+ End;

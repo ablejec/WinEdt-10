@@ -1,0 +1,46 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 30.\,05.\,2011 ]
+  \WinEdt{literacy}{( 3 h, 01 min.)}{T}{10:17-13:18}
+  \WinEdt{!KrNeki}{( 0 h, 32 min.)}{T}{13:18-13:50}
+  \WinEdt{!KrNeki}{( 1 h, 40 min.)}{W}{14:50-16:30}
+  \WinEdt{<untitled project>}{(104 h, 52 min.)}{Su}{14:50-23:42}
+  \WinEdt{Inremos}{( --> 14 h, 59 min.)}{Wednesday}{00:00-12:10}
+  \WinEdt{Inremos}{( --> )}{Wednesday}{21:11-23:59}
+  \WinEdt{KG130116}{( 0 h, 01 min.)}{Thursday}{0:27-00:28}
+  \WinEdt{KG130116}{( 0 h, 29 min.)}{Thursday}{11:55-12:24}
+  \WinEdt{KG130116}{( 0 h, 01 min.)}{Thursday}{18:44-18:45}
+  \WinEdt{!KrNeki}{( 3 h, 58 min.)}{Thursday}{18:45-22:43}
+  \WinEdt{KG130116}{( 1 h, 14 min.)}{Thursday}{22:43-23:57}
+\end{schedule}
+ 
+\end{document}

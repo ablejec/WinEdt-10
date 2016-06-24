@@ -1,0 +1,46 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 20. avgust 2014, 00:06)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 19.\,05.\,2014 ]
+  \WinEdt{knitr}{( --> 22 h, 02 min.)}{M}{00:00-09:45}
+  \WinEdt{knitr}{( --> )}{M}{11:43-23:59}
+  \WinEdt{Vrnjacka}{( 4 h, 59 min.)}{M}{15:30-20:29}
+  \WinEdt{knitr}{( 0 h, 07 min.)}{M}{20:29-20:36}
+  \WinEdt{knitr}{( 0 h, 01 min.)}{M}{21:10-21:11}
+  \WinEdt{knitr}{( 0 h, 01 min.)}{M}{23:11-23:12}
+  \WinEdt{Vrnjacka}{( --> 26 h, 27 min.)}{W}{00:00-01:39}
+  \WinEdt{Vrnjacka}{( --> )}{T}{23:12-23:59}
+  \WinEdt{JSM2015}{( 0 h, 02 min.)}{torek}{23:02-23:04}
+  \WinEdt{KG130116}{( 0 h, 53 min.)}{torek}{23:04-23:57}
+  \WinEdt{Lezije}{( 0 h, 01 min.)}{torek}{23:58-23:59}
+\end{schedule}
+ 
+\end{document}

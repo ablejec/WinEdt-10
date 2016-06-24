@@ -1,0 +1,56 @@
+// Insert Sweave R code chunk environment
+// <<>>=
+// *
+// @
+// adapted after description in:
+// C:\Program Files\WinEdt Team\WinEdt\Macros\Samples\0Samples.txt
+BeginGroup;
+IfSel("0","=",>
+  "InsLine;>
+   SetWrap(0,0);>
+   Mark(0);>
+   Ins('\begin{figure}');>
+      NewLine;>
+   Ins('\begin{center}');>
+      NewLine;>
+   Ins('<<fig=true>>=');>
+   NewLine;>
+   CMD('Insert Bullet');>
+   NewLine;>
+   Ins('@');>
+   Ins('\caption{}\label{}');>
+      NewLine;>
+   Ins('\end{center}');>
+      NewLine;>
+   Ins('\end{figure}');>
+   InsLine;>
+   NewLine;>
+   Goto(0);>
+   CMD('Next Bullet')",>
+  "GetSel(0,0);>
+   CMD('Backspace');>
+   InsLine;>
+   NewLine;>
+   Ins('\begin{figure}');>
+      NewLine;>
+   Ins('\begin{center}');>
+      NewLine;>
+     Ins('%%!0');>
+   InsLine;>
+   Ins('\caption{}\label{}');>
+      NewLine;>
+   Ins('\end{center}');>
+      NewLine;>
+   Ins('\end{figure}');>
+   InsLine;>
+   Loop('SetSel(0);>
+     CMD(""Select Char Right"");>
+     GetSel(0,0);>
+     IfStr(""%%%%!0"","" "",""="",>
+       ""CMD(''Backspace'')"",>
+       ""Stop;"">
+     )>
+   ');>
+");
+EndGroup;
+End;

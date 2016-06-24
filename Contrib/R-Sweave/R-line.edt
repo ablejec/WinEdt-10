@@ -1,0 +1,9 @@
+ GetLine(8, %l);
+ ReplaceInString("1", ">", 0, 1, 1, 9);
+ CopyToClipboard('%!8%!9', 0);
+ LetReg(9,"");
+ LetReg(8,"");
+ Exe("%b\send2R.edt")
+ Wait("100");
+ SetFocus(""); // Back to WinEdt
+ End;

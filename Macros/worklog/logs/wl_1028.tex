@@ -1,0 +1,42 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 20. avgust 2014, 00:06)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 28.\,10.\,2012 ]
+  \WinEdt{<untitled project>}{(168 h, 06 min.)}{Sunday}{23:33-23:39}
+  \WinEdt{angleR}{( 0 h, 08 min.)}{Sunday}{23:39-23:47}
+  \WinEdt{angleR}{( 0 h, 05 min.)}{Sunday}{23:49-23:54}
+  \WinEdt{<untitled project>}{( 0 h, 07 min.)}{Sunday}{23:49-23:56}
+  \WinEdt{HowTo}{( 0 h, 08 min.)}{Monday}{15:02-15:10}
+  \WinEdt{CompStatistics}{( --> 16 h, 33 min.)}{torek}{00:00-16:18}
+  \WinEdt{CompStatistics}{( --> )}{torek}{23:45-23:59}
+\end{schedule}
+ 
+\end{document}

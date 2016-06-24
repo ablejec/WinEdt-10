@@ -1,0 +1,46 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 11.\,07.\,2011 ]
+  \WinEdt{KonjiNemec}{( 4 h, 25 min.)}{W}{10:52-15:17}
+  \WinEdt{KonjiNemec}{( 0 h, 19 min.)}{Th}{0:38-00:57}
+  \WinEdt{KonjiNemec}{( 0 h, 01 min.)}{Th}{12:04-12:05}
+  \WinEdt{<untitled project>}{( 0 h, 01 min.)}{Th}{12:05-12:06}
+  \WinEdt{Dobnik}{( 2 h, 13 min.)}{Th}{12:06-14:19}
+  \WinEdt{KonjiNemec}{( 0 h, 24 min.)}{Th}{15:50-16:14}
+  \WinEdt{KonjiNemec}{( 0 h, 47 min.)}{F}{0:04-00:51}
+  \WinEdt{KonjiNemec}{( 5 h, 13 min.)}{F}{08:35-13:48}
+  \WinEdt{KonjiNemec}{( 0 h, 01 min.)}{F}{15:25-15:26}
+  \WinEdt{KonjiNemec}{( -->  2 h, 01 min.)}{Su}{00:00-00:36}
+  \WinEdt{KonjiNemec}{( --> )}{Sa}{22:35-23:59}
+\end{schedule}
+ 
+\end{document}

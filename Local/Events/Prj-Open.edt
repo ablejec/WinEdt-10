@@ -1,0 +1,26 @@
+//
+// 5. 2. 2008 A. Blejec
+// changed to start R and open Explorer window with main file
+//
+// torek, avgust 12, 2008 at 19:23: Run R only if projects R folder exists
+// torek, april 1, 2008 at 23:25: Run R in projects R directory
+//
+//
+// Prompt("%p");
+// Prompt("%!p\r");
+//Run('CMDOW /MA');
+IfFileExists('%!p\r\',>
+//'Prompt("%!p\r\")',"Prompt('Ga ni')");
+'LetReg(9,"open");Exe("%b\Macros\Sweave\Sweave.edt")','Relax');
+//  "Run('Rguistart.bat %!p\r')","Relax");
+//Prompt("WinEdt/MikTex - [%f]")
+//Run('CMDOW RGui /MIN');
+//Run('CMDOW WinEdt/MikTex - [%f] /RES');
+//Run('CMDOW RGui /RES');
+////Run('CMDOW WinEdt/MikTex - [%f] /VIS');
+//Run('CMDOW /TV');
+//Run('CMDOW WinEdt/MikTex - [%f] /ACT');
+WinExe("","Explorer /n, %!p\doc","","",10000);
+SetFolder("%!p\doc");
+Exe('%b\Macros\worklog\worklog_open.edt');
+End;

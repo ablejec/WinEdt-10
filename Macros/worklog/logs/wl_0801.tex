@@ -1,0 +1,64 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 01.\,08.\,2011 ]
+  \WinEdt{I2R}{( 1 h, 09 min.)}{M}{12:21-13:30}
+  \WinEdt{Dobnik}{( 0 h, 25 min.)}{M}{13:30-13:55}
+  \WinEdt{Dobnik}{( 0 h, 26 min.)}{M}{22:10-22:36}
+  \WinEdt{Dobnik}{( 0 h, 01 min.)}{M}{22:36-22:37}
+  \WinEdt{<untitled project>}{( 0 h, 01 min.)}{M}{22:36-22:37}
+  \WinEdt{Dobnik}{( -->  3 h, 00 min.)}{T}{00:00-01:37}
+  \WinEdt{Dobnik}{( --> )}{M}{22:37-23:59}
+  \WinEdt{Dobnik}{( 5 h, 21 min.)}{T}{10:45-16:06}
+  \WinEdt{Dobnik}{( 2 h, 47 min.)}{T}{21:02-23:49}
+  \WinEdt{<untitled project>}{( --> 12 h, 42 min.)}{W}{00:00-09:44}
+  \WinEdt{<untitled project>}{( --> )}{T}{21:02-23:59}
+  \WinEdt{cene3}{( 1 h, 57 min.)}{W}{09:44-11:41}
+  \WinEdt{Dobnik}{( 0 h, 39 min.)}{W}{11:41-12:20}
+  \WinEdt{Dobnik}{( 0 h, 01 min.)}{W}{13:57-13:58}
+  \WinEdt{animatoR}{( 2 h, 04 min.)}{W}{13:58-16:02}
+  \WinEdt{animatoR}{( -->  3 h, 48 min.)}{Th}{00:00-01:18}
+  \WinEdt{animatoR}{( --> )}{W}{21:30-23:59}
+  \WinEdt{animatoR}{( 3 h, 21 min.)}{Th}{12:03-15:24}
+  \WinEdt{animatoR}{( 0 h, 16 min.)}{F}{01:14-01:30}
+  \WinEdt{<untitled project>}{( 8 h, 08 min.)}{F}{01:14-09:22}
+  \WinEdt{Dobnik}{( 2 h, 59 min.)}{F}{09:22-12:21}
+  \WinEdt{animatoR}{( 0 h, 14 min.)}{F}{14:28-14:42}
+  \WinEdt{animatoR}{( 4 h, 01 min.)}{F}{18:50-22:51}
+  \WinEdt{animatoR}{( -->  1 h, 27 min.)}{Su}{00:00-00:18}
+  \WinEdt{animatoR}{( --> )}{Sa}{22:51-23:59}
+  \WinEdt{animatoR}{( 1 h, 13 min.)}{Su}{0:18-01:31}
+  \WinEdt{poster}{( 0 h, 06 min.)}{Wednesday}{01:02-01:08}
+  \WinEdt{poster}{( 1 h, 02 min.)}{Wednesday}{13:47-14:49}
+  \WinEdt{KG130116}{( 0 h, 17 min.)}{Thursday}{0:31-00:48}
+\end{schedule}
+ 
+\end{document}

@@ -1,0 +1,95 @@
+% -*- TeX:Rnw -*-
+% ----------------------------------------------------------------
+% .R Sweave file  ************************************************
+% ----------------------------------------------------------------
+%%
+% \VignetteIndexEntry{}
+% \VignetteDepends{}
+% \VignettePackage{}
+\documentclass[a4paper,12pt]{article}
+%\usepackage[slovene]{babel}
+\usepackage[utf8]{inputenc} %% must be here for Sweave encoding check
+\newcommand{\SVNRevision}{$ $Rev: 39 $ $}
+%\newcommand{\SVNDate}{$ $Date:: 2010-05-26 #$ $}
+\newcommand{\SVNId}{$ $Id: Sweave.Rnw 39 2010-05-25 22:22:19Z ABlejec $ $}
+\input{abpkg}
+\input{abcmd}
+\input{abpage}
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\usepackage{amsmath,amssymb}
+\usepackage{colortbl}
+\usepackage{Sweave}
+\input{mysweave}
+\input{./figs/bla-concordance}
+%\SweaveOpts{echo=false}
+\setkeys{Gin}{width=0.8\textwidth}  % set graphicx parameter
+%\SweaveOpts{keep.source=true}
+\usepackage{lmodern}
+\input{abfont}
+
+% ----------------------------------------------------------------
+\begin{document}
+%% Sweave settings for includegraphics default plot size (Sweave default is 0.8)
+%% notice this must be after begin{document}
+%%% \setkeys{Gin}{width=0.9\textwidth}
+% ----------------------------------------------------------------
+\title{Porazdelitev ocen}
+\author{A. Blejec}
+%\address{}%
+%\email{}%
+%
+%\thanks{}%
+%\subjclass{}%
+%\keywords{}%
+
+%\date{}%
+%\dedicatory{}%
+%\commby{}%
+\maketitle
+% ----------------------------------------------------------------
+%\begin{abstract}
+%
+%\end{abstract}
+% ----------------------------------------------------------------
+\tableofcontents
+
+\section{Funkcija}
+
+\begin{Schunk}
+\begin{Sinput}
+> n <- 4
+> m <- 10
+> X <- matrix(rnorm(n*m),m,n)
+> est <- apply(X,1,mean)
+> E <- mean(est)
+> se <- sd(est)
+> se
+\end{Sinput}
+\begin{Soutput}
+[1] 0.5190683
+\end{Soutput}
+\begin{Sinput}
+> 
+\end{Sinput}
+\end{Schunk}
+
+\begin{Schunk}
+\begin{Sinput}
+> ocene <- function(n=4,m=1000, 
++ FUN=rnorm,cenilka=mean, ...){
++ ctext <- deparse(substitute(cenilka))
++ X <- matrix(FUN(n*m,...),m,n)
++ est <- apply(X,1,cenilka)
++ E <- mean(est)
++ se <- sd(est)
++ cat("Standardna napaka: \n",se,"\n")
++ #
++ par(mfrow=c(2,1))
++ hist(X,col="lightgreen",xlim=range(X))
++ hist(est,col="lightblue",xlim=range(X),
++ main=ctext)
++ return(c(povp=E,se=se,n=n))
++ }
+\end{Sinput}
+\end{Schunk}
+

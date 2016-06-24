@@ -1,0 +1,11 @@
+ // quit R and save if %!8=yes or no
+ LetReg(8,"yes");
+ //Prompt("Before: %!8",0,1);
+ ReplaceInString("1", ">", 0, 1, 1, 9);
+ //Prompt("Before: %!9",0,1);
+ CopyToClipboard('quit("%!8")%!9', 0);
+ LetReg(9,"");
+ LetReg(8,"");
+ Exe("%b\send2R.edt")
+ SetFocus(""); // Back to WinEdt
+ End;

@@ -1,0 +1,5 @@
+cmds <- commandArgs(TRUE)
+filename <- cmds[1]
+print(filename)
+library(patchDVI)
+message(patchSynctex(sub("\\.Rnw$", ".synctex", filename, ignore.case = TRUE)))

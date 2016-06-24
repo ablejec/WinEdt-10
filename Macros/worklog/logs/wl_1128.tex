@@ -1,0 +1,62 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 28.\,11.\,2011 ]
+  \WinEdt{lek}{( -->  1 h, 43 min.)}{M}{00:00-01:11}
+  \WinEdt{lek}{( --> )}{M}{23:28-23:59}
+  \WinEdt{lek}{( 1 h, 38 min.)}{M}{09:29-11:07}
+  \WinEdt{cene3}{( -->  2 h, 23 min.)}{T}{00:00-00:19}
+  \WinEdt{cene3}{( --> )}{M}{21:56-23:59}
+  \WinEdt{cene3}{( 0 h, 01 min.)}{T}{10:10-10:11}
+  \WinEdt{lek}{( 5 h, 36 min.)}{T}{10:11-15:47}
+  \WinEdt{lek}{( 0 h, 20 min.)}{T}{22:12-22:32}
+  \WinEdt{cene3}{( -->  3 h, 40 min.)}{W}{00:00-02:12}
+  \WinEdt{cene3}{( --> )}{T}{22:32-23:59}
+  \WinEdt{cene3}{( 0 h, 01 min.)}{W}{10:45-10:46}
+  \WinEdt{Lek-Blas}{( 3 h, 56 min.)}{W}{10:46-14:42}
+  \WinEdt{lek}{( 1 h, 28 min.)}{W}{14:42-16:10}
+  \WinEdt{Lek-Blas}{( 4 h, 05 min.)}{W}{16:10-20:15}
+  \WinEdt{<untitled project>}{( 7 h, 13 min.)}{W}{16:10-23:23}
+  \WinEdt{Lek-Blas}{( 0 h, 06 min.)}{Th}{10:44-10:50}
+  \WinEdt{lek}{( 0 h, 28 min.)}{Th}{10:50-11:18}
+  \WinEdt{animatoR}{( 5 h, 31 min.)}{Th}{11:19-16:50}
+  \WinEdt{<untitled project>}{(10 h, 18 min.)}{Th}{11:19-21:37}
+  \WinEdt{cene3}{( -->  3 h, 07 min.)}{F}{00:00-00:44}
+  \WinEdt{cene3}{( --> )}{Th}{21:37-23:59}
+  \WinEdt{<untitled project>}{( --> 69 h, 06 min.)}{Su}{00:00-18:43}
+  \WinEdt{<untitled project>}{( --> )}{Sa}{21:37-23:59}
+  \WinEdt{statpred}{( 0 h, 01 min.)}{Wednesday}{09:45-09:46}
+  \WinEdt{Lek-Blas}{( 5 h, 10 min.)}{Wednesday}{09:46-14:56}
+  \WinEdt{Lek-Jamnikar}{( 0 h, 21 min.)}{Wednesday}{14:56-15:17}
+  \WinEdt{Lek-Jamnikar}{( 0 h, 05 min.)}{Wednesday}{22:34-22:39}
+\end{schedule}
+ 
+\end{document}

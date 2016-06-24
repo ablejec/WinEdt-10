@@ -1,0 +1,56 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 04.\,07.\,2011 ]
+  \WinEdt{KonjiNemec}{( -->  2 h, 25 min.)}{M}{00:00-00:55}
+  \WinEdt{KonjiNemec}{( --> )}{M}{22:30-23:59}
+  \WinEdt{KonjiNemec}{( 2 h, 35 min.)}{M}{12:33-15:08}
+  \WinEdt{KonjiNemec}{( 3 h, 33 min.)}{M}{20:17-23:50}
+  \WinEdt{KonjiNemec}{( -->  1 h, 46 min.)}{T}{00:00-01:36}
+  \WinEdt{KonjiNemec}{( --> )}{M}{23:50-23:59}
+  \WinEdt{KonjiNemec}{( 0 h, 44 min.)}{T}{07:54-08:38}
+  \WinEdt{KonjiNemec}{( 2 h, 19 min.)}{T}{11:28-13:47}
+  \WinEdt{KonjiNemec}{( 1 h, 32 min.)}{T}{21:45-23:17}
+  \WinEdt{KonjiNemec}{( 0 h, 54 min.)}{W}{09:07-10:01}
+  \WinEdt{KonjiNemec}{( -->  3 h, 30 min.)}{Th}{00:00-00:50}
+  \WinEdt{KonjiNemec}{( --> )}{W}{21:20-23:59}
+  \WinEdt{KonjiNemec}{( 0 h, 04 min.)}{Th}{0:50-00:54}
+  \WinEdt{KonjiNemec}{( 0 h, 04 min.)}{Th}{11:36-11:40}
+  \WinEdt{<untitled project>}{( 0 h, 32 min.)}{Th}{11:36-12:08}
+  \WinEdt{KG090511}{( 0 h, 41 min.)}{Th}{12:08-12:49}
+  \WinEdt{KonjiNemec}{( 1 h, 03 min.)}{Th}{12:49-13:52}
+  \WinEdt{KonjiNemec}{( 0 h, 06 min.)}{Th}{14:06-14:12}
+  \WinEdt{KonjiNemec}{( 1 h, 46 min.)}{F}{21:22-23:08}
+  \WinEdt{KonjiNemec}{( 2 h, 26 min.)}{Sa}{20:31-22:57}
+  \WinEdt{KonjiNemec}{( 0 h, 55 min.)}{Su}{21:16-22:11}
+\end{schedule}
+ 
+\end{document}

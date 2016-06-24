@@ -1,0 +1,41 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 26.\,05.\,2013 ]
+  \WinEdt{KG130116}{( 0 h, 01 min.)}{Sunday}{23:07-23:08}
+  \WinEdt{KG130116}{( 0 h, 52 min.)}{T}{14:28-15:20}
+  \WinEdt{<untitled project>}{( 0 h, 52 min.)}{T}{14:28-15:20}
+  \WinEdt{Inremos}{( 0 h, 39 min.)}{T}{15:20-15:59}
+  \WinEdt{Actuar}{( -->  2 h, 12 min.)}{F}{00:00-01:49}
+  \WinEdt{Actuar}{( --> )}{Th}{23:37-23:59}
+\end{schedule}
+ 
+\end{document}

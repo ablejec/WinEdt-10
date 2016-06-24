@@ -1,0 +1,6 @@
+BeginGroup;
+    IfFileExists('%b\Config\svn\svn.dat',>
+      "AddMenus('%b\Config\svn\svn.dat');",>
+      "AddMenus('%B\Config\svn\svn.dat');");
+EndGroup;
+End;

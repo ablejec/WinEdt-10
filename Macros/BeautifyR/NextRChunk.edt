@@ -1,0 +1,34 @@
+////////////////////////////////////////////////////////
+// NextRChunk.edt
+// Got to first line of next R Chunk
+// $Revision: 1.1 $
+// $Date: 2007-03-12 22:27:51+01 $
+//
+// A. Blejec
+// Limitations:
+//
+// To be done:
+//
+//
+//
+/////////////////////////////////////////////////////////
+//
+// GlobalMark(); // ne deluje dobro
+// don't go to chunk named 'sessionInfo'
+SetFindStr("<\<\<~sessionInfo");
+SetSearchForward(1);
+SetSearchCaseSensitive(0);
+SetSearchEntire(0);
+SetSearchCyclic(0);
+SetSearchRelaxed(0);
+SetSearchWholeWords(0);
+SetSearchInline(0);
+SetSearchCurrentDoc;
+SetRegEx(1);
+SearchReset;
+IfFound('Relax','Relax');//JMP("exit")');
+// CMD("Find...");
+CMD("Line Down");
+CMD("Go To Beginning Of Line");
+CMD("Set Mark");
+:exit::

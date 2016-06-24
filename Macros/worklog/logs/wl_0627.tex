@@ -1,0 +1,48 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 27.\,06.\,2011 ]
+  \WinEdt{<untitled project>}{( --> 251 h, 30 min.)}{T}{00:00-10:31}
+  \WinEdt{<untitled project>}{( --> )}{M}{23:01-23:59}
+  \WinEdt{KonjiNemec}{( 0 h, 34 min.)}{T}{10:31-11:05}
+  \WinEdt{KonjiNemec}{( 2 h, 43 min.)}{T}{12:02-14:45}
+  \WinEdt{cene3}{( 1 h, 42 min.)}{T}{14:45-16:27}
+  \WinEdt{cene3}{( -->  3 h, 52 min.)}{W}{00:00-00:49}
+  \WinEdt{cene3}{( --> )}{T}{20:57-23:59}
+  \WinEdt{cene3}{( 2 h, 18 min.)}{W}{13:34-15:52}
+  \WinEdt{cene3}{( 0 h, 22 min.)}{Th}{14:26-14:48}
+  \WinEdt{cene3}{( 1 h, 36 min.)}{F}{12:02-13:38}
+  \WinEdt{<untitled project>}{(58 h, 28 min.)}{Su}{12:02-22:30}
+  \WinEdt{AS2011}{( -->  2 h, 00 min.)}{Wednesday}{00:00-00:41}
+  \WinEdt{AS2011}{( --> )}{Wednesday}{22:41-23:59}
+\end{schedule}
+ 
+\end{document}

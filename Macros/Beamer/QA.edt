@@ -1,0 +1,68 @@
+// Insert \only<article>{ }
+// adapted after description in:
+// C:\Program Files\WinEdt Team\WinEdt\Macros\Samples\0Samples.txt
+BeginGroup;
+IfSel("0","=",>
+  "InsLine;>
+   Mark(0);>
+    Ins('%%%%');>
+    InsLine;>
+      Ins('\begin{Q}');>
+      NewLine;>
+      Ins('\emph{');>
+   NewLine;>
+   CMD('Insert Bullet');>
+   NewLine;>
+   Ins('}');>
+   NewLine;>
+   Ins('\end{Q}');>
+   InsLine;>
+    NewLine;>
+   Ins('\begin{A}');>
+      NewLine;>
+   CMD('Insert Bullet');>
+   NewLine;>
+   Ins('\end{A}');>
+   InsLine;>
+   Ins('%%%%');>
+   InsLine;>
+   Goto(0);>
+   CMD('Next Bullet')",>
+  "GetSel(0,0);>
+   CMD('Backspace');>
+      Mark(0);>
+   InsLine;>
+   Ins('%%%');>
+   InsLine;>
+   Ins('\begin{Q}');>
+   NewLine;>
+   Ins('\emph{');>
+   NewLine;>
+   Ins('%%!0');>
+   InsLine;>
+   Ins('}');>
+   NewLine;>
+   Ins('\end{Q}');>
+   InsLine;>
+   NewLine;>
+   Ins('\begin{A}');>
+      NewLine;>
+   CMD('Insert Bullet');>
+   NewLine;>
+   Ins('\end{A}');>
+   InsLine;>
+   Ins('%%%%');>
+   InsLine;>
+   Loop('SetSel(0);>
+     CMD(""Select Char Right"");>
+     GetSel(0,0);>
+     IfStr(""%%%%!0"","" "",""="",>
+       ""CMD(''Backspace'')"",>
+       ""Stop;"">
+     )>
+   ');>
+   Goto(0);>
+   CMD('Next Bullet');>
+");
+EndGroup;
+End;

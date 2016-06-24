@@ -1,0 +1,58 @@
+//  mode-sensitive call to HelpKeyword
+
+// @BEGIN: DocBk
+// @DATE: 2002-07-19
+// @AUTHOR: Georges Schmitz
+// -------------------------------------------------------------
+//Prompt("My Help");
+IfisMode("DocBk","%!m",!* >
+  Exe("%b\Config\xml\macros\xmlNesting.edt"); >
+  IfFileExists("%$('DOCBOOK_HTMLHELP');",!` >
+      HTMLHelp("%$('DOCBOOK_HTMLHELP');",1,4,"%$('currentTag');",0); >
+  `,` >
+      HelpKeyword("%$('DOCBOOK_WINHELP');","%$('currentTag');"); >
+  `); >
+  Exit; >
+*);
+// -------------------------------------------------------------
+// @END: DocBk
+
+// @BEGIN: TeX
+IfisMode("TeX","%!m",!* >
+  IfFileExists("%$('TeX-Help');\latex2e.chm",!` >
+      HTMLHelp("%$('TeX-Help');\latex2e.chm",1,4,"",1);>
+      Exit;>
+  `); >
+  HTMLHelp("%B\Doc\LaTeXHelpBook\LaTeX2e.chm",1,4,"",1);>
+  Exit;>
+*);
+// @END: TeX
+
+// @BEGIN: HHC (HTML Help Compiler HTML Submode)
+IfisMode('HHC','%!m',>
+  !|IfFileExists("%@('WINDIR');\Help\htmlhelp.chm",>
+     !||HTMLHelp("%@('WINDIR');\Help\htmlhelp.chm",1,4,'',1);Exit;||);|);
+// @END: HHC
+
+// @BEGIN: HTML
+IfisMode('HTML;XML;PHP','%!m',>
+  !|IfFileExists("%@('WINDIR');\Help\htmlref.chm",>
+     !||HTMLHelp("%@('WINDIR');\Help\htmlref.chm",1,4,'',1);Exit;||);|);
+// @END: HTML
+
+// @BEGIN: EDT (WinEdt Macro Functions)
+IfisMode('EDT','%!m',>
+  !|IfFileExists("%B\Doc\Help\Macro.chm",>
+     !||HTMLHelp("%B\Doc\Help\Macro.chm",1,4,'',1);Exit;||);|);
+// @END: EDT
+
+// @BEGIN: NSIS
+IfisMode('NSIS','%!m',>
+  !|IfFileExists("%$('NSIS-Root');\NSIS.chm",>
+     !||HTMLHelp("%$('NSIS-Root');\NSIS.chm",1,4,'',1,'!');Exit;||);|);
+// @END: NSIS
+
+// @DEFAULT
+HTMLHelp('%B\Doc\Help\WinEdt.chm',1,4,'',1);
+
+End;

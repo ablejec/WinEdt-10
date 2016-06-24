@@ -1,0 +1,15 @@
+C:\Users\ablejec\AppData\Roaming\WinEdt Team\WinEdt 9\Macros\worklog\logs\1209.worklog(52):  3 h, 17 min. ( 2 x) :   ECell
+C:\Users\ablejec\AppData\Roaming\WinEdt Team\WinEdt 9\Macros\worklog\logs\1210.worklog(59): 17 h, 48 min. ( 6 x) :   ECell
+C:\Users\ablejec\AppData\Roaming\WinEdt Team\WinEdt 9\Macros\worklog\logs\1211.worklog(60):  5 h, 46 min. ( 1 x) :   ECell
+C:\Users\ablejec\AppData\Roaming\WinEdt Team\WinEdt 9\Macros\worklog\logs\1212.worklog(81):  4 h, 20 min. ( 1 x) :   ECell
+C:\Users\ablejec\AppData\Roaming\WinEdt Team\WinEdt 9\Macros\worklog\logs\1302.worklog(107): 83 h, 00 min. ( 5 x) :   ECell
+C:\Users\ablejec\AppData\Roaming\WinEdt Team\WinEdt 9\Macros\worklog\logs\1303.worklog(117):  0 h, 28 min. ( 1 x) :   ECell
+C:\Users\ablejec\AppData\Roaming\WinEdt Team\WinEdt 9\Macros\worklog\logs\1304.worklog(120):  5 h, 10 min. ( 7 x) :   ECell
+C:\Users\ablejec\AppData\Roaming\WinEdt Team\WinEdt 9\Macros\worklog\logs\1305.worklog(106):  2 h, 16 min. ( 3 x) :   ECell
+C:\Users\ablejec\AppData\Roaming\WinEdt Team\WinEdt 9\Macros\worklog\logs\1308.worklog(74): 12 h, 47 min. ( 6 x) :   ECell
+C:\Users\ablejec\AppData\Roaming\WinEdt Team\WinEdt 9\Macros\worklog\logs\1310.worklog(76):  0 h, 53 min. ( 3 x) :   ECell
+C:\Users\ablejec\AppData\Roaming\WinEdt Team\WinEdt 9\Macros\worklog\logs\1402.worklog(81):  2 h, 05 min. ( 3 x) :   ECell
+
+138 ur
+
+2300/160= 14 EUR

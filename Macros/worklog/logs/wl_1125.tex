@@ -1,0 +1,43 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 25.\,11.\,2008 ]
+  \WinEdt{MU}{( -->  1 h, 19 min.)}{torek}{00:00-00:45}
+  \WinEdt{MU}{( --> )}{torek}{23:26-23:59}
+  \WinEdt{MU}{( 0 h, 07 min.)}{torek}{09:38-09:45}
+  \WinEdt{MU}{( 0 h, 23 min.)}{torek}{15:38-16:01}
+  \WinEdt{ITAP}{( 0 h, 01 min.)}{torek}{16:01-16:02}
+  \WinEdt{ITAP}{( 0 h, 10 min.)}{torek}{16:02-16:12}
+  \WinEdt{rps}{( 0 h, 03 min.)}{Su}{22:08-22:11}
+  \WinEdt{rps}{( 0 h, 17 min.)}{Su}{22:11-22:28}
+\end{schedule}
+ 
+\end{document}

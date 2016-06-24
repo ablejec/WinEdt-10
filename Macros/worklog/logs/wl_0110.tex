@@ -1,0 +1,51 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 10.\,01.\,2011 ]
+  \WinEdt{Bioinformatika}{( 0 h, 53 min.)}{M}{21:58-22:51}
+  \WinEdt{<untitled project>}{( 0 h, 52 min.)}{T}{15:21-16:13}
+  \WinEdt{I2R}{( 2 h, 50 min.)}{T}{16:13-19:03}
+  \WinEdt{I2R}{( 0 h, 31 min.)}{W}{23:08-23:39}
+  \WinEdt{I2R}{( 0 h, 21 min.)}{Th}{11:49-12:10}
+  \WinEdt{I2R}{( 0 h, 01 min.)}{Th}{12:10-12:11}
+  \WinEdt{I2R}{( 0 h, 01 min.)}{Th}{12:11-12:12}
+  \WinEdt{Actuar}{( 0 h, 01 min.)}{Th}{12:12-12:13}
+  \WinEdt{<untitled project>}{( 0 h, 05 min.)}{Th}{12:12-12:17}
+  \WinEdt{Triglav}{( 0 h, 01 min.)}{Th}{12:17-12:18}
+  \WinEdt{Triglav}{( 0 h, 01 min.)}{Th}{17:28-17:29}
+  \WinEdt{I2R}{( 2 h, 31 min.)}{Th}{17:29-20:00}
+  \WinEdt{Triglav}{( 2 h, 32 min.)}{Th}{17:28-20:00}
+  \WinEdt{Triglav}{( 0 h, 01 min.)}{Th}{22:26-22:27}
+  \WinEdt{Triglav}{( 0 h, 03 min.)}{F}{15:02-15:05}
+  \WinEdt{_StatHist}{( 4 h, 59 min.)}{Thursday}{11:57-16:56}
+\end{schedule}
+ 
+\end{document}

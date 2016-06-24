@@ -1,0 +1,49 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 20 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 28.\,09.\,2009 ]
+  \WinEdt{KIS}{( 0 h, 16 min.)}{M}{13:34-13:50}
+  \WinEdt{KIS}{( 0 h, 33 min.)}{M}{15:41-16:14}
+  \WinEdt{KIS}{( 1 h, 04 min.)}{M}{22:26-23:30}
+  \WinEdt{KIS}{( -->  0 h, 47 min.)}{T}{00:00-00:17}
+  \WinEdt{KIS}{( --> )}{M}{23:30-23:59}
+  \WinEdt{KIS}{( 0 h, 13 min.)}{T}{15:05-15:18}
+  \WinEdt{KIS}{( 0 h, 03 min.)}{T}{15:18-15:21}
+  \WinEdt{KIS}{( 1 h, 12 min.)}{T}{15:21-16:33}
+  \WinEdt{<untitled project>}{( 1 h, 14 min.)}{T}{15:21-16:35}
+  \WinEdt{perl}{( 0 h, 12 min.)}{T}{16:35-16:47}
+  \WinEdt{KIS}{( 0 h, 47 min.)}{F}{01:32-02:19}
+  \WinEdt{KIS}{( 0 h, 10 min.)}{Sa}{17:39-17:49}
+  \WinEdt{<untitled project>}{( 0 h, 13 min.)}{Sa}{17:39-17:52}
+  \WinEdt{KIS}{( 0 h, 01 min.)}{Sa}{17:52-17:53}
+\end{schedule}
+ 
+\end{document}

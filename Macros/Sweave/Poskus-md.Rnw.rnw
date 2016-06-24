@@ -1,0 +1,76 @@
+
+
+
+
+
+
+# Primer uporabe Sweave
+## Author: A. Blejec
+
+
+## Abstract
+
+
+Poskusna datoteka za uporabo Sweave: povezava \R\ in \LaTeX.
+
+
+## Raèunanje
+
+Poskus raèunanja
+
+<<>>=
+render_sweave()
+@
+
+<<>>=
+2+2
+@
+
+## Risanje
+
+Malo risanja:
+
+
+<<>>=
+hist(rnorm(100),col="lightblue") # slika
+@
+
+
+
+## Uporaba vrednosti v besedilu
+
+Primerjava dveh porazdelitev (\R\ ukazi so skriti)
+
+<<echo=FALSE>>=
+set.seed(1234)
+n <- 30
+x <- rnorm(n, 100, 10)
+y <- rnorm(n,  95, 10)
+t.test(x, y)
+p <- t.test(x, y)$p.v
+@
+
+Vrednosti iz \R\ objektov lahko uporabimo v besedilu.
+Na primer:\\ Verjetnost $p=\Sexpr{format(round(p,3),nsmall=3)}$.
+
+## Tabele
+
+Za pripravo tabel z \LaTeX\ je priroèno namestiti paket \texttt{Hmisc}
+
+<<results='hide'>>=
+library("Hmisc")
+@
+
+<<>>=
+tbl <- table(letters[round(runif(100,1,3))],
+            LETTERS[round(runif(100,1,3))])
+tbl
+@
+Tabele lahko izpiše tudi \LaTeX:
+<<results='asis'>>=
+latex(tbl,file="",where="!htbp",caption="Poskusna tabela")
+@
+
+## Zakljuèek
+
+Sweave je zakon!

@@ -1,0 +1,71 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 15.\,02.\,2010 ]
+  \WinEdt{<untitled project>}{(275 h, 15 min.)}{M}{12:33-23:48}
+  \WinEdt{DOE}{( -->  1 h, 26 min.)}{T}{00:00-01:14}
+  \WinEdt{DOE}{( --> )}{M}{23:48-23:59}
+  \WinEdt{DOE}{(10 h, 32 min.)}{T}{12:35-23:07}
+  \WinEdt{<untitled project>}{(24 h, 14 min.)}{W}{12:35-12:49}
+  \WinEdt{lod}{( 6 h, 56 min.)}{W}{12:49-19:45}
+  \WinEdt{lod}{( -->  1 h, 59 min.)}{Th}{00:00-01:03}
+  \WinEdt{lod}{( --> )}{W}{23:04-23:59}
+  \WinEdt{lod}{( 0 h, 32 min.)}{Th}{09:15-09:47}
+  \WinEdt{Bioinformatika}{( 1 h, 30 min.)}{Th}{09:47-11:17}
+  \WinEdt{Bioinformatika}{( 0 h, 01 min.)}{Th}{23:41-23:42}
+  \WinEdt{lod}{( -->  0 h, 55 min.)}{F}{00:00-00:37}
+  \WinEdt{lod}{( --> )}{Th}{23:42-23:59}
+  \WinEdt{lod}{( 0 h, 04 min.)}{F}{13:44-13:48}
+  \WinEdt{!KrNeki}{( 7 h, 31 min.)}{F}{13:48-21:19}
+  \WinEdt{Bioinformatika}{( 0 h, 01 min.)}{F}{21:19-21:20}
+  \WinEdt{!KrNeki}{( 0 h, 49 min.)}{F}{21:20-22:09}
+  \WinEdt{<untitled project>}{( --> 13 h, 49 min.)}{Wednesday}{00:00-12:26}
+  \WinEdt{<untitled project>}{( --> )}{Wednesday}{22:37-23:59}
+  \WinEdt{<untitled project>}{( 1 h, 30 min.)}{Wednesday}{12:26-13:56}
+  \WinEdt{animatoR}{( 0 h, 11 min.)}{Wednesday}{13:57-14:08}
+  \WinEdt{<untitled project>}{( 0 h, 16 min.)}{Wednesday}{13:57-14:13}
+  \WinEdt{<untitled project>}{( 0 h, 15 min.)}{Wednesday}{14:13-14:28}
+  \WinEdt{animatoR (2)}{( 0 h, 09 min.)}{Wednesday}{14:28-14:37}
+  \WinEdt{!KrNeki}{( 1 h, 04 min.)}{Friday}{0:07-01:11}
+  \WinEdt{<untitled project>}{( 1 h, 05 min.)}{Friday}{0:07-01:12}
+  \WinEdt{Private}{( 0 h, 04 min.)}{Friday}{01:12-01:16}
+  \WinEdt{!KrNeki}{( 0 h, 11 min.)}{Friday}{01:16-01:27}
+  \WinEdt{!KrNeki}{( 0 h, 17 min.)}{Friday}{01:38-01:55}
+  \WinEdt{!KrNeki}{( 0 h, 02 min.)}{Friday}{01:55-01:57}
+  \WinEdt{!KrNeki}{( 0 h, 01 min.)}{Friday}{01:57-01:58}
+  \WinEdt{!KrNeki}{( 0 h, 01 min.)}{Friday}{01:59-02:00}
+  \WinEdt{!KrNeki}{( 0 h, 02 min.)}{Friday}{02:00-02:02}
+  \WinEdt{!KrNeki}{( 0 h, 07 min.)}{Friday}{02:02-02:09}
+  \WinEdt{git.edt}{( 0 h, 17 min.)}{Friday}{10:26-10:43}
+  \WinEdt{git menu}{( 4 h, 27 min.)}{Friday}{10:44-15:11}
+\end{schedule}
+ 
+\end{document}

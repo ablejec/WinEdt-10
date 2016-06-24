@@ -1,0 +1,47 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 10.\,10.\,2011 ]
+  \WinEdt{<untitled project>}{( --> 46 h, 45 min.)}{T}{00:00-21:10}
+  \WinEdt{<untitled project>}{( --> )}{M}{22:25-23:59}
+  \WinEdt{Bioinformatika}{( 1 h, 24 min.)}{T}{21:10-22:34}
+  \WinEdt{Lek-Jamnikar}{( -->  1 h, 59 min.)}{W}{00:00-00:33}
+  \WinEdt{Lek-Jamnikar}{( --> )}{T}{22:34-23:59}
+  \WinEdt{<untitled project>}{( --> 10 h, 39 min.)}{W}{00:00-09:13}
+  \WinEdt{<untitled project>}{( --> )}{T}{22:34-23:59}
+  \WinEdt{Lek-Jamnikar}{( 0 h, 02 min.)}{W}{09:13-09:15}
+  \WinEdt{Lek-Jamnikar}{( 1 h, 26 min.)}{W}{09:15-10:41}
+  \WinEdt{Lek-Jamnikar}{(35 h, 46 min.)}{Th}{09:15-21:01}
+  \WinEdt{Lek-Jamnikar}{( 0 h, 33 min.)}{F}{12:07-12:40}
+  \WinEdt{javno}{( 0 h, 45 min.)}{Thursday}{22:02-22:47}
+\end{schedule}
+ 
+\end{document}

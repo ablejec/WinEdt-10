@@ -1,0 +1,23 @@
+// MUI Settings File: "Graphics.mui"
+// Created by MUISave: četrtek, november 27, 2014  14:16
+
+  MUISet("edt_file","text","");
+  MUISet("cb_aspect","checked","0");
+  MUISet("cb_draft","checked","0");
+  MUISet("cb_figenv","checked","1");
+  MUISet("edt_envcap","text","");
+  MUISet("edt_envlab","text","");
+  MUISet("cb_center","checked","0");
+  MUISet("cmb_size","index","0");
+  MUISet("edt_fixwd","text","");
+  MUISet("edt_fixht","text","");
+  MUISet("edt_scale","text","");
+  MUISet("edt_rotang","text","");
+  MUISet("edt_rotorig","text","");
+  MUISet("edt_llx","text","");
+  MUISet("edt_lly","text","");
+  MUISet("edt_urx","text","");
+  MUISet("edt_ury","text","");
+
+// ========================================================== 
+

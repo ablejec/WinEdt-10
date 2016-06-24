@@ -1,0 +1,39 @@
+% -*- TeX:Rnw -*-
+% ----------------------------------------------------------------
+% .R Sweave file  ************************************************
+% ----------------------------------------------------------------
+%%
+\documentclass[a4paper,12pt,english]{article}
+%\documentclass[a4paper,12pt,slovene]{article}
+\newcommand{\naslov}{}
+\include{abdef}
+% ----------------------------------------------------------------
+\begin{document}
+
+\title{\naslov}
+\author{A. Blejec}
+%\address{}%
+%\email{}%
+%
+%\thanks{}%
+%\subjclass{}%
+%\keywords{}%
+
+%\date{}%
+%\dedicatory{}%
+%\commby{}%
+\maketitle
+% ----------------------------------------------------------------
+\begin{abstract}
+
+\end{abstract}
+% ----------------------------------------------------------------
+\section{}
+
+
+
+% ----------------------------------------------------------------
+%\bibliographystyle{amsplain}
+%\bibliography{}
+\end{document}
+% ----------------------------------------------------------------

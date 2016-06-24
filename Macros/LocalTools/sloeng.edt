@@ -1,0 +1,15 @@
+Cut;
+Chr(92,"\");
+Chr(115,"s");
+Chr(108,"l");
+Chr(111,"o");
+Chr(123,"{");
+Paste;
+Chr(125,"}");
+Exe('%b\Menus\Shortcuts\Enter.edt');
+Chr(92,"\");
+Chr(101,"e");
+Chr(110,"n");
+Chr(103,"g");
+Chr(123,"{");
+Chr(125,"}");

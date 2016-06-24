@@ -1,0 +1,44 @@
+// Insert Sweave R code chunk environment
+// <<>>=
+// *
+// @
+//
+// A. Blejec
+//
+// adapted after description in:
+// C:\Program Files\WinEdt Team\WinEdt\Macros\Samples\0Samples.txt
+BeginGroup;
+IfSel("0","=",>
+  "InsLine;>
+   SetWrap(0,0);>
+   Mark(0);>
+   Ins('<<>>=');>
+   NewLine;>
+   CMD('Insert Bullet');>
+   NewLine;>
+   Ins('@');>
+   InsLine;>
+   NewLine;>
+   Goto(0);>
+   CMD('Next Bullet')",>
+  "GetSel(0,0);>
+   CMD('Backspace');>
+   InsLine;>
+   NewLine;>
+   Ins('<<>>=');>
+   NewLine;>
+     Ins('%%!0');>
+   InsLine;>
+   Ins('@');>
+   InsLine;>
+   Loop('SetSel(0);>
+     CMD(""Select Char Right"");>
+     GetSel(0,0);>
+     IfStr(""%%%%!0"","" "",""="",>
+       ""CMD(''Backspace'')"",>
+       ""Stop;"">
+     )>
+   ');>
+");
+EndGroup;
+End;

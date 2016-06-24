@@ -1,0 +1,1228 @@
+// -*- ASCII:EDT -*-
+// worklog_install.edt
+// Run this macro to install the
+// worklog macro package
+// (schlicht 20010323)
+Assign("worklogRev", "$Revision: 1.10 $");
+// $Date: 2004-06-26 18:57:44+02 $
+/////////////////////////////////////
+
+
+Assign("wl_folder","Macros\worklog\");
+//// If you want `worklog' to be in a different folder,
+//// you can change this line (base directory is always %b\).
+
+
+Assign("wl_comments","No");
+//Assign("wl_comments","Yes");
+//// If you uncomment the above line,
+//// you'll get the comments and
+//// the (outcommented) options
+//// inline in the generated files.
+//// This can in some cases be problematic,
+//// but it helps you if you want to edit
+//// the macros yourself.
+
+
+Requires(20001213);     // = WinEdt 5.2
+//// It might work with a previous version but I haven't tested it.
+//// You can try it at your own risk by uncommenting the above line.
+
+
+IfFileExists("%b\%$('wl_folder');worklog_open.edt",>
+   "Prompt('>
+The package ''worklog'' is already installed.%\>
+Shall I overwrite everything? %\>
+(Don''t worry about your data files. I won''t touch them.)',1,3,'',>
+      'Prompt(''OK.%\Bye bye.'',1,1); Exit;')",>
+   "Prompt('>
+This will install the macro package ''worklog'' in %\ %b\%$(|wl_folder|); %\%\>
+Do you want to continue? ',1,3,>
+      'CreateFolders(''%b\%$(|wl_folder|);'',0);',>
+      'Exit;')");
+// Which Global Register is free?
+LetRegNum(8,2); // don't use %0 and %1!
+LetRegNum(9,10);
+Loop(!`>
+   Do(">
+       IfStr('%%%!8','','=','LetRegNum(9,%!8);');>
+       IfNum(%!8,9,'=','Stop','LetRegNum(8,%!8+1);');>
+   ");>
+`);
+IfNum(%!9,10,"=","Prompt('>
+There seems to be no Global Register available. I cannot continue.%\>
+Sorry. (Please read the docs.)');",>
+   !"Prompt('>
+I determined Global Register %%%!9 to be unused.  Is it OK for you if I use it ? %\>
+(If you don''t know just say YES.)',1,3,'',>
+     !'EnterReg(9,''Which would you prefer (0-9)?'',''Global Register'');>
+       IfNum(''%!9'',''9'',''>'',''Prompt(|Sorry, I said between 0 and 9.|,2,1); Exit;'');');");
+
+
+/////////////
+// Customize:
+/////////////
+Prompt("You will be asked some questions.  %\%\>
+The first one is: %\%\""When do you want the new day begin?"" %\>
+      a) at midnight, %\>
+      b) at noon (!),%\>
+  or c) you want to decide every time.%\%\>
+Please answer in the next dialog.",0,1,"","");
+Assign("NewDay","Midnight");     // Default
+Interface("Determine new day");
+Item("Midnight (Default)","");
+Item("Noon","Assign('NewDay','Noon');");
+Item("Decide","Assign('NewDay','Decide');");
+ShowList(1,1,"Do('%%?')","Exit;");
+
+Prompt("Do you want the subject of your work to be logged as well?",1,3,>
+   "Assign('Subject','Yes');","Assign('Subject','No');");
+
+Prompt("Do you want to view the Uptime in the Status Line?%\>
+(This presupposes that you don't use the Custom Info.)",1,3,>
+   "Assign('StatusLine','Yes');","Assign('StatusLine','No');");
+
+Prompt("Do you want a graphic chart to be written automatically every week?",1,3,>
+   "Assign('Chart','Yes');","Assign('Chart','No');");
+
+Assign("Language","English (Default)");
+IfStr(`%$("Chart")`,`Yes`,`=`,>
+ !`Prompt("I also need to know your WINDOW'S (NOT WinEdt's) language. %\>
+Please answer in the next dialog.",0,1);>
+     Assign("Monday","Monday"); Assign("Tuesday","Tuesday");>
+     Assign("Wednesday","Wednesday"); Assign("Thursday","Thursday");>
+     Assign("Friday","Friday"); Assign("Saturday","Saturday");>
+     Assign("Sunday","Sunday"); >
+     Interface("Set Language");>
+     Item("English","Assign('Language','English');");>
+     Item("Deutsch","Assign('Language','Deutsch'); Assign('Sunday','Sonntag'); >
+        Assign('Monday','Montag'); Assign('Tuesday','Dienstag'); >
+        Assign('Wednesday','Mittwoch'); Assign('Thursday','Donnerstag'); >
+        Assign('Friday','Freitag'); Assign('Saturday','Samstag');");>
+     Item("Francais","Assign('Language','Francais'); Assign('Sunday','Dimanche'); >
+        Assign('Monday','Lundi'); Assign('Tuesday','Mardi'); >
+        Assign('Wednesday','Mercredi'); Assign('Thursday','Jeudi'); >
+        Assign('Friday','Vendredi'); Assign('Saturday','Samedi');");>
+     Item("Other","Assign('Language','unknown'); Prompt('I''m sorry but you need to answer some more questions.')");>
+     ShowList(1,1,"Do('%%?')","Exit;");>
+     IfStr("%$('Language');","unknown","=",>
+      !"EnterReg(0,'What is ''Sunday'' in your language?','Localize'); >
+        Assign('Sunday','%!0');>
+        EnterReg(0,'What is ''Monday'' in your language?','Localize');>
+        Assign('Monday','%!0');>
+        EnterReg(0,'and ''Tuesday''?','Localize');>
+        Assign('Tuesday','%!0');>
+        EnterReg(0,'... ''Wednesday''?','Localize');>
+        Assign('Wednesday','%!0'); >
+        EnterReg(0,'... Thursday?','Localize');>
+        Assign('Thursday','%!0'); >
+        EnterReg(0,'Friday? (You''re almost done!)','Localize');>
+        Assign('Friday','%!0');>
+        EnterReg(0,'and finally Saturday, if you don''t mind?','Localize');>
+        Assign('Saturday','%!0');");>
+     IfStr("%$('Language');","English (Default)","=","Prompt('WARNING: You did not choose a language.%\>
+Generating a chart WILL NOT WORK, if your Windows'' language is not English.%\>
+If your Windows'' language actually is English, say OK, otherwise press %\>
+CANCEL and run the installation macro again.',2,0);");`);
+
+Prompt("Shall I make Worklog menu entries in the Tools Menu for you?",1,3,>
+   "Assign('Menu','Yes');","Assign('Menu','No');");
+
+Prompt("Shall I try to edit your Startup and Exit Macros?%\>
+%\ If you say NO, you'll have to do it yourself (the documentation tells how to),>
+%\ Say NO, if you already installed the worklog package before.",1,3,>
+   "Assign('EditStartup','Yes');","Assign('EditStartup','No');");
+
+
+Prompt("I will write the files for you, if you say YES now. %\%\>
+   (You can always change things later by re-installing.)",1,3,"","Exit;");
+GetDate(1,"d. mmmm yyyy, hh:nn");
+Assign("Date","%!1");
+
+
+StartWorking("Installing...");
+//////////////////////////
+// Write worklog_open.edt:
+//////////////////////////
+OpenOutput("%b\%$('wl_folder');worklog_open.edt");
+   WrL(`// -*- ASCII:EDT -*-`);
+   WrL(`// worklog_open.edt`);
+   WrL(`// (schlicht 20010323)`);
+   WrL(`// (%$("worklogRev");)`);
+   WrL(`// (created by worklog_install.edt`);
+   WrL(`//   on %$("Date");)`);
+   WrL(`////////////////////////////////////%\`);
+   WrL(!`IfStr("%$('wl_status');","started","=",>`);
+   WrL(!`   "Prompt('Logging is already started.%\',2,1);Exit;");`);
+   WrL(` `);
+   IfStr("%$('wl_comments');","Yes","=","WrL(!`>
+%|// This is the date when WinEdt was last opened:`);");
+   WrS(`LetRegNum(9,%%%!9);%\`);
+   IfStr("%$('wl_comments');","Yes","=","WrL(!`>
+%|// The new date,%\>
+%|// transformed it into pure minutes:`);");
+   WrL(!`GetDate(4,"dd");`);
+   WrL(!`GetDate(5,"hh");`);
+   WrL(!`GetDate(6,"nn");`);
+   WrL(!`LetRegNum(8,"%!5+(%!4*24)");`);
+   WrL(!`LetRegNum(8,"%!6+(%!8*60)");`);
+   IfStr("%$('wl_comments');","Yes","=","WrL(!`>
+%|// put in Global Register:`);");
+   WrL(`LetStr(%!9,"%%!8");%\`);
+   IfStr("%$('wl_comments');","Yes","=","WrL(!`>
+%|// Get year and month for the name of the worklog file:`);");
+   WrL(`GetDate(2,"yy");`);
+   WrL(`GetDate(3,"mm");%\`);
+   IfStr("%$('wl_comments');","Yes","=",`WrL(``>
+%|// Is it a new day?%\>
+%|// There are three possibilities%\>
+%|//  to determine this:%\>
+%|//////////////////////////////////%\%\>
+%|//// 1. The new day begins on midnight (default):%\//``);>
+      IfStr(``%$(|NewDay|);``,``Midnight``,``=``,````,!``WrL(!````>
+%|// LetRegNum(8,0);%\>
+%|// Loop(!"IfNum(%%!9,1440,'<','Stop', >%\>
+%|//       'LetRegNum(9,%%!9-1440); LetRegNum(8,%%!8+1);')");%\>
+%|// IfNum("%%!8","%%!4","=",>%\>
+%|//    "LetRegNum(9,0);",>%\>
+%|//    "LetRegNum(9,1);");````);``);`);
+   IfStr("%$('NewDay');","Midnight","=",>
+   !|>
+      WrL(!`LetRegNum(8,0);`);>
+      WrL(!`Loop(!"IfNum(%!9,1440,'<','Stop', >`);>
+      WrL(!`      'LetRegNum(9,%!9-1440); LetRegNum(8,%!8+1);')");`);>
+      WrL(!`IfNum("%!8","%!4","=",>`);>
+      WrL(!`   "LetRegNum(9,0);",>`);>
+      WrL(!`   "LetRegNum(9,1);");`);>
+   |);
+   IfStr("%$('wl_comments');","Yes","=",`WrL(!``%\>
+%|//// 2. A new day begins at noon (for people who don't get up before twelve):%\//``);>
+      IfStr(``%$(|NewDay|);``,``Noon``,``=``,````,!``WrL(!````>
+%|// LetRegNum(9,%%!9/1440);%\>
+%|// LetRegNum(8,%%!8/1440);%\>
+%|// IfNum("%%!8","%%!9","=",>%\>
+%|//   "LetRegNum(9,0);",>%\>
+%|//   "IfNum(%%!8,1,'=','LetRegNum(9,0);','LetRegNum(9,1);');");````);``);`);
+   IfStr("%$('NewDay');","Noon","=",>
+   !|>
+      WrL(!`LetRegNum(9,%!9/1440);`);>
+      WrL(!`LetRegNum(8,%!8/1440);`);>
+      WrL(!`IfNum("%!8","%!9","=",>`);>
+      WrL(!`   "LetRegNum(9,0);",>`);>
+      WrL(!`   "IfNum(%!8,1,'=','LetRegNum(9,0);','LetRegNum(9,1);');");`);>
+   |);
+   IfStr("%$('wl_comments');","Yes","=",`WrL(!``%\>
+%|//// 3. If you want to decide yourself, you'll be asked:%\//``);>
+      IfStr(``%$(|NewDay|);``,``Decide``,``=``,````,!``WrL(!````>
+%|// LetRegNum(9,"%%!8-%%!9");%\>
+%|// LetRegNum(8,0);%\>
+%|// Loop(!"IfNum(%%!9,60,'<','Stop',>%\>
+%|//       'LetRegNum(9,''%%!9-60'');LetRegNum(8,''%%!8+1'');')");%\>
+%|// Prompt("Hi. Last opened: %%!8 h, %%!9 min ago. -- Same day?",1,3,>%\>
+%|//    "LetRegNum(9,0);","LetRegNum(9,1);");````);``);`);
+   IfStr("%$('NewDay');","Decide","=",>
+   !|>
+      WrL(!`LetRegNum(9,"%!8-%!9");`);>
+      WrL(!`LetRegNum(8,0);`);>
+      WrL(!`Loop(!"IfNum(%!9,60,'<','Stop',>`);>
+      WrL(!`      'LetRegNum(9,''%!9-60'');LetRegNum(8,''%!8+1'');')");`);>
+      WrL(!`Prompt("Hi. Last opened: %!8 h, %!9 min ago. -- Same day?",1,3,>`);>
+      WrL(!`   "LetRegNum(9,0);","LetRegNum(9,1);");`);>
+   |);
+   WrL(!` `);
+   IfStr("%$('wl_comments');","Yes","=","WrL(`>
+%|//////////////////////////////////%\>
+%|// Now we can write the worklog:%\>
+%|//%\>
+%|// We first check whether it's the same day:%\>
+%|//    if so, we write the current date and time and are finished;%\>
+%|//    if not, check whether a new month has begun (i.e. if the file <year><month>.worklog exists):%\>
+%|//       if it's the same month, write the summary for yesterday;%\>
+%|//       else write the summary for yesterday and for the last month, and begin a new monthly file.`);");
+   WrL(!`StartWorking("Worklog...");`);
+   WrL(!`IfNum("%!9","0","=",>`);
+   IfStr("%$('wl_comments');","Yes","=","WrL(`>
+%|// IF it's the same day:`);");
+   WrS(!`  !|`);
+   IfStr("%$('NewDay');","Midnight","=","",>
+   !|>
+      WrL(`IfFileExists("%%b\%$('wl_folder');logs\%%!2%%!3.worklog","",>`);>
+      IfStr(`%$(``wl_comments``);`,`Yes`,`=`,`WrL(``>
+%||//// (this is only for the case that it's actually the 1st,%\>
+%||////  but you want the day to be regarded as the last of the old month:)``);`);>
+      WrL(!`      !"IfNum(%!3,1,'=','LetRegNum(2,%!2-1,2,2); LetRegNum(3,12);',>`);>
+      WrL(!`          !'LetRegNum(3,%!3-1,2,2);')");>`);>
+      WrS(!`    `);>
+   |);
+   WrL(`ReadFile("%%b\%$('wl_folder');logs\%%!2%%!3.worklog",0);>`);
+   WrL(`    OpenOutput("%%b\%$('wl_folder');logs\%%!2%%!3.worklog"); WrS("%%!0"); >`);
+   WrL(!`      WrS("%!4., %!5:%!6    -    "); >`);
+   WrL(!`    CloseOutput; >`);
+   WrL(!`   |,>`);
+   IfStr("%$('wl_comments');","Yes","=","WrL(`>
+%|// ELSE it's a new day:`);");
+   WrL(`  !|IfFileExists("%%b\%$('wl_folder');logs\%%!2%%!3.worklog",>`);
+   IfStr("%$('wl_comments');","Yes","=","WrL(`>
+%|// IF it's the same month:`);");
+   WrL(`      !"ReadFile('%%b\%$('wl_folder');logs\day.worklog',9);>`);
+   WrL(!`        LetRegNum(8,0);>`);
+   WrL(!`        LetRegNum(9,%!9,2,2);>`);
+   WrL(!`        Loop(!'IfNum(%!9,60,''<'',''Stop'',>`);
+   WrL(!`             ''LetRegNum(8,%!8+1); LetRegNum(9,%!9-60,2,2); '')');>`);
+   IfStr("%$('wl_comments');","Yes","=","WrL(`>
+%|/// write worklog:`);");
+   WrL(`        ReadFile('%%b\%$('wl_folder');logs\%%!2%%!3.worklog',0);>`);
+   WrL(`        OpenOutput('%%b\%$('wl_folder');logs\%%!2%%!3.worklog'); WrS('%%!0');>`);
+   WrL(!`          WrL('--------- %!8 h, %!9 min.'); >`);
+   WrL(!`          WrS('%!4., %!5:%!6    -    '); >`);
+   WrL(!`        CloseOutput;>`);
+   IfStr("%$('wl_comments');","Yes","=","WrL(`>
+%|/// and set day to zero:`);");
+   WrL(`        OpenOutput('%%b\%$('wl_folder');logs\day.worklog'); >`);
+   WrL(!`          WrS('0'); >`);
+   WrL(!`        CloseOutput;>`);
+   WrL(!`       ",>`);
+   IfStr("%$('wl_comments');","Yes","=","WrL(`>
+%|// ELSE it's a new month:%\>
+%|/// begin new worklog:`);");
+   WrL(`      !"OpenOutput('%%b\%$('wl_folder');logs\%%!2%%!3.worklog');>`);
+   WrL(!`          WrL('************************** worklog *****************************');>`);
+   WrL(!`          WrL('************************** %!3.20%!2 *****************************%\');>`);
+   WrL(!`          WrL('--Opened-------------Closed-------Uptime----------Subject-------');>`);
+   WrL(!`          WrL('----------------------------------------------------------------');>`);
+   WrL(!`          WrS('%!4., %!5:%!6    -    '); >`);
+   WrL(!`        CloseOutput;>`);
+   IfStr("%$('wl_comments');","Yes","=","WrL(`>
+%|/// finish worklog for last month:%\>
+%|//// calculate last month:`);");
+   WrL(!`        IfNum('%!3','1','=','LetRegNum(3,12); LetRegNum(2,%!2-1,2,2);',>`);
+   WrL(!`              !'LetRegNum(3,%!3-1,2,2);');>`);
+   IfStr("%$('wl_comments');","Yes","=","WrL(`>
+%|//// get number of days:`);");
+   WrL(!`        LetRegNum(8,31);>`);
+   WrL(!`        IfNum('%!3','2', '=', 'LetRegNum(8,28)','');>`);
+   WrL(!`        IfNum('%!3','4', '=', 'LetRegNum(8,30)','');>`);
+   WrL(!`        IfNum('%!3','6', '=', 'LetRegNum(8,30)','');>`);
+   WrL(!`        IfNum('%!3','9', '=', 'LetRegNum(8,30)','');>`);
+   WrL(!`        IfNum('%!3','11', '=','LetRegNum(8,30)','');>`);
+   IfStr("%$('wl_comments');","Yes","=","WrL(`>
+%|//// calculate everything:`);");
+   WrL(`        ReadFile('%%b\%$('wl_folder');logs\day.worklog',9); >`);
+   WrL(`        ReadFile('%%b\%$('wl_folder');logs\month.worklog',5); >`);
+   WrL(!`        LetRegNum(7,%!5/%!8); >`);
+   WrL(!`        LetRegNum(8,0); >`);
+   WrL(!`        Loop(!'IfNum(%!9,60,''<'',''Stop'',>`);
+   WrL(!`             ''LetRegNum(8,%!8+1); LetRegNum(9,%!9-60,2,2);'')');>`);
+   WrL(!`        LetRegNum(6,0); >`);
+   WrL(!`        Loop(!'IfNum(%!7,60,''<'',''Stop'',>`);
+   WrL(!`             ''LetRegNum(6,%!6+1); LetRegNum(7,%!7-60,2,2);'')');>`);
+   WrL(!`        LetRegNum(4,0); >`);
+   WrL(!`        Loop(!'IfNum(%!5,60,''<'',''Stop'',>`);
+   WrL(!`             ''LetRegNum(4,%!4+1); LetRegNum(5,%!5-60,2,2); '')');>`);
+   IfStr("%$('wl_comments');","Yes","=","WrL(`>
+%|//// and write it down:`);");
+   WrL(`        ReadFile('%%b\%$('wl_folder');logs\%%!2%%!3.worklog',0);>`);
+   WrL(`        OpenOutput('%%b\%$('wl_folder');logs\%%!2%%!3.worklog'); WrS('%%!0'); >`);
+   WrL(!`          WrL('--------- %!8 h, %!9 min.'); WrL(' ');>`);
+   WrL(!`          WrL('****************************************************************');>`);
+   WrL(!`          WrL('Total: %!4 h, and %!5 min.'); >`);
+   WrL(!`          WrL('            (approx. %!6 h, %!7 min. / day)'); WrL(' '); WrL(' '); WrL(' ');>`);
+   WrL(!`        CloseOutput;>`);
+   IfStr("%$('wl_comments');","Yes","=","WrL(`>
+%|/// write the summary file:`);");
+   WrL(`        ReadFile('%%b\%$('wl_folder');logs\total.worklog',9);>`);
+   WrL(`        OpenOutput('%%b\%$('wl_folder');logs\total.worklog');>`);
+   WrL(!`          WrS('%!9');>`);
+   WrL(!`          WrL('%!3.%!2:     Total: %!4 h, and %!5 min.        =        approx. %!6 h, %!7 min. / day'); >`);
+   WrL(!`          WrL('                  -----------------                         ------------');>`);
+   WrL(!`        CloseOutput;>`);
+   SetOK(1);
+   FindInString("%$('Subject');%$('wl_comments');","Yes",1,2,0);
+   IfOK(!:>
+      Assign("cmnt","");>
+      IfStr("%$('Subject');","No","=","Assign('cmnt','//');");>
+      IfStr("%$('wl_comments');","Yes","=","WrL(!`>
+%|//// some more summaries concerning subject::`);");>
+      WrL(`%$('cmnt');        ReadFile('%%b\%$('wl_folder');logs\%%!2%%!3.worklog',0);>`);>
+      WrL(`%$('cmnt');        OpenOutput('%%b\%$('wl_folder');logs\%%!2%%!3.worklog'); >`);>
+      WrL(`%$('cmnt');          WrL('%%!0');>`);>
+      WrL(`%$('cmnt');          WrL('----------------------------------------------------------------');>`);>
+      WrL(`%$('cmnt');          LetRegNum(2,0);>`);>
+      WrL(`%$('cmnt');          Loop(!'LetRegNum(6,0); LetRegNum(7,0);>`);>
+      WrL(`%$('cmnt');             FindInString(''%%!0'','' :: *>'',1,2,1001,%%!2);>`);>
+      WrL(`%$('cmnt');             IfOK(>`);>
+      WrL(`%$('cmnt');              !''ExtractByIndex(9,||%%!0||,%%!1+3,%%!2-2); >`);>
+      WrL(`%$('cmnt');                 LetRegNum(4,0);>`);>
+      WrL(`%$('cmnt');                 Loop(!||>`);>
+      WrL(`%$('cmnt');                    SetOK(1);>`);>
+      WrL(`%$('cmnt');                    FindInString(``%%!0``,``:: %%!9``,3,4,1000,%%!4);>`);>
+      WrL(`%$('cmnt');                    IfOK(!``>`);>
+      WrL(`%$('cmnt');                        ReplaceInString(````%%!0````,````````,%%!3,%%!4,0,0); >`);>
+      WrL(`%$('cmnt');                        ExtractByIndex(8,````%%!0````,%%!3-15, %%!3-13);>`);>
+      WrL(`%$('cmnt');                        LetRegNum(7,````%%!7+(%%!8*60)````);>`);>
+      WrL(`%$('cmnt');                        ExtractByIndex(8, ````%%!0````, %%!3-9, %%!3-7);>`);>
+      WrL(`%$('cmnt');                        LetRegNum(7,%%!7+%%!8);>`);>
+      WrL(`%$('cmnt');                        LetRegNum(6,%%!6+1,2);``,>`);>
+      WrL(`%$('cmnt');                       ``Stop;``);>`);>
+      WrL(`%$('cmnt');                 ||);>`);>
+      WrL(`%$('cmnt');                 LetRegNum(8,0,2);>`);>
+      WrL(`%$('cmnt');                 Loop(!||>`);>
+      WrL(`%$('cmnt');                     IfNum(%%!7,60,``<``,``Stop``,>`);>
+      WrL(`%$('cmnt');                       ``LetRegNum(8,%%!8+1,2); LetRegNum(7,%%!7-60); ``)||);>`);>
+      WrL(`%$('cmnt');                 LetRegNum(7,%%!7,2,2);>`);>
+      WrL(`%$('cmnt');                 WrL(||%%!8 h, %%!7 min. (%%!6 x) ::  %%!9||);'',>`);>
+      WrL(`%$('cmnt');               ''Stop;'');>`);>
+      WrL(`%$('cmnt');          ');>`);>
+      WrL(`%$('cmnt');        CloseOutput;>`);>
+   :);
+   IfStr("%$('wl_comments');","Yes","=","WrL(`>
+%|//// set day and month to zero again:`);");
+   WrL(`        OpenOutput('%%b\%$('wl_folder');logs\day.worklog'); >`);
+   WrL(!`          WrS('0'); >`);
+   WrL(!`        CloseOutput;>`);
+   WrL(`        OpenOutput('%%b\%$('wl_folder');logs\month.worklog');>`);
+   WrL(!`          WrS('0'); >`);
+   WrL(!`        CloseOutput;>`);
+   WrL(!`      ")>`);
+   IfStr("%$('wl_comments');","Yes","=","WrL(`>
+%|// ENDIF`);");
+   WrL(!`   |>`);
+   IfStr("%$('wl_comments');","Yes","=","WrL(`>
+%|// ENDIF`);");
+   WrL(!`);`);
+   WrL(`Assign("wl_status","started");%\`);
+   IfStr("%$('wl_comments');","Yes","=","WrL(`>
+%|// release registers, to be polite:`);");
+   WrL(`LetReg(0,""); LetReg(1,""); LetReg(2,""); LetReg(3,""); LetReg(4,"");`);
+   WrL(`LetReg(5,""); LetReg(6,""); LetReg(7,""); LetReg(8,""); LetReg(9,"");%\`);
+   IfStr("%$('wl_comments');","Yes","=","WrL(`>
+%|// we're done!`);");
+   WrL(`StopWorking;%\`);
+   IfStr("%$('StatusLine');","Yes","=",>
+   !|>
+      WrL(`Exe("%%b\%$('wl_folder');wl_status.edt");%\`);>
+   |,|>
+      IfStr("%$(||wl_comments||);","Yes","=",!`WrL(!``>
+%||// Exe("%%b\%$('wl_folder');wl_status.edt");%\``);`);>
+   |);
+   WrL(`End;`);
+CloseOutput;
+Assign("Files","worklog_open.edt");
+Assign("StartupExe","   Exe('%%b\%$(|wl_folder|);worklog_open.edt');%\");
+
+
+///////////////////////////
+// Write worklog_close.edt:
+///////////////////////////
+OpenOutput("%b\%$('wl_folder');worklog_close.edt");
+   WrL(`// -*- ASCII:EDT -*-`);
+   WrL(`// worklog_close.edt`);
+   WrL(`// (schlicht 20010302)`);
+   WrL(`// (%$("worklogRev");)`);
+   WrL(`// (created by worklog_install.edt`);
+   WrL(`//   on %$("Date");)`);
+   WrL(`////////////////////////////////////%\`);
+   WrL(!`IfStr("%$('wl_status');","stopped","=",>`);
+   WrL(!`   "Prompt('Logging is already stopped.%\',2,1);Exit;");`);
+   WrL(` `);
+   IfStr("%$('StatusLine');","Yes","=",>
+   !|>
+      WrL(`Exe("%%b\%$('wl_folder');wl_status.edt");%\`);>
+   |,|>
+      IfStr("%$(||wl_comments||);","Yes","=",!`WrL(!``>
+%||// Exe("%%b\%$('wl_folder');wl_status.edt");%\``);`);>
+   |);
+   IfStr("%$('wl_comments');","Yes","=","WrL(`>
+%|// Calculate current time and date; like worklog_open.edt`);");
+   WrL(!`GetDate(2,"yy");`);
+   WrL(!`GetDate(3,"mm");`);
+   WrL(!`GetDate(4,"dd");`);
+   WrL(!`GetDate(5,"hh");`);
+   WrL(!`LetRegNum(9,"%!5+(%!4*24)");`);
+   WrL(!`GetDate(6,"nn");`);
+   WrL(!`LetRegNum(8,"%!6+(%!9*60)",2);`);
+   WrL(!``);
+   IfStr("%$('wl_comments');","Yes","=","WrL(`>
+%|// in case a new month has begun while you were working:`);");
+   WrL(`IfFileExists("%%b\%$('wl_folder');logs\%%!2%%!3.worklog","",>`);
+   WrL(!`   !"IfNum(%!3,1,'=','LetRegNum(2,%!2-1,2,2); LetRegNum(3,12);',>`);
+   WrL(!`      !'LetRegNum(3,%!3-1,2,2);');");`);
+   WrL(`ReadFile("%%b\%$('wl_folder');logs\%%!2%%!3.worklog",0);`);
+   WrL(`IfNum(%%!8,%%%!9,">=","",>`);>
+   WrL(!`   !"LetRegNum(1,31);>`);
+   WrL(!`     IfNum(%!3, 3,'=','LetRegNum(1,28);');>`);
+   WrL(!`     IfNum(%!3, 5,'=','LetRegNum(1,30);');>`);
+   WrL(!`     IfNum(%!3, 7,'=','LetRegNum(1,30);');>`);
+   WrL(!`     IfNum(%!3,10,'=','LetRegNum(1,30);');>`);
+   WrL(!`     IfNum(%!3,12,'=','LetRegNum(1,30);');>`);
+   WrL(!`     LetRegNum(8,'%!8+%!1*24*60',2);">`);
+   WrL(`);`);
+   WrL(`IfNum(%%!8,%%%!9,"=",>`);
+   IfStr("%$('wl_comments');","Yes","=","WrL(`>
+%|// You didn't work:`);");
+   WrL(`   !"OpenOutput('%%b\%$('wl_folder');logs\%%!2%%!3.worklog');>`);
+   WrL(!`       WrS('%!0');>`);
+   WrL(!`       WrL('Closed in the same minute.');>`);
+   WrL(!`     CloseOutput;>`);
+   WrL(!`    ",>`);
+   WrL(`   !"LetRegNum(7,%%!8-%%%!9,2,2); LetRegNum(8,0,2);>`);
+   IfStr("%$('wl_comments');","Yes","=","WrL(`>
+%|// Update hours of day`);");
+   WrL(`     ReadFile('%%b\%$('wl_folder');logs\day.worklog',1);>`);
+   WrL(!`     LetRegNum(1,%!1+%!7);>`);
+   WrL(`     OpenOutput('%%b\%$('wl_folder');logs\day.worklog');>`);
+   WrL(!`       WrS('%!1');>`);
+   WrL(!`     CloseOutput;>`);
+   IfStr("%$('wl_comments');","Yes","=","WrL(`>
+%|// Update hours of month`);");
+   WrL(`     ReadFile('%%b\%$('wl_folder');logs\month.worklog',1);>`);
+   WrL(!`     LetRegNum(1,%!1+%!7);>`);
+   WrL(`     OpenOutput('%%b\%$('wl_folder');logs\month.worklog');>`);
+   WrL(!`       WrS('%!1');>`);
+   WrL(!`     CloseOutput;>`);
+   WrL(!`     Loop(!'IfNum(%!7,60,''<'',''Stop;'',>`);
+   WrL(!`          !''LetRegNum(8,%!8+1,2);LetRegNum(7,%!7-60,2,2);'')');>`);
+   SetOK(1);
+   FindInString("%$('Subject');%$('wl_comments');","Yes",1,2,0);
+   IfOK(!:>
+      Assign("cmnt","");>
+      IfStr("%$('Subject');","No","=","Assign('cmnt','//');");>
+      IfStr("%$('wl_comments');","Yes","=","WrL(!`>
+%|// What did you do?%\>
+%|// I take the project's name as subject;%\>
+%|// if it is the Default project (WinEdt), I'll ask, suggesting the current file's name::`);");>
+      WrL(`%$('cmnt');     IfStr('%%!n','WinEdt','=',>`);>
+      WrL(`%$('cmnt');        !'LetReg(1,''%%N''); EnterReg(1,''Up Time:: %%!8 h, %%!7 min. / Subject? -::'',''worklog'');',>`);>
+      WrL(`%$('cmnt');        !'LetReg(1,''%%!n'');');>`);>
+   :);
+   IfStr("%$('wl_comments');","Yes","=",`WrL(``>
+%|// Now we can write the worklog:``);`);
+   WrL(`     OpenOutput('%%b\%$('wl_folder');logs\%%!2%%!3.worklog');>`);
+   WrL(!`       WrS('%!0');>`);
+   WrS(!`       WrL('%!4., %!5:%!6  (%!8 h, %!7 min.)`);
+   IfStr("%$('Subject');","Yes","=",!"WrL(` :  %%!1');>`)",">
+      IfStr(""%$(|wl_comments|);"",""Yes"",""="",!""WrL(!`');>%\>
+%|//// if you want the Subject logged:%\>
+%|//       WrL('%%!4., %%!5:%%!6  (%%!8 h, %%!7 min.) :  %%!1');>`)"",""WrL(`');>`);"");>
+   ");
+   WrL(!`     CloseOutput;>`);
+   IfStr("%$('wl_comments');","Yes","=","WrL(`>
+%|// and finally start the macro that writes the chart:`);");
+   IfStr("%$('Chart');","Yes","=",>
+   !|>
+      WrL(`     Exe('%%b\%$('wl_folder');wl_chart.edt');>`);>
+   |,!|>
+      IfStr(`%$(``wl_comments``);`,`Yes`,`=`,`WrL(!``>
+%||//     Exe('%%b\%$('wl_folder');wl_chart.edt');>``);`);>
+   |);
+   WrL(`");`);
+   WrL(`Assign("wl_status","stopped");%\`);
+   WrL(`End;`);
+CloseOutput;
+Assign("Files","%$('Files');%\        worklog_close.edt");
+Assign("ExitExe","   Exe('%%b\%$(|wl_folder|);worklog_close.edt');%\");
+
+
+/////////////////////
+// Write wl_read.edt:
+/////////////////////
+OpenOutput("%b\%$('wl_folder');wl_read.edt");
+   WrL(`// -*- ASCII:EDT -*-`);
+   WrL(`// wl_read.edt`);
+   WrL(`// (schlicht 20010302)`);
+   WrL(`// (%$("worklogRev");)`);
+   WrL(`// (created by worklog_install.edt`);
+   WrL(`//   on %$("Date");)`);
+   WrL(`////////////////////////////////////%\`);
+   IfStr("%$('StatusLine');","Yes","=",>
+   !|>
+      WrL(`Exe("%%b\%$('wl_folder');wl_status.edt");%\`);>
+   |,|>
+      IfStr("%$(||wl_comments||);","Yes","=",!`WrL(!``>
+%||// Exe("%%b\%$('wl_folder');wl_status.edt");%\``);`);>
+   |);
+   WrL(!`LetReg(5,"%p");`);
+   WrL(!`GetDate(2,"yy");`);
+   WrL(!`GetDate(3,"mm");`);
+   WrS(!`EnterReg(2,"Which Year (00-%!2 ,  ""t"" for total`);
+      IfStr("%$('Chart');","Yes","=","WrS(` ,  """"c"""" for chart`);"); WrL(`)?","worklog");`);
+   WrL(!` `);
+   SetOK(1);
+   FindInString("%$('Chart');%$('wl_comments');","Yes",1,2,0);
+   IfOK(!:>
+      Assign("cmnt","");>
+      IfStr("%$('Chart');","No","=","Assign('cmnt','//');");>
+      WrL(`%$('cmnt');IfStr("%%!2","c","=",>`);>
+      WrL(`%$('cmnt');   !"LetRegNum(4,31); >`);>
+      IfStr("%$('wl_comments');","Yes","=","WrL(!`>
+%|// this finds the most recent chart file`);");>
+      WrL(`%$('cmnt');     Loop(!'>`);>
+      WrL(`%$('cmnt');        IfFileExists(''%%b\%$(|wl_folder|);logs\wl_%%!3%%!4.tex'', ''Stop;'',>`);>
+      WrL(`%$('cmnt');         !''IfNum(%%!4,1,|=|,>`);>
+      WrL(`%$('cmnt');             !|LetRegNum(4,31); LetRegNum(3,%%!3-1,2,2);|,>`);>
+      WrL(`%$('cmnt');             !|LetRegNum(4,%%!4-1,2,2);|);'')');>`);>
+      WrL(`%$('cmnt');     Run('latex.exe ""%%b\%$('wl_folder');logs\wl_%%!3%%!4.tex""','%%b\%$('wl_folder');logs',0);>`);>
+      WrL(`%$('cmnt');     WaitForFocus(2000);>`);>
+      WrL(`%$('cmnt');     Run('yap.exe -1 ""%%b\%$('wl_folder');logs\wl_%%!3%%!4.dvi""','%%b\%$('wl_folder');logs',0);>`);>
+      WrL(`%$('cmnt');     LetReg(1,''); LetReg(2,''); LetReg(3,'');LetReg(4,'');>`);>
+      WrL(`%$('cmnt');     Exit;");`);>
+      WrL(`%$('cmnt'); `);>
+   :);
+   WrL(!`IfStr("%!2","t","=",>`);
+   WrL(`   !"Open('%%b\%$('wl_folder');logs\total.worklog');",>`);
+   WrL(!`   !"EnterReg(3,'Which Month (00-12)?','worklog');>`);
+   WrL(`     Open('%%b\%$('wl_folder');logs\%%!2%%!3.worklog');>`);
+   WrL(`     SetReadonly(1);");%\`);
+   WrL(!`ChDir("%!5");`);
+   WrL(`LetReg(1,""); LetReg(2,""); LetReg(3,""); LetReg(4,""); LetReg(5,"");%\`);
+   WrL(`End;`);
+CloseOutput;
+Assign("Files","%$('Files');%\        wl_read.edt");
+
+
+///////////////////////////////
+// Write wl_open.edt:
+///////////////////////////////
+OpenOutput("%b\%$('wl_folder');wl_open.edt");
+   WrL(`// -*- ASCII:EDT -*-`);
+   WrL(`// wl_open.edt`);
+   WrL(`// (schlicht 20010302)`);
+   WrL(`// (%$("worklogRev");)`);
+   WrL(`// (created by worklog_install.edt`);
+   WrL(`//   on %$("Date");)`);
+   WrL(`////////////////////////////////////%\`);
+   IfStr("%$('StatusLine');","Yes","=",>
+   !|>
+      WrL(`Exe("%%b\%$('wl_folder');wl_status.edt");`);>
+   |,|>
+      IfStr("%$(||wl_comments||);","Yes","=",!`WrL(!``>
+%||// Exe("%%b\%$('wl_folder');wl_status.edt");``);`);>
+   |);
+   WrL(!`LetReg(5,"%p");`);
+   WrL(!`GetDate(2,"yy");`);
+   WrL(!`GetDate(3,"mm");`);
+   WrL(`IfFileExists("%%b\%$('wl_folder');logs\%%!2%%!3.worklog","",>`);
+   WrL(!`   !"IfNum(%!3,1,'=','LetRegNum(2,%!2-1,2,2),LetRegNum(3,12);',>`);
+   WrL(!`      !'LetRegNum(3,%!3-1,2,2);')");`);
+   WrL(`Open("%%b\%$('wl_folder');logs\%%!2%%!3.worklog");`);
+   WrL(!`SetReadonly(1);`);
+   WrL(`ChDir("%%!5");%\`);
+   WrL(`LetReg(1,""); LetReg(2,""); LetReg(3,""); LetReg(5,"");%\`);
+   WrL(`End;`);
+CloseOutput;
+Assign("Files","%$('Files');%\        wl_open.edt");
+
+
+///////////////////////////
+// Write wl_activities.edt:
+///////////////////////////
+OpenOutput("%b\%$('wl_folder');wl_activities.edt");
+   WrL(`// -*- ASCII:EDT -*-`);
+   WrL(`// wl_activities.edt`);
+   WrL(`// (schlicht 20010623)`);
+   WrL(`// (%$("worklogRev");)`);
+   WrL(`// (created by worklog_install.edt`);
+   WrL(`//   on %$("Date");)`);
+   WrL(`////////////////////////////////////%\`);
+   IfStr("%$('StatusLine');","Yes","=",>
+   !|>
+      WrL(`Exe("%%b\%$('wl_folder');wl_status.edt");%\`);>
+   |,|>
+      IfStr("%$(||wl_comments||);","Yes","=",!`WrL(!``>
+%||// Exe("%%b\%$('wl_folder');wl_status.edt");%\``);`);>
+   |);
+   WrL(`StartWorking("Getting activities...");%\`);
+   IfStr(`%$(``wl_comments``);`,`Yes`,`=`,`WrL(``>
+%|// get actual date and time:``);`);
+   WrL(`GetDate(1,"yy");`);
+   WrL(`GetDate(2,"mm");`);
+   WrL(`GetDate(3,"dd");`);
+   WrL(`GetDate(4,"hh");`);
+   WrL(!` LetRegNum(6,"%!4+(%!3*24)");`);
+   WrL(`GetDate(5,"nn");`);
+   WrL(!` LetRegNum(6,"%!5+(%!6*60)");`);
+   IfStr(`%$(``wl_comments``);`,`Yes`,`=`,`WrL(``>
+%|// get Open Since:``);`);
+   WrL(``);
+   WrL(`IfNum(%%!6,%%%!9,">=",>`);
+   WrL(`   "LetRegNum(6,%%!6-%%%!9);",>`);
+   WrL(`  !"GetDate(8,'mm');>`);
+   WrL(`    LetRegNum(5,31);>`);
+   WrL(!`    IfNum(%!8, 3,'=','LetRegNum(5,28);');>`);
+   WrL(!`    IfNum(%!8, 5,'=','LetRegNum(5,30);');>`);
+   WrL(!`    IfNum(%!8, 7,'=','LetRegNum(5,30);');>`);
+   WrL(!`    IfNum(%!8,10,'=','LetRegNum(5,30);');>`);
+   WrL(!`    IfNum(%!8,12,'=','LetRegNum(5,30);');>`);
+   WrL(`    LetRegNum(6,'(%%!6+%%!5*24*60)-%%%!9');">`);
+   WrL(`);%\`);
+   IfStr("%$('NewDay');","Noon","=",>
+   !|>
+      IfStr(`%$(``wl_comments``);`,`Yes`,`=`,`WrL(``>
+%||// old day, if earlier than 12.00h. (if new day begins at noon):``);`);>
+      WrL(!`IfNum("%!4","12","<",>`);>
+      WrL(!`  !"IfNum(%!3,1,'=',>`);>
+      WrL(!`     !'LetRegNum(3,31); LetRegNum(2,%!2-1,2,2);',>`);>
+      WrL(!`     !'LetRegNum(3,%!3-1)');");`);>
+      WrL(!` `);>
+   |,!|>
+      IfStr(`%$(``wl_comments``);`,`Yes`,`=`,`WrL(!``>
+%||//// old day, if earlier than 12.00h. (if new day begins at noon):%\>
+%||//IfNum("%%!4","12","<",>%\>
+%||//  !"IfNum(%%!3,1,'=',>%\>
+%||//     !'LetRegNum(3,31); LetRegNum(2,%%!2-1);',>%\>
+%||//     !'LetRegNum(3,%%!3-1)');");%\``);`);>
+   |);
+   IfStr(`%$(``wl_comments``);`,`Yes`,`=`,`WrL(``>
+%|// hours and minutes:``);`);
+   WrL(`ReadFile("%%b\%$('wl_folder');logs\month.worklog",5);`);
+   WrS(!`LetRegNum(4,%!6+%!5,2,2);`);
+   IfStr(`%$(``wl_comments``);`,`Yes`,`=`,`WrL(``>
+%|       // total``);`,`WrL(````);`);
+   WrS(!`LetRegNum(6,%!4/%!3,2,2);`);
+   IfStr(`%$(``wl_comments``);`,`Yes`,`=`,`WrL(``>
+%|       // per day``);`,`WrL(````);`);
+   WrS(!`LetRegNum(8,%!6*7,2,2);`);
+   IfStr(`%$(``wl_comments``);`,`Yes`,`=`,`WrL(``>
+%|         // per week``);`,`WrL(````);`);
+   WrL(!`LetRegNum(5,0,2); LetRegNum(7,0,2); LetRegNum(9,0,2);`);
+   WrL(!`Loop(!"IfNum(%!4,60,'<','Stop',>`);
+   WrL(!`      'LetRegNum(4,%!4-60,2,2);LetRegNum(5,%!5+1,2);')");`);
+   WrL(!`Loop(!"IfNum(%!6,60,'<','Stop',>`);
+   WrL(!`      'LetRegNum(6,%!6-60,2,2);LetRegNum(7,%!7+1,2);')");`);
+   WrL(!`Loop(!"IfNum(%!8,60,'<','Stop',>`);
+   WrL(!`      'LetRegNum(8,%!8-60,2,2);LetRegNum(9,%!9+1,2);')");`);
+   WrL(!` `);
+   IfStr(`%$(``wl_comments``);`,`Yes`,`=`,`WrL(``>
+%|// temporarily store it in a local variable:``);`);
+   WrL(!`Assign("workloghours",">`);
+   WrL(!`%!5 h, %!4 min.  total%\>`);
+   WrL(!`%!9 h, %!8 min. / week%\>`);
+   WrL(!`%!7 h, %!6 min. / day%\");`);
+   WrL(!`LetReg(5,"Activities in %!2.20%!1:%\>`);
+   WrL(!`--------------------------------                      %\>`);
+   WrL(!` (%!3.%!2.20%!1)%\");`);
+   WrL(!` `);
+   SetOK(1);
+   FindInString("%$('Subject');%$('wl_comments');","Yes",1,2,0);
+   IfOK(!:>
+      Assign("cmnt","");>
+      IfStr("%$('Subject');","No","=","Assign('cmnt','//');");>
+      IfStr("%$('wl_comments');","Yes","=","WrL(!`>
+%|// The activities::`);");>
+      WrL(`%$('cmnt');IfFileExists("%%b\%$('wl_folder');logs\%%!1%%!2.worklog","",>`);>
+      WrL(`%$('cmnt');   !"IfNum(%%!2,1,'=','LetRegNum(1,%%!1-1,2,2),LetRegNum(2,12);',>`);>
+      WrL(`%$('cmnt');      !'LetRegNum(2,%%!2-1,2,2);')");`);>
+      WrL(`%$('cmnt');ReadFile("%%b\%$('wl_folder');logs\%%!1%%!2.worklog",0);`);>
+      WrL(`%$('cmnt');LetRegNum(2,0);`);>
+      WrL(`%$('cmnt');Loop(!``LetRegNum(6,0); LetRegNum(7,0);>`);>
+      WrL(`%$('cmnt');   FindInString("%%!0"," :: *>",1,2,1001,%%!2);>`);>
+      WrL(`%$('cmnt');   IfOK(>`);>
+      WrL(`%$('cmnt');   !"ExtractByIndex(9,'%%!0',%%!1+3,%%!2-2);>`);>
+      WrL(`%$('cmnt');     LetRegNum(4,0);>`);>
+      WrL(`%$('cmnt');     Loop(!'>`);>
+      WrL(`%$('cmnt');        SetOK(1);>`);>
+      WrL(`%$('cmnt');        FindInString(''%%!0'','':: %%!9'',3,4,1000,%%!4);>`);>
+      WrL(`%$('cmnt');        IfOK(!''>`);>
+      WrL(`%$('cmnt');           ReplaceInString(|%%!0|,||,%%!3,%%!4,0,0); >`);>
+      WrL(`%$('cmnt');           ExtractByIndex(8,|%%!0|,%%!3-15, %%!3-13);>`);>
+      WrL(`%$('cmnt');           LetRegNum(7,|%%!7+%%!8*60|,2,2);>`);>
+      WrL(`%$('cmnt');           ExtractByIndex(8, |%%!0|, %%!3-9, %%!3-7);>`);>
+      WrL(`%$('cmnt');           LetRegNum(7,%%!7+%%!8);>`);>
+      WrL(`%$('cmnt');           LetRegNum(6,%%!6+1,2);'',>`);>
+      WrL(`%$('cmnt');         ''Stop;'');>`);>
+      WrL(`%$('cmnt');     ');>`);>
+      WrL(`%$('cmnt');     LetRegNum(8,0,2); >`);>
+      WrL(`%$('cmnt');     Loop(!'IfNum(%%!7,60,''<'',''Stop'',>`);>
+      WrL(`%$('cmnt');          ''LetRegNum(8,%%!8+1,2); LetRegNum(7,%%!7-60); '')');>`);>
+      WrL(`%$('cmnt');     LetRegNum(7,%%!7,2,2);>`);>
+      WrL(`%$('cmnt');     LetReg(5,'%%!5%%\%%!8 h, %%!7 min. (%%!6 x) ::  %%!9');",>`);>
+      WrL(`%$('cmnt');    "Stop;");>`);>
+      WrL(`%$('cmnt');``);`);>
+      WrL(`%$('cmnt'); `);>
+   :);
+   WrL(`StopWorking;%\`);
+   WrL(!`Assign("workloghours","%!5%\>`);
+   IfStr("%$('Subject');","Yes","=",!"WrL(!`%\=====================%\>`);");
+   WrL(!`%$('workloghours');");`);
+   IfStr(`%$(``wl_comments``);`,`Yes`,`=`,`WrL(``%\>
+%|// You might want to copy it to a file.``);`);
+   WrL(!`CopyToClipboard("%$('workloghours');",0);`);
+   WrL(!`Prompt("%$('workloghours');",0,1);`);
+   WrL(!` `);
+   WrL(!`End;`);
+CloseOutput;
+Assign("Files","%$('Files');%\        wl_activities.edt");
+
+
+///////////////////////
+// Write wl_status.edt:
+///////////////////////
+IfStr(:%$('StatusLine');:,:Yes:,:=:,>
+ !:OpenOutput("%b\%$('wl_folder');wl_status.edt");>
+   WrL(`// -*- ASCII::EDT -*-`);>
+   WrL(`// wl_status.edt`);>
+   WrL(`// (schlicht 20010302)`);>
+   WrL(`// (%$("worklogRev");)`);>
+   WrL(`// (created by worklog_install.edt`);>
+   WrL(`//   on %$("Date");)`);>
+   WrL(`////////////////////////////////////%\`);>
+   IfStr(`%$(``wl_comments``);`,`Yes`,`=`,`WrL(``>
+%|// get Actual Date and Time``);`);>
+   WrL(!`GetDate(1,"dd");`);>
+   WrL(!`GetDate(3,"hh");`);>
+   WrL(!` LetRegNum(3,"%!3+(%!1*24)");`);>
+   WrL(!`GetDate(1,"nn");`);>
+   WrL(!` LetRegNum(3,"%!1+(%!3*60)");`);>
+   WrL(!` `);>
+   IfStr(`%$(``wl_comments``);`,`Yes`,`=`,`WrL(``>
+%|// open since``);`);>
+   WrL(`IfNum(%%!3,%%%!9,">=",>`);>
+   WrL(`   "LetRegNum(3,%%!3-%%%!9);",>`);>
+   WrL(`  !"GetDate(2,'mm');>`);>
+   WrL(`    LetRegNum(1,31);>`);>
+   WrL(!`    IfNum(%!2, 3,'=','LetRegNum(1,28);');>`);>
+   WrL(!`    IfNum(%!2, 5,'=','LetRegNum(1,30);');>`);>
+   WrL(!`    IfNum(%!2, 7,'=','LetRegNum(1,30);');>`);>
+   WrL(!`    IfNum(%!2,10,'=','LetRegNum(1,30);');>`);>
+   WrL(!`    IfNum(%!2,12,'=','LetRegNum(1,30);');>`);>
+   WrL(`    LetRegNum(3,'(%%!3+%%!1*24*60)-%%%!9');">`);>
+   WrL(`);%\`);>
+   IfStr(`%$(``wl_comments``);`,`Yes`,`=`,`WrL(``>
+%|// open on day``);`);>
+   WrL(`ReadFile("%%b\%$('wl_folder');logs\day.worklog",2);`);>
+   IfStr(`%$(``wl_comments``);`,`Yes`,`=`,`WrL(!``>
+%|//// uncomment this if you only want to see the total time::%\>
+%|//LetRegNum(2,%%!2+%%!3);>``);`);>
+   WrL(!`LetRegNum(1,0); LetRegNum(4,0);`);>
+   WrL(!`Loop(!"IfNum(%!2,60,'<','Stop',>`);>
+   WrL(!`      'LetRegNum(2,%!2-60);LetRegNum(1,%!1+1);')");`);>
+   WrL(!`Loop(!"IfNum(%!3,60,'<','Stop',>`);>
+   WrL(!`      'LetRegNum(3,%!3-60);LetRegNum(4,%!4+1);')");`);>
+   WrL(`SetInfo(1,"%%!1'%%!2''+%%!4'%%!3''",'Exe("%%b\%$('wl_folder');wl_status.edt")');`);>
+   IfStr(`%$(``wl_comments``);`,`Yes`,`=`,`WrL(!``>
+%|//// Another possibility::%\>
+%|//Prompt("Up Time %%!1 h, %%!2 min.",0,1);``);`);>
+   WrL(!` `);>
+   WrL(`LetReg(1,""); LetReg(2,""); LetReg(3,""); LetReg(4,"");%\`);>
+   WrL(`End;`);>
+   CloseOutput;>
+   Assign("Files","%$('Files');%\        wl_status.edt");>
+:);
+
+
+//////////////////////
+// Write wl_chart.edt:
+//////////////////////
+IfStr(:%$('Chart');:,:Yes:,:=:,>
+ !:OpenOutput("%b\%$('wl_folder');wl_chart.edt");>
+   WrL(`// -*- ASCII::EDT -*-`);>
+   WrL(`// wl_chart.edt`);>
+   WrL(`// write a worklog, that can be read`);>
+   WrL(`// by the LaTeX-package 'schedule'`);>
+   WrL(`// (schlicht 20010302)`);>
+   WrL(`// (%$("worklogRev");)`);>
+   WrL(`// (created by worklog_install.edt`);>
+   WrL(`//   on %$("Date");)`);>
+   WrL(`////////////////////////////////////%\`);>
+   WrL(`// If you want to change anything to the .tex-file, be sure to change`);>
+   WrL(`// the corresponding .data-file instead! The .tex-file is newly created`);>
+   WrL(`// each time and thus your changes will be overwritten.%\`);>
+   IfStr(`%$(``wl_comments``);`,`Yes`,`=`,`WrL(``>
+%|// Get day and year``);`);>
+   WrL(`GetDate(2,"dddd");`);>
+   WrL(`GetDate(0,"yyyy");`);>
+   WrL(`GetDate(3,"mm");%\`);>
+   IfStr(`%$(``wl_comments``);`,`Yes`,`=`,`WrL(``>
+%|// Determine number of days of last month``);`);>
+   WrL(!`LetRegNum(9,31);`);>
+   WrL(!`IfNum(%!3,3,"=","LetRegNum(9,28)","");`);>
+   WrL(!`IfNum(%!3,5,"=","LetRegNum(9,30)","");`);>
+   WrL(!`IfNum(%!3,7,"=","LetRegNum(9,30)","");`);>
+   WrL(!`IfNum(%!3,10,"=","LetRegNum(9,30)","");`);>
+   WrL(!`IfNum(%!3,12,"=","LetRegNum(9,30)","");`);>
+   WrL(!` `);>
+   IfStr(`%$(``wl_comments``);`,`Yes`,`=`,`WrL(``>
+%|// We have to get last Monday's date (might be different month)``);`);>
+   WrL(`IfStr("%%!2","%$('Sunday');","=",>`);>
+   WrL(!`   !"IfNum(%!4,6,'<=', !'LetRegNum(4,%!4+%!9); LetRegNum(3,%!3-1);');>`);>
+   WrL(!`     LetRegNum(4,%!4-6); LetReg(2,'Su');");`);>
+   WrL(`IfStr("%%!2","%$('Saturday');","=",>`);>
+   WrL(!`   !"IfNum(%!4,5,'<=', !'LetRegNum(4,%!4+%!9); LetRegNum(3,%!3-1);');>`);>
+   WrL(!`     LetRegNum(4,%!4-5); LetReg(2,'Sa');");`);>
+   WrL(`IfStr("%%!2","%$('Friday');","=",>`);>
+   WrL(!`   !"IfNum(%!4,4,'<=', !'LetRegNum(4,%!4+%!9); LetRegNum(3,%!3-1);');>`);>
+   WrL(!`     LetRegNum(4,%!4-4); LetReg(2,'F');");`);>
+   WrL(`IfStr("%%!2","%$('Thursday');","=",>`);>
+   WrL(!`   !"IfNum(%!4,3,'<=', !'LetRegNum(4,%!4+%!9); LetRegNum(3,%!3-1);');>`);>
+   WrL(!`     LetRegNum(4,%!4-3); LetReg(2,'Th');");`);>
+   WrL(`IfStr("%%!2","%$('Wednesday');","=",>`);>
+   WrL(!`   !"IfNum(%!4,2,'<=', !'LetRegNum(4,%!4+%!9); LetRegNum(3,%!3-1);');>`);>
+   WrL(!`     LetRegNum(4,%!4-2); LetReg(2,'W');");`);>
+   WrL(`IfStr("%%!2","%$('Tuesday');","=",>`);>
+   WrL(!`   !"IfNum(%!4,1,'=', !'LetRegNum(4,%!4+%!9); LetRegNum(3,%!3-1);');>`);>
+   WrL(!`     LetRegNum(4,%!4-1); LetReg(2,'T');");`);>
+   WrL(`IfStr("%%!2","%$('Monday');","=","LetReg(2,'M'); LetRegNum(4,%%!4);");`);>
+   WrL(!`LetRegNum(3,%!3,2,2);`);>
+   WrL(!`LetRegNum(4,%!4,2,2);`);>
+   WrL(!` `);>
+   WrS(!`LetReg(9,"%`); WrL(`%!9");`);>
+   WrL(`IfFileExists("%%b\%$('wl_folder');logs\wl_%%!3%%!4.data",>`);>
+   WrL(`   !"ReadFile('%%b\%$('wl_folder');logs\wl_%%!3%%!4.data',0);",>`);>
+   IfStr(`%$(``wl_comments``);`,`Yes`,`=`,`WrL(``>
+%|// a bug in schedule.sty::%\>
+%|// if the optional argument to \begin{schedule} begins with two equal%\>
+%|// chars, the output looks very funny. So on the 11., and the 22.%\>
+%|//// (in German these kind of numbers are called schnapps-numbers)%\>
+%|// you have to put some other char (like ' ') in front.%\>
+%|// We do it here by default; so don't bother. I bet you wouldn't%\>
+%|// have noticed the space anyway. ;-)``);`);>
+   WrL(!`   !"LetReg(0,'[ %!4.\,%!3.\,%!0 ]%\')");`);>
+   WrL(`OpenOutput("%%b\%$('wl_folder');logs\wl_%%!3%%!4.data");`);>
+   WrL(!`WrS("%!0");`);>
+   WrL(!`LetRegNum(0,0);`);>
+   WrL(!`Loop(!"IfNum(%!9,1440,'<','Stop;',>`);>
+   WrL(!`     !'LetRegNum(0,%!0+1,2,2);LetRegNum(9,%!9-1440,2,2);')");`);>
+   WrL(!`LetRegNum(0,0);`);>
+   WrL(!`Loop(!"IfNum(%!9,60,'<','Stop;',>`);>
+   WrL(!`     !'LetRegNum(0,%!0+1,2,2);LetRegNum(9,%!9-60,2,2);')");`);>
+   IfStr(`%$(``wl_comments``);`,`Yes`,`=`,`WrL(``>
+%|// split entries if they transcend midnight%\>
+%|// (on Mondays it's more difficult and doesn't yet work)%\>
+%|////    if we're in a new month%\>
+%|// you'll have to correct the data file manually.``);`);>
+   WrL(!`IfNum(%!0,%!5,">",>`);>
+   WrS(!`   !"WrL('  \WinEdt{`);>
+      IfStr("%$('Subject');","Yes","=",!"WrS(`%%!1`);","");>
+   WrL(!`}{( --> %!8 h, %!7 min.)}{%!2}{00::00-%!5::%!6}');>`);>
+   WrL(!`     IfStr('%!2','T','=','LetReg(2,''M'');','');>`);>
+   WrL(!`     IfStr('%!2','W','=','LetReg(2,''T'');','');>`);>
+   WrL(!`     IfStr('%!2','Th','=','LetReg(2,''W'');','');>`);>
+   WrL(!`     IfStr('%!2','F','=','LetReg(2,''Th'');','');>`);>
+   WrL(!`     IfStr('%!2','Sa','=','LetReg(2,''F'');','');>`);>
+   WrL(!`     IfStr('%!2','Su','=','LetReg(2,''Sa'');','');>`);>
+   WrS(!`     WrL('  \WinEdt{`);>
+      IfStr("%$('Subject');","Yes","=",!"WrS(`%%!1`);","");>
+   WrL(!`}{( --> )}{%!2}{%!0::%!9-23::59}');>`);>
+   WrL(!`    ",>`);>
+   WrS(!`   !"WrL('  \WinEdt{`);>
+      IfStr("%$('Subject');","Yes","=",!"WrS(`%%!1`);","");>
+   WrL(!`}{(%!8 h, %!7 min.)}{%!2}{%!0::%!9-%!5::%!6}');");>`);>
+   WrL(`CloseOutput;%\`);>
+   WrL(`ReadFile("%%b\%$('wl_folder');logs\wl_%%!3%%!4.data",0);>`);>
+   WrL(`ReadFile("%%b\%$('wl_folder');wl_chart.data",1);>`);>
+   WrL(`OpenOutput("%%b\%$('wl_folder');logs\wl_%%!3%%!4.tex");>`);>
+   WrL(!`  WrS("%!1");>`);>
+   WrL(!`  WrS("%!0");>`);>
+   WrL(!`  WrL("\end{schedule}"); WrL(" ");>`);>
+   WrL(!`  WrL("\end{document}");>`);>
+   WrL(`CloseOutput;%\`);>
+   IfStr(`%$(``wl_comments``);`,`Yes`,`=`,`WrL(``>
+%|// that's it.%\>
+%|// now we can go back to 'worklog_close.edt' to finish off Exit.``);`);>
+   WrL(!`End;`);>
+   CloseOutput;>
+   OpenOutput("%b\%$('wl_folder');wl_chart.data");>
+   WrL(!`%% wl_chart.[data,tex]`);>
+   WrL(!`%% (schlicht 20010302)`);>
+   WrL(`%%%% (%$("worklogRev");)`);>
+   WrL(!`%% (created by worklog_install.edt`);>
+   WrL(`%%%%   on %$("Date");)`);>
+   WrL(!`%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%`);>
+   IfStr(`%$(``wl_comments``);`,`Yes`,`=`,!`WrL(``>
+%% This is the default chart file.%\>
+%% It will be read and written by%\>
+%% wl_chart.edt every time.%\>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%``);`);>
+   WrL(`\documentclass[a4paper]{article}`);>
+   WrL(`\pagestyle{empty}`);>
+   WrL(`\usepackage{schedule}`);>
+   WrL(`\usepackage[ansinew]{inputenc}`);>
+   WrL(`\usepackage[T1]{fontenc}`);>
+   WrL(`\setlength{\topmargin}{-30pt}%\`);>
+   WrL(`%% Definition of the chart's appearance::`);>
+   WrL(`   \CellHeight{23.5pt}`);>
+   WrL(`   \CellWidth{60pt}`);>
+   WrL(`   \TimeRange{00::00-24::00}`);>
+   WrL(`   \SubUnits{30}`);>
+   WrL(`   \BeginOn{Monday}`);>
+   WrL(`   \TextSize{\tiny}`);>
+   WrL(`   \SevenDay%\`);>
+   WrL(`%% Choose {background color}{font color} as you like::`);>
+   WrL(` \NewAppointment{WinEdt}{dark}{white}`);>
+   WrL(`%% \NewAppointment{WinEdt}{red}{yellow}`);>
+   WrL(`%% \NewAppointment{WinEdt}{green}{blue}%\`);>
+   WrL(`%%----------------------------------------------------------------`);>
+   WrL(`\begin{document}%\`);>
+   WrL(`\begin{schedule}`);>
+   CloseOutput;>
+   Assign("Files","%$('Files');%\        wl_chart.edt%\        wl_chart.data");>
+:);
+
+
+//////////////////////////////
+// Some (almost) empty files:
+//////////////////////////////
+GetDate(2,"yy");
+GetDate(3,"mm");
+Assign("ExistFiles","");
+IfFileExists("%b\%$('wl_folder');logs\","", "CreateFolders('%b\%$(|wl_folder|);logs\',0);");
+IfFileExists("%b\%$('wl_folder');logs\%!2%!3.worklog","Assign('ExistFiles','Yes');",>
+  !"OpenOutput('%b\%$(|wl_folder|);logs\%!2%!3.worklog');>
+    WrL('************************** worklog *****************************');>
+    WrL('************************** %!3.20%!2 *****************************%\'); >
+    WrL('--Opened-------------Closed-------Uptime----------Subject-------');>
+    WrL('----------------------------------------------------------------');>
+    CloseOutput;>
+    Assign('Files','%$(|Files|);%\   logs\%!2%!3.worklog')");
+IfFileExists("%b\%$('wl_folder');logs\day.worklog","Assign('ExistFiles','Yes');",>
+  !"OpenOutput('%b\%$(|wl_folder|);logs\day.worklog');>
+    WrS('0'); CloseOutput;>
+    Assign('Files','%$(|Files|);%\   logs\day.worklog')");
+IfFileExists("%b\%$('wl_folder');logs\month.worklog","Assign('ExistFiles','Yes');",>
+  !"OpenOutput('%b\%$(|wl_folder|);logs\month.worklog');>
+    WrS('0'); CloseOutput;>
+    Assign('Files','%$(|Files|);%\   logs\month.worklog')");
+IfFileExists("%b\%$('wl_folder');logs\total.worklog","Assign('ExistFiles','Yes');",>
+  !"OpenOutput('%b\%$(|wl_folder|);logs\total.worklog');>
+    CloseOutput;>
+    Assign('Files','%$(|Files|);%\   logs\total.worklog')");
+
+
+/////////////////////
+// Write worklog.dat:
+/////////////////////
+OpenOutput("%b\%$('wl_folder');worklog.dat");
+   WrL(`MAIN MENU: 160`);
+   WrL(`// to be used to append a submenu`);
+   WrL(`// for the worklog package`);
+   WrL(`// in the Tools menu`);
+   WrL(`// (%$("worklogRev");)`);
+   WrL(`// (created by worklog_install.edt`);
+   WrL(`//  on %$("Date");)`);
+   WrL(`/////////////////////////////////%\`);
+   WrL(`MENU:&Tools`);
+   WrL(`  Flags:0`);
+   WrL(`  Hint:`);
+   WrL(`  Submenu:4`);
+   WrL(`    Item:Worklog`);
+   WrL(`      Image:70`);
+   WrL(`    Macro:3`);
+   WrL(`      Item:Read Current Worklog`);
+   WrL(`      Definition:Exe("%%b\%$('wl_folder');wl_open.edt");`);
+   WrL(`    Macro:3`);
+   WrL(`      Item:Choose Worklog`);
+   WrL(`      Definition:Exe("%%b\%$('wl_folder');wl_read.edt");`);
+   WrL(`    Macro:3`);
+   WrL(`      Item:Acitivities`);
+   WrL(`      Definition:Exe("%%b\%$('wl_folder');wl_activities.edt");`);
+   WrL(`    Separator:6`);
+   WrL(`    Macro:3`);
+   WrL(`      Item:Start Logging`);
+   WrL(`      Definition:Exe("%%b\%$('wl_folder');worklog_open.edt");`);
+   WrL(`    Macro:3`);
+   WrL(`      Item:Stop Logging`);
+   WrS(`      Definition:Exe("%%b\%$('wl_folder');worklog_close.edt");`);
+   IfStr("%$('StatusLine');","Yes","=",!">
+      WrL(`SetInfo(1,""Log stopped"",""Prompt('Start Logging?',0,3,'Exe(''%%b\%$(|wl_folder|);worklog_open.edt'');','Relax');"");`);","WrL(` `);");
+   WrL(`  END Submenu:5`);
+   WrL(`END Menu:&Tools`);
+CloseOutput;
+Assign("Files","%$('Files');%\        worklog.dat");
+
+
+//////////////////////////////////////////
+// Try to write in Startup and Exit macro:
+//////////////////////////////////////////
+// Startup and Exit macros are specified in section *>23 of WinEdt.ini
+IfStr("%$('EditStartup');","Yes","=",>
+ !`ReadFile("%b\WinEdt.ini",0);>
+   LetRegNum(2,0);>
+   Loop(!``SetOK(1);FindInString("%!0","*",1,2,1000,%!2);>
+// Doing it this way is much quicker than
+// looking for the RegEx "\*>23" :
+      IfOK(!"ExtractByIndex(3,'%!0',%!2+3,%!2+4);",>
+        "Assign('Startup','Error'); Assign('Exit','Error');");>
+      IfStr("%!3","23","=","Stop;","LetRegNum(2,%!2+1);");>
+   ``);>
+   SetOK(1);>
+   FindInString("%!0","<\[*\]>",1,2,1001,%!2);>
+   IfOK(!"ExtractByIndex(4,'%!0',%!1,%!2-2);>
+      FindInString('%!4','[''""]*[''""]',1,3,0001,0);>
+      IfOK(!'ExtractByIndex(4,''%!4'',%!1+1,%!3-1);>
+          Assign(''Startup'',''%!4'');',>
+         'Assign(''Startup'',''Error'');');");>
+   SetOK(1);>
+   FindInString("%!0","<\[*\]>",1,2,1001,%!2);>
+   IfOK(!"ExtractByIndex(4,'%!0',%!1,%!2-2);>
+      FindInString('%!4','[''""]*[''""]',1,3,0001,0);>
+      IfOK(!'ExtractByIndex(4,''%!4'',%!1+1,%!3-1);>
+          Assign(''Exit'',''%!4'');',>
+         'Assign(''Exit'',''Error'');');");>
+   Do(``IfFileExists("%$('Startup');",>
+     !"ReadFile('%$(|Startup|);',0);>
+       OpenOutput('%$(|Startup|);.old');>
+         WrL(!'// Your old file %$(|Startup|);');>
+         WrL(!'// Backed up by the ''worklog'' macro package on %$(|Date|);');>
+         WrL(!'// ---------------------------------------------------------------');>
+         WrL(!' '); WrS('%%!0');>
+       CloseOutput;>
+       SetOK(1);>
+       FindInString('%%!0','<{@ }End;',2,3,0001,0);>
+       IfOK(!'OpenOutput(''%$(|Startup|);'');>
+          ReplaceInString(''%%!0'',''// added by the ''''worklog'''' macro package:%\%%$(|StartupExe|);'',%%!2-1,%%!2-1,0,0);>
+          WrL(''%%!0'');>
+          CloseOutput;',>
+        'Assign(''Startup'',''Error'');Stop;');",>
+      "Assign('Startup','Error');");>
+   ``);>
+   Do(``IfFileExists("%$('Exit');",>
+     !"ReadFile('%$(|Exit|);',0);>
+       OpenOutput('%$(|Exit|);.old');>
+         WrL(!'// Your old file %$(|Exit|);');>
+         WrL(!'// Backed up by the ''worklog'' macro package on %$(|Date|);');>
+         WrL(!'// ---------------------------------------------------------------');>
+         WrL(!' '); WrS('%%!0');>
+       CloseOutput; >
+       SetOK(1);>
+       FindInString('%%!0','<{@ }End;',2,3,0001,0);>
+       IfOK(!'OpenOutput(''%$(|Exit|);'');>
+          ReplaceInString(''%%!0'',''// added by the ''''worklog'''' macro package:%\%%$(|ExitExe|);'',%%!2-1,%%!2-1,0,0);>
+          WrL(''%%!0'');>
+          CloseOutput;',>
+        'Assign(''Exit'',''Error'');Stop;');",>
+      "Assign('Exit','Error');");>
+   ``);>
+`);
+
+
+//////////////////////////////
+// Write the installation log:
+//////////////////////////////
+OpenOutput("%b\%$('wl_folder');install.log");>
+WrL(">
+************************************%\>
+     Macro package `worklog'%\>
+      ( %$('worklogRev'); )%\>
+************************************%\>
+installed on %$('Date');%\%\>
+written in directory: %%b\%$('wl_folder');%\>
+ Files: %$('Files');");
+IfStr("%$('ExistFiles')","Yes","=","WrL('   (Some (or all) data files already existed on the system.)')");
+WrL("%\Package uses Global Register %%%!9");
+WrS("For further comments consult ");
+   IfStr("%$('wl_comments');","Yes","=",>
+      "WrL('the files.');",>
+      "WrL('the installation macro.');");
+WrL("%\>
+Options:%\>
+*********");
+WrL("New Day begins at: %$('NewDay');");
+WrS("Subject will "); IfStr("%$('Subject');","No","=","WrS('not ');"); WrL("be logged.");
+IfStr("%$('Chart');","Yes","=",>
+   "WrL('A chart will be written automatically.%\  (Windows'' Language: %$(|Language|);)');",>
+   "WrL('No chart will be written automatically.');");
+IfStr("%$('Language');","unknown","=",!"WrL('   (%$(''Monday'');, %$(''Tuesday'');, %$(''Wednesday'');, >
+%$(''Thursday'');,%\%$(''Friday'');, %$(''Saturday'');, %$(''Sunday'');)')","");
+IfStr("%$('StatusLine');","Yes","=","WrL('Uptime appears in Status Line. %\>
+  (You might need to accustom the length of the Custom Info field.%\>
+   It should be at least this long: 0''00+1''11'''')')",>
+   "WrL('Uptime will not appear in Status Line.');");
+IfStr("%$('Menu');","Yes","=","WrL('I made a menu entry in the Tools Menu for you.');",>
+   "WrL('You can make a menu entry for the worklog package if you%\>
+  go to Options | Menu Setup, click on ""Append..."", and choose%\>
+  the file worklog.dat.');");
+WrL(" ");
+IfStr("%$('EditStartup');","Yes","=",>
+   !"IfStr('%$(''Startup'');','Error','=',>
+      !'WrL(''Please put the following line in your Startup Macro%\>
+(I tried but didn''''t succeed):%\>
+%$(|StartupExe|);'');',>
+      !'WrL(''I edited your Startup macro %$(|Startup|);%\>
+   and backed it up to %$(|Startup|);.old.%\'');');",>
+   !"WrL('Please put the following line in your Startup Macro%\>
+(if it''s not already there):%\>
+%$(''StartupExe'');');");
+IfStr("%$('EditStartup');","Yes","=",>
+   !"IfStr('%$(''Exit'');','Error','=',>
+      !'WrL(''Please put the following line in your Exit Macro%\>
+(I tried but didn''''t succeed):%\>
+%$(|ExitExe|);'');',>
+      !'WrL(''I edited your Exit macro %$(|Exit|);%\>
+   and backed it up to %$(|Exit|);.old.'');');",>
+   !"WrL('Please put the following line in your Exit Macro%\>
+(if it''s not already there):%\>
+%$(''ExitExe'');');");
+CloseOutput;
+
+
+//////////////////////
+// make a menu entry
+// and initialize:
+//////////////////////
+IfStr("%$('Menu');","Yes","=",>
+   "AddMenus('%b\%$(|wl_folder|);worklog.dat', 2);","");
+Assign("Register","%%%!9");
+Do("LetReg(8,'%$(|Register|);');");
+// If there's a number in the Global Register I assume
+// that it's been created by the worklog package, and I'll leave it.
+IfStr("%!8","46080",">","Assign('Register','Yes');",>
+   "IfStr('%!8','1440','<','Assign(''Register'',''Yes'');',>
+      'Assign(''Register'',''OK'');');");
+IfStr("%$('Register');","Yes","=",>
+   !">
+// Put date in Global Register
+    GetDate(4,'dd');>
+    GetDate(5,'hh');>
+    GetDate(6,'nn');>
+    LetRegNum(8,'%!5+(%!4*24)');>
+    LetRegNum(8,'%!6+(%!8*60)');>
+    Do('LetStr(%!9,''%!8'');');>
+   ");
+IfStr("%$('wl_status');","started","=","","Exe('%b\%$(|wl_folder|);worklog_open.edt');");
+IfStr("%$('StatusLine');","Yes","=",>
+   "SetInfoVisible(1); Exe('%b\%$(|wl_folder|);wl_status.edt'); UpdateStatus;");
+
+
+LetReg(0,""); LetReg(1,""); LetReg(2,""); LetReg(3,""); LetReg(4,"");
+LetReg(5,""); LetReg(6,""); LetReg(7,""); LetReg(8,""); LetReg(9,"");
+StopWorking;
+
+Prompt("I installed everything!!%\>
+   (See install.log for details)%\%\Consider reading the file 00worklog.README",0,1);
+Open("%b\%$('wl_folder');install.log",1,1);
+End;
+
+
+///////////////////////////////////////
+//       comments, bug reports       //
+//        and suggestions to         //
+//    R Schlicht   w.m.l@gmx.net     //
+///////////////////////////////////////
+
+$Log: worklog_install.edt,v $
+Revision 1.10  2004-06-26 18:57:44+02  schlicht
+installation: don't use %0 or %1
+
+Revision 1.9  2001-12-01 17:18:47+01  schlicht
+new month while logging
+
+Revision 1.8  2001-12-01 12:26:55+01  schlicht
+%b instead of %B; ": subject" instead of "// subject //"
+
+Revision 1.7  2001-08-01 05:28:00+02  schlicht
+option: show comments
+
+Revision 1.6  2001-07-14 00:17:29+02  schlicht
+clean installation
+
+Revision 1.5  2001-06-25 00:53:07+02  schlicht
+merges wl_activities.edt and wl_month.edt
+
+Revision 1.4  2001-05-13 04:43:20+02  schlicht
+added wl_activities.edt
+
+Revision 1.3  2001-04-18 05:50:21+02  schlicht
+added installation option: edit startup and exit macros?
+
+Revision 1.0  2001-03-23 02:28:28+02  schlicht
+Initial revision

@@ -1,0 +1,147 @@
+MAIN MENU: 275
+// Extracted from WinEdt 5
+
+MENU:&R-Sweave
+  Flags:0
+  Hint:
+  Macro:3
+    Item:R-&history (update)
+    Hint:R: history
+    Definition:[Exe("%B\Contrib\R-Sweave\R-history.edt")]
+    Shortcut:32840 [Alt+H]
+    Tool Bar:290
+    Image:290
+  Separator:6
+  Macro:3
+    Item:R-l&ine - and go
+    Hint:R: eval line and go
+    Path:%P
+    Definition:[Exe("%B\Contrib\R-Sweave\R-line-go.edt")]
+    Shortcut:32844 [Alt+L]
+    Image:291
+  Macro:19
+    Item:R-&line
+    Hint:R: eval line
+    Path:%P
+    Definition:[Exe("%B\Contrib\R-Sweave\R-line.edt")]
+    Shortcut:49228 [Ctrl+Alt+L]
+    Image:292
+  Macro:35
+    Item:R-&paste - and go
+    Hint:R: paste and go
+    Definition:[Exe("%B\Contrib\R-Sweave\R-paste-go.edt")]
+    Shortcut:32848 [Alt+P]
+    Tool Bar:291
+    Image:291
+  Macro:35
+    Item:R-p&aste
+    Hint:R: paste
+    Definition:[Exe("%B\Contrib\R-Sweave\R-paste.edt")]
+    Shortcut:49232 [Ctrl+Alt+P]
+    Image:292
+  Macro:27
+    Item:R-&source - and go
+    Hint:R: source(.) and go
+    File:%p\%n.R
+    Path:%p
+    Definition:[Exe("%B\Contrib\R-Sweave\R-source.edt")]
+    Shortcut:32851 [Alt+S]
+    Tool Bar:292
+    Image:293
+  Macro:19
+    Item:&R-script
+    Hint:R: source(.)
+    File:%p\%n.R
+    Path:%p
+    Definition:[Exe("%B\Contrib\R-Sweave\R-script.edt")]
+    Shortcut:49235 [Ctrl+Alt+S]
+    Tool Bar:293
+    Image:293
+  Macro:283
+    Item:Stangle
+    File:%p\%n.Rnw
+    Path:%P
+    Definition:LetReg(6,"R");Exe("%B\Contrib\R-Sweave\Sweave.edt");
+  Macro:283
+    Item:Sweave and show
+    Hint:Sweave
+    File:%p\%n.Rnw
+    Path:%P
+    Definition:LetReg(6,"Stop");Exe("%B\Contrib\R-Sweave\Sweave.edt");
+    Tool Bar:296
+    Image:31
+  Macro:283
+    Item:S&weave + pdfLaTeX
+    Hint:Sweave + pdfLaTeX
+    File:%p\%n.Rnw
+    Path:%P
+    Definition:LetReg(6,"pdf");Exe("%B\Contrib\R-Sweave\Sweave.edt");
+    Tool Bar:295
+    Image:30
+  Macro:283
+    Item:CacheSweave and show 
+    Hint:cacheSweave
+    File:%p\%n.Rnw
+    Path:%p
+    Definition:LetReg(6,"Stop");LetReg(8,"cache");Exe("%B\Contrib\R-Sweave\Sweave.edt");
+    Tool Bar:298
+    Image:31
+  Macro:283
+    Item:CacheSweave + pdfLaTeX
+    Hint:cacheSweave + pdfLaTeX
+    File:%p\%n.Rnw
+    Path:%p
+    Definition:LetReg(6,"pdf");LetReg(8,"cache");Exe("%B\Contrib\R-Sweave\Sweave.edt");
+    Tool Bar:297
+    Image:30
+  Macro:3
+    Item:R-Open Rgui
+    Hint:R Console
+    Path:%p
+    Definition:LetReg(9,"open");Exe("%B\Contrib\R-Sweave\Sweave.edt");
+    Tool Bar:294
+    Image:49
+  Separator:6
+  Macro:11
+    Item:&function
+    Hint:function(){}
+    Definition:[Exe("%B\Contrib\R-Sweave\function.edt");]
+    Shortcut:49222 [Ctrl+Alt+F]
+    Image:69
+  Macro:11
+    Item:&for
+    Hint:for(){}
+    Definition:[Exe("%B\Contrib\R-Sweave\for.edt");]
+    Shortcut:49231 [Ctrl+Alt+O]
+    Image:69
+  Macro:11
+    Item:&if
+    Hint:if(){}
+    Definition:[Exe("%B\Contrib\R-Sweave\if.edt");]
+    Shortcut:49225 [Ctrl+Alt+I]
+    Image:69
+  Macro:11
+    Item:if &else
+    Hint:if(){} else(){}
+    Definition:[Exe("%B\Contrib\R-Sweave\if_else.edt");]
+    Shortcut:49221 [Ctrl+Alt+E]
+    Image:69
+  Macro:11
+    Item:&<-
+    Hint:" <- "
+    Definition:[Ins(" <- ")]
+    Shortcut:16573 [Ctrl+-]
+    Image:44
+  Separator:6
+  Macro:3
+    Item:Set R --mdi mode (english only!)
+    Hint:--mdi mode
+    Definition:CopyFile("%B\Contrib\R-Sweave\send2R--mdi.edt", "%b\send2R.edt", 1, 0);
+  Macro:3
+    Item:Set R --sdi mode (default)
+    Definition:CopyFile("%B\Contrib\R-Sweave\send2R--sdi.edt", "%b\send2R.edt", 1, 0);
+  Macro:3
+    Item:Set S-Plus mode (bugs!)
+    Definition:CopyFile("%B\Contrib\R-Sweave\send2S.edt", "%b\send2R.edt", 1, 0);
+END Menu:&R-Sweave
+

@@ -1,0 +1,46 @@
+// -*- ASCII:EDT -*-
+// MFPreview.edt
+//
+// This macro outputs a .PDF file with a preview of all fonts
+// from the current metafont .mf file.
+
+  PushTagsandRegisters;
+
+  IfFileExists("%O\%N_preview.pdf",!"DeleteFile('%O\%N_preview.pdf')");
+
+  // Next section finds the metafont output.
+
+  ListFolderFiles(0,'%O','',0,1);
+  LstEnum('%!0','%\');
+  LstGetCount(1);
+  Repeat(%!1,>
+    !`LstGetItem(2,%!c-1);>
+      GetFileName('%!2',3);>
+      GetFileType('%!2',4);>
+      FindInString('%!4','<\.+$Numeric$gf~$~[]$',5,6,1);>
+      IfOK(!|IfStr('%!3','%N','=',!'Break;');|);>
+      ProcessMessages;>
+     `);
+  LstRelease;
+
+  // Execute gftodvi and dvi2pdf on the .gf file to generate the .pdf preview...
+  // Clean up temporary files afterwards.
+
+  StartWorking("Producing MetaFont preview...");
+  WinExe('','gftodvi "%N%!4"','%O','',011100);
+  WinExe('','dvipdfmx -p a4 "%O\%N.dvi"','%O','',011100);
+  CopyFile('%O\%N.pdf','%O\%N_preview.pdf',1);
+  DeleteFile("%O\%N.dvi");
+  DeleteFile("%O\%N.pdf");
+  StopWorking;
+  UpdateStatus;
+
+  // Show the preview in PDF Viewer
+
+  IfFileExists("%O\%N_preview.pdf",>
+         !`Run('%$(|PDF-View|); "%O\%N_preview.pdf"','%O',0,0,'',1,1);`,>
+         !`Prompt('Preview PDF file could not be generated!');`);
+
+  PopTagsandRegisters;
+
+End;

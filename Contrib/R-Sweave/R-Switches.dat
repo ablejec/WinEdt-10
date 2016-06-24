@@ -1,0 +1,139 @@
+Switches: 275
+// Extracted from WinEdt 5 for R-Sweave support
+
+Name:<<?>>
+  Start:1<
+  Stop:1>
+  Start1:<
+  Start2:
+  Stop1:>
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:0
+  Priority:5
+  Color:1037
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:3
+  Indented:0
+  BOLN:0
+
+Name:>>?@
+  Start:1=
+  Stop:1@
+  Start1:>>
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1TeX
+  Strict Priority:1
+  Priority:9
+  Color:1038
+  Case Sensitive:0
+  Scope Flag:1
+  Scope:4
+  Indented:0
+  BOLN:0
+
+Name:# R Comments
+  Start:1#
+  Stop:0
+  Start1:
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1R
+  Strict Priority:1
+  Priority:9
+  Color:34755
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:1
+  Indented:0
+  BOLN:0
+
+Name:require(?)
+  Start:1(
+  Stop:0)
+  Start1:require
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1R
+  Strict Priority:1
+  Priority:7
+  Color:5122
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:4
+  Indented:0
+  BOLN:0
+
+Name:library(?)
+  Start:1(
+  Stop:0)
+  Start1:library
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1R
+  Strict Priority:1
+  Priority:7
+  Color:5122
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:4
+  Indented:0
+  BOLN:0
+
+Name:`?`
+  Start:1"``"
+  Stop:1"``"
+  Start1:
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1R
+  Strict Priority:1
+  Priority:9
+  Color:9216
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:4
+  Indented:0
+  BOLN:0
+
+Name:'?'
+  Start:1"''"
+  Stop:1"''"
+  Start1:
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1R
+  Strict Priority:1
+  Priority:9
+  Color:1028
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:4
+  Indented:0
+  BOLN:0
+
+Name:""?""
+  Start:1""""
+  Stop:1""""
+  Start1:
+  Start2:
+  Stop1:
+  Stop2:
+  Enabled:1R
+  Strict Priority:1
+  Priority:8
+  Color:1028
+  Case Sensitive:1
+  Scope Flag:1
+  Scope:4
+  Indented:0
+  BOLN:0
+

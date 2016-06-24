@@ -1,0 +1,58 @@
+/// MDI mode
+//SetFocus("RGui");
+// Wait(150); // Windows may needs some time ...
+// PostMessage("RGui", $0104, $12, $20000001); // press ALT
+// Wait(150); // Windows may needs some time ...
+// PostMessage("RGui", $0105, $12, $20000001); // release ALT
+// PostMessage("RGui", $0102, 87, 1); // Char: W -> Windows Menu
+// PostMessage("RGui", $0102, 49, 1); // Char: 1 -> Window1 = R Console
+// Wait(150); // Windows may needs some time ...
+// PostMessage("RGui", $0104, $12, $20000001); // press ALT
+// Wait(150); // Windows may needs some time ...
+// PostMessage("RGui", $0105, $12, $20000001); // release ALT
+// PostMessage("RGui", $0102, 69, 1); // Char: E -> Edit Menu
+// PostMessage("RGui", $0102, 80, 1); // Char: P -> Paste
+///
+/// SDI mode
+Assign("IDE","R Console");
+//Assign("IDE","RStudio");
+//Assign("IDE","Untitled - EmEditor");
+//Assign("IDE","Untitled - Notepad");
+
+
+//Prompt('IDE=%$("IDE")');
+SetFocus("%$('IDE')");
+Wait( 500 ); // Windows may needs some time ...
+// PostMessage("%$('IDE')", $0104, $12, $20000001); // press ALT
+// Wait(150); // Windows may needs some time ...
+// PostMessage("%$('IDE')", $0105, $12, $20000001); // release ALT
+// PostMessage("%$('IDE')", $0102, 87, 1); // Char: W -> Windows Menu
+// PostMessage("%$('IDE')", $0102, 49, 1); // Char: 1 -> Window1 = R Console
+// Wait(150); // Windows may needs some time ...
+/////////////// deluje za R Console //////////////////////////////////
+// PostMessage("%$('IDE')", $0104, $12, $20000001); // press ALT
+// Wait(250); // Windows may needs some time ...
+// PostMessage("%$('IDE')", $0105, $12, $20000001); // release ALT
+//// Wait(250);
+// PostMessage("%$('IDE')", $0102, 69, 1); // Char: E -> Edit Menu
+////  Wait(200)
+// PostMessage("%$('IDE')", $0102, 80, 1); // Char: P -> Paste
+// PostMessage("%$('IDE')", $0105, $12, $20000001); // release ALT
+////////////////deluje do sem ////////////////////////////////////////
+////////// preizkušanje //////////////////////
+ PostMessage("%$('IDE')", $0104, $12, $20000001); // press ALT
+ Wait(250); // Windows may needs some time ...
+ PostMessage("%$('IDE')", $0105, $12, $20000001); // release ALT
+// Wait(250);
+// PostMessage("%$('IDE')", $0102, 69, 1); // Char: E -> Edit Menu
+ PostMessage("%$('IDE')", $0102,  $20000045, $20000001); // Char: E -> Edit Menu
+// Wait(250)
+ PostMessage("%$('IDE')", $0102, $20000050, $20000001); // Char: P -> Paste
+
+// Wait(200)
+// PostMessage("%$('IDE')", $0102, 80, 1); // Char: P -> Paste
+// PostMessage("%$('IDE')", $0105, $12, $20000001); // release ALT
+//
+// trying ctrl+v Paste
+// PostMessage("%$('IDE')", $0302, 0, 0); // Paste Char: Ctrl+V  ?22?
+/////////////////////////////////////////////////

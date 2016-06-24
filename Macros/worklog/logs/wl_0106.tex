@@ -1,0 +1,50 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 06.\,01.\,2014 ]
+  \WinEdt{rps}{( -->  9 h, 55 min.)}{T}{00:00-00:10}
+  \WinEdt{rps}{( --> )}{M}{14:15-23:59}
+  \WinEdt{<untitled project>}{( --> 21 h, 55 min.)}{T}{00:00-12:10}
+  \WinEdt{<untitled project>}{( --> )}{M}{14:15-23:59}
+  \WinEdt{Bioinformatika}{( 4 h, 27 min.)}{T}{12:10-16:37}
+  \WinEdt{rps}{( -->  7 h, 34 min.)}{W}{00:00-00:11}
+  \WinEdt{rps}{( --> )}{T}{16:37-23:59}
+  \WinEdt{<untitled project>}{( --> 18 h, 00 min.)}{W}{00:00-10:37}
+  \WinEdt{<untitled project>}{( --> )}{T}{16:37-23:59}
+  \WinEdt{Lezije}{( 2 h, 08 min.)}{W}{10:37-12:45}
+  \WinEdt{rps}{( 0 h, 01 min.)}{W}{13:04-13:05}
+  \WinEdt{knitr}{( -->  1 h, 06 min.)}{F}{00:00-00:35}
+  \WinEdt{knitr}{( --> )}{Th}{23:29-23:59}
+  \WinEdt{Lezije}{( 1 h, 22 min.)}{F}{11:05-12:27}
+  \WinEdt{Lezije}{( 1 h, 21 min.)}{F}{14:17-15:38}
+\end{schedule}
+ 
+\end{document}

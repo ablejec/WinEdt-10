@@ -1,0 +1,14 @@
+ GetLine(8, %l);
+ IfStr("%!8","","=","Exit","Relax");
+ ReplaceInString("1", ">", 0, 1, 1, 9);
+ CopyToClipboard('%!8%!9', 0);
+ LetReg(9,"");
+ LetReg(8,"");
+ Exe("%b\send2R.edt")
+ SetFocus(""); // Back to WinEdt
+ SetFocus(""); // Back to WinEdt
+ CMD('Line Down');
+ GetLine(8, %l);
+ IfStr("%!8","@","=","GoToBeginningOfLine; NewLine;CMD('Line Up');","Relax");
+
+ End;

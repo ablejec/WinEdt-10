@@ -1,0 +1,55 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 20 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 30.\,11.\,2008 ]
+  \WinEdt{lek}{( 1 h, 29 min.)}{nedelja}{21:49-23:18}
+  \WinEdt{Bioinformatika}{( -->  4 h, 18 min.)}{M}{00:00-01:37}
+  \WinEdt{Bioinformatika}{( --> )}{M}{21:19-23:59}
+  \WinEdt{Bioinformatika}{( 0 h, 04 min.)}{M}{11:06-11:10}
+  \WinEdt{KG090511}{( 7 h, 07 min.)}{M}{11:10-18:17}
+  \WinEdt{KG090511}{( 0 h, 01 min.)}{M}{20:04-20:05}
+  \WinEdt{Jaka}{( 0 h, 11 min.)}{M}{20:05-20:16}
+  \WinEdt{Bioinformatika}{( 0 h, 42 min.)}{M}{20:16-20:58}
+  \WinEdt{Jaka}{( 2 h, 16 min.)}{M}{20:58-23:14}
+  \WinEdt{Jaka}{( 7 h, 34 min.)}{W}{12:27-20:01}
+  \WinEdt{I2R}{( 0 h, 38 min.)}{W}{21:59-22:37}
+  \WinEdt{cene3}{( 0 h, 10 min.)}{W}{22:37-22:47}
+  \WinEdt{I2R}{( 0 h, 08 min.)}{W}{22:47-22:55}
+  \WinEdt{HowTo}{( -->  3 h, 40 min.)}{Th}{00:00-02:35}
+  \WinEdt{HowTo}{( --> )}{W}{22:55-23:59}
+  \WinEdt{HowTo}{( 6 h, 53 min.)}{Th}{11:32-18:25}
+  \WinEdt{HowTo}{( 0 h, 01 min.)}{F}{10:05-10:06}
+  \WinEdt{lod}{( 5 h, 42 min.)}{F}{10:06-15:48}
+  \WinEdt{lod}{( 7 h, 00 min.)}{Sa}{13:12-20:12}
+  \WinEdt{lod}{( 1 h, 58 min.)}{Su}{20:46-22:44}
+\end{schedule}
+ 
+\end{document}

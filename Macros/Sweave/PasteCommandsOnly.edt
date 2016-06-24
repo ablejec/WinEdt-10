@@ -1,0 +1,19 @@
+//
+// PasteCommandsOnly.edt
+// Paste only R commands: line begins with '> ' or '+ '
+//
+// A. Blejec 6. 4. 2010
+//
+
+CopyFromClipboard(1);
+IfOK('Relax;','Prompt("There is no Text in the Clipboard");');
+// Prompt("Before: %!1",0,1);
+// delete non-command lines
+SubstituteInString("%!1", "<~[>+]*>","",1,2);
+// Prompt("After substituting ! with !!: %!2");
+// Replace command line tags (>+)
+SubstituteInString("%!2", "<[>+]@ ","",1,3);
+SubstituteInString("%!3", "<>","",1,1);
+// Prompt("After substituting : %!1");
+Ins("%!3")
+End;

@@ -1,0 +1,17 @@
+  SUBMENU="MetaFont>"
+      CAPTION="Meta&Font"
+      IMAGE="MetaFont"
+      REQ_DOCUMENT=1
+    ITEM="MetaFont"
+      CAPTION="Meta&Font"
+      IMAGE="MetaFont"
+      SAVE_INPUT=1
+      MACRO="Exe('%b\Exec\TeX\MetaFont.edt');"
+      REQ_FILTER=:"%!M=MetaFont"
+    ITEM="-"
+    ITEM="MetaFont_Preview"
+      CAPTION="MetaFont &Preview"
+      IMAGE="Font"
+      MACRO="Exe('%b\Exec\TeX\MFPreview.edt');"
+      REQ_FILTER="%O\%N.mft"
+  END="MetaFont>"

@@ -1,0 +1,36 @@
+// Insert \only<article>{ }
+// adapted after description in:
+// C:\Program Files\WinEdt Team\WinEdt\Macros\Samples\0Samples.txt
+BeginGroup;
+IfSel("0","=",>
+  "InsLine;>
+   Mark(0);>
+   Ins('\only<presentation>{');>
+      NewLine;>
+      NewLine;>
+   CMD('Insert Bullet');>
+   NewLine;>
+   Ins('}   %%%%%% End presentation <<<');>
+   InsLine;>
+   Goto(0);>
+   CMD('Next Bullet')",>
+  "GetSel(0,0);>
+   CMD('Backspace');>
+   InsLine;>
+   Ins('\only<presentation>{');>
+   NewLine;>
+   Ins('%%!0');>
+   InsLine;>
+   Ins('}   %%%%%% End presentation <<<');>
+   InsLine;>
+   Loop('SetSel(0);>
+     CMD(""Select Char Right"");>
+     GetSel(0,0);>
+     IfStr(""%%%%!0"","" "",""="",>
+       ""CMD(''Backspace'')"",>
+       ""Stop;"">
+     )>
+   ');>
+");
+EndGroup;
+End;

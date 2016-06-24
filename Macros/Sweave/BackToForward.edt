@@ -1,0 +1,28 @@
+//
+// A. Blejec   20.02.2010
+// Change backslash to forward slash
+//
+CMD("Set Mark");
+IfSel("0","=",>
+"CMD('Go To Beginning Of Line');>
+CMD('Select To End Of Line');>
+",>
+"Relax");>
+SetFindStr("\");
+SetReplaceStr("/");
+SetSearchForward(1);
+SetSearchCaseSensitive(0);
+SetSearchEntire(0);
+SetSearchCyclic(0);
+SetSearchRelaxed(0);
+SetSearchWholeWords(0);
+SetSearchInline(0);
+SetSearchSelected;
+SetRegEx(0);
+SetReplaceRespectCaps(0);
+SetReplacePrompt(0);
+SearchReset;
+ReplaceAll;
+// CMD("Replace...");
+CMD("Reset Selection");
+CMD("Go To Mark");

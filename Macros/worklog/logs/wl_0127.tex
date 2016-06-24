@@ -1,0 +1,48 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 20. avgust 2014, 00:06)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 27.\,01.\,2013 ]
+  \WinEdt{<untitled project>}{(53 h, 11 min.)}{Sunday}{12:03-17:14}
+  \WinEdt{I2R}{( 0 h, 02 min.)}{Sunday}{17:14-17:16}
+  \WinEdt{<untitled project>}{( 0 h, 03 min.)}{Sunday}{17:14-17:17}
+  \WinEdt{Lezije}{( --> 16 h, 35 min.)}{M}{00:00-15:23}
+  \WinEdt{Lezije}{( --> )}{M}{22:48-23:59}
+  \WinEdt{Lezije}{( 1 h, 19 min.)}{M}{22:19-23:38}
+  \WinEdt{Lezije}{( 0 h, 22 min.)}{F}{01:16-01:38}
+  \WinEdt{Lezije}{( 3 h, 51 min.)}{F}{11:23-15:14}
+  \WinEdt{Lezije}{( 0 h, 01 min.)}{Su}{0:35-00:36}
+  \WinEdt{testsync}{( -->  1 h, 26 min.)}{torek}{00:00-00:07}
+  \WinEdt{testsync}{( --> )}{torek}{22:41-23:59}
+  \WinEdt{<untitled project>}{( --> 15 h, 52 min.)}{torek}{00:00-14:33}
+  \WinEdt{<untitled project>}{( --> )}{torek}{22:41-23:59}
+\end{schedule}
+ 
+\end{document}

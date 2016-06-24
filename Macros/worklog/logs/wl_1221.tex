@@ -1,0 +1,51 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 20 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 21.\,12.\,2008 ]
+  \WinEdt{_KrNeki}{( 1 h, 21 min.)}{nedelja}{20:23-21:44}
+  \WinEdt{ARRS}{( 0 h, 05 min.)}{nedelja}{21:44-21:49}
+  \WinEdt{lek}{( 0 h, 47 min.)}{nedelja}{21:49-22:36}
+  \WinEdt{Bioinformatika}{( 0 h, 17 min.)}{M}{12:23-12:40}
+  \WinEdt{GrudenPina}{( 0 h, 58 min.)}{M}{12:40-13:38}
+  \WinEdt{Bioinformatika}{( 0 h, 26 min.)}{M}{13:38-14:04}
+  \WinEdt{Bioinformatika}{( 0 h, 01 min.)}{M}{14:08-14:09}
+  \WinEdt{KG090511}{( 1 h, 11 min.)}{M}{14:09-15:20}
+  \WinEdt{KG090511}{( 0 h, 02 min.)}{W}{12:09-12:11}
+  \WinEdt{lek}{( 0 h, 28 min.)}{W}{12:11-12:39}
+  \WinEdt{<untitled project>}{( 9 h, 32 min.)}{W}{12:11-21:43}
+  \WinEdt{GrudenPina}{( -->  3 h, 12 min.)}{Th}{00:00-00:56}
+  \WinEdt{GrudenPina}{( --> )}{W}{21:44-23:59}
+  \WinEdt{GrudenPina}{( 0 h, 08 min.)}{Th}{01:02-01:10}
+  \WinEdt{GrudenPina}{( 0 h, 11 min.)}{Th}{13:47-13:58}
+  \WinEdt{GrudenPina}{( 0 h, 44 min.)}{F}{22:48-23:32}
+\end{schedule}
+ 
+\end{document}

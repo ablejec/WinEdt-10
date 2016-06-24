@@ -1,0 +1,56 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 20. avgust 2014, 00:06)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 17.\,02.\,2013 ]
+  \WinEdt{STatHist}{( 7 h, 07 min.)}{Sunday}{12:01-19:08}
+  \WinEdt{STatHist}{( 0 h, 01 min.)}{Sunday}{19:08-19:09}
+  \WinEdt{!KrNeki}{( 0 h, 01 min.)}{Sunday}{19:09-19:10}
+  \WinEdt{_StatHist}{( 0 h, 09 min.)}{Sunday}{19:10-19:19}
+  \WinEdt{<untitled project>}{( 0 h, 09 min.)}{Sunday}{19:10-19:19}
+  \WinEdt{MainMenu}{( 0 h, 01 min.)}{Sunday}{19:19-19:20}
+  \WinEdt{_StatHist}{( 0 h, 01 min.)}{Sunday}{19:20-19:21}
+  \WinEdt{<untitled project>}{( 0 h, 02 min.)}{Sunday}{19:20-19:22}
+  \WinEdt{git dodan menu}{( 0 h, 52 min.)}{Sunday}{19:22-20:14}
+  \WinEdt{_StatHist}{( 1 h, 46 min.)}{Sunday}{20:14-22:00}
+  \WinEdt{_StatHist}{( 0 h, 59 min.)}{Sunday}{22:01-23:00}
+  \WinEdt{_StatHist}{( 0 h, 10 min.)}{Sunday}{23:00-23:10}
+  \WinEdt{ECell}{( 0 h, 01 min.)}{M}{13:46-13:47}
+  \WinEdt{<untitled project>}{(26 h, 04 min.)}{T}{13:46-15:50}
+  \WinEdt{StatER}{( 0 h, 42 min.)}{T}{15:50-16:32}
+  \WinEdt{StatER}{( 0 h, 37 min.)}{T}{21:24-22:01}
+  \WinEdt{StatER}{( 1 h, 30 min.)}{T}{22:09-23:39}
+  \WinEdt{StatER}{( 0 h, 56 min.)}{W}{21:55-22:51}
+  \WinEdt{<untitled project>}{(168 h, 27 min.)}{torek}{11:08-11:35}
+  \WinEdt{_StatHist}{( 0 h, 25 min.)}{torek}{13:56-14:21}
+  \WinEdt{_StatHist}{( 1 h, 12 min.)}{torek}{14:21-15:33}
+\end{schedule}
+ 
+\end{document}

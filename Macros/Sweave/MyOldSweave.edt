@@ -1,0 +1,33 @@
+////////////////////////////////////////////////////////
+// Sweave.edt
+// Run Sweave and PDFLatex, show PDF
+// (If %N.PDF is opened, close it first)
+//
+// $Revision: 1.2 $
+// $Date: 2007-05-20 18:11:32+02 $
+//
+// A. Blejec, 2007-01-30
+// Limitations:
+// To do:
+//
+/////////////////////////////////////////////////////////
+//
+// zapiranje Acrobata naj ne bi bilo potrebno po R-2.5.0
+//Prompt("Pred Acrobatom  %P\%N.pdf")
+Exe('%b\Exec\Acrobat CloseDoc.edt');
+//Prompt("Po Acrobatu  %P\%N.pdf")
+// nepotreben po R-2.5.0
+//Run('MySweave.bat %n',"%P",0,0,"Sweave",1,0,1);
+//Run('MySweave.bat %n%t --nobck.pdf',"%P",0,0,"Sweave",1,0,1);
+Run('MySweave.bat %n%t --tex',"%P",0,0,"Sweave",1,0,1);
+IfOK("Relax","JMP('err')"); // skip if error
+// Prompt("Po Acrobatu  %!F %N%T") // Main file
+// Do("Exe('%b\Exec\MikTeX\PDFLaTeX.edt')");
+Do("Exe('%b\Exec\MikTeX\MyPDFLaTeX.edt')"); // changed to always run .tex file
+IfOK("Relax","JMP('err')"); // skip if error
+Do("Exe('%b\Exec\PDF\PDF Preview.edt')");
+JMP('end');
+:err:: ================================================
+// Prompt("Errors  %P\%N.pdf")
+:end:: ================================================
+End;

@@ -1,0 +1,44 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 20. avgust 2014, 00:06)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 15.\,12.\,2008 ]
+  \WinEdt{lek}{( --> 18 h, 26 min.)}{ponedeljek}{00:00-11:56}
+  \WinEdt{lek}{( --> )}{ponedeljek}{17:30-23:59}
+  \WinEdt{lek}{(11 h, 17 min.)}{ponedeljek}{11:56-23:13}
+  \WinEdt{lek}{( 0 h, 40 min.)}{ponedeljek}{23:13-23:53}
+  \WinEdt{StatER}{( -->  2 h, 26 min.)}{ponedeljek}{00:00-00:22}
+  \WinEdt{StatER}{( --> )}{ponedeljek}{21:56-23:59}
+  \WinEdt{<untitled project>}{(23 h, 56 min.)}{ponedeljek}{21:56-21:52}
+  \WinEdt{ENTOMO}{( 1 h, 31 min.)}{ponedeljek}{21:52-23:23}
+  \WinEdt{ENTOMO}{( 0 h, 25 min.)}{ponedeljek}{23:24-23:49}
+\end{schedule}
+ 
+\end{document}

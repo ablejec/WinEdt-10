@@ -1,0 +1,7 @@
+// chem environment
+
+  IfisMode('TeX;BibTeX','%!m',!'InsLabel("\chem","{","}");Exit;');
+  IfisMode('HTML;XML;PHP','%!m',!'InsLabel("","<b>","</b>");Exit;');
+  SelWord(1);
+  InsLabel("\chem","{","}");
+End;

@@ -1,0 +1,411 @@
+% -*- TeX:Rnw -*-
+% ----------------------------------------------------------------
+% .R Sweave file  ************************************************
+% ----------------------------------------------------------------
+%%
+% \VignetteIndexEntry{}
+% \VignetteDepends{}
+% \VignettePackage{}
+\documentclass[a4paper,12pt]{article}
+\usepackage[slovene]{babel}
+\newcommand{\SVNRevision}{$ $Rev: 7 $ $}
+%\newcommand{\SVNDate}{$ $Date:: 2010-12-0#$ $}
+\newcommand{\SVNId}{$ $Id: Model2.Rnw 7 2010-12-09 09:36:04Z ablejec $ $}
+\input{abpkg}
+\input{abcmd}
+\input{abpage}
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\usepackage{amsmath,amssymb}
+\usepackage{colortbl}
+\usepackage{Sweave}
+\input{mysweave}
+\SweaveOpts{eps=true,prefix.string=./figs/model,concordance=true}
+%\SweaveOpts{echo=false}
+\setkeys{Gin}{width=0.9\textwidth}
+\usepackage{lmodern}
+\input{abfont}
+%\SweaveOpts{keep.source=true}
+%\setkeys{Gin}{width=0.8\textwidth} % set graphicx parameter
+% ----------------------------------------------------------------
+\begin{document}
+%% Sweave settings for includegraphics default plot size (Sweave default is 0.8)
+%% notice this must be after begin{document}
+%%% \setkeys{Gin}{width=0.9\textwidth}
+% ----------------------------------------------------------------
+\title{Modeliranje preferenc za habitate}
+\author{A. Blejec, C. Fišer}
+%\address{}%
+%\email{}%
+%
+%\thanks{}%
+%\subjclass{}%
+%\keywords{}%
+
+%\date{}%
+%\dedicatory{}%
+%\commby{}%
+\maketitle
+% ----------------------------------------------------------------
+\begin{abstract}
+
+\end{abstract}
+% ----------------------------------------------------------------
+\tableofcontents
+<<initialize,echo=false,results=hide>>=
+options(width=70)
+library(Hmisc)
+library(xlsReadWrite)
+@
+
+\section{Multinomial regression}
+Priroèna razlaga je na\\
+\url{http://www.ats.ucla.edu/stat/Spss/dae/mlogit.htm}
+
+\R opis za podroèje družboslovja:\\
+Funkcija \fct{multinom} v paketu \pkg{nnet}
+\url{http://cran.r-project.org/web/packages/nnet/index.html}
+
+Na voljo je tudi paket \pkg{mlogit} s funkcijo \fct{mlogit}.
+
+\subsection{Paket \pkg{pmlr}}
+
+Paket \pkg{pmlr} za "Penalized Multinomial Logistic Regression"
+<<>>=
+library(pmlr)
+@
+
+\section{Podatki}
+
+<<>>=
+lfn <- "C:/_Y/R/cene3/data/Zdruzbe-Jame_Maj2010.xls"
+#lfn <- "C:/_Y/R/cene3/data/morfo-prostor-Marec2010.xls"
+data <- read.xls(lfn)
+pore <- data[,"pore.size"]
+flow <- data[,"flow"]
+data <- data[,1:13]
+rownames(data) <- data[,1]
+data <- data[,-1]
+names(data)[pmatch("habitat",names(data))] <- "habitat"
+str(data)
+head(data)
+
+@
+
+<<>>=
+attach(data)
+levels(habitat)
+@
+
+
+
+<<fig=true>>=
+pairs(data,col=as.numeric(habitat),gap=0.2)
+@
+
+\section{Diskriminacijska analiza}
+
+<<>>=
+library(MASS)
+@
+
+<<>>=
+dis <- lda(habitat~.,data)
+@
+
+
+<<fig=true>>=
+cols <- as.numeric(habitat)
+cx <- body_length
+#cx <- coxaII.depth
+#cx <- basisVI.width
+cex <- (scale(cx)+3)/2
+df=dis$scaling
+plot(dis,dimen=2,col=cols,cex=cex,pch=1,abbrev=1)
+arrows(0,0,df[,1]/1,df[,2]/1,length=0.1,lwd=2)
+@
+
+<<>>=
+dis
+@
+
+
+
+
+
+
+<<>>=
+table(habitat,predict(dis)$class)
+@
+\section{PCA}
+
+<<fig=true>>=
+pcr <- princomp(data[,-12])
+plot(pcr)
+round(pcr$sd^2/sum(pcr$sd^2),3)
+@
+
+<<fig=true>>=
+summary(pcr)
+loadings(pcr)
+biplot(pcr)
+@
+
+<<fig=true>>=
+biplot(pcr,xlabs=substr(habitat,1,1))
+@
+\clearpage
+Znaki sorazmerni velikosti živali.
+<<fig=true>>=
+plot(pcr$scores[,1:2],pch=substr(habitat,1,1),col=as.numeric(habitat),cex=0.1*body_length)
+@
+\clearpage
+Znaki sorazmerni velikosti živali, barva velikosti por (large, small, various = èrna, rdeèa, zelena)
+<<fig=true>>=
+levels(pore)
+plot(pcr$scores[,1:2],pch=substr(habitat,1,1),col=as.numeric(pore),cex=0.1*body_length)
+@
+\clearpage
+Znaki sorazmerni velikosti živali, barva velikosti toka (slow, various = èrna, rdeèa)
+<<fig=true>>=
+levels(flow)
+plot(pcr$scores[,1:2],pch=substr(habitat,1,1),col=as.numeric(flow),cex=0.1*body_length)
+@
+\clearpage
+Velikost znakov je razmerje antena/velikost. Enako veliki znaki za f,e in i kažejo na enako "obliko" živali. Veèji znak veèje antene glede na velikost.
+<<fig=true>>=
+plot(pcr$scores[,1:2],pch=substr(habitat,1,1),col=as.numeric(habitat),cex=2*antennaI/body_length)
+@
+
+\begin{figure}[!hbt]
+\begin{center}
+  % Requires \usepackage{graphicx}
+<<fig=true>>=
+plot(pcr$scores[,c(1,3)],pch=substr(habitat,1,1),col=as.numeric(habitat),cex=0.1*body_length)
+@
+  \caption{Prva in tretja komponenta.}
+  \label{f:pc13}
+\end{center}
+\end{figure}
+
+\section{Razvršèanje v skupine}
+
+<<>>=
+cl=hclust(dist(data[,-12]),method="ward")
+@
+
+
+<<fig=true>>=
+plot(cl,labels=habitat,hang=0.001)
+@
+
+
+\section{Loglinear model}
+
+<<>>=
+library(nnet)
+@
+
+\subsection{Analiza na vseh posatkih}
+Analiza na vseh podatkih
+<<>>=
+logmAll <- multinom(habitat~.,data=data)
+logmAll
+@
+Ti rezultati so v rokopisu.
+
+Analiza na vseh podatkih
+<<>>=
+scaledData <- data.frame(apply(data[,-12],2,scale),data[,12])
+head(scaledData)
+logmAll <- multinom(habitat~.,data=scaledData)
+logmAll
+@
+
+
+
+\subsection{Analiza na uèni množici}
+<<>>=
+set.seed(1234)
+n <-dim(data)[1]
+smpl <- sample(1:n,n/2)
+@
+
+
+
+<<>>=
+logm <- multinom(habitat~.,data=data[smpl,])
+logm
+@
+
+
+
+Klasifikacija osebkov iz training set
+<<>>=
+table(habitat[smpl],predict(logm))
+@
+Klasifikacija osebkov iz drugih osebkov (validation set)
+<<>>=
+table(habitat[-smpl])
+table(habitat[-smpl],predict(logm,data[-smpl,]))
+#table(habitat[-smpl],predict(logm,data[-smpl,],type="probs"))
+
+@
+\section{Rekonstrukcija klasifikacije}
+Koeficienti ali uteži?
+<<>>=
+logm$wts
+m <- length(unique(habitat))
+co <- matrix(logm$wts,ncol=m)
+#dimnames(co)[[2]] <- list(logm$lab)
+co
+apply(co,2,sum)
+@
+
+<<>>=
+id <- 15
+data[id,]
+sum(c(1,unlist(data[id,1:11]))*co[-1,1])
+sum(c(1,unlist(data[id,1:11]))*co[-1,2])
+sum(c(1,unlist(data[id,1:11]))*co[-1,3])
+sum(c(1,unlist(data[id,1:11]))*co[-1,4])
+@
+
+<<>>=
+groups<- logm$lab
+groups
+X <- apply(data[1:11],2,as.numeric)
+X <-cbind(1,X)
+pred <- X%*%co[-1,]
+dimnames(pred)[[2]] <- groups
+head(pred)
+predGroup <- apply(pred,1,which.is.max)
+predGroup
+@
+
+Klasifikacijska tabela za vse osebke
+<<>>=
+tbl <- table(habitat,predGroup)
+tbl
+cat("Mis-classification:",round((sum(tbl)-sum(diag(tbl)))/sum(tbl)*100,2),"%\n")
+@
+
+Klasifikacijska tabela za training set
+<<>>=
+tbl <- table(habitat[smpl],predGroup[smpl])
+tbl
+cat("Mis-classification:",round((sum(tbl)-sum(diag(tbl)))/sum(tbl)*100,2),"%\n")
+@
+
+Klasifikacijska tabela za training set
+<<>>=
+tbl <- table(habitat[-smpl],predGroup[-smpl])
+tbl
+cat("Mis-classification:",round((sum(tbl)-sum(diag(tbl)))/sum(tbl)*100,2),"%\n")
+@
+
+Izpisani koeficienti so UTEŽI klasifikacijskih funkcij.
+Koeficienti v izpisu imajo enako vlogo kot koeficienti Fisherjevih
+klasifikacijskih funkcij pri LDA. Osebek je klasificiran v skupino, za katero ima najveèjo vrednost klasifikacijske funkcije.
+
+Klasifikacijska funkcija je linearna kombinacija podatkov in "Coefficients", ki imajo v tem primeru pomen uteži - sami zase ne pomnijo veliko.
+
+$$ KL =\sum{x_i coeff_i}$$
+
+
+<<>>=
+ind <- 1+(1:dim(data)[1])%in%smpl
+set<- c("Validation","Training")[ind]
+
+table(set)
+@
+
+
+<<fig=true>>=
+par(mfrow=c(3,4),mar=c(3,3,3,1))
+for(i in 1:11)
+boxplot(data[,i]~set,main=names(data[i]))
+@
+
+<<fig=true>>=
+pairs(data[,1:11],col=as.numeric(ind))
+@
+
+\section{Validacija klasifikacije pri razliènih velikostih vzorca}
+
+<<>>=
+misClass <- function(p=0.5,FUN=multinom,data,habitat,perc=TRUE,verbose=FALSE){
+n <-dim(data)[1]
+smpl <- sample(1:n,n/2)
+logm <- FUN(habitat~.,data=data[smpl,])
+tbl <- table(habitat[-smpl],predict(logm,data[-smpl,]))
+if(verbose) print(tbl)
+if(perc) return(round((sum(tbl)-sum(diag(tbl)))/sum(tbl)*100,2))
+return((sum(tbl)-sum(diag(tbl))))
+
+}
+
+@
+
+
+<<>>=
+misClass(p=0.50,FUN=multinom,data,habitat,perc=TRUE,verbose=TRUE)
+@
+
+
+
+
+
+
+
+
+
+
+
+
+% ----------------------------------------------------------------
+%\bibliographystyle{chicago}
+%\addcontentsline{toc}{section}{\refname}
+%\bibliography{ab-general}
+%--------------------------------------------------------------
+
+%\clearpage
+%\appendix
+%\phantomsection\addcontentsline{toc}{section}{\appendixname}
+%\section{\R\ funkcije}
+%\input{}
+
+\clearpage
+\section*{SessionInfo}
+<<sessionInfo,results=tex,echo=false>>= cat(win.version(),"\n")
+toLatex(sessionInfo())
+@
+
+
+%\subsection*{View as vignette}
+%Project files can be viewed by this code:
+%
+%<<vignette,eval=false>>=
+%projectName <- ""
+%mainFile <- ""
+%library(tkWidgets)
+% getRootPath <- function() {
+% fp <- (strsplit(getwd(), "/"))[[1]]
+% file <- file.path(paste(fp[-length(fp)], collapse = "/"))
+% return(file)
+% }
+% fileName <- function(name="bla",ext="PDF") paste(name,ext,sep=".")
+%
+% openPDF(file.path(getRootPath(),"doc",fileName(mainFile,"PDF")))
+% viewVignette("viewVignette", projectName, file.path("../doc",fileName(mainFile,"RNW")))
+%@
+
+
+\vfill \hrule \vspace{2pt} \footnotesize{
+Revision \SVNId\hfill (c) A. Blejec%\input{../_COPYRIGHT.}
+%\SVNRevision ~/~ \SVNDate
+}
+
+
+
+\end{document}
+% ----------------------------------------------------------------

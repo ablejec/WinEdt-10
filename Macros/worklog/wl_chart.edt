@@ -1,0 +1,82 @@
+// -*- ASCII:EDT -*-
+// wl_chart.edt
+// write a worklog, that can be read
+// by the LaTeX-package 'schedule'
+// (schlicht 20010302)
+// ($Revision: 1.10 $)
+// (created by worklog_install.edt
+//   on 11. april 2016, 11:49)
+////////////////////////////////////
+
+// If you want to change anything to the .tex-file, be sure to change
+// the corresponding .data-file instead! The .tex-file is newly created
+// each time and thus your changes will be overwritten.
+
+GetDate(2,"dddd");
+GetDate(0,"yyyy");
+GetDate(3,"mm");
+
+LetRegNum(9,31);
+IfNum(%!3,3,"=","LetRegNum(9,28)","");
+IfNum(%!3,5,"=","LetRegNum(9,30)","");
+IfNum(%!3,7,"=","LetRegNum(9,30)","");
+IfNum(%!3,10,"=","LetRegNum(9,30)","");
+IfNum(%!3,12,"=","LetRegNum(9,30)","");
+ 
+IfStr("%!2","Sunday","=",>
+   !"IfNum(%!4,6,'<=', !'LetRegNum(4,%!4+%!9); LetRegNum(3,%!3-1);');>
+     LetRegNum(4,%!4-6); LetReg(2,'Su');");
+IfStr("%!2","Saturday","=",>
+   !"IfNum(%!4,5,'<=', !'LetRegNum(4,%!4+%!9); LetRegNum(3,%!3-1);');>
+     LetRegNum(4,%!4-5); LetReg(2,'Sa');");
+IfStr("%!2","Friday","=",>
+   !"IfNum(%!4,4,'<=', !'LetRegNum(4,%!4+%!9); LetRegNum(3,%!3-1);');>
+     LetRegNum(4,%!4-4); LetReg(2,'F');");
+IfStr("%!2","Thursday","=",>
+   !"IfNum(%!4,3,'<=', !'LetRegNum(4,%!4+%!9); LetRegNum(3,%!3-1);');>
+     LetRegNum(4,%!4-3); LetReg(2,'Th');");
+IfStr("%!2","Wednesday","=",>
+   !"IfNum(%!4,2,'<=', !'LetRegNum(4,%!4+%!9); LetRegNum(3,%!3-1);');>
+     LetRegNum(4,%!4-2); LetReg(2,'W');");
+IfStr("%!2","Tuesday","=",>
+   !"IfNum(%!4,1,'=', !'LetRegNum(4,%!4+%!9); LetRegNum(3,%!3-1);');>
+     LetRegNum(4,%!4-1); LetReg(2,'T');");
+IfStr("%!2","Monday","=","LetReg(2,'M'); LetRegNum(4,%!4);");
+LetRegNum(3,%!3,2,2);
+LetRegNum(4,%!4,2,2);
+ 
+LetReg(9,"%8");
+IfFileExists("%b\Macros\worklog\logs\wl_%!3%!4.data",>
+   !"ReadFile('%b\Macros\worklog\logs\wl_%!3%!4.data',0);",>
+   !"LetReg(0,'[ %!4.\,%!3.\,%!0 ]%\')");
+OpenOutput("%b\Macros\worklog\logs\wl_%!3%!4.data");
+WrS("%!0");
+LetRegNum(0,0);
+Loop(!"IfNum(%!9,1440,'<','Stop;',>
+     !'LetRegNum(0,%!0+1,2,2);LetRegNum(9,%!9-1440,2,2);')");
+LetRegNum(0,0);
+Loop(!"IfNum(%!9,60,'<','Stop;',>
+     !'LetRegNum(0,%!0+1,2,2);LetRegNum(9,%!9-60,2,2);')");
+IfNum(%!0,%!5,">",>
+   !"WrL('  \WinEdt{%!1}{( --> %!8 h, %!7 min.)}{%!2}{00:00-%!5:%!6}');>
+     IfStr('%!2','T','=','LetReg(2,''M'');','');>
+     IfStr('%!2','W','=','LetReg(2,''T'');','');>
+     IfStr('%!2','Th','=','LetReg(2,''W'');','');>
+     IfStr('%!2','F','=','LetReg(2,''Th'');','');>
+     IfStr('%!2','Sa','=','LetReg(2,''F'');','');>
+     IfStr('%!2','Su','=','LetReg(2,''Sa'');','');>
+     WrL('  \WinEdt{%!1}{( --> )}{%!2}{%!0:%!9-23:59}');>
+    ",>
+   !"WrL('  \WinEdt{%!1}{(%!8 h, %!7 min.)}{%!2}{%!0:%!9-%!5:%!6}');");>
+CloseOutput;
+
+ReadFile("%b\Macros\worklog\logs\wl_%!3%!4.data",0);>
+ReadFile("%b\Macros\worklog\wl_chart.data",1);>
+OpenOutput("%b\Macros\worklog\logs\wl_%!3%!4.tex");>
+  WrS("%!1");>
+  WrS("%!0");>
+  WrL("\end{schedule}"); WrL(" ");>
+  WrL("\end{document}");>
+CloseOutput;
+
+End;

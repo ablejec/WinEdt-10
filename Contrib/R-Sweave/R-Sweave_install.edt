@@ -1,0 +1,157 @@
+// Macro for installing the R-Sweave support
+// The macro does not add buttons to the tool bar
+// Please do it manually through the Tool Bar Setup Dialog
+//  (contextual menu on the Tool Bar)
+
+
+SetOK(1);  // Just in case ...
+SetErrorFlag(0);
+
+Prompt("Have you made a backup of your configuration?%\(Menu: Options/Maintenance/Backup)%\%\Continue?",1,3,"","Exit;");
+
+
+// First add buttons definition in WinEdt.btn
+
+    IfFileExists('%B\WinEdt.btn',"Open('%B\WinEdt.btn');",>
+      'Prompt("WinEdt.btn not found: adding buttons skipped",0,1);JMP("img");');
+
+ SaveFind;
+     SetOK(1);  // Just in case ...
+	 SearchReset;
+	 SetSearchCurrentDoc;
+	 SetSearchEntire(1);
+	 SetSearchForward(1);
+	 //SetSearchCyclic(1);
+	 SetRegEx(1);
+	 SetSearchCaseSensitive(1);
+	 //SetSearchInline(1);
+	  //SetFindStr("You can now run LaTeX on"); // safer, but works only in English
+	  SetFindStr("290");
+	  IfFound("Prompt('Button 290, ... already defined: no button added',0,1);JMP('img');");
+:btn:
+
+//CMD('Line Up');
+
+
+BeginGroup;
+// Adding button references in WinEdt.btn
+	  SetSearchCurrentDoc;
+	  SetSearchEntire(1);
+	  SetSearchForward(1);
+	  SetNotFoundNotify( 0 );
+	  SetFindStr("bmp@ >@ >");
+      SetReplaceStr("bmp>");
+	  SetRegEx(1);
+      SetReplaceNotify(0);
+    ReplaceAll;
+      SetReplaceNotify(1);
+	  SetNotFoundNotify( 1 );
+
+	CMD("Go To Beginning Of File");
+	  SetFindStr("bmp@ >@ @>-1");
+  LetReg(9,|bmp>%\>
+290 %%B\\Contrib\\R-Sweave\\R-history\.bmp>%\>
+291 %%B\\Contrib\\R-Sweave\\R-paste\.bmp>%\>
+292 %%B\\Contrib\\R-Sweave\\R-source\.bmp>%\>
+293 %%B\\Contrib\\R-Sweave\\R-script\.bmp>%\>
+294 %%B\\Contrib\\R-Sweave\\R-open\.bmp>%\>
+295 %%B\\Contrib\\R-Sweave\\R-Sweave\.bmp>%\>
+296 %%B\\Contrib\\R-Sweave\\R-Sweave-stop\.bmp>%\>
+297 %%B\\Contrib\\R-Sweave\\R-cacheSweave\.bmp>%\>
+298 %%B\\Contrib\\R-Sweave\\R-cacheSweave-stop\.bmp>%\>
+>%>-1|);
+	  SetReplaceStr("%!9");
+      SetIndent(0);
+      SetReplaceNotify(0);
+	  SetRegEx(1);
+    Replace;
+      SetFindStr("<  2");
+      SetReplaceStr("2");
+    ReplaceAll;
+      RestoreIndent;
+      SetReplaceNotify(1);
+EndGroup;
+
+CMD('Save');
+
+:img:
+    IfFileExists('%B\WinEdt.img',"Open('%B\WinEdt.img');",>
+      'Prompt("WinEdt.img not found: Adding images skipped",0,1);JMP("menu");');
+
+ SaveFind;
+	 SearchReset;
+	 SetSearchCurrentDoc;
+	 SetSearchEntire(1);
+	 SetSearchForward(1);
+	 SetRegEx(1);
+	 SetSearchCaseSensitive(1);
+	 //SetSearchInline(1);
+	  //SetFindStr("You can now run LaTeX on"); // safer, but works only in English
+	  SetFindStr("290");
+	  IfFound("Prompt('Image 290, ... already defined: No images added',0,1);JMP('menu');");
+
+//  CMD('Line Up'); CMD('Line Up'); CMD('Line Up'); CMD('Line Up');
+  GotoLin(1);
+
+BeginGroup;
+// Adding img references in WinEdt.img
+	  SetNotFoundNotify( 0 );
+	  SetFindStr("bmp@ >@ >");
+      SetReplaceStr("bmp>");
+	  SetRegEx(1);
+      SetReplaceNotify(0);
+      ReplaceAll;
+      SetReplaceNotify(1);
+	  SetNotFoundNotify( 1 );
+
+	  CMD("Go To Beginning Of File");
+	  SetFindStr("bmp@ >@ @>-1");
+  LetReg(9,|bmp>%\>
+290 %%B\\Contrib\\R-Sweave\\R_history\.bmp>%\>
+291 %%B\\Contrib\\R-Sweave\\R_paste\.bmp>%\>
+292 %%B\\Contrib\\R-Sweave\\R_source\.bmp>%\>
+293 %%B\\Contrib\\R-Sweave\\R_script\.bmp>%\>
+>%>-1|);
+	  SetRegEx(1);
+	  SetReplaceStr("%!9");
+      SetIndent(0);
+      SetReplaceNotify(0);
+    Replace;
+      SetFindStr("<  2");
+      SetReplaceStr("2");
+    ReplaceAll;
+      RestoreIndent;
+      SetReplaceNotify(1);
+EndGroup;
+
+CMD('Save');CMD('Close');
+
+:menu:
+BeginGroup;
+    IfFileExists('%b\Config\R-Sweave\R-Sweave.dat',>
+      "AddMenus('%b\Config\R-Sweave\R-Sweave.dat');",>
+      "AddMenus('%B\Contrib\R-Sweave\R-Sweave.dat');");
+EndGroup;
+
+:mode:
+AddMode( "R", "*.R;*.S" );
+// TeX|*.tex;*.ltx;*.texi;*.dtx;*.ins;*.sty;*.fd;*.rnw;*.snw
+AddMode( "TeX", "*.tex;*.ltx;*.texi;*.dtx;*.ins;*.sty;*.cls;*.fd;*.rnw;*.snw" );
+AddFilters("%B\Contrib\R-Sweave\R-Filter Sets.dat");
+AddKeywords("%B\Contrib\R-Sweave\R-Keywords.dat");
+AddSwitches("%B\Contrib\R-Sweave\R-Switches.dat");
+AddBackground("%B\Contrib\R-Sweave\R-Background Schemes.dat");
+
+Prompt("R-Sweave support installed.%\>
+%\Desired buttons can be added manually to the toolbar%\>
+after restarting WinEdt.%\>
+%\!! R-Sweave menu refers to the WinEdt stuff installed by the RWinEdt R-package !!%\>
+You get this stuff by installing RWinEdt from within R.%\>
+%\Enjoy!",0,1);
+
+:exit:
+CloseFile("%B\WinEdt.btn");
+CloseFile("%B\WinEdt.img");
+LetReg(9,"");
+
+End;

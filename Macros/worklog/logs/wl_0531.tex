@@ -1,0 +1,64 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 20. avgust 2014, 00:06)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 31.\,05.\,2010 ]
+  \WinEdt{<untitled project>}{( 0 h, 01 min.)}{T}{14:07-14:08}
+  \WinEdt{StatIzp}{( 4 h, 21 min.)}{T}{14:08-18:29}
+  \WinEdt{StatIzp}{( 0 h, 20 min.)}{T}{22:10-22:30}
+  \WinEdt{KG090511}{( 0 h, 01 min.)}{T}{22:30-22:31}
+  \WinEdt{Inremos}{( -->  2 h, 06 min.)}{W}{00:00-00:37}
+  \WinEdt{Inremos}{( --> )}{T}{22:31-23:59}
+  \WinEdt{Inremos}{( 0 h, 01 min.)}{W}{09:12-09:13}
+  \WinEdt{Inremos}{( 5 h, 06 min.)}{W}{09:13-14:19}
+  \WinEdt{Inremos}{( 0 h, 01 min.)}{W}{15:27-15:28}
+  \WinEdt{Inremos}{( 0 h, 51 min.)}{W}{20:55-21:46}
+  \WinEdt{Inremos}{( 0 h, 06 min.)}{W}{23:06-23:12}
+  \WinEdt{!KrNeki}{( 0 h, 20 min.)}{W}{23:37-23:57}
+  \WinEdt{!KrNeki}{( 0 h, 02 min.)}{Th}{21:11-21:13}
+  \WinEdt{Upgrade6}{( 0 h, 27 min.)}{Th}{21:13-21:40}
+  \WinEdt{!KrNeki}{( 0 h, 05 min.)}{Th}{22:36-22:41}
+  \WinEdt{benchmark}{( 0 h, 01 min.)}{Th}{22:41-22:42}
+  \WinEdt{!KrNeki}{( 1 h, 09 min.)}{Th}{22:42-23:51}
+  \WinEdt{!KrNeki}{( 0 h, 28 min.)}{F}{08:44-09:12}
+  \WinEdt{!KrNeki}{( 0 h, 34 min.)}{F}{10:17-10:51}
+  \WinEdt{!KrNeki}{( 0 h, 20 min.)}{F}{15:33-15:53}
+  \WinEdt{!KrNeki}{( 0 h, 21 min.)}{F}{15:33-15:54}
+  \WinEdt{!KrNeki}{( 0 h, 16 min.)}{F}{15:54-16:10}
+  \WinEdt{Inremos}{( -->  1 h, 24 min.)}{Thursday}{00:00-00:56}
+  \WinEdt{Inremos}{( --> )}{Thursday}{23:32-23:59}
+  \WinEdt{Inremos}{( 0 h, 18 min.)}{Thursday}{0:57-01:15}
+  \WinEdt{KG130116}{( 1 h, 29 min.)}{Friday}{09:54-11:23}
+  \WinEdt{KG130116}{( 2 h, 24 min.)}{Friday}{13:11-15:35}
+  \WinEdt{!KrNeki}{( 0 h, 05 min.)}{nedelja}{23:04-23:09}
+  \WinEdt{test winedt9.1}{( 0 h, 20 min.)}{nedelja}{23:20-23:40}
+\end{schedule}
+ 
+\end{document}

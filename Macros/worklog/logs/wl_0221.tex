@@ -1,0 +1,54 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 21.\,02.\,2011 ]
+  \WinEdt{MU}{( 0 h, 01 min.)}{M}{14:55-14:56}
+  \WinEdt{MU}{( 0 h, 03 min.)}{M}{14:57-15:00}
+  \WinEdt{<untitled project>}{( 0 h, 13 min.)}{M}{14:57-15:10}
+  \WinEdt{Starcic}{( 0 h, 42 min.)}{M}{15:10-15:52}
+  \WinEdt{<untitled project>}{( --> 23 h, 13 min.)}{T}{00:00-14:23}
+  \WinEdt{<untitled project>}{( --> )}{M}{15:10-23:59}
+  \WinEdt{Drobnic}{( 0 h, 57 min.)}{T}{14:23-15:20}
+  \WinEdt{<untitled project>}{( 1 h, 01 min.)}{T}{14:23-15:24}
+  \WinEdt{!KrNeki}{( 0 h, 27 min.)}{T}{15:24-15:51}
+  \WinEdt{!KrNeki}{( 0 h, 57 min.)}{T}{22:39-23:36}
+  \WinEdt{!KrNeki}{( 0 h, 25 min.)}{W}{0:11-00:36}
+  \WinEdt{!KrNeki}{( 0 h, 49 min.)}{Th}{22:58-23:47}
+  \WinEdt{!KrNeki}{( 0 h, 06 min.)}{F}{11:15-11:21}
+  \WinEdt{Starcic}{( 4 h, 05 min.)}{F}{11:21-15:26}
+  \WinEdt{cene3}{( 0 h, 01 min.)}{Tuesday}{10:32-10:33}
+  \WinEdt{cene3}{( 0 h, 01 min.)}{Tuesday}{10:33-10:34}
+  \WinEdt{<untitled project>}{(11 h, 39 min.)}{Tuesday}{10:33-22:12}
+  \WinEdt{animatoR}{( 1 h, 40 min.)}{Tuesday}{22:12-23:52}
+  \WinEdt{_StatHist}{( 6 h, 41 min.)}{Thursday}{15:41-22:22}
+\end{schedule}
+ 
+\end{document}

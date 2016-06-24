@@ -1,0 +1,28 @@
+// Execution Modes - MiKTeX
+// Created: èetrtek, maj 13, 2010  14:31
+
+// Sweaveify
+    Assign(!"Sweaveify-Executable", !|"C:\Program Files\R\R-2.10.0\bin\Rterm.exe"|);
+    Assign(!"Sweaveify-Switches", !|-e|);
+    Assign(!"Sweaveify-Parameters", !|"library(patchDVI);options=paste('--tex-option=-c-style-errors --tex-option=-synctex=-1 --tex-option=-aux-directory=',gsub('\\.','/.',paste(getwd(),'/Tex-Aux',sep='')),sep='');SweavePDFMiktex('%n%t',options = options)"|);
+    Release(!"Sweaveify-Paper_Size");
+    Release(!"Sweaveify-Paper_Custom_Size");
+    Release(!"Sweaveify-Landscape");
+    Release(!"Sweaveify-GUI");
+    Release(!"Sweaveify-High_Priority");
+    Assign(!"Sweaveify-Wait", !|1|);
+    Assign(!"Sweaveify-Errors", !|1|);
+    Release(!"Sweaveify-Warnings");
+    Release(!"Sweaveify-ExitCode");
+    Assign(!"Sweaveify-Viewer", !|1|);
+    Release(!"Sweaveify-View_Search");
+    Release(!"Sweaveify-STD_IO");
+    Release(!"Sweaveify-No_Interaction");
+    Release(!"Sweaveify-C-style-errors");
+    Release(!"Sweaveify-Clean_Build");
+    Assign(!"Sweaveify-WinEdt_Console", !|1|);
+    Release(!"Sweaveify-Hidden_Window");
+    Release(!"Sweaveify-Background_Window");
+    Release(!"Sweaveify-Pause");
+
+End;

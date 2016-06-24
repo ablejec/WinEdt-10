@@ -1,0 +1,22 @@
+//
+// A. Blejec 1.3.2010
+//
+// Embrace line with ( ) - enables expression print in R
+//
+CMD("Go To Beginning Of Line");
+CMD("Select Line Down");
+SetFindStr("<(\(1*\))>");
+SetReplaceStr("\1>");
+SetSearchForward(1);
+SetSearchCaseSensitive(0);
+SetSearchEntire(0);
+SetSearchCyclic(0);
+SetSearchRelaxed(0);
+SetSearchWholeWords(0);
+SetSearchInline(0);
+SetSearchSelected;
+SetRegEx(1);
+SetReplaceRespectCaps(0);
+SetReplacePrompt(0);
+SearchReset;
+Replace;

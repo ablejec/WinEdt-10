@@ -1,0 +1,47 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 16.\,01.\,2012 ]
+  \WinEdt{<untitled project>}{(152 h, 25 min.)}{W}{12:01-20:26}
+  \WinEdt{statpred}{( -->  5 h, 08 min.)}{Th}{00:00-01:35}
+  \WinEdt{statpred}{( --> )}{W}{20:27-23:59}
+  \WinEdt{statpred}{( 5 h, 16 min.)}{Th}{09:56-15:12}
+  \WinEdt{!KrNeki}{( 0 h, 01 min.)}{Wednesday}{12:36-12:37}
+  \WinEdt{<untitled project>}{( 0 h, 01 min.)}{Wednesday}{12:36-12:37}
+  \WinEdt{KG090511}{( 1 h, 52 min.)}{Wednesday}{12:37-14:29}
+  \WinEdt{Lezije}{( -->  1 h, 54 min.)}{èetrtek}{00:00-00:08}
+  \WinEdt{Lezije}{( --> )}{èetrtek}{22:14-23:59}
+  \WinEdt{Lezije}{( 3 h, 40 min.)}{èetrtek}{11:18-14:58}
+  \WinEdt{<untitled project>}{( 9 h, 47 min.)}{èetrtek}{11:18-21:05}
+  \WinEdt{Jure}{( 2 h, 24 min.)}{èetrtek}{21:05-23:29}
+\end{schedule}
+ 
+\end{document}

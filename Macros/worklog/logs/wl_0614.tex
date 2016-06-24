@@ -1,0 +1,49 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 14.\,06.\,2010 ]
+  \WinEdt{Inremos}{( 0 h, 09 min.)}{T}{17:40-17:49}
+  \WinEdt{Inremos}{( 0 h, 51 min.)}{T}{20:14-21:05}
+  \WinEdt{Inremos}{( 0 h, 40 min.)}{W}{0:43-01:23}
+  \WinEdt{Inremos}{( 0 h, 16 min.)}{Th}{02:04-02:20}
+  \WinEdt{Inremos}{( 0 h, 07 min.)}{Th}{02:20-02:27}
+  \WinEdt{<untitled project>}{( 0 h, 01 min.)}{Th}{16:28-16:29}
+  \WinEdt{sweet}{( 1 h, 03 min.)}{Th}{16:29-17:32}
+  \WinEdt{<untitled project>}{( 1 h, 07 min.)}{Th}{16:29-17:36}
+  \WinEdt{u123}{( 0 h, 03 min.)}{Th}{17:36-17:39}
+  \WinEdt{<untitled project>}{( 0 h, 04 min.)}{Th}{17:36-17:40}
+  \WinEdt{u123}{( 6 h, 11 min.)}{Th}{17:40-23:51}
+  \WinEdt{angleR}{( --> 740 h, 47 min.)}{Thursday}{00:00-01:11}
+  \WinEdt{angleR}{( --> )}{Thursday}{04:24-23:59}
+  \WinEdt{angleR}{( 0 h, 47 min.)}{Thursday}{07:35-08:22}
+\end{schedule}
+ 
+\end{document}

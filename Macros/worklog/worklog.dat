@@ -1,0 +1,33 @@
+MAIN MENU: 160
+// to be used to append a submenu
+// for the worklog package
+// in the Tools menu
+// ($Revision: 1.10 $)
+// (created by worklog_install.edt
+//  on 11. april 2016, 11:49)
+/////////////////////////////////
+
+MENU:&Tools
+  Flags:0
+  Hint:
+  Submenu:4
+    Item:Worklog
+      Image:70
+    Macro:3
+      Item:Read Current Worklog
+      Definition:Exe("%b\Macros\worklog\wl_open.edt");
+    Macro:3
+      Item:Choose Worklog
+      Definition:Exe("%b\Macros\worklog\wl_read.edt");
+    Macro:3
+      Item:Acitivities
+      Definition:Exe("%b\Macros\worklog\wl_activities.edt");
+    Separator:6
+    Macro:3
+      Item:Start Logging
+      Definition:Exe("%b\Macros\worklog\worklog_open.edt");
+    Macro:3
+      Item:Stop Logging
+      Definition:Exe("%b\Macros\worklog\worklog_close.edt");SetInfo(1,"Log stopped","Prompt('Start Logging?',0,3,'Exe(''%b\Macros\worklog\worklog_open.edt'');','Relax');");
+  END Submenu:5
+END Menu:&Tools

@@ -1,0 +1,12 @@
+// Local MDI Activate Event Handler
+
+// @BEGIN: dynamicLaTeX
+// @AUTHOR: R Schlicht <w.m.l@gmx.net>
+// $Date: 2005-01-19 19:28:01+01 $
+// ===================================
+IfisMode("TeX","%!m",">
+   Assign('dynamicLaTeX','MDI');Exe('%b\Config\TeX\dynamicUpdate.edt');");
+// ===================================
+// @END: dynamicLaTeX
+
+End;

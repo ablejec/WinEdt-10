@@ -1,0 +1,51 @@
+%% wl_chart.[data,tex]
+%% (schlicht 20010302)
+%% ($Revision: 1.10 $)
+%% (created by worklog_install.edt
+%%   on 7. januar 2009, 22:34)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\pagestyle{empty}
+\usepackage{schedule}
+\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\topmargin}{-30pt}
+
+% Definition of the chart's appearance:
+   \CellHeight{23.5pt}
+   \CellWidth{60pt}
+   \TimeRange{00:00-24:00}
+   \SubUnits{30}
+   \BeginOn{Monday}
+   \TextSize{\tiny}
+   \SevenDay
+
+% Choose {background color}{font color} as you like:
+ \NewAppointment{WinEdt}{dark}{white}
+% \NewAppointment{WinEdt}{red}{yellow}
+% \NewAppointment{WinEdt}{green}{blue}
+
+%----------------------------------------------------------------
+\begin{document}
+
+\begin{schedule}
+[ 23.\,08.\,2010 ]
+  \WinEdt{!KrNeki}{( 0 h, 01 min.)}{M}{11:43-11:44}
+  \WinEdt{Inremos}{( 7 h, 51 min.)}{M}{11:44-19:35}
+  \WinEdt{Inremos}{( 1 h, 17 min.)}{T}{0:52-02:09}
+  \WinEdt{Inremos}{( 0 h, 12 min.)}{T}{15:46-15:58}
+  \WinEdt{Inremos}{( 0 h, 49 min.)}{Th}{01:10-01:59}
+  \WinEdt{!KrNeki}{( 1 h, 13 min.)}{Th}{14:11-15:24}
+  \WinEdt{!KrNeki}{( 0 h, 04 min.)}{Th}{15:27-15:31}
+  \WinEdt{StatIzp}{( 0 h, 58 min.)}{Th}{16:43-17:41}
+  \WinEdt{Inremos}{( 2 h, 16 min.)}{F}{12:12-14:28}
+  \WinEdt{Rpackage}{( 0 h, 14 min.)}{Sa}{20:30-20:44}
+  \WinEdt{!KrNeki}{( 0 h, 33 min.)}{Sa}{20:44-21:17}
+  \WinEdt{Gen-Primon}{( -->  1 h, 44 min.)}{Friday}{00:00-00:52}
+  \WinEdt{Gen-Primon}{( --> )}{Friday}{23:08-23:59}
+  \WinEdt{ECell}{( 3 h, 01 min.)}{Friday}{10:51-13:52}
+  \WinEdt{ECell}{( 1 h, 09 min.)}{Friday}{14:22-15:31}
+  \WinEdt{KG130116}{( 2 h, 20 min.)}{Friday}{18:15-20:35}
+\end{schedule}
+ 
+\end{document}

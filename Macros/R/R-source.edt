@@ -1,0 +1,12 @@
+ CMD("Save");
+ GetChildName(9);
+ Prompt("%!9");
+ DosToUnix("%!9", 8);
+ Prompt("%!8");
+ ReplaceInString("1", ">", 0, 1, 1, 9);
+ Prompt('source("(%P\%N.R")%!9');
+ CopyToClipboard('source("(%P\%N.R")%!9', 0);
+ LetReg(9,"");
+ LetReg(8,"");
+ Exe("%b\send2R.edt")
+ End;

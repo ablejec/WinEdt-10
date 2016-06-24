@@ -1,0 +1,23 @@
+////////////////////////////////////////////////////////
+// R-help.edt
+// Invoke r help on current word
+// $Revision: 1.1 $
+// $Date: 2012-03-25 $
+//
+// A. Blejec
+// Limitations:
+//
+// To be done:
+//
+//
+/////////////////////////////////////////////////////////
+//
+// select word
+SelectWord;
+//   Prompt("%S");
+   CopyToClipboard("?%S",0);
+//   Append;
+   Exe("%b\Macros\send2RLF.edt")
+   SetFocus(""); // Back to WinEdt
+   CMD("Reset Selection");
+ End;
