@@ -1,6 +1,15 @@
+// Modified
+//
+// Discard R command prompt: > or + at the beginning of line
+// Duscard Roxygen comment line at the beginning of line "#' "
+//
  GetLine(8, %l);
  IfStr("%!8","","=","Exit","Relax");
- ReplaceInString("1", ">", 0, 1, 1, 9);
+// Prompt("Line: %!8");
+ ReplaceInString("1", ">", 0, 1, 1, 9); // EOL
+ SubstituteInString("%!8", "<[>+]@ ", "", 1, 8);
+ SubstituteInString("%!8", "<#'@ ", "", 1, 8);
+// Prompt("Line: %!8");
  CopyToClipboard('%!8%!9', 0);
  LetReg(9,"");
  LetReg(8,"");
