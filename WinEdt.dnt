@@ -1,4 +1,4 @@
-25
+30
 1089357896855742345
 WinEdt 10
 WinEdt #
@@ -133,7 +133,7 @@ Default Values
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(16).dll
+%B\Bitmaps\Resources\WRLib(16).res
 Menu Icons
 0
 16
@@ -143,7 +143,7 @@ Menu Icons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(16).dll
+%B\Bitmaps\Resources\WRLib(16).res
 Main Toolbar
 0
 16
@@ -153,7 +153,7 @@ Main Toolbar
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(16).dll
+%B\Bitmaps\Resources\WRLib(16).res
 Dialog Toolbars
 0
 16
@@ -163,7 +163,7 @@ Dialog Toolbars
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(16).dll
+%B\Bitmaps\Resources\WRLib(16).res
 Form Toolbars
 0
 16
@@ -173,7 +173,7 @@ Form Toolbars
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(16).dll
+%B\Bitmaps\Resources\WRLib(16).res
 Bitmap Buttons
 0
 16
@@ -183,7 +183,7 @@ Bitmap Buttons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(16).dll
+%B\Bitmaps\Resources\WRLib(16).res
 Tree Icons
 0
 16
@@ -193,7 +193,7 @@ Tree Icons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(16).dll
+%B\Bitmaps\Resources\WRLib(16).res
 Gather Icons
 0
 16
@@ -203,7 +203,7 @@ Gather Icons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(16).dll
+%B\Bitmaps\Resources\WRLib(16).res
 Document Tab Icons
 0
 16
@@ -213,7 +213,7 @@ Document Tab Icons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(16).dll
+%B\Bitmaps\Resources\WRLib(16).res
 Image Dialog
 0
 16
@@ -223,7 +223,7 @@ Image Dialog
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(16).dll
+%B\Bitmaps\Resources\WRLib(16).res
 120 dpi
 120
 %B\Bitmaps\GUI125
@@ -237,46 +237,6 @@ Image Dialog
 42
 36
 0
-Default Values
-0
-20
-20
-0
-0
-1
-%B\Bitmaps\Images
-%b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(16).dll
-Menu Icons
-0
-20
-20
-0
-0
-1
-%B\Bitmaps\Images
-%b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(16).dll
-Main Toolbar
-0
-24
-24
-0
-0
-1
-%B\Bitmaps\Images
-%b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(24).dll
-Dialog Toolbars
-0
-20
-20
-0
-0
-1
-%B\Bitmaps\Images
-%b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(16).dll
 Form Toolbars
 0
 20
@@ -286,7 +246,47 @@ Form Toolbars
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(16).dll
+%B\Bitmaps\Resources\WRLib(16).res
+Menu Icons
+0
+16
+16
+0
+0
+1
+%B\Bitmaps\Images
+%b\Bitmaps\Images
+%B\Bitmaps\Resources\WRLib(16).res
+Main Toolbar
+0
+24
+24
+0
+0
+1
+%B\Bitmaps\Images
+%b\Bitmaps\Images
+%B\Bitmaps\Resources\WRLib(24).res
+Dialog Toolbars
+0
+20
+20
+0
+0
+1
+%B\Bitmaps\Images
+%b\Bitmaps\Images
+%B\Bitmaps\Resources\WRLib(16).res
+Form Toolbars
+0
+20
+20
+0
+0
+1
+%B\Bitmaps\Images
+%b\Bitmaps\Images
+%B\Bitmaps\Resources\WRLib(16).res
 Bitmap Buttons
 0
 24
@@ -296,37 +296,37 @@ Bitmap Buttons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(24).dll
+%B\Bitmaps\Resources\WRLib(24).res
 Tree Icons
 0
-20
-20
+16
+16
 0
 0
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(16).dll
+%B\Bitmaps\Resources\WRLib(16).res
 Gather Icons
 0
-20
-20
+16
+16
 0
 0
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(16).dll
+%B\Bitmaps\Resources\WRLib(16).res
 Document Tab Icons
 0
-20
-20
+16
+16
 0
 0
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(16).dll
+%B\Bitmaps\Resources\WRLib(16).res
 Image Dialog
 0
 24
@@ -336,7 +336,7 @@ Image Dialog
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(24).dll
+%B\Bitmaps\Resources\WRLib(24).res
 144 dpi
 144
 %B\Bitmaps\GUI200
@@ -359,7 +359,7 @@ Default Values
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(24).dll
+%B\Bitmaps\Resources\WRLib(24).res
 Menu Icons
 0
 24
@@ -369,7 +369,7 @@ Menu Icons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(24).dll
+%B\Bitmaps\Resources\WRLib(24).res
 Main Toolbar
 0
 24
@@ -379,7 +379,7 @@ Main Toolbar
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(24).dll
+%B\Bitmaps\Resources\WRLib(24).res
 Dialog Toolbars
 0
 24
@@ -389,7 +389,7 @@ Dialog Toolbars
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(24).dll
+%B\Bitmaps\Resources\WRLib(24).res
 Form Toolbars
 0
 24
@@ -399,7 +399,7 @@ Form Toolbars
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(24).dll
+%B\Bitmaps\Resources\WRLib(24).res
 Bitmap Buttons
 0
 24
@@ -409,7 +409,7 @@ Bitmap Buttons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(24).dll
+%B\Bitmaps\Resources\WRLib(24).res
 Tree Icons
 0
 24
@@ -419,7 +419,7 @@ Tree Icons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(24).dll
+%B\Bitmaps\Resources\WRLib(24).res
 Gather Icons
 0
 24
@@ -429,7 +429,7 @@ Gather Icons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(24).dll
+%B\Bitmaps\Resources\WRLib(24).res
 Document Tab Icons
 0
 24
@@ -439,7 +439,7 @@ Document Tab Icons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(24).dll
+%B\Bitmaps\Resources\WRLib(24).res
 Image Dialog
 0
 24
@@ -449,7 +449,7 @@ Image Dialog
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(24).dll
+%B\Bitmaps\Resources\WRLib(24).res
 168 dpi
 168
 %B\Bitmaps\GUI200
@@ -472,7 +472,7 @@ Default Values
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(24).dll
+%B\Bitmaps\Resources\WRLib(24).res
 Menu Icons
 0
 24
@@ -482,7 +482,7 @@ Menu Icons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(24).dll
+%B\Bitmaps\Resources\WRLib(24).res
 Main Toolbar
 0
 32
@@ -492,7 +492,7 @@ Main Toolbar
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 Dialog Toolbars
 0
 24
@@ -502,7 +502,7 @@ Dialog Toolbars
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(24).dll
+%B\Bitmaps\Resources\WRLib(24).res
 Form Toolbars
 0
 24
@@ -512,7 +512,7 @@ Form Toolbars
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(24).dll
+%B\Bitmaps\Resources\WRLib(24).res
 Bitmap Buttons
 0
 32
@@ -522,7 +522,7 @@ Bitmap Buttons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 Tree Icons
 0
 24
@@ -532,7 +532,7 @@ Tree Icons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(24).dll
+%B\Bitmaps\Resources\WRLib(24).res
 Gather Icons
 0
 24
@@ -542,7 +542,7 @@ Gather Icons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(24).dll
+%B\Bitmaps\Resources\WRLib(24).res
 Document Tab Icons
 0
 24
@@ -552,7 +552,7 @@ Document Tab Icons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(24).dll
+%B\Bitmaps\Resources\WRLib(24).res
 Image Dialog
 0
 32
@@ -562,7 +562,7 @@ Image Dialog
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 192 dpi
 192
 %B\Bitmaps\GUI200
@@ -585,7 +585,7 @@ Default Values
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 Menu Icons
 0
 32
@@ -595,7 +595,7 @@ Menu Icons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 Main Toolbar
 0
 32
@@ -605,7 +605,7 @@ Main Toolbar
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 Dialog Toolbars
 0
 32
@@ -615,7 +615,7 @@ Dialog Toolbars
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 Form Toolbars
 0
 32
@@ -625,7 +625,7 @@ Form Toolbars
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 Bitmap Buttons
 0
 32
@@ -635,7 +635,7 @@ Bitmap Buttons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 Tree Icons
 0
 32
@@ -645,7 +645,7 @@ Tree Icons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 Gather Icons
 0
 32
@@ -655,7 +655,7 @@ Gather Icons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 Document Tab Icons
 0
 32
@@ -665,7 +665,7 @@ Document Tab Icons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 Image Dialog
 0
 32
@@ -675,7 +675,7 @@ Image Dialog
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 216 dpi
 216
 %B\Bitmaps\GUI200
@@ -698,7 +698,7 @@ Default Values
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 Menu Icons
 0
 32
@@ -708,7 +708,7 @@ Menu Icons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 Main Toolbar
 0
 32
@@ -718,7 +718,7 @@ Main Toolbar
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 Dialog Toolbars
 0
 32
@@ -728,7 +728,7 @@ Dialog Toolbars
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 Form Toolbars
 0
 32
@@ -738,7 +738,7 @@ Form Toolbars
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 Bitmap Buttons
 0
 32
@@ -748,7 +748,7 @@ Bitmap Buttons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 Tree Icons
 0
 32
@@ -758,7 +758,7 @@ Tree Icons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 Gather Icons
 0
 32
@@ -768,7 +768,7 @@ Gather Icons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 Document Tab Icons
 0
 32
@@ -778,7 +778,7 @@ Document Tab Icons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 Image Dialog
 0
 32
@@ -788,7 +788,7 @@ Image Dialog
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 240 dpi
 240
 %B\Bitmaps\GUI200
@@ -811,7 +811,7 @@ Default Values
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 Menu Icons
 0
 40
@@ -821,7 +821,7 @@ Menu Icons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 Main Toolbar
 0
 48
@@ -831,7 +831,7 @@ Main Toolbar
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(48).dll
+%B\Bitmaps\Resources\WRLib(48).res
 Dialog Toolbars
 0
 40
@@ -841,7 +841,7 @@ Dialog Toolbars
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 Form Toolbars
 0
 40
@@ -851,7 +851,7 @@ Form Toolbars
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 Bitmap Buttons
 0
 48
@@ -861,7 +861,7 @@ Bitmap Buttons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(48).dll
+%B\Bitmaps\Resources\WRLib(48).res
 Tree Icons
 0
 40
@@ -871,7 +871,7 @@ Tree Icons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 Gather Icons
 0
 40
@@ -881,7 +881,7 @@ Gather Icons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 Document Tab Icons
 0
 40
@@ -891,7 +891,7 @@ Document Tab Icons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 Image Dialog
 0
 48
@@ -901,7 +901,7 @@ Image Dialog
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(48).dll
+%B\Bitmaps\Resources\WRLib(48).res
 264 dpi
 264
 %B\Bitmaps\GUI200
@@ -924,7 +924,7 @@ Default Values
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 Menu Icons
 0
 40
@@ -934,7 +934,7 @@ Menu Icons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 Main Toolbar
 0
 48
@@ -944,7 +944,7 @@ Main Toolbar
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(48).dll
+%B\Bitmaps\Resources\WRLib(48).res
 Dialog Toolbars
 0
 40
@@ -954,7 +954,7 @@ Dialog Toolbars
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 Form Toolbars
 0
 40
@@ -964,7 +964,7 @@ Form Toolbars
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 Bitmap Buttons
 0
 48
@@ -974,7 +974,7 @@ Bitmap Buttons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(48).dll
+%B\Bitmaps\Resources\WRLib(48).res
 Tree Icons
 0
 40
@@ -984,7 +984,7 @@ Tree Icons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 Gather Icons
 0
 40
@@ -994,7 +994,7 @@ Gather Icons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 Document Tab Icons
 0
 40
@@ -1004,7 +1004,7 @@ Document Tab Icons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(32).dll
+%B\Bitmaps\Resources\WRLib(32).res
 Image Dialog
 0
 48
@@ -1014,7 +1014,7 @@ Image Dialog
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(48).dll
+%B\Bitmaps\Resources\WRLib(48).res
 288 dpi
 288
 %B\Bitmaps\GUI200
@@ -1037,7 +1037,7 @@ Default Values
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(48).dll
+%B\Bitmaps\Resources\WRLib(48).res
 Menu Icons
 0
 48
@@ -1047,7 +1047,7 @@ Menu Icons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(48).dll
+%B\Bitmaps\Resources\WRLib(48).res
 Main Toolbar
 0
 48
@@ -1057,7 +1057,7 @@ Main Toolbar
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(48).dll
+%B\Bitmaps\Resources\WRLib(48).res
 Dialog Toolbars
 0
 48
@@ -1067,7 +1067,7 @@ Dialog Toolbars
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(48).dll
+%B\Bitmaps\Resources\WRLib(48).res
 Form Toolbars
 0
 48
@@ -1077,7 +1077,7 @@ Form Toolbars
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(48).dll
+%B\Bitmaps\Resources\WRLib(48).res
 Bitmap Buttons
 0
 48
@@ -1087,7 +1087,7 @@ Bitmap Buttons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(48).dll
+%B\Bitmaps\Resources\WRLib(48).res
 Tree Icons
 0
 48
@@ -1097,7 +1097,7 @@ Tree Icons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(48).dll
+%B\Bitmaps\Resources\WRLib(48).res
 Gather Icons
 0
 48
@@ -1107,7 +1107,7 @@ Gather Icons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(48).dll
+%B\Bitmaps\Resources\WRLib(48).res
 Document Tab Icons
 0
 48
@@ -1117,7 +1117,7 @@ Document Tab Icons
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(48).dll
+%B\Bitmaps\Resources\WRLib(48).res
 Image Dialog
 0
 48
@@ -1127,12 +1127,12 @@ Image Dialog
 1
 %B\Bitmaps\Images
 %b\Bitmaps\Images
-%B\Bitmaps\Resources\WRLib32(48).dll
+%B\Bitmaps\Resources\WRLib(48).res
 
 *
 11
 1
-1
+0
 0
 0
 1
@@ -8440,7 +8440,7 @@ Glossary
 
 0
 0
-%O\%N.glo?%O\%N.acn?%O\%N.acr*"%!M=TeX"|"%!M=TeX:INS"|"%!M=TeX:DTX"|"%!M=TeX:STY"|"%!M=TeX:AUX"
+%O\%N.glo?%$('%F-glo');?%O\%N.acr*"%!M=TeX"|"%!M=TeX:INS"|"%!M=TeX:DTX"|"%!M=TeX:STY"|"%!M=TeX:AUX"
 Exe('%b\Exec\TeX\MakeGlossary.edt');
 24647
 
@@ -15324,7 +15324,7 @@ sclWindowBk
 Selected Text (1)
 sclHighlightText
 sclHighlightBk
--28934747996617984
+-2920583258838203648
 Found String (2)
 sclFoundStringText
 sclFoundStringBk
@@ -24380,6 +24380,7 @@ CONFIGURATION
 AUTO_COMPLETE
 ABBREVIATIONS
 PRINT_HEADER
+PRINT_FOOTER
 IGNORED_TEXT
 FONT_SCHEMES
 ENVIRONMENTS
@@ -24462,6 +24463,7 @@ SHARE_FILE_ACCESS_WHEN_READING
 FIX_CORRUPTED_LINE_TERMINATORS
 DETECT_READONLY_STATUS_ON_OPEN
 CUSTOM_WHEEL_FOR_DOCUMENT_TABS
+USE_VIRTUAL_WORKING_DIRECTORY
 SEMISOFT_WRAPPING_MODE_FILTER
 ON_ICON_SHIFT_DBL_CLICK_MACRO
 DETECT_EXTERNAL_MODIFICATIONS
@@ -24525,6 +24527,7 @@ CASE_SENSITIVE_FILENAMES
 BRANCH_AFTER_BUILD_MACRO
 APPEND_DEFAULT_EXTENSION
 ALLOW_MULTIPLE_INCLUSION
+ALLOW_LOCK_WINDOW_UPDATE
 REQ_A_MODIFIED_DOCUMENT
 READONLY_MODIFY_WARNING
 PAGE_BEFORE_BUILD_MACRO
@@ -24717,7 +24720,9 @@ TOTAL_LIST_LENGTH
 STRICT_LEFT_RIGHT
 SHOW_PAGE_NUMBERS
 SHOW_PAGE_HEADERS
+SHOW_PAGE_FOOTERS
 SHOW_LINE_NUMBERS
+SEPARATOR_ENABLED
 SEMISOFT_WRAPPING
 RIGHT_PANEL_WIDTH
 RIGHT_MARGIN_MODE
@@ -24799,6 +24804,8 @@ STRICT_PRIORITY
 SOURCE_TRACKING
 SIMILAR_LETTERS
 SEPARATOR_WIDTH
+SEPARATOR_COLOR
+SCOPE_HOT_COLOR
 SCROLL_OPPOSITE
 RIGHT_COLOR_RGB
 REQ_UNDO_BUFFER
@@ -25326,6 +25333,7 @@ longnewglossaryentry
 provideglossaryentry
 longprovideglossaryentry
 newterm
+newabbreviation
 storeglosentry
 newacronym
 glslink
@@ -25543,6 +25551,7 @@ printglossaries
 printacronyms
 printsymbols
 printnumbers
+printabbreviations
 printacronym
 printbibliography
 bibbysection
@@ -29980,6 +29989,7 @@ LoadLanguageFile
 LockWindow
 LogSet
 LogText
+ManifestDPIAware
 MessageBox
 MiscButtonText
 Name
@@ -32598,7 +32608,7 @@ Info*
 
 *
 18
-Default|*.Rnw|TeX|*.tex;*.ltx;*.texi;*.dtx;*.fdd;*.drv;*.ins;*.sty;*.fd;*.def;*.clo;*.cls;*.aux;*.lof;*.lot;*.toc;*.bbl;*.gls;*.glo;*.ind;*.idx|:Rnw|*.Rnw|:Rmd|*.Rmd|:R|*.r;*.q;*.s|:SI|*.si|BibTeX|*.bib|MetaFont|*.mf|MetaPost|*.mp;*.mpx|BST|*.bst|IST|*.ist|HTML|*.html;*.htm;*.shtml;*.shtm;*.php;*.hhc;*.hhk|NSIS|*.nsi;*.nsh|DATA|*.*;*.dat;*.ini;*.cfg;*.dic|ASCII|*.*;*.txt;*.edt|ANSI|*.*;*.doc|Fortran|*.for;*.f;*.f77;*.f90;*.f95|Binary|*.*;*.exe;*.dll;*.com;*.dvi;*.bmp|Application|*.exe;*.com;*.bat|:EDT|*.edt|:DTX|*.dtx;*.fdd|:INS|*.ins;*.drv|:STY|*.sty;*.fd;*.def;*.clo;*.cls|:AUX|*.aux;*.lof;*.lot;*.toc;*.bbl;*.gls;*.glo;*.ind;*.idx;*.mpx|:NSH|*.nsh|:PHP|*.php|:CSS|*.css|:HHC|*.hhc;*.hhk|:UK|*.uk;*.*|:US|*.us;*.*|:DE|*.de;*.*|:FR|*.fr;*.*|:Soft|*.*|:Hard|*.*|:UTF-8|*.*|:ACP|*.*
+Default|*.Rnw|TeX|*.tex;*.ltx;*.texi;*.dtx;*.fdd;*.drv;*.ins;*.sty;*.fd;*.def;*.clo;*.cls;*.aux;*.lof;*.lot;*.toc;*.bbl;*.gls;*.glo;*.ind;*.idx|:Rnw|*.Rnw|:Rmd|*.Rmd|:R|*.r;*.q;*.s|:SI|*.si|BibTeX|*.bib|MetaFont|*.mf|MetaPost|*.mp;*.mpx|BST|*.bst|IST|*.ist|HTML|*.html;*.htm;*.shtml;*.shtm;*.php;*.hhc;*.hhk|NSIS|*.nsi;*.nsh|DATA|*.*;*.dat;*.ini;*.cfg;*.dic|ASCII|*.*;*.txt;*.edt|ANSI|*.*;*.doc|Fortran|*.for;*.f;*.f77;*.f90;*.f95|Binary|*.*;*.exe;*.dll;*.com;*.dvi;*.bmp;*.res|Application|*.exe;*.com;*.bat|:EDT|*.edt|:DTX|*.dtx;*.fdd|:INS|*.ins;*.drv|:STY|*.sty;*.fd;*.def;*.clo;*.cls|:AUX|*.aux;*.lof;*.lot;*.toc;*.bbl;*.gls;*.glo;*.ind;*.idx;*.mpx|:NSH|*.nsh|:PHP|*.php|:CSS|*.css|:HHC|*.hhc;*.hhk|:UK|*.uk;*.*|:US|*.us;*.*|:DE|*.de;*.*|:FR|*.fr;*.*|:Soft|*.*|:Hard|*.*|:UTF-8|*.*|:ACP|*.*
 1
 
 0
@@ -32680,7 +32690,7 @@ Windows XP Ding.wav
 1
 UNICODE|UTF-8;UTF-7;ACP;OEM
 0
-3
+4
 ANSI
 *;ACP|UNICODE;UTF-8;UTF-7;OEM
 0
@@ -32692,6 +32702,10 @@ OEM
 UTF-7
 UTF-7
 65000
+1
+Binary
+Binary
+9
 1
 43
 -1    Auto Detect
@@ -32749,8 +32763,8 @@ HTML|XWE
 1
 HTML|XWE
 1
-50
 25
+10
 1
 DATA
 1111
@@ -32758,11 +32772,13 @@ DATA
 1
 -1
 2
-50
+51
+*
+Arial;Tahoma;Courier New;Segoe UI;Segoe UI Symbol|;Segoe UI Historic;Malgun Gothic;맑은 고딕;Microsoft Yi Baiti|;Microsoft JhengHei UI;Microsoft YaHei UI;Yu Gothic UI;Microsoft JhengHei;Microsoft YaHei;Yu Gothic;MingLiU;SimSun;宋体;Sylfaen;Estrangelo Edessa;Nirmala UI;Aparajita;Kokila;Mangal;Vrinda;Raavi;Shruti;Kalinga;Latha;Vijaya;Gautami;Vani;Tunga;Kartika;Iskoola Pota;Leelawadee UI;Khmer UI;Lao UI;Ebrima;Nyala;Gadugi;Plantagenet Cherokee;Microsoft Tai Le|;Microsoft New Tai Lue|Microsoft PhagsPa|;Microsoft Himalaya|;MV Boli;Mongolian Baiti|;Myanmar Text|;Javanese Text|
 
-Arial;Tahoma;Courier New;Segoe UI;Segoe UI Symbol;Segoe UI Historic;Default
+Arial;Tahoma;Courier New;Segoe UI;Segoe UI Symbol|;Segoe UI Historic
 latn
-Arial;Tahoma;Courier New;Segoe UI;Segoe UI Symbol;Segoe UI Historic;Default
+Arial;Tahoma;Courier New;Segoe UI;Segoe UI Symbol|;Segoe UI Historic
 grek
 Arial;Tahoma;Segoe UI;Courier New
 cyrl
@@ -32775,32 +32791,32 @@ armn
 Arial;Tahoma;Segoe UI;Courier New
 thai
 Arial;Tahoma;Segoe UI;Courier New
+hani
+Microsoft JhengHei UI;Microsoft YaHei UI;Yu Gothic UI;Microsoft JhengHei;Microsoft YaHei;Yu Gothic;MingLiU;SimSun;宋体
 hang
 Malgun Gothic;맑은 고딕
-hani
-Microsoft JhengHei UI;Microsoft YaHei UI;Yu Gothic UI
 kana
-Yu Gothic UI;Microsoft JhengHei UI;Microsoft YaHei UI
+Yu Gothic UI;Microsoft JhengHei UI;Microsoft YaHei UI;Yu Gothic;Microsoft JhengHei;Microsoft YaHei
 bopo
-Microsoft YaHei UI;Microsoft JhengHei UI
+Microsoft JhengHei UI;Microsoft YaHei UI;Microsoft JhengHei;Microsoft YaHei
 yi  
-Microsoft Yi Baiti;Microsoft JhengHei UI;Microsoft YaHei UI
+Microsoft Yi Baiti|
 brai
-Segoe UI;Segoe UI Symbol;Segoe UI Historic
+Segoe UI;Segoe UI Symbol|;Segoe UI Historic
 copt
-Segoe UI;Segoe UI Symbol;Segoe UI Historic
+Segoe UI;Segoe UI Symbol|;Segoe UI Historic
 glag
-Segoe UI;Segoe UI Symbol;Segoe UI Historic
+Segoe UI;Segoe UI Symbol|;Segoe UI Historic
 runr
-Segoe UI;Segoe UI Symbol;Segoe UI Historic
+Segoe UI;Segoe UI Symbol|;Segoe UI Historic
 lisu
-Segoe UI;Segoe UI Symbol;Segoe UI Historic
+Segoe UI;Segoe UI Symbol|;Segoe UI Historic
 ogam
-Segoe UI;Segoe UI Symbol;Segoe UI Historic
+Segoe UI;Segoe UI Symbol|;Segoe UI Historic
 geor
-Segoe UI;Segoe UI Symbol;Segoe UI Historic;Sylfaen
+Segoe UI;Segoe UI Symbol|;Segoe UI Historic;Sylfaen
 syrc
-Segoe UI;Segoe UI Symbol;Segoe UI Historic;Estrangelo Edessa
+Segoe UI;Segoe UI Symbol|;Segoe UI Historic;Estrangelo Edessa
 deva
 Nirmala UI;Aparajita;Kokila;Mangal
 beng
@@ -32842,23 +32858,23 @@ Gadugi;Plantagenet Cherokee
 cans
 Gadugi;Euphemia
 tale
-Microsoft Tai Le
+Microsoft Tai Le|
 talu
-Microsoft New Tai Lue
+Microsoft New Tai Lue|
 phag
-Microsoft PhagsPa
+Microsoft PhagsPa|
 tibt
-Microsoft Himalaya
+Microsoft Himalaya|
 thaa
 MV Boli
 mong
-Mongolian Baiti
+Mongolian Baiti|
 mymr
-Myanmar Text
+Myanmar Text|
 java
-Javanese Text
+Javanese Text|
 ?
-Arial;Tahoma;Courier New;Segoe UI;Segoe UI Symbol;Segoe UI Historic;Default
+Arial;Tahoma;Courier New;Segoe UI;Segoe UI Symbol|;Segoe UI Historic
 
 *
 21
@@ -34430,9 +34446,9 @@ TeX
 *
 24
 0
+1
 0
-0
-6
+5
 999
 9
 1
@@ -34448,20 +34464,15 @@ TeX
 
 *
 25
-5
+2
 Default
-ConfigEx\PrintDefault.ini
+ConfigEx\Print Schemes\PrintDefault.ini
 Alternative
-ConfigEx\PrintAlternative.ini
-Custom
-ConfigEx\PrintCustom.ini
-Fancy
-ConfigEx\PrintFancy.ini
-Plain
-ConfigEx\PrintPlain.ini
+ConfigEx\Print Schemes\PrintAlternative.ini
 
 Default
 1
+0
 1
 1
 0
@@ -34480,9 +34491,9 @@ Courier New
 #000000
 0
 2
-0
 2
-0
+2
+1
 1
 %f
 1
@@ -34501,12 +34512,36 @@ Arial
 #000000
 0
 1
-1
-#D2D2D2
-13816530
+0
+#FEFEFF
+16776958
 #F4F4F4
 16053492
 2
+1
+1
+#444488
+8930372
+10
+1
+%p
+1
+%p
+Arial
+10
+1
+0
+0
+0
+0
+8388608
+clNavy
+1
+0
+1
+8930372
+#444488
+8
 1
 0
 1
@@ -34517,14 +34552,18 @@ Arial
 #445566
 6706500
 1
-1
-#F4F4F4
-16053492
+0
+#FAFAFA
+16448250
 #D2D2D2
 13816530
 1
 ­
 ·
+1
+#888899
+10061960
+8
 1
 1
 1
@@ -34574,25 +34613,25 @@ Dictionary
 1
 0
 0
+1
+1
 0
+0
+1
 0
 1
 0
 1
 0
 1
-0
-1
-0
-0
 1
 0
 0
 0
 0
 0
-0
 1
+0
 1
 1
 1
@@ -34614,29 +34653,11 @@ Dictionary
 
 0
 
-*.Rnw
 
-<\<\<~sessionInfo
-<\@>
-<\<\<
-sweave
-response
-blax
-myemph
-ssay
-assay
-textbf
+keywords
+SEMISOFT_WRAPPING
+separateor
 
-myemph
-blax
-onslide
-$_$
-\file{xxx
-xxx
-Study
-Investigation
-`r \0`
->
 
 1
 0
@@ -34664,6 +34685,7 @@ Investigation
 Doc
 1
 0
+1
 1
 1
 0
@@ -34726,6 +34748,7 @@ C;D;F
 0
 1
 1
+1
 %O\TeX-Aux\Bkp\%n%t.bak
 1
 1
@@ -34746,8 +34769,8 @@ C;D;F
 10
 12
 1
-11
-21
+14
+25
 0
 0
 0
@@ -37951,8 +37974,8 @@ Beamer:frametitle
 Binary Files
 Binary
 1
-11
-21
+14
+25
 0
 0
 64
@@ -37982,8 +38005,8 @@ Courier New
 Macros and Configurations
 INI;EDT|XWE
 1
-11
-21
+14
+25
 0
 1
 80
@@ -38013,8 +38036,8 @@ Courier New
 HTML Documents
 HTML|HHC;XWE
 1
-7
-23
+8
+28
 0
 0
 98
@@ -38044,8 +38067,8 @@ Verdana
 XWE Documents
 XWE
 1
-11
-21
+14
+25
 0
 0
 98
@@ -38075,8 +38098,8 @@ Courier New
 ASCII Documents
 ASCII
 1
-8
-16
+10
+20
 0
 0
 68
@@ -38106,8 +38129,8 @@ Courier New
 TeX Source
 DTX;INS;STY
 1
-8
-16
+10
+20
 0
 0
 80
@@ -48148,13 +48171,13 @@ $Insert_RGB
 Insert RGB Color
 Colors
 Exe('%b\Menus\Insert\Colors.edt');
-<%f>%p\StatusBar.ini?<%f>%p\Bookmarks.ini?<%f>%p\SpellingErrors.ini?<%f>%p\CompoundedWords.ini?<%f>%p\BackgroundSchemes.ini?<%f>%p\Colors.ini?<%f>%p\ColorGrid.ini?<%f>%p\Selections.ini?<%f>%p\FilterSets.ini?<%f>%p\Switches.ini?<%f>%p\Keywords.ini?<%f>%p\Columns.ini?<%f>%p\PrintDefault.ini?<%f>%p\PrintCustom.ini?<%f>%p\PrintAlternative.ini?<%f>%p\PrintFancy.ini?<%f>%p\PrintPlain.ini?<%f>%p\Forms.ini
+<%f>%p\StatusBar.ini?<%f>%p\Bookmarks.ini?<%f>%p\SpellingErrors.ini?<%f>%p\CompoundedWords.ini?<%f>%p\BackgroundSchemes.ini?<%f>%p\Colors.ini?<%f>%p\ColorGrid.ini?<%f>%p\Selections.ini?<%f>%p\FilterSets.ini?<%f>%p\Switches.ini?<%f>%p\Keywords.ini?<%f>%p\Columns.ini?<%f>%p\PrintDefault.ini?<%f>%p\PrintAlternative.ini?<%f>%p\Forms.ini
 1
 $Insert_Font
 Insert Font
 Font
 GetFont(0,"%S");IfOK(!'Ins("%!0");');
-<%f>%p\Font.ini?<%f>%p\Fonts.ini?<%f>%p\PrintDefault.ini?<%f>%p\PrintCustom.ini?<%f>%p\PrintAlternative.ini?<%f>%p\PrintFancy.ini?<%f>%p\PrintPlain.ini?<%f>%p\Forms.ini
+<%f>%p\Font.ini?<%f>%p\Fonts.ini?<%f>%p\PrintDefault.ini?<%f>%p\PrintAlternative.ini?<%f>%p\Forms.ini
 1
 $Insert
 Insert Item
@@ -48178,7 +48201,7 @@ $Browse
 $Help
 
 0
-167
+164
 Menus and Toolbar...
 MenuToolbar
 
@@ -49826,43 +49849,7 @@ HTMLHelp('%B\Doc\Help\WinEdt.chm',1,0,'Config/Printing.html#PRINT_SCHEMES');
 0
 Default Scheme
 WinEdt
-ConfigEx\PrintDefault.ini
-66
-1
-$Help
-Help
-Help
-HTMLHelp('%B\Doc\Help\WinEdt.chm',1,0,'Config/Printing.html#PRINT');
-
-0
-8
-$Load_Script
-
-0
-|
-
-0
-$Browse
-
-0
-|
-
-0
-$Insert_Font
-
-0
-$Insert_RGB
-
-0
-|
-
-0
-$Help
-
-0
-Custom Scheme
-Custom
-ConfigEx\PrintCustom.ini
+ConfigEx\Print Schemes\PrintDefault.ini
 66
 1
 $Help
@@ -49898,79 +49885,7 @@ $Help
 0
 Alternative Scheme
 Print
-ConfigEx\PrintAlternative.ini
-66
-1
-$Help
-Help
-Help
-HTMLHelp('%B\Doc\Help\WinEdt.chm',1,0,'Config/Printing.html#PRINT');
-
-0
-8
-$Load_Script
-
-0
-|
-
-0
-$Browse
-
-0
-|
-
-0
-$Insert_Font
-
-0
-$Insert_RGB
-
-0
-|
-
-0
-$Help
-
-0
-Fancy Scheme
-Print
-ConfigEx\PrintFancy.ini
-66
-1
-$Help
-Help
-Help
-HTMLHelp('%B\Doc\Help\WinEdt.chm',1,0,'Config/Printing.html#PRINT');
-
-0
-8
-$Load_Script
-
-0
-|
-
-0
-$Browse
-
-0
-|
-
-0
-$Insert_Font
-
-0
-$Insert_RGB
-
-0
-|
-
-0
-$Help
-
-0
-Plain Scheme
-Print
-ConfigEx\PrintPlain.ini
+ConfigEx\Print Schemes\PrintAlternative.ini
 66
 1
 $Help
@@ -50019,7 +49934,7 @@ HTMLHelp('%B\Doc\Help\WinEdt.chm',1,0,'Config/Files.html#page_top');
 Backup
 Backup
 ConfigEx\Backup.ini
-73
+70
 1
 $Help
 Help
@@ -50031,7 +49946,7 @@ HTMLHelp('%B\Doc\Help\WinEdt.chm',1,0,'Config/Files.html#BACKUP');
 Auto Saving
 SAV
 ConfigEx\AutoSave.ini
-73
+70
 1
 $Help
 Help
@@ -50043,7 +49958,7 @@ HTMLHelp('%B\Doc\Help\WinEdt.chm',1,0,'Config/Files.html#AUTO_SAVING');
 Working Directory
 Folder
 ConfigEx\Folders.ini
-73
+70
 1
 $Help
 Help
@@ -50055,7 +49970,7 @@ HTMLHelp('%B\Doc\Help\WinEdt.chm',1,0,'Config/Files.html#WORKING_DIRECTORY');
 File Status Detection
 DocSettings
 ConfigEx\FileStatus.ini
-73
+70
 1
 $Help
 Help
@@ -50079,7 +49994,7 @@ HTMLHelp('%B\Doc\Help\WinEdt.chm',1,0,'Config/Application.html#page_top');
 Project Manager
 PrjManager
 ConfigEx\Project.ini
-78
+75
 2
 $Help
 Help
@@ -50118,7 +50033,7 @@ $Help
 Forms
 Form
 ConfigEx\Forms.ini
-78
+75
 1
 $Help
 Help
@@ -50154,7 +50069,7 @@ $Help
 Sound Effects
 Sound
 ConfigEx\Sounds.ini
-78
+75
 1
 $Help
 Help
@@ -50166,7 +50081,7 @@ HTMLHelp('%B\Doc\Help\WinEdt.chm',1,0,'Config/Application.html#SOUNDS');
 Additional Preferences
 Preferences
 ConfigEx\Preferences.ini
-78
+75
 1
 $Help
 Help
@@ -50226,7 +50141,7 @@ $Help
 Preferences
 UserPrefs
 ConfigEx\UserPreferences.ini
-83
+80
 1
 $Help
 Help
@@ -50238,7 +50153,7 @@ HTMLHelp('%B\Doc\Help\WinEdt.chm',1,0,'Config/Advanced.html#User_Preferences');
 Private Settings
 Private
 ConfigEx\Private.ini
-83
+80
 1
 $Help
 Help
@@ -50280,7 +50195,7 @@ $Help
 Options Interface
 Options
 ConfigEx\Options.ini
-83
+80
 1
 $Help
 Help
@@ -50322,7 +50237,7 @@ $Help
 Configurations...
 Configurations
 
-83
+80
 1
 $Help
 Help
@@ -50334,61 +50249,61 @@ HTMLHelp('%B\Doc\Help\WinEdt.chm',1,0,'Config/Advanced.html#CONFIGURATION');
 Configuration
 Maintenance
 ConfigEx\Config.ini
-87
+84
 0
 0
 Default (Auto-Detect)
 WinEdt
 Exec\Default\Load Config.edt
-87
+84
 0
 0
 MiKTeX + HTML + NSIS
 TeXMiKTeXPlus
 Exec\Default-MiKTeX\Load Config.edt
-87
+84
 0
 0
 TeX Live + HTML + NSIS
 TeXLivePlus
 Exec\Default-TeX Live\Load Config.edt
-87
+84
 0
 0
 MiKTeX
 TeXMiKTeX
 Exec\MiKTeX\Load Config.edt
-87
+84
 0
 0
 TeX Live
 TeXLive
 Exec\TeX Live\Load Config.edt
-87
+84
 0
 0
 HTML
 Hyperlink
 Exec\HTML\Load Config.edt
-87
+84
 0
 0
 NSIS
 NSIS
 Exec\NSIS\Load Config.edt
-87
+84
 0
 0
 ASCII
 Omega
 Exec\ASCII\Load Config.edt
-87
+84
 0
 0
 Event Handlers...
 Event
 
-83
+80
 1
 $Help
 Help
@@ -50400,127 +50315,127 @@ HTMLHelp('%B\Doc\Help\WinEdt.chm',1,0,'Config/Advanced.html#EVENT_HANDLERS');
 Events
 Event
 ConfigEx\Events.ini
-97
+94
 0
 0
 Local Startup
 MacroStartup
 Config\Local Startup.edt
-97
+94
 0
 0
 Startup
 MacroStartup
 Config\Startup.edt
-97
+94
 0
 0
 Exit
 MacroExit
 Config\Exit.edt
-97
+94
 0
 0
 Get Mode (Before)
 GetMode
 Macros\Events\GetMode.edt
-97
+94
 0
 0
 Get Mode (After)
 GetMode
 Macros\GetMode.edt
-97
+94
 0
 0
 Open Document (Before)
 Open
 Macros\Events\MDIOpen-Before.edt
-97
+94
 0
 0
 Open Document (After)
 Open
 Macros\Events\MDIOpen.edt
-97
+94
 0
 0
 Activate Document
 GetModeMod
 Macros\Events\MDIActivate.edt
-97
+94
 0
 0
 Document Click
 Mouse
 Macros\Events\DocClick.edt
-97
+94
 0
 0
 Document Double Click
 Mouse
 Macros\Events\DocDoubleClick.edt
-97
+94
 0
 0
 Document Triple Click
 Mouse
 Macros\Events\DocTripleClick.edt
-97
+94
 0
 0
 Save Document
 Save
 Macros\Events\MDISave.edt
-97
+94
 0
 0
 Open Project (Before)
 PrjOpen
 Macros\Events\Prj-Open-Before.edt
-97
+94
 0
 0
 Open Project (After)
 PrjOpen
 Macros\Events\Prj-Open.edt
-97
+94
 0
 0
 Close Project (Before)
 PrjClose
 Macros\Events\Prj-Close-Before.edt
-97
+94
 0
 0
 Close Project (After)
 PrjClose
 Macros\Events\Prj-Close.edt
-97
+94
 0
 0
 Build Tree (Before)
 AutoTree
 Macros\Events\BuildTreeBefore.edt
-97
+94
 0
 0
 Build Tree (After)
 AutoTree
 Macros\Events\BuildTreeAfter.edt
-97
+94
 0
 0
 Dynamic Dictionaries
 Dictionaries
 Macros\Events\DynDict.edt
-97
+94
 0
 0
 Common Active Strings...
 StringMatch
 
-83
+80
 1
 $Help
 Help
@@ -50532,49 +50447,49 @@ HTMLHelp('%B\Doc\Help\WinEdt.chm',1,0,'Config/Advanced.html#Common_Active_String
 \cite{}
 Citation
 Macros\Active Strings\Cite.edt
-118
+115
 0
 0
 \cite{?},,
 Citation
 Macros\Active Strings\Cite-Cont.edt
-118
+115
 0
 0
 \ref{}
 Reference
 Macros\Active Strings\Ref.edt
-118
+115
 0
 0
 \ref{?},,
 Reference
 Macros\Active Strings\Ref-Cont.edt
-118
+115
 0
 0
 \begin{?}}
 Env
 Macros\Active Strings\CompleteEnv.edt
-118
+115
 0
 0
 \begin{?}>
 Env
 Macros\Active Strings\ChangeEnv.edt
-118
+115
 0
 0
 \includegraphics?{?}
 IncludeGraphics
 Macros\Active Strings\Graphics.edt
-118
+115
 0
 0
 Common Macros...
 Macro
 
-83
+80
 1
 $Help
 Help
@@ -50586,253 +50501,253 @@ HTMLHelp('%B\Doc\Help\WinEdt.chm',1,0,'Config/Advanced.html#Common_Macros');
 Create Filetype Associations
 Explorer
 WinShell\Create WinEdt Filetypes.edt
-126
+123
 0
 0
 Erase Working Files
 Recycle
 Exec\Erase Working Files.edt
-126
+123
 0
 0
 Thesaurus
 Thesaurus
 Menus\Tools\Word Web.edt
-126
+123
 0
 0
 LaTeX Doc
 LaTeXHelp
 Macros\Doc\LaTeXDoc.edt
-126
+123
 0
 0
 Insert Color
 Colors
 Menus\Insert\Colors.edt
-126
+123
 0
 0
 Insert Key
 Keyboard
 Menus\Shortcuts\Insert.edt
-126
+123
 0
 0
 Enter Key
 Keyboard
 Menus\Shortcuts\Enter.edt
-126
+123
 0
 0
 Backspace Key
 Keyboard
 Menus\Shortcuts\Backspace.edt
-126
+123
 0
 0
 Escape Key
 Keyboard
 Menus\Shortcuts\Escape.edt
-126
+123
 0
 0
 Keyword Help
 KeywordSearch
 Menus\Help\Keyword Help.edt
-126
+123
 0
 0
 isMath (RegEx)
 Equation
 Macros\RegEx\isMath.edt
-126
+123
 0
 0
 PDF Macros...
 AcroRead
 
-83
+80
 0
 0
 PDF Close
 AcroBack
 Exec\PDF\PDFCloseDoc.edt
-138
+135
 0
 0
 PDF Preview
 AcroRead
 Exec\PDF\PDF Preview.edt
-138
+135
 0
 0
 PDF Search
 AcroFind
 Exec\PDF\PDF Search.edt
-138
+135
 0
 0
 Adobe Blues
 AcroRead
 Config\Adobe.edt
-138
+135
 0
 0
 Preview Macros...
 Preview
 
-83
+80
 0
 0
 Universal Preview
 Preview
 Exec\Preview.edt
-143
+140
 0
 0
 DVI Preview
 DviView
 Exec\TeX\DVI Preview.edt
-143
+140
 0
 0
 DVI Search
 DviFind
 Exec\TeX\DVI Search.edt
-143
+140
 0
 0
 GSView
 GSView
 Exec\TeX\GSView.edt
-143
+140
 0
 0
 HTML Preview
 IExplorer
 Exec\HTML\Preview.edt
-143
+140
 0
 0
 NSIS Preview
 NSIS
 Exec\NSIS\Preview.edt
-143
+140
 0
 0
 Compile Macros...
 Compile
 
-83
+80
 0
 0
 Compiler Engine
 Run
 Exec\ExeCompiler.edt
-150
+147
 0
 0
 Universal Compile
 Compile
 Exec\Compile.edt
-150
+147
 0
 0
 HTML Help Compiler
 HtmlHelp
 Exec\HTML\Compile.edt
-150
+147
 0
 0
 NSIS Compiler
 NSIS
 Exec\NSIS\Compile.edt
-150
+147
 0
 0
 TeX Compiler
 TeXLive
 Exec\TeX\Compile.edt
-150
+147
 0
 0
 TeXify
 TeXTeXify
 Exec\TeX\TeXify.edt
-150
+147
 0
 0
 PDFTeXify
 TeXPDFTeXify
 Exec\TeX\PDFTeXify.edt
-150
+147
 0
 0
 LaTeX
 TeXLaTeX
 Exec\TeX\LaTeX.edt
-150
+147
 0
 0
 PDFLaTeX
 TeXPDFLaTeX
 Exec\TeX\PDFLaTeX.edt
-150
+147
 0
 0
 Compile Selected
 CompileSel
 Exec\TeX\Compile Selected.edt
-150
+147
 0
 0
 Execution Modes...
 Console
 
-83
+80
 0
 0
 Current
 WinEdt
 Exec\%$('Exec-Dir');\ExecModes.edt
-161
+158
 0
 0
 MiKTeX
 TeXMiKTeX
 Exec\MiKTeX\ExecModes.edt
-161
+158
 0
 0
 TeX Live
 TeXLive
 Exec\TeX Live\ExecModes.edt
-161
+158
 0
 0
 HTML
 Hyperlink
 Exec\HTML\ExecModes.edt
-161
+158
 0
 0
 NSIS
 NSIS
 Exec\NSIS\ExecModes.edt
-161
+158
 0
 0
 ASCII
 Omega
 Exec\ASCII\ExecModes.edt
-161
+158
 0
 0
 
 *
 44
-1
+0
 0
 1
 64
@@ -53373,11 +53288,11 @@ Edt
 *
 80
 Default:MiKTeX
+1
 0
-906
 0
-1833
-1197
+1349
+899
 0
 0
 0
@@ -53390,16 +53305,16 @@ Default:MiKTeX
 1
 77
 1
-282
-206
-282
-206
+353
+257
+353
+257
 0
 0
-234
-170
-334
-242
+293
+212
+418
+302
 0
 0
 0
@@ -53410,23 +53325,22 @@ Default:MiKTeX
 0
 0
 0
-96
-96
+120
 3
 3
 3
-0
+1
 
 
 *
 81
-320
-320
-164
-100
+400
+400
+205
+125
 
 Tree
-0
+1
 3
 2
 0
@@ -53434,8 +53348,8 @@ Tree
 1
 0
 0
-360
-520
+450
+650
 
 fclFormBk
 -16777211
@@ -53456,8 +53370,8 @@ Gather
 1
 0
 0
-800
-440
+1000
+550
 
 fclFormBk
 -16777211
@@ -53478,8 +53392,8 @@ Macro Recorder
 1
 0
 0
-800
-440
+1000
+550
 
 fclFormBk
 -16777211
@@ -53500,8 +53414,8 @@ Errors
 1
 0
 0
-800
-440
+1000
+550
 
 fclFormBk
 -16777211
@@ -53522,8 +53436,8 @@ Character Map
 1
 0
 0
-800
-180
+1000
+225
 
 fclFormBk
 -16777211
@@ -53544,8 +53458,8 @@ Find in Files
 1
 0
 0
-800
-440
+1000
+550
 
 fclFormBk
 -16777211
@@ -53566,8 +53480,8 @@ Console
 1
 0
 0
-800
-440
+1000
+550
 
 fclFormBk
 -16777211
@@ -53580,7 +53494,7 @@ Courier New
 0
 
 Options Interface
-0
+1
 3
 1
 0
@@ -53588,8 +53502,8 @@ Options Interface
 1
 0
 0
-360
-520
+450
+650
 
 fclFormBk
 -16777211
@@ -53635,15 +53549,6 @@ Recorded Macro.edt
 85
 1
 1
-#
-#' 
- <- 
-#'
-#' @param 
-## 
-%-%
-%%
-# 
 > 
 
 
@@ -53675,22 +53580,10 @@ Recorded Macro.edt
 
 
 
-22398
-22398
-20930
-20873
-20216
-15795
-13631
-3543
-40929
-40133
-36547
+23669
+23669
 
-16532
-16532
-15827
-15808
+
 
 
 
@@ -53706,7 +53599,7 @@ Recorded Macro.edt
 16777215
 15790320
 0
-16750899
+14120960
 16777215
 7171437
 13395456
@@ -54511,7 +54404,7 @@ clAqua
 16776960
 sclHighlightBk
 SysHighlight
-16750899
+14120960
 sclHighlightText
 SysHighlightText
 16777215
@@ -54853,7 +54746,7 @@ $1000007
 7171437
 SysHighlight
 $1000005
-16750899
+14120960
 SysHighlightText
 $1000006
 16777215
