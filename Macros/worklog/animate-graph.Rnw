@@ -1,0 +1,188 @@
+% -*- TeX:Rnw -*-
+% ----------------------------------------------------------------
+% .R Sweave file  ************************************************
+% ----------------------------------------------------------------
+%%
+% \VignetteIndexEntry{}
+% \VignetteDepends{}
+% \VignettePackage{}
+\documentclass[a4paper,12pt]{article}
+%\usepackage[slovene]{babel}
+\usepackage[utf8]{inputenc} %% must be here for Sweave encoding check
+\newcommand{\SVNRevision}{$ $Rev: 39 $ $}
+%\newcommand{\SVNDate}{$ $Date:: 2010-05-26 #$ $}
+\newcommand{\SVNId}{$ $Id: Sweave.Rnw 39 2010-05-25 22:22:19Z ABlejec $ $}
+\input{abpkg}
+\input{abcmd}
+\input{abpage}
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\usepackage{amsmath,amssymb}
+\usepackage{colortbl}
+\usepackage{Sweave}
+\input{mysweave}
+\SweaveOpts{eps=false,prefix.string=./figs/bla,concordance=TRUE}
+%\SweaveOpts{echo=false}
+\setkeys{Gin}{width=0.8\textwidth}  % set graphicx parameter
+%\SweaveOpts{keep.source=true}
+\usepackage{lmodern}
+\input{abfont}
+
+% ----------------------------------------------------------------
+\begin{document}
+%% Sweave settings for includegraphics default plot size (Sweave default is 0.8)
+%% notice this must be after begin{document}
+%%% \setkeys{Gin}{width=0.9\textwidth}
+% ----------------------------------------------------------------
+\title{Visualization of time changing network}
+\author{A. Blejec}
+%\address{}%
+%\email{}%
+%
+%\thanks{}%
+%\subjclass{}%
+%\keywords{}%
+
+%\date{}%
+%\dedicatory{}%
+%\commby{}%
+\maketitle
+% ----------------------------------------------------------------
+%\begin{abstract}
+%
+%\end{abstract}
+% ----------------------------------------------------------------
+\tableofcontents
+<<Author:,echo=FALSE>>=
+###############################################
+##                                           ##
+## (c) Andrej Blejec (andrej.blejec@nib.si)  ##
+##                                           ##
+###############################################
+@
+<<initialize,echo=FALSE,results=hide>>=
+options(width=70)
+library(animatoR)
+#library(xlsReadWrite)
+@
+
+\section{Data}
+
+Network data
+
+<<>>=
+n <- 6
+m <- 4
+x <- cos(seq(0,2*pi*((n-1)/n),length=n))
+y <- sin(seq(0,2*pi*((n-1)/n),length=n))
+expr <- matrix(round(runif(n*m,0,3),0),n)
+head(expr)
+link <- as.numeric(cut(runif(n*(n+1)/2*m),c(0,0.7,0.85,1)))-1
+link <- matrix(link,ncol=m)
+cole <- link
+cole[cole==0] <- NA
+head(link)
+e <- expand.grid(1:n,1:n)
+e <- e[e[,1]>=e[,2],]
+head(e)
+@
+
+<<for,fig=TRUE>>=
+par(mfrow=c(2,2))
+i <- 1
+for(i in 1:m) {
+newplot(xlim=range(x),ylim=range(y))
+points(x,y,cex=expr[,i],col=expr[,i],pch=16)
+segments(x[e[,1]],y[e[,1]],x[e[,2]],y[e[,2]],lwd=link[,i],col=cole)
+}
+@
+
+\clearpage
+<<slika,eval=TRUE,fig=TRUE,include=FALSE,echo=FALSE,results=tex>>=>>=
+par(mfrow=c(1,1))
+t <- 0
+cols <- c("white","green","yellow","red")
+for(i in 1:(m-1)){
+animator ('{
+newplot(xlim=range(x),ylim=range(y))
+tsegments(x[e[,1]],y[e[,1]],x[e[,2]],y[e[,2]],lwd=h(link[,i],link[,i+1],t)*5,col=cole)
+tpoints(x,y,x,y,
+cex=tcex(expr[,i]*10,expr[,i+1]*10,t),
+col=trgb(cols[expr[,i]+1],cols[expr[,i+1]+1],t),
+pch=16)
+}',life=2)
+}
+includeLatex()
+@
+
+
+% ----------------------------------------------------------------
+%\bibliographystyle{chicago}
+%\addcontentsline{toc}{section}{\refname}
+%\bibliography{ab-general}
+%--------------------------------------------------------------
+
+%\clearpage
+%\appendix
+%\phantomsection\addcontentsline{toc}{section}{\appendixname}
+%\section{\R\ funkcije}
+%\input{}
+
+\clearpage
+\section*{SessionInfo}
+{\small
+<<sessionInfo,results=tex,echo=false>>=
+cat(win.version(),"\n")
+toLatex(sessionInfo())
+cat("Project path:\\verb'",dirname(getwd()),"'\\\\\n")
+mainFile <- commandArgs(trailingOnly = TRUE)
+#
+mainFilePath <- file.path("../doc", mainFile[1])
+cat("Main file :\\verb'", mainFilePath, "'\n")
+#
+mainFile <- strsplit(mainFile,'.',fixed=TRUE)[[1]][1]
+projectName <- rev((strsplit(dirname(getwd()), "/"))[[1]])[1]
+#
+@
+
+\subsection*{View as vignette}
+Project files can be viewed by pasting this code to \R\ console:\\
+\begin{Schunk}
+\begin{Sinput}
+<<projectFiles,echo=false,results=tex>>=cat('> projectName <-"',projectName,'"; ',sep="")
+cat(' mainFile <-"',mainFile,'"',sep="")
+#
+@
+
+\end{Sinput}
+\end{Schunk}
+<<vignette,eval=false>>=
+commandArgs()
+library(tkWidgets)
+openPDF(file.path(dirname(getwd()),"doc",
+paste(mainFile,"PDF",sep=".")))
+viewVignette("viewVignette", projectName, #
+file.path("../doc",paste(mainFile,"Rnw",sep=".")))
+#
+@
+
+\vfill \hrule \vspace{3pt} \footnotesize{
+%Revision \SVNId\hfill (c) A. Blejec%\input{../_COPYRIGHT.}
+%\SVNRevision ~/~ \SVNDate
+\noindent
+\texttt{Git Revision: \gitCommitterUnixDate \gitAbbrevHash{} (\gitCommitterDate)} \hfill \copyright A. Blejec\\
+\texttt{ \gitReferences} \hfill \verb'\Sexpr{mainFilePath}'\\
+
+}
+
+<<eval=FALSE,echo=FALSE>>=
+# getrootpath <- function() {
+# fp <- (strsplit(getwd(), "/"))[[1]]
+# file <- file.path(paste(fp[-length(fp)], collapse = "/"))
+# return(file)
+# }
+# fileName <- function(name="bla",ext="PDF") paste(name,ext,sep=".")
+@
+
+
+\end{document}
+% ----------------------------------------------------------------

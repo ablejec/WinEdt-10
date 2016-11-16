@@ -8,7 +8,7 @@
 
 IfStr("%$('wl_status');","started","=",>
    "Prompt('Logging is already started.%\',2,1);Exit;");
- 
+
 LetRegNum(9,%8);
 GetDate(4,"dd");
 GetDate(5,"hh");
@@ -26,7 +26,7 @@ Loop(!"IfNum(%!9,1440,'<','Stop', >
 IfNum("%!8","%!4","=",>
    "LetRegNum(9,0);",>
    "LetRegNum(9,1);");
- 
+
 StartWorking("Worklog...");
 IfNum("%!9","0","=",>
   !|ReadFile("%b\Macros\worklog\logs\%!2%!3.worklog",0);>

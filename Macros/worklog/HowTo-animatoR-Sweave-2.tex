@@ -1,0 +1,49 @@
+% -*- TeX:Rnw -*-
+
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc} %% must be here for Sweave encoding check
+
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\usepackage{amsmath,amssymb}
+\usepackage{colortbl}
+\usepackage{Sweave}
+%\input{mysweave}
+\input{./figs/SW-concordance}
+%\SweaveOpts{echo=false}
+\setkeys{Gin}{width=0.8\textwidth}  % set graphicx parameter
+%\SweaveOpts{keep.source=true}
+%\usepackage{lmodern}
+\usepackage{animate}
+
+%\input{abfont}
+
+% ----------------------------------------------------------------
+\begin{document}
+%% Sweave settings for includegraphics default plot size (Sweave default is 0.8)
+%% notice this must be after begin{document}
+%%% \setkeys{Gin}{width=0.9\textwidth}
+% ----------------------------------------------------------------
+\title{HowTo Use \pkg{animatoR} with \pkg{knitr}}
+\author{A. Blejec}
+
+\maketitle
+
+
+This is a short example to show how to embed \pkg{animatoR} based animations
+into \pkg{Sweave} generated \emph{pdf} file.
+
+\code{Sweave} stacks all frames into one file. Function \fct{includeLatex} in
+\pkg{animatoR} produces necessary command to include the animation (using
+\code{LaTeX} package \pkg{animate}). Here is this example chunk:
+
+\begin{verbatim}
+ <<fig=TRUE,results=tex,include=FALSE,echo=FALSE>>=
+animator(
+"newplot();box();tpoints(2,2,8,8,cex=2,pch=16)"
+,life=2)
+includeLatex(scale=1,other="controls,palindrome")
+\@
+\end{verbatim}
+
+\begin{center}

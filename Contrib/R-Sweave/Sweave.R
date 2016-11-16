@@ -9,11 +9,12 @@ if(!is.na(cmds[2])&&cmds[2]=="knit") {
     wpath <- gsub("\\\\","/",cmds[5])
     source(paste0(wpath,"Rnw2Rmd.R"))
     t <- readLines(filename)
-    x <- Rnw2Rmd(t)
+    if(tolower(rev(strsplit(lfn,"\\.")[[1]])[1]=="rnw")) { x <- Rnw2Rmd(t) 
 #    x <- iconv(x,"CP1250","UTF8")
     writeLines(x,con=paste0(cmds[3],".Rmd"))
     filename <- paste0(cmds[3],".Rmd")
-    cmds[4] <- "md"
+} else x <- t
+    # cmds[4] <- "md"
     }
     if(!is.na(cmds[4])&&cmds[4]!="md") {
         knit(filename) } else {

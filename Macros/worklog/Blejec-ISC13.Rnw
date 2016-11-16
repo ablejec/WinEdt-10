@@ -1,0 +1,1765 @@
+% -*- TeX:Rnw -*-
+% ----------------------------------------------------------------
+% .R Sweave file  ************************************************
+% ----------------------------------------------------------------
+%%
+% \VignetteIndexEntry{}
+% \VignetteDepends{}
+% \VignettePackage{}
+%\documentclass[a4paper,12pt]{article}
+%\usepackage[slovene]{babel}
+\usepackage[english,slovene]{babel}
+\selectlanguage{english}
+\usepackage[utf8]{inputenc} %% must be here for Sweave encoding check
+\newcommand{\SVNRevision}{$ $Rev: 3 $ $}
+%\newcommand{\SVNDate}{$ $Date:: 2009-02-2#$ $}
+\newcommand{\SVNId}{$ $Id: program.Rnw 3 2009-02-22 17:36:08Z ABlejec $ $}
+%\input{abpkgB}
+%\input{abpkg}
+\input{abBeam}
+\input{abcmd}
+%\input{abpage}
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\usepackage{amsmath,amssymb}
+\usepackage{colortbl}
+\usepackage{Sweave}
+\usepackage{pdfpages}
+\usepackage{animate}
+\usepackage{tikz} % for graphics opacity
+%\usepackage{media9}
+\usepackage{movie15}
+\input{mysweaveB}
+\newcommand{\BV}{}
+\newcommand{\EV}{}
+\newcommand{\myemph}[1]{{\color{Sgreen} \textit{#1}}}
+\SweaveOpts{eps=FALSE,prefix.string=./figs/Rotary,concordance=TRUE}
+\SweaveOpts{echo=FALSE}
+%\usepackage{lmodern}
+%\input{abfont}
+\SweaveOpts{keep.source=FALSE}
+\usepackage[overlay,absolute]{textpos}
+%\setlength{\TPHorizModule}{\paperwidth}
+%\setlength{\TPVertModule}{\paperheight}
+%\textblockorigin{0mm}{0mm}
+%%%%%% colors
+\definecolor{UniBlue}{RGB}{83,121,170}
+\definecolor{UniGreen}{RGB}{28,155,36}
+\definecolor{UniGreen}{RGB}{46,125,45}
+<<>>=
+UniGreen <- rgb(46/256,125/256,45/256)
+
+@
+\definecolor{myBg}{RGB}{0,0,0}
+
+\setbeamercolor{title}{fg=white}
+\setbeamercolor{frametitle}{fg=white}
+\setbeamercolor{structure}{fg=UniGreen}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% define language and select crop
+%% each report should be run twice - check chapter titles.
+%%
+    \providetoggle{english}   % initially false
+%% Set language
+<<results=tex>>=
+eng <- FALSE
+if(eng) {
+cat("    \\toggletrue{english}\n")
+outputFile <-"Blejec-Rotary-eng.pdf"
+} else {
+cat("    \\togglefalse{english}\n")
+outputFile <-"Blejec-Rotary-slo.pdf"
+}
+@
+%%
+  \providecommand{\eng}[1]{\iftoggle{english} {#1} {  }}
+  \providecommand{\slo}[1]{\iftoggle{english} {  } {#1}}
+%% nadomesti z: \iflanguage{english}{English}{slovensko}
+%%    \providecommand{\eng}[1]{\iflanguage{english} {#1} {  }}
+%%    \providecommand{\slo}[1]{\iflanguage{english} {  } {#1}}
+
+
+\newcommand{\mysection}[1]{
+\setbeamercolor{background canvas}{bg=myBg}
+%%\setbeamercolor{normal text}{fg=white}
+\begin{frame}
+\frametitle{}
+\begin{center}
+\textcolor{white}{\Huge{#1}}
+\end{center}
+\end{frame}
+\setbeamercolor{background canvas}{bg=}
+%%\setbeamercolor{normal text}{fg=}
+%\section{#1}
+}
+%
+\newcommand{\slidefile}{slides-eda-2.pdf}
+\newcommand{\ipdf}[2][0.7]{
+    \setbeamercolor{background canvas}{bg=}
+    \setkeys{Gin}{width=#1\textwidth}
+    \vspace{2cm}%
+
+    \includepdf[pages=#2]{./slides/\slidefile}
+    \setkeys{Gin}{width=0.7\textwidth}
+}
+%%
+
+%%%%%%
+% ----------------------------------------------------------------
+\title[]
+{\eng{A glimpse to statistics}
+\slo{Nekaj pogledov na statistiko}}
+\author[A. Blejec]{\Large{Andrej Blejec} \\[12pt]
+\small{andrej.blejec@nib.si}\\[12pt]
+  {\small{
+\eng{National Institute of Biology}
+\slo{Nacionalni inštitut za biologijo \includegraphics[width=0.08\textwidth]{./slides/niblogo.pdf}}}} \\[2pt]
+{\tiny{\eng{and}\slo{in}}} \\[2pt]
+{\small{
+\eng{University of Ljubljana, Slovenia}
+\slo{
+Univerza v Ljubljani, BF
+ \includegraphics[width=0.025\textwidth]{./clp/capture-uni-logo.jpg}
+}}}\\[24pt]
+%
+%\slo{\tiny{Javno predavanje ob izvolitvi v naziv redni profesor}}
+\vfill
+\slo{{Rotary Club Ljubljana}}
+\eng{{Rotary Club Ljubljana}}}
+
+%\institute{Nacionalni inštitut za biologijo \and Univerza v Ljubljani, BF}
+%\address{}%
+%\email{}%
+%
+%\thanks{}%
+%\subjclass{}%
+%\keywords{}%
+
+
+%\slo{\date{3. oktober 2013}}%
+\slo{\date{16. 3. 2016}}%
+
+\eng{\date[ORSC, Oct 20-22,2015]{October 20 - 22, 2015}}
+%\dedicatory{}%
+%\commby{}%
+
+\begin{document}
+\mode<article> {\maketitle}
+\mode<presentation> {\frame{\titlepage
+\vspace{-1cm}\hfill
+%\includegraphics[width=0.1\textwidth]{./slides/niblogo.pdf}
+}
+}
+%\tableofcontents
+% ----------------------------------------------------------------
+%\begin{abstract}
+% Javno predavanje ob izvolitvi v naziv redni profesor.
+%\end{abstract}
+% -------------------------------------------------------------
+%% Sweave settings for includegraphics default plot size (Sweave default is 0.8)
+%% notice this must be after begin{document}
+% \setkeys{Gin}{width=0.9\textwidth}
+\setkeys{Gin}{width=0.7\textwidth}
+% ----------------------------------------------------------------
+<<Author:,echo=FALSE>>=
+###################################################
+##                                               ##
+## (c) Andrej Blejec (andrej.blejec@nib.si)      ##
+##                                               ##
+###################################################
+@
+<<initialize,echo=false,results=hide>>=
+options(width=70)
+library(Hmisc)
+#library(xlsReadWrite)
+@
+
+<<source animatoR functions, echo=false,results=hide>>=
+.dt <- 0.005
+##
+filePath <- function(path,name,type)
+file.path(path,paste(name,type,sep="."))
+##
+source("D:/_Y/R/animatoR/doc/animatoR-functions.R")
+other <- ",autoplay,palindrome,controls"
+other <- ",palindrome,controls"
+other <- ",controls"
+@
+
+
+
+
+
+%\mysection{Mesto statistike}
+%
+%\begin{frame}[fragile]
+%\frametitle{naslov}
+%\begin{block}{Kje je?}
+%\begin{itemize}
+%         \item Komutativni diagram
+%       \end{itemize}
+%\end{block}
+%
+%
+%\end{frame}
+%
+%
+%\begin{frame}[fragile]
+%\frametitle{naslov}
+%tralala
+%\end{frame}
+
+\mysection{\slo{O kamnu in ptiču}
+\eng{Of a stone and a bird}}
+
+
+\begin{frame}[fragile]
+\frametitle{\eng{Need for statistics}
+\slo{Kje nastopi statistika}}
+\only<1> {\includegraphics{./slides/photo-1.jpg}}
+\only<2> {\includegraphics{./slides/photo-2.jpg}}
+\only<3> {\includegraphics{./slides/photo-3.jpg}}
+\only<4> {\includegraphics{./slides/photo-4.jpg}}
+\only<5> {\includegraphics{./slides/photo-5.jpg}}
+\only<6> {\includegraphics{./slides/photo-11.jpg}}
+\only<7> {\includegraphics{./slides/photo-12.jpg}}
+\only<8> {\includegraphics{./slides/photo-13.jpg}}
+\only<9> {\includegraphics{./slides/photo-14.jpg}}
+\only<10> {\includegraphics{./slides/photo-15.jpg}}
+\end{frame}
+
+\mysection{
+\slo{Kaj nam to pomaga?}
+\eng{Mission statement}}
+
+
+\begin{frame}[fragile]
+\frametitle{Porazdelitev ...}
+\begin{itemize}
+  \item napovedi in pričakovanja
+  \item obvladovanje negotovosti/variabilnosti
+  \item zmanjšanje negotovosti
+  \item pojasnjena in nepojasnjena varianca (signal/šum)
+  \item nenavadni izidi
+  \item verjetnost izidov
+\end{itemize}
+\end{frame}
+
+\mysection{
+\eng{Normally: Gaussian!}
+\slo{Normalno: Gaussova!}}
+
+%\SweaveInput{Normalna}
+
+%% |--------------------->>>>>>
+\begin{frame}[fragile]
+\frametitle{\eng{Normal (\emph{Gaussian}) distribution}
+\slo{Normalna (\emph{Gaussova}) porazdelitev}}
+\begin{itemize}
+\begin{columns}
+\column{.4\textwidth}
+\eng{
+  \item One of best known distributions
+  \item Position is given by the mean
+  \item Spread is given by standard deviation
+  }
+\slo{  \item Ena najbolj znanih porazdelitev
+  \item Lego opiše povprečje podatkov
+  \item Razpršenost podamo kot standardni odklon
+  }
+\column{.5\textwidth}
+\setkeys{Gin}{width=1.1\textwidth}
+<<fig=TRUE>>=
+par(mfrow=c(3,1),mar=c(0,0,0,0))
+x <- seq(-6,6,0.01)
+xlim <- range(x)
+ylim <- c(0,0.5)
+plot(x,dnorm(x),axes=FALSE,lwd=6,xlim=xlim,ylim=ylim, col="blue", type="l",xlab="",ylab="")
+lines(xlim,c(0,0))
+plot(x,dnorm(x,mean=2),axes=FALSE,lwd=6,xlim=xlim,ylim=ylim,col="darkgreen", type="l",xlab="",ylab="")
+lines(xlim,c(0,0))
+plot(x,dnorm(x,sd=1.5),axes=FALSE,lwd=6,xlim=xlim,ylim=ylim,col="red", type="l",xlab="",ylab="")
+lines(xlim,c(0,0))
+@
+
+\end{columns}
+\end{itemize}
+\end{frame}
+\setkeys{Gin}{width=0.6\textwidth}
+\begin{frame}[fragile]
+\frametitle{
+\eng{Expected value -- mean}
+\slo{Pričakovana vrednost -- povprečje}}
+\begin{center}
+<<fig=TRUE>>=
+par(mfrow=c(3,1),mar=c(0,0,3,0))
+plot(x,dnorm(x),axes=FALSE,lwd=6,col="blue",type="n",xlab="",ylab="")
+M <- max(dnorm(x))*1.01
+#lines(c(-1,1),rep(M,2),col="red",lwd=6,xpd=TRUE)
+points(0,M,cex=6,col="red",pch=16,xpd=TRUE)
+
+@
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{
+\eng{Flaw of averages\\ Average depth: 1 meter}
+\slo{
+Nezadostnost povprečja\\Povprečna globina vode: 1 meter}}
+  \only<1> {\begin{center}
+  {
+ \includegraphics[width=0.8\textwidth]{./slides/flaw01.jpg}
+  }
+\end{center}}
+
+\only<2> {
+\begin{center}
+  {
+ \includegraphics[width=0.8\textwidth]{./slides/flaw.jpg}
+  }
+\end{center}}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{
+\slo{Dajte nam razpršenost !!!}
+\eng{We want spread !!!}}
+\begin{itemize}
+  \item
+  \href{https://www.google.si/url?sa=t&rct=j&q=&esrc=s&source=web&cd=3&ved=0ahUKEwiZ_cz-hMXLAhVCZA8KHQkrCo4QFgglMAI&url=http%3A%2F%2Fwww.stat.si%2Fdoc%2Fdrzstat%2FStiglitz%2520report.pdf&usg=AFQjCNHPzyHUnTJh3XMBg8fe0_PqVckj9w&sig2=aphGkLD0fOvd3v_12UNoCg}
+  {Stiglitz/Fitoussi/Sen Report 2008}
+  \item \href{https://www.ted.com/talks/hans_rosling_shows_the_best_stats_you_ve_ever_seen?language=en}
+      {Hans Rosling debunks myths about the so-called "developing world", TED, 2006 - Gapminder}
+  \item \href{http://videolectures.net/icots2010_rosling_wshdw/}{
+  \includegraphics[width=0.05\textwidth]
+  {./clp/icots8.jpg}\hspace{12pt}
+  Hans Rosling na ICOTS8 v Ljubljani, 2010}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{
+\eng{Standard deviation}
+\slo{Standardni odklon}}
+\begin{center}
+<<fig=TRUE>>=
+par(mfrow=c(3,1),mar=c(0,0,3,0))
+plot(x,dnorm(x),axes=FALSE,lwd=6,col="blue",type="n",xlab="",ylab="")
+M <- max(dnorm(x))*1.01
+lines(c(-1,1),rep(M,2),col="red",lwd=6,xpd=TRUE)
+points(0,M,cex=6,col="red",pch=16,xpd=TRUE)
+a <- 1
+text(2,M/2,paste("+/-",a,"sd"),cex=3,adj=0)
+@
+\end{center}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{
+\eng{Standard deviation}
+\slo{Standardni odklon}}
+\begin{center}
+<<fig=TRUE>>=
+par(mfrow=c(3,1),mar=c(0,0,3,0))
+plot(x,dnorm(x),axes=FALSE,lwd=6,col="blue",type="n",xlab="",ylab="")
+M <- max(dnorm(x))*1.01
+lines(c(-1,1),rep(M,2),col="red",lwd=6,xpd=TRUE)
+points(0,M,cex=6,col="red",pch=16,xpd=TRUE)
+X <- rnorm(100)
+rug(X,0.1)
+a <- 1
+text(2,M/2,paste("+/-",a,"sd"),cex=3,adj=0)
+@
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{
+\eng{Standard deviation}
+\slo{Standardni odklon}}
+\begin{center}
+<<fig=TRUE>>=
+par(mfrow=c(3,1),mar=c(0,0,3,0))
+plot(x,dnorm(x),axes=FALSE,lwd=6,col="blue",type="n",xlab="",ylab="")
+M <- max(dnorm(x))*1.01
+lines(c(-1,1),rep(M,2),col="red",lwd=6,xpd=TRUE)
+points(0,M,cex=6,col="red",pch=16,xpd=TRUE)
+lines(x,dnorm(x),axes=FALSE,lwd=6,col="black",type="l",xlab="",ylab="")
+lines(c(-4,4),c(0,0))
+rug(X,-0.1,xpd=NA)
+a <- 1
+text(2,M/2,paste("+/-",a,"sd"),cex=3,adj=0)
+@
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{
+\eng{Standard deviation}
+\slo{Standardni odklon}}
+\begin{center}
+<<fig=TRUE>>=
+par(mfrow=c(3,1),mar=c(0,0,3,0))
+plot(x,dnorm(x),axes=FALSE,lwd=6,col="blue",type="n",xlab="",ylab="")
+M <- max(dnorm(x))*1.01
+lines(c(-1,1),rep(M,2),col="red",lwd=6,xpd=TRUE)
+points(0,M,cex=6,col="red",pch=16,xpd=TRUE)
+lines(x,dnorm(x),axes=FALSE,lwd=6,col="black",type="l",xlab="",ylab="")
+lines(c(-4,4),c(0,0))
+#
+a <- 1
+polygon(c(-a,x[abs(x)<a],a,-a),c(0,dnorm(x[abs(x)<a]),0,0),col="blue",
+border="blue",lwd=6)
+text(0,M/4,paste(round(diff(pnorm(c(-a,a))*100),1),"%"),col="white",cex=3)
+text(2,M/2,paste("+/-",a,"sd"),cex=3,adj=0)
+rug(X,-0.1,xpd=NA)
+#
+#a <- 2
+#plot(x,dnorm(x),axes=FALSE,lwd=6,col="black",type="l",xlab="",ylab="")
+#lines(c(-4,4),c(0,0))
+#polygon(c(-a,x[abs(x)<a],a,-a),c(0,dnorm(x[abs(x)<a]),0,0),col="blue",border="blue",lwd=6)
+#text(0,M/4,paste(round(diff(pnorm(c(-a,a))*100),1),"%"),col="white",cex=3)
+#text(2,M/2,paste("+/-",a,"sd"),cex=3,adj=0)
+#rug(X)
+#
+##
+#a <- 3
+#plot(x,dnorm(x),axes=FALSE,lwd=6,col="black",type="l",xlab="",ylab="")
+#lines(c(-4,4),c(0,0))
+#polygon(c(-a,x[abs(x)<a],a,-a),c(0,dnorm(x[abs(x)<a]),0,0),col="blue",border="blue",lwd=6)
+#text(0,M/4,paste(round(diff(pnorm(c(-a,a))*100),1),"%"),col="white",cex=3)
+#text(2,M/2,paste("+/-",a,"sd"),cex=3,adj=0)
+#rug(X)
+@
+\end{center}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{
+\eng{Standard deviation}
+\slo{Standardni odklon}}
+\begin{center}
+<<fig=TRUE>>=
+par(mfrow=c(3,1),mar=c(0,0,3,0))
+plot(x,dnorm(x),axes=FALSE,lwd=6,col="blue",type="n",xlab="",ylab="")
+M <- max(dnorm(x))*1.01
+lines(c(-1,1),rep(M,2),col="red",lwd=6,xpd=TRUE)
+points(0,M,cex=6,col="red",pch=16,xpd=TRUE)
+lines(x,dnorm(x),axes=FALSE,lwd=6,col="black",type="l",xlab="",ylab="")
+lines(c(-4,4),c(0,0))
+#
+a <- 1
+polygon(c(-a,x[abs(x)<a],a,-a),c(0,dnorm(x[abs(x)<a]),0,0),col="blue",
+border="blue",lwd=6)
+text(0,M/4,paste(round(diff(pnorm(c(-a,a))*100),1),"%"),col="white",cex=3)
+text(2,M/2,paste("+/-",a,"sd"),cex=3,adj=0)
+rug(X,-0.1,xpd=NA)
+#
+a <- 2
+plot(x,dnorm(x),axes=FALSE,lwd=6,col="black",type="l",xlab="",ylab="")
+lines(c(-4,4),c(0,0))
+polygon(c(-a,x[abs(x)<a],a,-a),c(0,dnorm(x[abs(x)<a]),0,0),col="blue",border="blue",lwd=6)
+text(0,M/4,paste(round(diff(pnorm(c(-a,a))*100),1),"%"),col="white",cex=3)
+text(2,M/2,paste("+/-",a,"sd"),cex=3,adj=0)
+rug(X,-0.1,xpd=NA)
+
+#
+#a <- 3
+#plot(x,dnorm(x),axes=FALSE,lwd=6,col="black",type="l",xlab="",ylab="")
+#lines(c(-4,4),c(0,0))
+#polygon(c(-a,x[abs(x)<a],a,-a),c(0,dnorm(x[abs(x)<a]),0,0),col="blue",border="blue",lwd=6)
+#text(0,M/4,paste(round(diff(pnorm(c(-a,a))*100),1),"%"),col="white",cex=3)
+#text(2,M/2,paste("+/-",a,"sd"),cex=3,adj=0)
+#rug(X)
+@
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{
+\eng{Standard deviation}
+\slo{Standardni odklon}}
+\begin{center}
+<<fig=TRUE>>=
+par(mfrow=c(3,1),mar=c(0,0,3,0))
+plot(x,dnorm(x),axes=FALSE,lwd=6,col="blue",type="n",xlab="",ylab="")
+M <- max(dnorm(x))*1.01
+lines(c(-1,1),rep(M,2),col="red",lwd=6,xpd=TRUE)
+points(0,M,cex=6,col="red",pch=16,xpd=TRUE)
+lines(x,dnorm(x),axes=FALSE,lwd=6,col="black",type="l",xlab="",ylab="")
+lines(c(-4,4),c(0,0))
+#
+a <- 1
+polygon(c(-a,x[abs(x)<a],a,-a),c(0,dnorm(x[abs(x)<a]),0,0),col="blue",
+border="blue",lwd=6)
+text(0,M/4,paste(round(diff(pnorm(c(-a,a))*100),1),"%"),col="white",cex=3)
+text(2,M/2,paste("+/-",a,"sd"),cex=3,adj=0)
+rug(X,-0.1,xpd=NA)
+#
+a <- 2
+plot(x,dnorm(x),axes=FALSE,lwd=6,col="black",type="l",xlab="",ylab="")
+lines(c(-4,4),c(0,0))
+polygon(c(-a,x[abs(x)<a],a,-a),c(0,dnorm(x[abs(x)<a]),0,0),col="blue",border="blue",lwd=6)
+text(0,M/4,paste(round(diff(pnorm(c(-a,a))*100),1),"%"),col="white",cex=3)
+text(2,M/2,paste("+/-",a,"sd"),cex=3,adj=0)
+rug(X,-0.1,xpd=NA)
+
+
+a <- 3
+plot(x,dnorm(x),axes=FALSE,lwd=6,col="black",type="l",xlab="",ylab="")
+lines(c(-4,4),c(0,0))
+polygon(c(-a,x[abs(x)<a],a,-a),c(0,dnorm(x[abs(x)<a]),0,0),col="blue",border="blue",lwd=6)
+text(0,M/4,paste(round(diff(pnorm(c(-a,a))*100),1),"%"),col="white",cex=3)
+text(2,M/2,paste("+/-",a,"sd"),cex=3,adj=0)
+rug(X,-0.1,xpd=TRUE)
+@
+\end{center}
+\end{frame}
+
+%% <<<<<<---------------------| ----------------------------------------------------------------
+
+
+\mysection{
+\eng{Population and sample}
+\slo{Populacija in vzorec}}
+
+\begin{frame}[fragile,label=population]
+\frametitle{
+\eng{Sample reveals population}
+\slo{Vzorec razkriva lastnosti populacije}}
+\centering{
+\includegraphics[width=\textwidth]{./slides/zid2.png}
+}
+\end{frame}
+%% <<<<<<---------------------|
+
+
+
+
+%% |--------------------->>>>>>
+\begin{frame}[fragile]
+\frametitle{
+\eng{But ...}
+\slo{Toda ...}}
+  \begin{center}
+  \fbox{
+  \includegraphics[width=0.4\textwidth]{./slides/insane.jpg}
+  }
+
+  \hfill{\tiny{Rita Mae Brown}}
+  \end{center}
+\end{frame}
+%% <<<<<<---------------------|
+
+\begin{frame}[fragile]
+\frametitle{
+\eng{}
+\slo{Velikost vzorca}}
+\only<1>
+{\begin{columns}
+  \column{0.5\paperwidth}
+%\hspace{-3cm}\vspace{-2cm}
+\center{\includegraphics[width=0.4\paperwidth]{./slides/presern23.jpg}}
+  \column{0.5\paperwidth}
+%\hspace{-3cm}\vspace{-2cm}
+\center{\includegraphics[width=0.4\paperwidth]{./slides/mahal23.jpg}}
+\end{columns}
+}
+\only<2>
+{\begin{columns}
+  \column{0.5\paperwidth}
+%\hspace{-3cm}\vspace{-2cm}
+\center{\includegraphics[width=0.4\paperwidth]{./slides/presern22.jpg}}
+  \column{0.5\paperwidth}
+%\hspace{-3cm}\vspace{-2cm}
+\center{\includegraphics[width=0.4\paperwidth]{./slides/mahal22.jpg}}
+\end{columns}
+}
+\only<3>
+{\begin{columns}
+  \column{0.5\paperwidth}
+%\hspace{-3cm}\vspace{-2cm}
+\center{\includegraphics[width=0.4\paperwidth]{./slides/presern21.jpg}}
+  \column{0.5\paperwidth}
+%\hspace{-3cm}\vspace{-2cm}
+\center{\includegraphics[width=0.4\paperwidth]{./slides/mahal21.jpg}}
+\end{columns}
+}
+\only<4>
+{\begin{columns}
+  \column{0.5\paperwidth}
+%\hspace{-3cm}\vspace{-2cm}
+\center{\includegraphics[width=0.4\paperwidth]{./slides/presern20.jpg}}
+  \column{0.5\paperwidth}
+%\hspace{-3cm}\vspace{-2cm}
+\center{\includegraphics[width=0.4\paperwidth]{./slides/mahal20.jpg}}
+\end{columns}
+}
+\end{frame}
+
+
+\mysection{
+\eng{Distribution, distribution on the wall,\\ tell me ...}
+\slo{Porazdelitev, porazdelitev\\
+na steni povej ...}}
+
+\begin{frame}[fragile]
+\frametitle{
+\eng{Distribution of numerical measurements}
+\slo{Porazdelitev številsko merjenih vrednosti}}
+
+<<>>=
+bel <- FALSE
+box <- FALSE
+@
+\only<1>{
+\begin{center}
+<<simetricna,fig=TRUE,echo=FALSE>>=
+par(mfrow=c(4,1),mar=c(0,4,1,1))
+set.seed(1234)
+col <- UniGreen
+x <- rnorm(400)
+xlim <- range(x)
+plot(density(x),lwd=4,col=col,ann=FALSE, axes=FALSE,xlim=xlim)
+rug(x,ticksize=-0.1,xpd=NA)
+hist(x,xlim=xlim,main="",col="lightblue",axes=FALSE,ylab="")
+plot(mean(x),0.8,col=col,type="p",cex=5,pch=16, xlim=xlim,ylim=c(0,1),axes=FALSE,ylab="")
+segments(mean(x)-sd(x),0.8,mean(x)+sd(x),0.8,lwd=4,col=col)
+if(box){
+polygon(c(-10,mean(x),mean(x),-10),c(0.2,0.2,0.6,0.6),col=col,xpd=NA)
+segments(mean(x)-sd(x),0.4,mean(x)+sd(x),0.4,lwd=4,col=col)
+if(bel) segments(mean(x)-sd(x),0.4,mean(x),0.4,lwd=4,col="white")
+}
+boxplot(x,horizontal=TRUE,axes=FALSE, col="lightblue",lwd=3, ylim=xlim)
+@
+\end{center}
+}
+
+\only<2>{
+\begin{center}
+<<fig=TRUE>>=
+  bel <- FALSE
+  box <- TRUE
+<<simetricna>>
+@@
+\end{center}
+}
+\only<3>{
+\begin{center}
+<<fig=TRUE>>=
+  bel <- TRUE
+  box <- TRUE
+<<simetricna>>
+@@
+\end{center}
+}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{
+\eng{Skewed distribution}
+\slo{Asimetrična porazdelitev}}
+\begin{center}
+<<fig=TRUE,echo=FALSE>>=
+bel <- FALSE
+par(mfrow=c(4,1),mar=c(0,4,1,1))
+set.seed(1234)
+col <- UniGreen
+x <- 2^rnorm(400)
+xlim <- range(x)
+plot(density(x,from=0),lwd=4,col=col,ann=FALSE, axes=FALSE,xlim=xlim)
+rug(x,ticksize=-0.1,xpd=NA)
+hist(x,xlim=xlim,main="",col="lightblue", axes=FALSE, breaks=2^seq(-4,4,0.5),ylab="")
+plot(mean(x),0.8,col=col,type="p",cex=5,pch=16, xlim=xlim,ylim=c(0,1),axes=FALSE,ylab="")
+segments(mean(x)-sd(x),0.8,mean(x)+sd(x),0.8,lwd=4,col=col)
+points(median(x),-.1,cex=5,pch=16,col="blue",xpd=NA)
+segments(quantile(x,0.25),-.1,quantile(x,0.75),-.1,
+lwd=4,col="blue",xpd=NA)
+polygon(c(0,mean(x),mean(x),0),c(0.2,0.2,0.6,0.6),col=col)
+segments(mean(x)-sd(x),0.4,mean(x)+sd(x),0.4,lwd=4,col=col)
+if(bel) segments(mean(x)-sd(x),0.4,mean(x),0.4,lwd=4,col="white")
+boxplot(x,horizontal=TRUE,axes=FALSE,col="lightblue", lwd=3, ylim=xlim)
+abline(v=0,xpd=NA,col="red")
+@
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{\eng{Beware of  dynamite!}
+\slo{Pazi: Dinamit!!}
+}
+\begin{columns}
+  \column{0.5\paperwidth}
+  \centering{
+\includegraphics[width=0.9\textwidth]{./clp/capture-dinamit.jpg}
+}
+
+  \column{0.5\paperwidth}
+  \centering{
+\only<2>{\includegraphics[width=0.9\textwidth]{./clp/coyote-6.jpg}}
+\only<3>{\includegraphics[width=0.9\textwidth]{./clp/capture-dotplot.jpg}}
+}
+
+\end{columns}
+\hfill \tiny{\href{http://biostat.mc.vanderbilt.edu/twiki/pub/Main/TatsukiRcode/Poster3.pdf}
+{Tatsuki Koyoma}}
+\end{frame}
+
+\mysection{
+\eng{How far  are we from the truth?}
+\slo{Kako daleč smo od pravega?}}
+
+
+\begin{frame}[fragile]
+\frametitle{
+\eng{$P( a < X \leq b ) = ?$}
+\slo{$P( a < X \leq b ) = ?$}}
+\vspace{-2cm}
+\begin{center}
+<<priblizek,fig=TRUE,include=FALSE,echo=FALSE,results=tex,width=12>>=
+mu0 <- 5
+mu1 <- 0
+sd0 <- 2
+a <- mu0-1.5*sd0
+b <- mu0-0.5*sd0
+mus <- mu0+1.5*sd0
+mue <- mu0-2.3*sd0
+abx <- seq(a,b,length=100)
+xspan <- seq(-7,15,.1)
+col0 <- rgb(0,.5,1,0.5)
+col1 <- rgb(1,0,.5,0.5)
+
+block1 <- expression({
+
+ylim <- c(0,max(dnorm(xspan,mu0,sd0)))*3
+newplot(xlim=range(xspan),ylim=ylim,asp=0)
+abline(h=0)
+
+polygon(c(abx,rev(abx)),c(rep(0,length(abx)),dnorm(rev(abx),mu0,sd0)),col=col0)
+polygon(c(abx,rev(abx)),c(rep(0,length(abx)),dnorm(rev(abx),h(mus,mue,t),sd0)),col=col1)
+lines(xspan,dnorm(xspan,mu0,sd0),col="blue",lwd=4)
+lines(xspan,dnorm(xspan,h(mus,mue,t),sd0),col="red",lwd=4)
+segments(mu0,0.6*ylim[2],h(mus,mue,t),0.6*ylim[2],lwd=8,col=UniGreen,xpd=NA)
+segments(mu0,0.6*ylim[2],mu0,0.35*ylim[2])
+segments(h(mus,mue,t),0.6*ylim[2],h(mus,mue,t),0.35*ylim[2])
+text(c(a,b),rep(-0.03,2),c("a","b"),cex=1.2,xpd=NA)
+})
+animator(block1,life=5)
+mus <- mue
+mue <- mu0+0.2*sd0
+animator(block1,life=5)
+#animator(block2,life=5)
+
+includeLatex(poster="first",every=2,other=other)
+
+@
+\end{center}
+\end{frame}
+
+<<>>=
+showCI <- function(n=25,mu=10,delta=1.5,maxy=NULL,ystretch=1,sid=1233,savePdf=TRUE,dir="../doc/figs",name="sdseci",...){
+par(mfrow=c(1,3),cex.main=2,cex.axis=1.5)
+N <- n
+set.seed(sid)
+x <- mu+scale(rnorm(N))[1:n]*2
+set.seed(sid+1)
+y <- mu+delta+scale(rnorm(N))[1:n]*3
+A <- rep("A",length(x))
+B <- rep("B",length(y))
+X <- c(x,y)
+if(is.null(maxy))maxy <- max(X)*ystretch
+group <- c(A,B)
+errorBars <- function(x,where=1,FUN=mean,type="sd",u=1,...){
+n <- length(x)
+point <- FUN(x)
+err <- switch(type,
+    sd=u*sd(x),
+    se=u*sd(x)/sqrt(n))
+segments(where,point-err,where,point+err,...)
+points(where,point,...)
+}
+plot(c(0,3),c(0,maxy),type="n",
+xlab="",ylab="",axes=FALSE)
+axis(2)
+title("sd")
+errorBars(x,1,col="red",lwd=4,cex=2,pch=16)
+errorBars(y,2,col="blue",lwd=4,cex=2,pch=16)
+   # if(savePdf) dev.copy2pdf(file=file.path(dir,paste(name,"1.pdf",sep="")))
+rug(x,side=2,col="red",tick=.2)
+rug(y,side=4,col="blue",tick=.2)
+   # if(savePdf) dev.copy2pdf(file=file.path(dir,paste(name,"2.pdf",sep="")))
+#
+plot(c(0,3),c(0,maxy),type="n",
+xlab="",ylab="",axes=FALSE)
+axis(2)
+title(paste("se\nn =",n))
+errorBars(x,1,type="se",col="red",lwd=4,cex=2,pch=16)
+errorBars(y,2,type="se",col="blue",lwd=4,cex=2,pch=16)
+   # if(savePdf) dev.copy2pdf(file=file.path(dir,paste(name,"3.pdf",sep="")))
+#
+plot(c(0,3),c(0,maxy),type="n",
+xlab="",ylab="",axes=FALSE)
+axis(2)
+
+errorBars(x,1,type="se",u=1.96,col="red",lwd=4,cex=2,pch=16)
+errorBars(y,2,type="se",u=1.96,col="blue",lwd=4,cex=2,pch=16)
+p <- t.test(x,y)$p.value
+title(paste("95% CI\np =",format(round(p,3),nsmall=3)))
+    #if(savePdf) dev.copy2pdf(file=file.path(dir,paste(name,"4.pdf",sep="")))
+invisible(NULL)
+}
+@
+
+
+<<>>=
+set.seed(1224)
+showCI(50,delta=1,sid=1233,savePDF=FALSE)
+
+@
+
+
+\begin{frame}[fragile]
+\frametitle{Standardni odklon / Standardna napaka / Interval zaupanja}
+\only<1>{
+\begin{center}
+<<fig=TRUE,include=TRUE,echo=FALSE>>=
+sid <- 1233
+showCI(5,maxy=20,sid=sid,savePdf=FALSE)
+#Sys.sleep(0.1)
+@
+\end{center}
+}
+\only<2>{
+\begin{center}
+<<fig=TRUE,include=TRUE,echo=FALSE>>=
+showCI(10,maxy=20,sid=sid,savePdf=FALSE)
+#Sys.sleep(0.1)
+@
+\end{center}
+}
+\only<3>{
+\begin{center}
+<<fig=TRUE,include=TRUE,echo=FALSE>>=
+showCI(25,maxy=20,sid=sid,savePdf=FALSE)
+#Sys.sleep(0.1)
+@
+\end{center}
+}
+\only<4>{
+\begin{center}
+<<fig=TRUE,include=TRUE,echo=FALSE>>=
+showCI(50,maxy=20,sid=sid,savePdf=FALSE)
+#Sys.sleep(0.1)
+@
+\end{center}
+}
+\only<5>{
+\begin{center}
+<<fig=TRUE,include=TRUE,echo=FALSE>>=
+showCI(100,maxy=20,sid=sid,savePdf=FALSE)
+#Sys.sleep(0.1)
+@
+\end{center}
+}
+
+\end{frame}
+
+
+%-%\begin{frame}[fragile]
+%-%\frametitle{
+%-%\eng{Catching the rabbit ... \hfill Confidence interval}
+%-%\slo{Miško lovi zajca ...\hfill Interval zaupanja}}
+%-%
+%-%\begin{center}
+%-%  \includegraphics[width=0.8\textwidth]{./slides/ci2.jpg}
+%-%\end{center}
+%-%\end{frame}
+
+%% CI
+
+%\includepdf[fitpaper,pages={135-152}]{NS2011.pdf}
+
+%% Conf band regression line
+%\includepdf[fitpaper,pages={172-175}]{NS2011.pdf}
+
+%\mysection{
+%\eng{Can the journal be in the median?}
+%\slo{Ali je revija lahko v mediani?}}
+
+
+
+\mysection{
+\eng{Hypothesis testing}
+\slo{Testiranje hipotez}}
+
+\begin{frame}[fragile]
+\frametitle{
+\eng{I don't think so! \hfill Statistical quality contol}
+\slo{Gospod, to se vam samo zdi ... }}
+\begin{center}
+  \includegraphics[width=0.8\textwidth]{./slides/Qcontrol.jpg}
+\end{center}
+\end{frame}
+
+
+<<>>=
+plotTest <- function(f=1, tntext="specifičnost",fptext="lažno pozitivno",
+fntext="lažno negativno",tptext="senzitivnost"){
+par(mar=c(2,0,0,0))
+mu0 <- 20
+delta <- 1.5
+s <- 1
+l0 <- 0.6
+l1 <- 0
+col0 <- "blue"
+col1 <- "darkgreen"
+mu1 <- mu0+delta
+x0 <- seq(mu0-3.5*s,mu0+3.5*s,length=150)
+x1 <- x0+delta
+plot(x0,l0+dnorm(x0,mu0,s), type="l",ann=FALSE,axes=FALSE,xlim=c(mu0-5*s,mu1+5*s),ylim=c(0,1.2),
+col=col0)
+lines(x1,l1+dnorm(x1,mu1,s),col=col1,lwd=1)
+abline(v=qnorm(0.975,mu0,s),col="red",lwd=1)
+segments(min(x0),l0,max(x0),l0)
+abline(h=l0)
+text(mu0,l0-0.05,expression(mu[0]),col=col0,cex=2)
+text(par("usr")[1]+0.9*diff(par("usr")[1:2]),l0+0.05,expression(bar(X)),cex=2)
+segments(mu0,l0-0.02,mu0,l0)
+segments(min(x1),l1,max(x1),l1)
+text(min(x0),l0+0.25,expression(H[0]: mu == mu[0]),col=col0,cex=2)
+text(min(x0),l1+0.25,expression(H[1]: mu > mu[0]),col=col1,cex=2)
+text(max(x0)-0.3*s,l0+0.1,expression(alpha),col="red",cex=3)
+text(max(x0)-0.3*s,l0+0.5,fptext,col="red",cex=2,adj=0.2)
+text(max(x0)-0.3*s,l1-0.07,tptext,col="red",cex=2,adj=0.2,xpd=TRUE)
+text(mu1-1.5*s,l1+0.3,expression(beta),col="red",cex=3)
+text(mu1-.7*s,l1-0.07,fntext,col="red",cex=2,adj=1,xpd=TRUE)
+text(mu1-.7*s,l0+0.5,tntext,col="red",cex=2,adj=1,xpd=TRUE)
+
+##
+s=s*f
+cl <- qnorm(0.975,mu0,s)
+colt0 <- rgb(t(col2rgb(col0)),alpha=128,max=255)
+colt1 <- rgb(t(col2rgb(col1)),alpha=128,max=255)
+
+polygon(c(cl,x0[x0>cl],cl),c(l0+dnorm(c(cl,x0[x0>cl]),mu0,s),l0),col=colt0)
+polygon(c(x1[x1<cl],cl,cl),c(l1+dnorm(c(x1[x1<cl],cl),mu1,s),l1),col=colt1)
+lines(x0,l0+dnorm(x0,mu0,s),col=col0,lwd=6)
+lines(x1,l1+dnorm(x1,mu1,s),col=col1,lwd=6)
+abline(v=qnorm(0.975,mu0,s),col="red",lwd=4)
+invisible(NULL)
+}
+@
+
+
+
+%% |--------------------->>>>>>
+%-%\begin{frame}[fragile]
+%-%\frametitle{
+%-%\eng{Hypothesis testing | H$_0 = \mu_0$}
+%-%\slo{Testiranje hipotez | H$_0 = \mu_0$}}
+%-%%$$H_0: \mu = \mu_0$$
+%-%%$$H_1: \mu > \mu_0$$
+%-%%\vspace{-12pt}
+%-%
+%-%\begin{center}
+%-%<<TestHipotez,fig=TRUE,echo=FALSE,height=5.5>>=
+%-%if(!eng) plotTest() else plotTest(tntext="specificity",fptext="false positive",fntext="false negative",tptext="sensitivity")
+%-%
+%-%@
+%-%\end{center}
+%-%\end{frame}
+%% <<<<<<---------------------|
+
+%% |--------------------->>>>>>
+\begin{frame}[fragile]
+\frametitle{
+\eng{Hypothesis testing | H$_0: \mu = \mu_0$\\Larger sample $\rightarrow$ smaller SE $\rightarrow$ smaller $\beta$}
+\slo{Večji vzorec $\rightarrow$ manjši SE $\rightarrow$ manjši $\beta$}}
+\begin{center}
+<<nbeta,fig=TRUE,include=TRUE,echo=FALSE,results=tex,height=6>>=
+for(f in seq(1,0.7,-0.005)) if(!eng) plotTest(f) else plotTest(f, tntext="specificity",
+fptext="false positive",
+fntext="false negative",
+tptext="sensitivity")
+#
+includeLatex(scale=.45,poster="first",other=other)
+@
+%
+\end{center}
+\end{frame}
+%% <<<<<<---------------------|
+
+\mysection{
+\eng{$p < 0.05$}
+\slo{$p < 0.05$}}
+
+
+\begin{frame}[fragile]
+\frametitle{
+\eng{$p$ in hypothesis testing}
+\slo{$p$ pri testiranju hipotez}}
+\eng{\begin{itemize}
+  \item probability to see the difference, where there is none
+  \item probability for false positive result
+  \item  probability (risk), to reject valid null hypothesis
+  \item probability, to see  a (statistically significant) difference\\
+    just by chance
+  \item statistically significant result / ''statisticially surprising result''
+\end{itemize}
+}
+\slo{\begin{itemize}
+  \item verjetnost da opazim razliko, ko je v resnici ni
+  \item verjetnost za lažno pozitiven rezultat
+  \item  verjetnost (tveganje), da zavrnem ničelno hipotezo, ko ta velja
+  \item verjetnost, da smo opazili tako veliko (statistično značilno) razliko zgolj slučajno
+  \item statistično značilen rezultat / '' statistično presenetljiv rezultat''
+\end{itemize}
+}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{American Statistical Association (ASA) 07 Mar 2016}
+\href{http://amstat.tandfonline.com/doi/abs/10.1080/00031305.2016.1154108}{“Statement on Statistical Significance and P-Values”}
+\begin{enumerate}
+  \item P-values can indicate how incompatible the data are with a specified statistical model. \hfill $P(Data|Model)$
+  \item P-values do not measure the probability that the studied hypothesis is true, or the probability that the data were produced by random chance alone.
+  \item Scientific conclusions and business or policy decisions should not be based only on whether a p-value passes a specific threshold.
+  \item Proper inference requires full reporting and transparency.
+  \item A p-value, or statistical significance, does not measure the size of an effect or the importance of a result.
+  \item By itself, a p-value does not provide a good measure of evidence regarding a model or hypothesis.
+\end{enumerate}
+\end{frame}
+
+
+<<TestHipotez2,fig=TRUE,include=FALSE>>=
+f <- 1
+if(!eng) plotTest(f) else plotTest(f, tntext="specificity",
+fptext="false positive",
+fntext="false negative",
+tptext="sensitivity")
+@
+
+
+\mysection{
+\eng{Innocent or guilty?}
+\slo{Nedolžen ali kriv?}}
+
+\begin{frame}[fragile]
+\frametitle{}
+\eng{
+\only<1>{
+\begin{center}
+\vspace{2cm}
+  \includegraphics[width=0.7\textwidth]
+  {./figs/Rotary-TestHipotez2.pdf}
+\end{center}
+}
+\only<2> {
+  \begin{center}
+  \vspace{2cm}
+\tikz\node[opacity=0.7] {
+  \includegraphics[width=0.7\textwidth]
+  {./figs/Rotary-TestHipotez2.pdf}
+};
+\end{center}
+\begin{center}
+  \vspace{-10cm}
+  \includegraphics[width=\textwidth]{./slides/H0-eng.png}
+  \end{center}
+  }
+\only<3> {
+  \begin{center}
+    \includegraphics[width=\textwidth]{./slides/H0-NotIll.jpg}
+  \end{center}
+  }
+\only<4> {
+  \begin{center}
+  \includegraphics[width=\textwidth]{./slides/H0-innocent.jpg}
+  \end{center}
+  }
+\only<5> {
+  \begin{center}
+  \includegraphics[width=\textwidth]{./slides/H0-quilty.jpg}
+  \end{center}
+  }
+}
+\slo{
+\only<1>{
+\begin{center}
+\vspace{2cm}
+  \includegraphics[width=0.5\textwidth]
+  {./figs/Rotary-TestHipotez2.pdf}
+\end{center}
+}
+\only<2> {
+  \begin{center}
+  \vspace{2cm}
+\tikz\node[opacity=0.3] {
+  \includegraphics[width=0.5\textwidth]
+  {./figs/Rotary-TestHipotez2.pdf}
+};
+\end{center}
+  \begin{center}
+    \vspace{-9cm}
+  \includegraphics[width=\textwidth]{./slides/H0.png}
+  \end{center}
+  }
+\only<3> {
+  \begin{center}
+  \vspace{-1cm}
+    \includegraphics[width=\textwidth]{./slides/H0-zdrav.jpg}
+  \end{center}
+  }
+\only<4> {
+  \begin{center}
+  \includegraphics[width=\textwidth]{./slides/H0-nedolzen.jpg}
+  \end{center}
+  }
+\only<5> {
+  \begin{center}
+  \includegraphics[width=\textwidth]{./slides/H0-kriv.jpg}
+  \end{center}
+  }
+}
+\end{frame}
+
+
+
+\mysection{
+\eng{What will you do on Sunday?\\
+\vspace{2cm}
+ ...}
+\slo{Kaj boste počeli v nedeljo?\\
+\vspace{2cm}
+  ...}}
+
+\mysection{
+\eng{What will you do on Sunday?\\
+\vspace{2cm}
+ Depends ...}
+\slo{Kaj boste počeli v nedeljo?\\
+\vspace{2cm}
+  Odvisno ...}}
+
+
+\begin{frame}[fragile]
+\frametitle{
+\eng{What is the plan?}
+\slo{Kakšen je plan?}}
+\only<1->{
+\begin{block}{Hmmm ...}
+\eng{
+\begin{itemize}
+  \item hiking
+  \item cleaning the flat
+  \item reading
+  \item running
+  \item staying in bed
+  \item biking
+\end{itemize}}
+\slo{
+\begin{itemize}
+  \item sprehod
+  \item pospravljanje
+  \item branje
+  \item tek
+  \item poležavanje
+  \item kolesarjenje
+\end{itemize}}
+\end{block}
+}
+\only<2>{
+\begin{columns}
+  \column{0.4\textwidth}
+  \begin{block}{\eng{Sunny}\slo{Sončno}}
+\eng{\begin{itemize}
+  \item hiking
+  \item running
+  \item biking
+\end{itemize}}
+\slo{\begin{itemize}
+  \item sprehod
+  \item tek
+  \item kolesarjenje
+\end{itemize}}
+  \end{block}
+
+  \column{0.4\textwidth}
+    \begin{block}{\eng{Rainy}\slo{Deževno}}
+\eng{\begin{itemize}
+  \item cleaning the flat
+  \item reading
+  \item staying in bed
+\end{itemize}}
+
+\slo{
+\begin{itemize}
+  \item pospravljanje
+  \item branje
+  \item poležavanje
+\end{itemize}}
+  \end{block}
+  \end{columns}
+}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{
+\eng{Things are related ...}
+\slo{Pojava sta povezana ...}}
+\begin{block}{}
+\eng{Different conditions yield different distributions (expectations)}
+\slo{Različna porazdelitev (pričakovanje)  pri različnih pogojih}
+\end{block}
+\begin{center}
+\only<1> {\includegraphics[width=0.7\textwidth]{./slides/korel1.jpg}}
+\only<2> {\includegraphics[width=0.7\textwidth]{./slides/korel2.jpg}}
+\only<3> {\includegraphics[width=0.7\textwidth]{./slides/korel4.jpg}}
+
+\end{center}
+\end{frame}
+
+<<>>=
+data <- read.table("../data/bmi.txt",header=TRUE,sep="\t")
+n <- 100
+set.seed(1234)
+data <- data[sample(1:dim(data)[1],n),]
+x <- data$visina
+y <- data$teza
+@
+
+
+\begin{frame}[fragile]
+\frametitle{
+\eng{Height and weight}
+\slo{Višina in teža}}
+\begin{center}
+<<visinateza,fig=true,include=FALSE,echo=false, results=tex, width=8>>=
+set.seed(123)
+n<<-length(x)
+#n <<- 100
+#x <<- rnorm(n)
+#y <<- x+rnorm(n,0,.5)
+par(mar=c(1,1,1,1))
+blockvt0 <- expression({
+bg <- "blue3"
+bg2 <- makeTransparent(bg,0.75)
+col <- "white"
+cex <- 2
+lwd <- 1
+newplot(xlim=range(x),ylim=range(y),asp=NA)
+when1 <- c(0,.4,0,.4)
+#tpoints(x,y,x,y,when=when1,pch=21,bg=bg,col=col,cex=cex,lwd=lwd)
+when2 <- c(0.2,0.7,0,0.9)
+#tpoints(x,y,x,par("usr")[3],when=when2,trace=TRUE,pch=21,bg=bg2,col=col,
+#cex=tcex(2*cex,0,t,when=when2),lwd=lwd)
+#tpoints(x,y,par("usr")[1],y,when=when2,trace=TRUE,pch=21,bg=bg2,col=col,
+#cex=tcex(2*cex,0,t,when=when2),lwd=lwd)
+rug(y,side=2,lwd=1.5)
+tpoints(min(x),mean(y),when=c(0.4,0.9,0.4,0.9),col="darkgreen",pch=16,cex=2)
+tsegments(min(x),mean(y),max(x),mean(y),when=c(0.8,1,0.8,1),col="darkgreen",lwd=4)
+rug(h(mean(x),x,t,when=c(0.9,1,0.9,1)),lwd=1.5,side=1)
+})
+animator(blockvt0,life=5)
+includeLatex(poster="first",scale=0.45,other=",controls")
+@
+@@
+\end{center}
+\end{frame}
+
+
+
+<<>>=
+joint <- function(x,y,x0=NULL,y0=NULL,life=5,pause=NA,asp=NA,...){
+x <<- x
+y <<- y
+x0 <<-x0
+y0 <<- y0
+par(mar=c(1,1,1,1))
+block <- expression({
+bg <- "blue3"
+bg2 <- makeTransparent(bg,0.75)
+bg1 <- makeTransparent("red",.75)
+bg3 <- makeTransparent("blue",0.4)
+
+col <- "white"
+cex <- 2
+lwd <- 1
+newplot(xlim=range(x),ylim=range(y),asp=NA)
+if(is.null(x0)) x0 <- par("usr")[1]
+if(is.null(y0)) y0 <- par("usr")[3]
+
+segments(min(x),y,max(x),y,col="grey70",lwd=0.5)
+segments(x,min(y),x,max(y),col="grey70",lwd=0.5)
+#abline(v=x,col="grey70",lwd=0.5)
+#abline(h=y,col="grey70",lwd=0.5)
+when <- c(0.1,0.7)
+tpoints(x,y0,x,y,when=when,trace=FALSE,pch=21,bg=bg1,col=col,cex=cex,lwd=lwd)
+tpoints(x0,y,x,y,when=when,trace=FALSE,pch=21,bg=bg3,col=col,cex=cex,lwd=lwd)
+segments(min(x),mean(y),max(x),mean(y),col="darkgreen",lwd=4)
+rug(x,lwd=1.5)
+rug(y,side=2,lwd=1.5)
+when2 <- c(0.8,1,0.8,1)
+yreg <- predict(lm(y~x))
+tpoints(x,mean(y),x,yreg,when=when2,col=col,bg="red",cex=2,pch=21)
+
+})
+animator(block,life=life,pause=pause,...)
+}
+@
+@@@@@
+
+\begin{frame}[fragile]
+\frametitle{
+\eng{Correlation \hfill numerical $\sim$ numerical }
+\slo{Korelacija \hfill številska $\sim$ številska }}
+\begin{center}
+<<NN,fig=true,include=FALSE,echo=false,results=tex,width=8>>=
+
+joint(x,y,life=3)
+includeLatex(poster="first",scale=0.45,other=other)
+
+@
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{
+\eng{Analysis of variance \hfill numerical $\sim$ descriptive}
+\slo{Analiza variance \hfill številska $\sim$ opisna}}
+\begin{center}
+<<NA,fig=true,include=FALSE,echo=false,results=tex,width=8>>=
+anova <- function(x,y,x0=NULL,y0=NULL,life=5,pause=NA,...){
+x <<- x
+y <<- y
+x0 <<-x0
+y0 <<- y0
+group <<- cut(x,quantile(x,seq(0,1,1/3)),include.lowest=TRUE)
+grx <<- aggregate(x,list(group),mean)$x[group]
+
+par(mar=c(1,1,1,1))
+block <- expression({
+bg <- "blue3"
+bg2 <- makeTransparent(bg,0.75)
+bg1 <- makeTransparent("red",.75)
+bg3 <- makeTransparent("blue",0.4)
+
+col <- "white"
+cex <- 2
+lwd <- 1
+
+newplot(xlim=range(x),ylim=range(y),asp=NA)
+if(is.null(x0)) x0 <- par("usr")[1]
+if(is.null(y0)) y0 <- par("usr")[3]
+
+segments(min(x),y,max(x),y,col="grey70",lwd=0.5)
+#segments(x,min(y),x,max(y),col="grey70",lwd=0.5)
+#abline(v=x,col="grey70",lwd=0.5)
+#abline(h=y,col="grey70",lwd=0.5)
+when <- c(0,0.8)
+tpoints(x,y,grx,y,when=when,trace=FALSE,pch=21,bg=bg2,col=col,cex=cex,lwd=lwd)
+segments(min(x),mean(y),max(x),mean(y),col="darkgreen",lwd=4)
+rug(h(x,grx,t),lwd=1.5)
+rug(y,side=2,lwd=1.5)
+
+when2 <- c(0.8,1,0.8,1)
+yreg <- aggregate(y,list(group),mean)$x
+grx1 <- sort(unique(grx))
+tlines(grx1,rep(mean(y),length(grx1)),grx1,yreg,type="b",
+when=when2,col="red",cex=2,pch=16,lwd=4)
+tpoints(grx1,rep(mean(y),length(grx1)),grx1,yreg,
+when=when2,col=col,bg="red",cex=2,pch=21)
+})
+animator(block,life=life,pause=pause,...)
+}
+
+#joint(x,y,life=0)
+anova(x,y,life=3)
+
+
+includeLatex(poster="first",scale=0.45,other=other)
+
+@
+
+@@@@@@
+
+\end{center}
+\end{frame}
+
+<<echo=FALSE>>=
+############
+# Function to pack square
+pack <- function(x,scale=1){
+if(length(x)==1) n <- x else n <- length(x)
+if(is.na(n)) return(NA)
+m <- round(sqrt((n)+.5))+2  # približno toliko skupin potrebujem
+dx <- c(0,unlist(
+sapply(1:m,
+FUN=function(x) (-1)^x*rep(c(0,1),each=x))))[1:n]
+dy <- c(0,unlist(
+sapply(1:m,
+FUN=function(x) (-1)^(x+1)*rep(c(1,0),each=x))))[1:n]
+x0 <- 0
+y0 <- 0
+x1 <- x0+cumsum(dx)*scale
+y1 <- y0+cumsum(dy)*scale
+if(FALSE) {
+print(n)
+print(m)
+print(length(x))
+print(tail(cbind(dx,dy)))
+}
+invisible(list(x=x1,y=y1))
+}
+#
+pack1 <- function(n,scale=1,x0=0,y0=0){
+if(is.na(n)) return(NA)
+x <- pack(n,scale=scale)
+return(list(x=x$x[n]+x0,y=x$y[n]+y0))
+}
+################
+if(interactive()) {
+print(pack(1:3))
+pack1(3)
+x <- runif(10)
+y <- runif(10)
+plot(t(sapply(1:20,pack1)),xlim=c(-10,10),ylim=c(-10,10))
+plot(t(sapply(1:20,pack1,x0=-5,y0=5)),xlim=c(-10,10),ylim=c(-10,10))
+
+(pack(1:10))
+}
+@
+
+
+\begin{frame}[fragile]
+\frametitle{
+\eng{Contingency \hfill descriptive $\sim$ descriptive}
+\slo{Kontingenčna analiza \hfill opisna $\sim$ opisna}}
+\begin{center}
+<<chi2,fig=true,include=FALSE,echo=false,results=tex,width=8>>=
+chi2 <- function(x,y,x0=NULL,y0=NULL,life=5,pause=NA,...){
+x <<- x
+y <<- y
+x0 <<-x0
+y0 <<- y0
+#
+xquant <<- seq(0,1,1/3)
+groupx <<- cut(x,quantile(x,xquant),include.lowest=TRUE)
+grx <<- aggregate(x,list(group),mean)$x[groupx]
+grx0 <<- grx
+mgrx <<- grx
+grx1 <<- sort(unique(grx))
+nx <- as.numeric(groupx)
+
+#
+yquant <<- seq(0,1,1/2)
+groupy <<- cut(y,quantile(y,yquant),include.lowest=TRUE)
+gry <<- aggregate(y,list(groupy),mean)$x[groupy]
+gry0 <<- gry
+mgry <<- gry
+gry1 <<- sort(unique(gry))
+ny <- as.numeric(groupy)
+#
+grp <- (10*nx+ny)
+unique(grp)
+xys <- 2  # scaling factor
+for(g in unique(grp)){
+sel <- grp==g
+xy <- sapply(1:sum(sel),pack1)
+grx[sel] <<- grx[sel]+unlist(xy[1,])*xys/2
+gry[sel] <<- gry[sel]+unlist(xy[2,])*xys
+}
+#
+mgrxx <<- mgrx
+mgryx <<- mgry
+for(gx in unique(grx1)){
+sel <- mgrxx==gx
+xy <- sapply(1:sum(sel),pack1)
+mgrxx[sel] <<- mgrxx[sel]+unlist(xy[1,])*xys/2
+mgryx[sel] <<- min(y)*0.8+unlist(xy[2,])*xys
+}
+#
+#
+mgrxy <<- mgrx
+mgryy <<- mgry
+for(gy in unique(gry1)){
+sel <- mgryy==gy
+xy <- sapply(1:sum(sel),pack1)
+mgryy[sel] <<- mgryy[sel]+unlist(xy[1,])*xys
+mgrxy[sel] <<- min(x)*0.97+unlist(xy[2,])*xys/2
+}
+#
+par(mar=c(1,2,1,1))
+block <- expression({
+bg <- "blue3"
+bg2 <- makeTransparent(bg,0.75)
+bg1 <- makeTransparent("red",.75)
+bg3 <- makeTransparent("blue",0.4)
+
+col <- "white"
+cex <- 2
+lwd <- 1
+par(mar=par("mar")+0.03)
+newplot(xlim=range(x),ylim=range(y),asp=NA)
+if(is.null(x0)) x0 <- par("usr")[1]
+if(is.null(y0)) y0 <- par("usr")[3]
+
+#segments(min(x),y,max(x),y,col="grey70",lwd=0.5)
+#segments(x,min(y),x,max(y),col="grey70",lwd=0.5)
+#abline(v=x,col="grey70",lwd=0.5)
+#abline(h=y,col="grey70",lwd=0.5)
+when <- c(0,0.8)
+tpoints(x,y,grx,gry,when=when,trace=FALSE,
+pch=21,bg=bg2,col=col,cex=cex,lwd=lwd)
+#segments(min(x),mean(y),max(x),mean(y),col="darkgreen",lwd=4)
+rug(h(x,mgrx,t),lwd=1.5)
+rug(h(y,mgry,t),side=2,lwd=1.5)
+#when2 <- c(0.8,1,0.8,1)
+#yreg <- aggregate(y,list(group),mean)$x
+#grx1 <- sort(unique(grx))
+#tlines(grx1,rep(mean(y),length(grx1)),grx1,yreg,type="b",
+#when=when2,col="red",cex=2,pch=16,lwd=4)
+#tpoints(grx1,rep(mean(y),length(grx1)),grx1,yreg,
+#when=when2,col=col,bg="red",cex=2,pch=21)
+#points(x,y)
+segments(rep(min(x),length(yquant)),quantile(y,yquant),rep(max(x),length(yquant)),quantile(y,yquant),col=8)
+segments(quantile(x,xquant),rep(min(y),length(xquant)),quantile(x,xquant),rep(max(y),length(xquant)),col=8)
+
+tpoints(x,par("usr")[3],mgrxx,mgryx,xpd=TRUE,
+pch=21,bg="lightblue",col="grey",when = c( 0.8,1),cex=2)
+tpoints(par("usr")[1],y,mgrxy,mgryy,xpd=TRUE,
+pch=21,bg="lightblue",col="grey",when = c( 0.8,1),cex=2)
+
+if(FALSE){
+tpoints(rep(grx1,length(gry1)),rep(gry1,each=length(grx1)),
+cex=tcex(0,sqrt(as.numeric(table(group,groupy))),t)*3,when = c( 0.8,1),pch=15,col="blue")
+
+
+tpoints(par("usr")[1],rep(gry1,each=length(grx1)),
+cex=tcex(0,sqrt(as.numeric(colSums(table(group,groupy)))),t)*3,
+when = c( 0.8,1),pch=15,col="lightblue",xpd=TRUE)
+}
+
+})
+animator(block,life=life,pause=pause,...)
+}
+
+#joint(x,y,life=0)
+chi2(x,y,life=5)
+
+
+includeLatex(poster="first",scale=0.45,other=other)
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+
+\end{center}
+\end{frame}
+
+%-%\begin{frame}[fragile]
+%-%\frametitle{
+%-%\eng{Contingency \hfill descriptive $\sim$ descriptive}
+%-%\slo{Kontingenčna analiza \hfill opisna $\sim$ opisna}}
+%-%\begin{center}
+%-%<<chi2,fig=true,include=FALSE,echo=false,results=tex,width=8>>=
+%-%chi2 <- function(x,y,x0=NULL,y0=NULL,life=5,pause=NA,...){
+%-%x <<- x
+%-%y <<- y
+%-%x0 <<-x0
+%-%y0 <<- y0
+%-%#
+%-%xquant <<- seq(0,1,1/3)
+%-%group <<- cut(x,quantile(x,xquant),include.lowest=TRUE)
+%-%grx <<- aggregate(x,list(group),mean)$x[group]
+%-%grx1 <<- sort(unique(grx))
+%-%#
+%-%yquant <<- seq(0,1,1/2)
+%-%groupy <<- cut(y,quantile(y,yquant),include.lowest=TRUE)
+%-%gry <<- aggregate(y,list(groupy),mean)$x[groupy]
+%-%gry1 <<- sort(unique(gry))
+%-%#
+%-%par(mar=c(1,2,1,1))
+%-%block <- expression({
+%-%bg <- "blue3"
+%-%bg2 <- makeTransparent(bg,0.75)
+%-%bg1 <- makeTransparent("red",.75)
+%-%bg3 <- makeTransparent("blue",0.4)
+%-%
+%-%col <- "white"
+%-%cex <- 2
+%-%lwd <- 1
+%-%
+%-%newplot(xlim=range(x),ylim=range(y),asp=NA)
+%-%if(is.null(x0)) x0 <- par("usr")[1]
+%-%if(is.null(y0)) y0 <- par("usr")[3]
+%-%
+%-%#segments(min(x),y,max(x),y,col="grey70",lwd=0.5)
+%-%#segments(x,min(y),x,max(y),col="grey70",lwd=0.5)
+%-%#abline(v=x,col="grey70",lwd=0.5)
+%-%#abline(h=y,col="grey70",lwd=0.5)
+%-%when <- c(0.1,0.8)
+%-%tpoints(x,y,grx,gry,when=when,trace=FALSE,pch=21,bg=bg2,col=col,cex=cex,lwd=lwd)
+%-%#segments(min(x),mean(y),max(x),mean(y),col="darkgreen",lwd=4)
+%-%rug(h(x,grx,t),lwd=1.5)
+%-%rug(h(y,gry,t),side=2,lwd=1.5)
+%-%#when2 <- c(0.8,1,0.8,1)
+%-%#yreg <- aggregate(y,list(group),mean)$x
+%-%#grx1 <- sort(unique(grx))
+%-%#tlines(grx1,rep(mean(y),length(grx1)),grx1,yreg,type="b",
+%-%#when=when2,col="red",cex=2,pch=16,lwd=4)
+%-%#tpoints(grx1,rep(mean(y),length(grx1)),grx1,yreg,
+%-%#when=when2,col=col,bg="red",cex=2,pch=21)
+%-%#points(x,y)
+%-%segments(rep(min(x),length(yquant)),quantile(y,yquant),rep(max(x),length(yquant)),quantile(y,yquant),col=8)
+%-%segments(quantile(x,xquant),rep(min(y),length(xquant)),quantile(x,xquant),rep(max(y),length(xquant)),col=8)
+%-%
+%-%tpoints(rep(grx1,length(gry1)),rep(gry1,each=length(grx1)),
+%-%cex=tcex(0,sqrt(as.numeric(table(group,groupy))),t)*3,when = c( 0.8,1),pch=15,col="blue")
+%-%
+%-%tpoints(par("usr")[1],rep(gry1,each=length(grx1)),
+%-%cex=tcex(0,sqrt(as.numeric(colSums(table(group,groupy)))),t)*3,when = c( 0.8,1),pch=15,col="lightblue",xpd=TRUE)
+%-%
+%-%})
+%-%animator(block,life=life,pause=pause,...)
+%-%}
+%-%
+%-%#joint(x,y,life=0)
+%-%chi2(x,y,life=5)
+%-%
+%-%
+%-%includeLatex(poster="first",scale=0.45,other=other)
+%-%
+%-%@
+%-%
+%-%@@@@@@
+%-%
+%-%
+%-%\end{center}
+%-%\end{frame}
+
+
+%\begin{frame}[fragile]
+%\frametitle{
+%\eng{}
+%\slo{}}
+%
+%\begin{center}
+%  \includegraphics[width=0.9\linewidth]{./slides/ci2vor.jpg}
+%\end{center}
+%\end{frame}
+
+<<>>=
+logistic <- function(x,y){
+over <- y>median(y)
+fit=glm(over~x,family=binomial())
+pr <- predict(fit)
+pr1 <- exp(pr)/(1+exp(pr))
+plot(x,over)
+points(x,pr1,pch=16)
+}
+@
+
+\mysection{
+\eng{Time changes}
+\slo{Časi se spreminjajo}}
+
+\begin{frame}[fragile]
+\frametitle{Sodobne zahteve}
+\begin{itemize}
+  \item hitrost sprememb in odzivnost
+  \item avtomatično zbiranje velikih količin podatkov (Big Data)
+  \item interdisciplinarni poklici (Data Science)
+  \item razmah Bayesovske statistike
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Big Data }
+\begin{center}
+\only <1>  {\includegraphics{./clp/Big-data.jpg}}
+\only <2> {Gartner hype cycle\\
+\includegraphics{./clp/hype-bd1114.jpg}}
+\only <3> {\includegraphics[width=0.9\textwidth]{./clp/hype2014.jpg}}
+
+\end{center}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Data Science}
+\begin{center}
+Statistics + marketing = dataMining (B. Ripley, 2004)\\[12pt]
+
+  Statistics + marketing + BigData = Data Science ?\\[12pt]
+
+\includegraphics{./clp/dataScience.png}
+
+\end{center}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Danger Zone\\PLOS One measuring impact}
+\begin{center}
+\includegraphics{./clp/PLOSOne.jpg}
+
+\hfill {
+\href{http://www.plos.org/plos-one-measuring-article-impact/
+}{\tiny > > >}}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Bayesovska statistika}
+\begin{center}
+  \includegraphics[width=0.3\textwidth]{./clp/BayesThm.jpg}
+\end{center}
+$$P(Razlaga | Opazovano)=\frac{P(Opazovano | Razlaga) P(Razlaga)}{P(Opazovano)}$$
+
+\noindent\rule[0.5ex]{\linewidth}{1pt}
+
+Opazimo nekoga, ki se poti. Ali ima morda gripo?
+
+$$P(Gripa | Potenje)=\frac{P(Potenje | Gripa) P(Gripa)}{P(Potenje)}$$
+$$P(Tek | Potenje)=\frac{P(Potenje | Tek) P(Tek)}{P(Potenje)}$$
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Kako pri nas postaneš statistik?\\Univerza v Ljubljani}
+\begin{itemize}
+  \item Nimamo oddelka za statistiko
+  \item MSc študij, Uporabna statistika (od 2014)
+  \item Univerzitetni doktorski program Statistika (od 2001)
+  \item sodeluje 7 fakultet (BF, EF, FMF, MF, FDV, FF, FE)
+  \item Interdisciplinarnost
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{}
+\begin{center}
+\Large Hvala za pozornost !
+\end{center}
+\end{frame}
+
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,109 @@
+% -*- TeX:Rnw -*-
+% ----------------------------------------------------------------
+% .R Sweave file  ************************************************
+% ----------------------------------------------------------------
+%%
+% \VignetteIndexEntry{}
+% \VignetteDepends{}
+% \VignettePackage{}
+\documentclass[a4paper,12pt]{article}
+%\usepackage[slovene]{babel}
+\usepackage[utf8]{inputenc} %% must be here for Sweave encoding check
+\newcommand{\SVNRevision}{$ $Rev: 39 $ $}
+%\newcommand{\SVNDate}{$ $Date:: 2010-05-26 #$ $}
+\newcommand{\SVNId}{$ $Id: Sweave.Rnw 39 2010-05-25 22:22:19Z ABlejec $ $}
+\input{abpkg}
+\input{abcmd}
+\input{abpage}
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\usepackage{amsmath,amssymb}
+\usepackage{colortbl}
+\usepackage{Sweave}
+\input{mysweave}
+\input{./figs/bla-concordance}
+%\SweaveOpts{echo=false}
+\setkeys{Gin}{width=0.8\textwidth}  % set graphicx parameter
+%\SweaveOpts{keep.source=true}
+\usepackage{lmodern}
+\input{abfont}
+
+% ----------------------------------------------------------------
+\begin{document}
+%% Sweave settings for includegraphics default plot size (Sweave default is 0.8)
+%% notice this must be after begin{document}
+%%% \setkeys{Gin}{width=0.9\textwidth}
+% ----------------------------------------------------------------
+\title{Visualization of time changing network}
+\author{A. Blejec}
+%\address{}%
+%\email{}%
+%
+%\thanks{}%
+%\subjclass{}%
+%\keywords{}%
+
+%\date{}%
+%\dedicatory{}%
+%\commby{}%
+\maketitle
+% ----------------------------------------------------------------
+%\begin{abstract}
+%
+%\end{abstract}
+% ----------------------------------------------------------------
+\tableofcontents
+
+\section{Data}
+
+Network data
+
+\begin{Schunk}
+\begin{Sinput}
+> n <- 6
+> m <- 4
+> x <- cos(seq(0,2*pi*((n-1)/n),length=n))
+> y <- sin(seq(0,2*pi*((n-1)/n),length=n))
+> expr <- matrix(round(runif(n*m,0,3),0),n)
+> head(expr)
+\end{Sinput}
+\begin{Soutput}
+     [,1] [,2] [,3] [,4]
+[1,]    1    2    3    2
+[2,]    3    1    1    0
+[3,]    1    1    2    1
+[4,]    1    0    1    2
+[5,]    1    1    2    3
+[6,]    1    2    1    2
+\end{Soutput}
+\begin{Sinput}
+> link <- as.numeric(cut(runif(n*(n+1)/2*m),c(0,0.7,0.85,1)))-1
+> link <- matrix(link,ncol=m)
+> cole <- link
+> cole[cole==0] <- NA
+> head(link)
+\end{Sinput}
+\begin{Soutput}
+     [,1] [,2] [,3] [,4]
+[1,]    0    0    0    0
+[2,]    0    0    0    0
+[3,]    1    0    0    0
+[4,]    0    0    1    0
+[5,]    0    0    0    0
+[6,]    0    0    0    0
+\end{Soutput}
+\begin{Sinput}
+> e <- expand.grid(1:n,1:n)
+> e <- e[e[,1]>=e[,2],]
+> head(e)
+\end{Sinput}
+\begin{Soutput}
+  Var1 Var2
+1    1    1
+2    2    1
+3    3    1
+4    4    1
+5    5    1
+6    6    1
+\end{Soutput}
+\end{Schunk}
+

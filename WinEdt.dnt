@@ -34432,7 +34432,7 @@ TeX
 0
 0
 0
-9
+6
 999
 9
 1
@@ -34590,19 +34590,19 @@ Dictionary
 0
 0
 0
-1
 0
 0
 1
 1
 1
 1
-0
 1
 0
 1
 0
 1
+0
+1
 1
 1
 1
@@ -34610,27 +34610,33 @@ Dictionary
 1
 1
 1
-0
-
 0
 
+0
+
+*.Rnw
 
 <\<\<~sessionInfo
 <\@>
 <\<\<
-<NN
-NN
-includeLatex
-other
-tpoints
-Hypothesis testing
-aaa
+sweave
+response
+blax
+myemph
+ssay
+assay
+textbf
 
-viruses
-/
-lvl
-cols
-align
+myemph
+blax
+onslide
+$_$
+\file{xxx
+xxx
+Study
+Investigation
+`r \0`
+>
 
 1
 0
@@ -34740,8 +34746,8 @@ C;D;F
 10
 12
 1
-14
-25
+11
+21
 0
 0
 0
@@ -37945,8 +37951,8 @@ Beamer:frametitle
 Binary Files
 Binary
 1
-14
-25
+11
+21
 0
 0
 64
@@ -37976,8 +37982,8 @@ Courier New
 Macros and Configurations
 INI;EDT|XWE
 1
-14
-25
+11
+21
 0
 1
 80
@@ -38007,8 +38013,8 @@ Courier New
 HTML Documents
 HTML|HHC;XWE
 1
-8
-28
+7
+23
 0
 0
 98
@@ -38038,8 +38044,8 @@ Verdana
 XWE Documents
 XWE
 1
-14
-25
+11
+21
 0
 0
 98
@@ -38069,8 +38075,8 @@ Courier New
 ASCII Documents
 ASCII
 1
-10
-20
+8
+16
 0
 0
 68
@@ -38100,8 +38106,8 @@ Courier New
 TeX Source
 DTX;INS;STY
 1
-10
-20
+8
+16
 0
 0
 80
@@ -50826,7 +50832,7 @@ Exec\ASCII\ExecModes.edt
 
 *
 44
-0
+1
 0
 1
 64
@@ -53368,10 +53374,10 @@ Edt
 80
 Default:MiKTeX
 0
-323
-17
-1590
-1022
+906
+0
+1833
+1197
 0
 0
 0
@@ -53384,16 +53390,16 @@ Default:MiKTeX
 1
 77
 1
-353
-257
-353
-257
+282
+206
+282
+206
 0
 0
-293
-212
-418
-302
+234
+170
+334
+242
 0
 0
 0
@@ -53404,20 +53410,20 @@ Default:MiKTeX
 0
 0
 0
-120
-120
+96
+96
 3
 3
 3
-1
+0
 
 
 *
 81
-400
-400
-205
-125
+320
+320
+164
+100
 
 Tree
 0
@@ -53428,8 +53434,8 @@ Tree
 1
 0
 0
-450
-650
+360
+520
 
 fclFormBk
 -16777211
@@ -53450,8 +53456,8 @@ Gather
 1
 0
 0
-1000
-550
+800
+440
 
 fclFormBk
 -16777211
@@ -53472,8 +53478,8 @@ Macro Recorder
 1
 0
 0
-1000
-550
+800
+440
 
 fclFormBk
 -16777211
@@ -53494,8 +53500,8 @@ Errors
 1
 0
 0
-1000
-550
+800
+440
 
 fclFormBk
 -16777211
@@ -53516,8 +53522,8 @@ Character Map
 1
 0
 0
-1000
-225
+800
+180
 
 fclFormBk
 -16777211
@@ -53538,8 +53544,8 @@ Find in Files
 1
 0
 0
-1000
-550
+800
+440
 
 fclFormBk
 -16777211
@@ -53560,8 +53566,8 @@ Console
 1
 0
 0
-1000
-550
+800
+440
 
 fclFormBk
 -16777211
@@ -53582,8 +53588,8 @@ Options Interface
 1
 0
 0
-450
-650
+360
+520
 
 fclFormBk
 -16777211
@@ -53629,9 +53635,14 @@ Recorded Macro.edt
 85
 1
 1
+#
+#' 
+ <- 
+#'
+#' @param 
+## 
 %-%
 %%
-#
 # 
 > 
 
@@ -53664,17 +53675,17 @@ Recorded Macro.edt
 
 
 
-29770
-29770
-28072
-26583
-25199
-16589
-16570
-16569
-45060
-44708
-44588
+22398
+22398
+20930
+20873
+20216
+15795
+13631
+3543
+40929
+40133
+36547
 
 16532
 16532
