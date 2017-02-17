@@ -226,9 +226,9 @@
     Release(!"LuaTeX-Pause");
 
 // TeXify
-    Assign(!"TeXify-Executable", !|texify.exe|);
+    Assign(!"TeXify-Executable", !|%@("LATEX");|);
     Assign(!"TeXify-Switches", !|%0|);
-    Assign(!"TeXify-Parameters", !|"%F"|);
+    Assign(!"TeXify-Parameters", !|"%N%T"|);
     Release(!"TeXify-Paper_Size");
     Release(!"TeXify-Paper_Custom_Size");
     Release(!"TeXify-Landscape");

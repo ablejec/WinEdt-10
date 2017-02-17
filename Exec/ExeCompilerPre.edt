@@ -22,7 +22,7 @@
     // Find output file
     Exe("%b\Exec\NSIS\NSISOutFile.edt");
     // Delete output file
-    IfFileExists(|%$('%F-NSIS-Installer');|,!|DeleteFile("%$('%F-NSIS-Installer');");|);
+    IfFileExists(|%$('NSIS-Installer');|,!|DeleteFile("%$('NSIS-Installer');");|);
   JMP(!"Pre_Done");
 
 :not_NSIS:: =========================================================
