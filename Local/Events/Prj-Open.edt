@@ -1,4 +1,5 @@
 //
+// 13. 12. 2016 dDisable worklog - corrupted
 // 5. 2. 2008 A. Blejec
 // changed to start R and open Explorer window with main file
 //
@@ -22,5 +23,5 @@ IfFileExists('%!p\r\',>
 //Run('CMDOW WinEdt/MikTex - [%f] /ACT');
 WinExe("","Explorer /n, %!p\doc","","",10000);
 SetFolder("%!p\doc");
-Exe('%b\Macros\worklog\worklog_open.edt');
+// Exe('%b\Macros\worklog\worklog_open.edt');
 End;

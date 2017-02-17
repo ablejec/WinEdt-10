@@ -1443,7 +1443,7 @@ Enter (%%)
 1
 
 IfisMode('TeX','%!m',!'Ins(!|%%|);');Enter;
-24589
+0
 
 0
 $Backspace
@@ -10205,7 +10205,7 @@ SelectPar
 0
 
 Exe('%b\macros\BeautifyR\R-paste-chunk.edt');
-49232
+24589
 
 0
 &Paste Current Chunk -> R
@@ -15324,7 +15324,7 @@ sclWindowBk
 Selected Text (1)
 sclHighlightText
 sclHighlightBk
--2920583258838203648
+-28934747996617984
 Found String (2)
 sclFoundStringText
 sclFoundStringBk
@@ -34446,9 +34446,9 @@ TeX
 *
 24
 0
-1
 0
-5
+0
+9
 999
 9
 1
@@ -34613,8 +34613,6 @@ Dictionary
 1
 0
 0
-1
-1
 0
 0
 1
@@ -34624,20 +34622,13 @@ Dictionary
 1
 0
 1
-1
-0
-0
-0
 0
 0
 1
 0
-1
-1
-1
-1
 0
-1
+0
+0
 0
 1
 0
@@ -34647,17 +34638,35 @@ Dictionary
 1
 0
 1
+0
+1
+0
+1
+1
 1
 1
 0
-
+1
+1
+1
 0
 
+0
 
-keywords
-SEMISOFT_WRAPPING
-separateor
 
+<\<\<~sessionInfo
+<\@>
+<\<\<
+first
+y0
+maxwidth
+velja
+ne velja
+ofn
+uid
+
+yy
+/
 
 1
 0
@@ -34769,8 +34778,8 @@ C;D;F
 10
 12
 1
-14
-25
+11
+21
 0
 0
 0
@@ -37974,8 +37983,8 @@ Beamer:frametitle
 Binary Files
 Binary
 1
-14
-25
+11
+21
 0
 0
 64
@@ -38005,8 +38014,8 @@ Courier New
 Macros and Configurations
 INI;EDT|XWE
 1
-14
-25
+11
+21
 0
 1
 80
@@ -38036,8 +38045,8 @@ Courier New
 HTML Documents
 HTML|HHC;XWE
 1
-8
-28
+7
+23
 0
 0
 98
@@ -38067,8 +38076,8 @@ Verdana
 XWE Documents
 XWE
 1
-14
-25
+11
+21
 0
 0
 98
@@ -38098,8 +38107,8 @@ Courier New
 ASCII Documents
 ASCII
 1
-10
-20
+8
+16
 0
 0
 68
@@ -38129,8 +38138,8 @@ Courier New
 TeX Source
 DTX;INS;STY
 1
-10
-20
+8
+16
 0
 0
 80
@@ -50747,7 +50756,7 @@ Exec\ASCII\ExecModes.edt
 
 *
 44
-0
+1
 0
 1
 64
@@ -53289,10 +53298,10 @@ Edt
 80
 Default:MiKTeX
 1
-0
-0
-1349
-899
+502
+45
+1429
+921
 0
 0
 0
@@ -53305,16 +53314,16 @@ Default:MiKTeX
 1
 77
 1
-353
-257
-353
-257
+282
+206
+282
+206
 0
 0
-293
-212
-418
-302
+234
+170
+334
+242
 0
 0
 0
@@ -53325,7 +53334,7 @@ Default:MiKTeX
 0
 0
 0
-120
+96
 3
 3
 3
@@ -53334,13 +53343,13 @@ Default:MiKTeX
 
 *
 81
-400
-400
-205
-125
+320
+320
+164
+100
 
 Tree
-1
+0
 3
 2
 0
@@ -53348,8 +53357,8 @@ Tree
 1
 0
 0
-450
-650
+360
+520
 
 fclFormBk
 -16777211
@@ -53370,8 +53379,8 @@ Gather
 1
 0
 0
-1000
-550
+800
+440
 
 fclFormBk
 -16777211
@@ -53392,8 +53401,8 @@ Macro Recorder
 1
 0
 0
-1000
-550
+800
+440
 
 fclFormBk
 -16777211
@@ -53414,8 +53423,8 @@ Errors
 1
 0
 0
-1000
-550
+800
+440
 
 fclFormBk
 -16777211
@@ -53436,8 +53445,8 @@ Character Map
 1
 0
 0
-1000
-225
+800
+180
 
 fclFormBk
 -16777211
@@ -53458,8 +53467,8 @@ Find in Files
 1
 0
 0
-1000
-550
+800
+440
 
 fclFormBk
 -16777211
@@ -53480,8 +53489,8 @@ Console
 1
 0
 0
-1000
-550
+800
+440
 
 fclFormBk
 -16777211
@@ -53494,7 +53503,7 @@ Courier New
 0
 
 Options Interface
-1
+0
 3
 1
 0
@@ -53502,8 +53511,8 @@ Options Interface
 1
 0
 0
-450
-650
+360
+520
 
 fclFormBk
 -16777211
@@ -53549,6 +53558,7 @@ Recorded Macro.edt
 85
 1
 1
+## 
 > 
 
 
@@ -53580,8 +53590,17 @@ Recorded Macro.edt
 
 
 
-23669
-23669
+19386
+19386
+19374
+18184
+18183
+18151
+17874
+17840
+17267
+13728
+12161
 
 
 
@@ -53599,7 +53618,7 @@ Recorded Macro.edt
 16777215
 15790320
 0
-14120960
+16750899
 16777215
 7171437
 13395456
@@ -54404,7 +54423,7 @@ clAqua
 16776960
 sclHighlightBk
 SysHighlight
-14120960
+16750899
 sclHighlightText
 SysHighlightText
 16777215
@@ -54746,7 +54765,7 @@ $1000007
 7171437
 SysHighlight
 $1000005
-14120960
+16750899
 SysHighlightText
 $1000006
 16777215

@@ -14,8 +14,8 @@
     Release(!"LaTeX-Errors");
     Release(!"LaTeX-Warnings");
     Release(!"LaTeX-ExitCode");
-    Release(!"LaTeX-Viewer");
-    Release(!"LaTeX-View_Search");
+    Assign(!"LaTeX-Viewer", !|1|);
+    Assign(!"LaTeX-View_Search", !|1|);
     Release(!"LaTeX-STD_IO");
     Release(!"LaTeX-No_Interaction");
     Release(!"LaTeX-C-style-errors");
@@ -89,8 +89,8 @@
     Release(!"PDFLaTeX-Errors");
     Release(!"PDFLaTeX-Warnings");
     Release(!"PDFLaTeX-ExitCode");
-    Release(!"PDFLaTeX-Viewer");
-    Release(!"PDFLaTeX-View_Search");
+    Assign(!"PDFLaTeX-Viewer", !|1|);
+    Assign(!"PDFLaTeX-View_Search", !|1|);
     Release(!"PDFLaTeX-STD_IO");
     Release(!"PDFLaTeX-No_Interaction");
     Release(!"PDFLaTeX-C-style-errors");

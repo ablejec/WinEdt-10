@@ -1,5 +1,5 @@
 // Local Project Close Event Handler
-
+// 13. 12. 2016 dDisable worklog - corrupted
 //
 // 18. 2. 2008 A. Blejec
 // changed to close Explorer window with main file
@@ -11,6 +11,6 @@ CloseAppl( '%!p' );
 CloseAppl( 'R Console (64-bit)' );
 
 WaitForFocus;
-Exe('%b\Macros\worklog\worklog_close.edt');
+// Exe('%b\Macros\worklog\worklog_close.edt');
 // Exe('%b\Macros\R\R-quit-nosave.edt');
 End;

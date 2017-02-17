@@ -1,0 +1,211 @@
+% -*- TeX:Rnw:UTF-8 -*-
+% ----------------------------------------------------------------
+% .R knitr file  ************************************************
+% ----------------------------------------------------------------
+%%
+% \VignetteIndexEntry{}
+% \VignetteDepends{}
+% \VignettePackage{}
+\documentclass[a4paper,12pt]{article}
+%\usepackage[slovene]{babel}
+\usepackage[utf8]{inputenc} %% must be here for Sweave encoding check
+\input{abpkg}
+\input{abcmd}
+\input{abpage}
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\usepackage{amsmath,amssymb}
+\usepackage{colortbl}
+
+\input{mysweave}
+
+<<include=FALSE>>=
+require(knitr)
+render_sweave()
+opts_chunk$set(fig.path='./figs/ani-',concordance=TRUE,tidy=TRUE)
+@
+\setkeys{Gin}{width=0.8\textwidth}  % set graphicx parameter
+\usepackage{lmodern}
+\input{abfont}
+
+% ----------------------------------------------------------------
+\begin{document}
+%% Sweave settings for includegraphics default plot size (Sweave default is 0.8)
+%% notice this must be after begin{document}
+%%% \setkeys{Gin}{width=0.9\textwidth}
+% ----------------------------------------------------------------
+\title{Shiny app:\\animatoR}
+\author{A. Blejec}
+%\address{}%
+%\email{}%
+%
+%\thanks{}%
+%\subjclass{}%
+%\keywords{}%
+
+%\date{}%
+%\dedicatory{}%
+%\commby{}%
+\maketitle
+% ----------------------------------------------------------------
+%\begin{abstract}
+%
+%\end{abstract}
+% ----------------------------------------------------------------
+\tableofcontents
+<<Author:,echo=FALSE>>=
+###############################################
+##                                           ##
+## (c) Andrej Blejec (andrej.blejec@nib.si)  ##
+##                                           ##
+###############################################
+@
+<<initialize,echo=FALSE,results='hide',message=FALSE>>=
+options(width=70)
+require(knitr)
+##
+require(shinyapps)
+require(shiny)
+#library(xlsReadWrite)
+@
+
+\section{Introduction}
+
+A general wrapper for Shiny applications.
+
+More about Shiny is avaliable here. \href{http://www.rstudio.com/shiny/}{Shiny}.
+
+Adapted after an \href{http://yulijia.net/en/howto/r-language/2015/04/19/how-to-build-shiny-app-with-animation-package.html}{example} from Lijia Yu.
+
+\clearpage
+\section{Implementation in Shiny}
+
+
+
+I need two functions: \fct{ui.R} and \fct{server.R}.
+\subsection{Function \fct{ui.R}}
+
+This function defines the user interface.
+
+%-%<<child='ui.Rnw'>>=
+%-%@
+%-%<<results="hide">>=
+%-%purl("../doc/ui.Rnw")
+%-%
+%-%@
+<<>>=
+setwd("../doc/DynNet")
+getwd()
+
+@
+
+
+\clearpage
+\subsection{Function \fct{server.R}}
+
+This function is performing the action.
+%-%<<child='server.Rnw'>>=
+%-%@
+%-%<<results="hide">>=
+%-%purl("../doc/server.Rnw")
+%-%@
+
+\clearpage
+\section{Test and deploy application}
+
+You can test the application locally using the command
+<<eval=FALSE>>=
+runApp(getwd())
+
+@
+
+Alternatively you can deploy
+ the application to the Shiny server\\
+  (set Buffered output to Off to see the progress)
+<<eval=FALSE>>=
+require(shinyapps)
+deployApp(getwd(),appName="animatoR2",account="sigma")
+
+@
+
+\url{ https://sigma.shinyapps.io/Example}
+
+Address for account management:\\
+\url{ http://shinyapps.io}
+
+Glej: \url{http://shiny.rstudio.com/articles/download.html}
+
+
+%<<child='encChild2.Rnw'>>=
+%@
+% ----------------------------------------------------------------
+%\bibliographystyle{chicago}
+%\addcontentsline{toc}{section}{\refname}
+%\bibliography{ab-general}
+%--------------------------------------------------------------
+
+%\clearpage
+%\appendix
+%\phantomsection\addcontentsline{toc}{section}{\appendixname}
+%\section{\R\ funkcije}
+%\input{}
+
+\clearpage
+\section*{SessionInfo}
+{\small
+<<sessionInfo,results='asis',echo=FALSE>>=
+cat(win.version(),"\n")
+toLatex(sessionInfo())
+cat("Project path:\\verb'",dirname(getwd()),"'\\\\\n")
+mainFile <- commandArgs(trailingOnly = TRUE)
+#
+mainFilePath <- file.path("../doc", mainFile[1])
+cat("Main file :\\verb'", mainFilePath, "'\n")
+#
+mainFile <- strsplit(mainFile,'.',fixed=TRUE)[[1]][1]
+projectName <- rev((strsplit(dirname(getwd()), "/"))[[1]])[1]
+#
+@
+
+\subsection*{View as vignette}
+Project files can be viewed by pasting this code to \R\ console:\\
+\begin{Schunk}
+\begin{Sinput}
+<<projectFiles,echo=FALSE,results='asis'>>=
+cat('> projectName <-"',projectName,'"; ',sep="")
+cat(' mainFile <-"',mainFile,'"',sep="")
+#
+@
+
+\end{Sinput}
+\end{Schunk}
+<<vignette,eval=FALSE>>=
+commandArgs()
+library(tkWidgets)
+openPDF(file.path(dirname(getwd()),"doc",
+paste(mainFile,"PDF",sep=".")))
+viewVignette("viewVignette", projectName, #
+file.path("../doc",paste(mainFile,"Rnw",sep=".")))
+#
+@
+
+\vfill \hrule \vspace{3pt} \footnotesize{
+%Revision \SVNId\hfill (c) A. Blejec%\input{../_COPYRIGHT.}
+%\SVNRevision ~/~ \SVNDate
+\noindent
+\texttt{Git Revision: \gitCommitterUnixDate \gitAbbrevHash{} (\gitCommitterDate)} \hfill \copyright A. Blejec\\
+\texttt{ \gitReferences} \hfill \verb'\Sexpr{mainFilePath}'\\
+
+}
+
+<<eval=FALSE,echo=FALSE>>=
+# getrootpath <- function() {
+# fp <- (strsplit(getwd(), "/"))[[1]]
+# file <- file.path(paste(fp[-length(fp)], collapse = "/"))
+# return(file)
+# }
+# fileName <- function(name="bla",ext="PDF") paste(name,ext,sep=".")
+@
+
+
+\end{document}
+% ----------------------------------------------------------------
