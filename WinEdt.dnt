@@ -41283,7 +41283,7 @@ TeX
 0
 0
 0
-8
+9
 999
 9
 1
@@ -41454,29 +41454,20 @@ Dictionary
 0
 0
 0
-1
-0
-1
-0
-1
-0
-1
-0
-1
-1
-0
-0
-0
 0
 0
 1
 0
 1
-1
-1
+0
 1
 0
 1
+1
+0
+0
+0
+0
 0
 1
 0
@@ -41486,23 +41477,32 @@ Dictionary
 1
 0
 1
+0
+1
+0
+1
+1
 1
 1
 0
-
+1
+1
+1
 0
 
+0
 
+
+patch
+knit
+undefined
+61
+sestion
+rnw
+Rnw
 clean
 <\<\<~sessionInfo
 <\@>
-<\<\<
-paste(
-paste(imaneVrts
-ImenaVrst
-MUtmp
-Uporabili bomo enako metodo
-poro
 
 fig:logU-NIB-\Sexpr{cropNumber}
 tb:U-NIB-\Sexpr{cropNumber}
@@ -61105,10 +61105,10 @@ Edt
 80
 Default:MiKTeX
 0
-74
-130
-1758
-1342
+92
+0
+1776
+1092
 0
 0
 0
@@ -61131,8 +61131,8 @@ Default:MiKTeX
 214
 420
 304
-0
-0
+989
+783
 0
 0
 0
@@ -61222,7 +61222,7 @@ Courier New
 0
 
 Errors
-1
+0
 2
 0
 1
@@ -61310,7 +61310,7 @@ Courier New
 0
 
 Options Interface
-0
+1
 3
 1
 0
