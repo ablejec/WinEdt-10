@@ -40,7 +40,7 @@ IfOK('Relax;','PopTagsandRegisters;Exit;');
 MUIGet("file","text", 1);
 //
 Prompt("%!P\clp\capture_%!1.jpg");
-WinExe("","D:\Program Files (x86)\IrfanView\i_view32.exe /clippaste /convert=%!P\clp\capture-%!1.jpg","D:\");
+WinExe("","C:\Program Files\IrfanView\i_view64.exe /clippaste /convert=%!P\clp\capture-%!1.jpg","D:\");
 InsText("  \begin{center}");
 NewLine;
 InsText("\fbox{");
@@ -56,4 +56,3 @@ InsText("\end{center}");
 PopTagsandRegisters;
 
 End;
-

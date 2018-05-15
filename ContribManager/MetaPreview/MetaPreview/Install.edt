@@ -1,0 +1,45 @@
+// -*- ASCII:EDT -*-
+
+    Requires(20160317);
+
+    ClearCheckList;
+      AddCheckList("Install MetaFont Preview",1);
+      AddCheckList("Install MetaPost Preview",1);
+    ShowCheckList('MetaPreview package',200,200);
+    IfOK(!'Relax;',!'Exit;');
+    IfChecked(0,!'Assign("MetaFont","1");',!'Assign("MetaFont","0");');
+    IfChecked(1,!'Assign("MetaPost","1");',!'Assign("MetaPost","0");');
+
+    Assign("Main","MetaPreview");
+
+    PushTagsandRegisters;
+
+    StartWorking('Installing...');
+    ProcessMessages;
+
+    ShowConsole(1,1);
+    ResetConsole;
+    SetConsoleText("Installing...%\%\",1);
+    IfStr("%$(|MetaFont|);","1","=",!"Exe('%C\MFPreview\Install.edt');");
+    IfStr("%$(|MetaPost|);","1","=",!"Exe('%C\MPPreview\Install.edt');");
+    Call('Uninstall_Task');
+    SetConsoleText("%\Done...%\",1,1);
+
+    PopTagsandRegisters;
+
+    StopWorking;
+
+    Prompt("Installation Complete! See the Console for install info.",0,1);
+
+    Release("MetaFont");
+    Release("MetaPost");
+    Release("Main");
+
+Exit;
+
+:Uninstall_Task:: ===================================================
+
+    // Copy uninstaller
+    CopyFile("%C\Uninstall.edt","%b\Uninstall\%$(|Main|);\Uninstall.edt",1,1);>
+
+Return;

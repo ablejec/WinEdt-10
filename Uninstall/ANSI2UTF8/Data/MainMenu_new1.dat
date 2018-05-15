@@ -1,0 +1,11 @@
+    MACRO="SaveDocCopyAs;"
+    REQ_DOCUMENT=1
+  ITEM="-"
+  ITEM="Convert_to_UFT-8"
+    CAPTION="Convert to &UTF-8..."
+    IMAGE="UnicodeConvert"
+    SAVE_INPUT=1
+    MACRO="Exe('%b\Macros\CodePage.edt');"
+    REQ_DOCUMENT=1
+  ITEM="-"
+  ITEM="Send_Mail"

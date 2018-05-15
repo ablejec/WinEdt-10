@@ -1,0 +1,302 @@
+
+<<>>=
+d <- list()
+d$h1 <- list(p=0.2,o1=list(p=0.3),o2=list(p=0.7),o3=list(p=0))
+d$h2 <- list(p=0.5,o1=list(p=0.5),o2=list(p=0.2),o3=list(p=0.3))
+d$h3 <- list(p=0.3,o1=list(p=0.6),o2=list(p=0.2),o3=list(p=0.2))
+d
+d$h1$p
+d$h1$o1$p
+@
+
+Kot matrika
+<<>>=
+pr <- matrix(unlist(d),nrow=length(d),byrow=TRUE)
+dimnames(pr) <- list(names(d),names(d[[1]]))
+pr
+@
+
+
+<<>>=
+P(h1)*P(o1,h1)/P(o1)
+
+@
+
+\clearpage
+Funkcija za ekstrakcijo vrejetnosti
+<<>>=
+P <- function(x,y,tree=d,sep="\n"){
+if(class(try(x,silent=TRUE))=="try-error") x <- deparse(substitute(x))
+if(class(try(y,silent=TRUE))=="try-error") y <- deparse(substitute(y))
+#
+if(x %in% names(tree)) {
+h <- x
+o <- y
+if(nchar(o)==0) {
+cat(sep,"Hypothesis probability P(H)\n")
+p <- tree[[h]]$p
+cat(sep,"P(",h,") =",p,"\n") } else {
+cat(sep,"Inverse probabilty P(H|O)\n")
+sep <- "\\t"
+p <- P(h,tree=tree)*P(o,h,tree=tree)/P(o,tree=tree)
+sep <- ""
+cat(sep,"\n","P(",h,"|",o,") =",p,"\n")
+}
+}
+#
+#
+if(!(x %in% names(tree))) {
+h <- y
+o <- x
+if(nchar(h)==0) {
+cat(sep,"Outcome probability P(O)\n")
+ps <- sapply(tree,FUN=function(x) x$p*x[[o]]$p)
+print(ps)
+p <- sum(ps)
+cat(sep,"P(",o,") =",p,"\n")
+} else {
+cat(sep,"Conditional probability P(O|H)\n")
+p <- tree[[h]][[o]]$p
+cat(sep,"P(",o,"|",h,") =",p,"\n")
+}
+}
+invisible(p)
+}
+#
+# test
+#
+P(h1)
+P(o1,h1)
+P(o2,h1)
+P(o3,h1)
+P(o1)
+P(h1,o1)
+@
+
+<<>>=
+P(h1)*P(o1,h1)/P(o1)
+@
+\clearpage
+<<>>=
+o <- "o1"
+ps <- c(P(h1,o), P(h2,o), P(h3,o))
+print(ps)
+print(sum(ps))
+@
+\clearpage
+<<>>=
+o <- "o2"
+ps <- c(P(h1,o), P(h2,o), P(h3,o))
+ps
+sum(ps)
+@
+\clearpage
+<<>>=
+o <- "o3"
+ps <- c(P(h1,o), P(h2,o), P(h3,o))
+ps
+sum(ps)
+@
+\clearpage
+\section{Slika}
+
+<<>>=
+btext <- function(x,y,text,bg="lightblue",cex=1,border=NA,adj=0.5,...){
+# https://stackoverflow.com/questions/45366243/text-labels-with-background-colour-in-r
+#
+posCoordsVec <- c(x,y)
+myText <- text
+textHeight <- graphics::strheight(myText, cex = cex)
+textWidth <- graphics::strwidth(myText, cex = cex)
+pad <- textHeight*0.3
+rect(xleft = posCoordsVec[1] - textWidth*adj - pad,
+        ybottom = posCoordsVec[2] - textHeight/2 - pad,
+        xright = posCoordsVec[1] + textWidth*(1-adj) + pad,
+        ytop = posCoordsVec[2] + textHeight/2 + pad,
+        col = bg, border = border)
+
+## Place text:
+text(posCoordsVec[1], posCoordsVec[2], myText, cex = cex,adj=adj,...)
+}
+@
+<<>>=
+pr
+par(mar=c(1,1,1,1)*0.5)
+plot.new()
+plot.window(xlim=c(0,20),ylim=c(-10,10),asp=1)
+#box()
+n1 <- nrow(pr)
+n2 <- ncol(pr)-1
+pol <- function(r,fi) return(list(x=r*cos(fi),y=r*sin(fi)))
+fis <- seq(-pi/(6-n1),pi/(6-n1),length=n1)
+s <- pol(1,fis)
+e <- pol(rep(8,n1),fis)
+m <- list(x=(s$x+e$x)/2,y=(s$y+e$y)/2)
+segments(s$x,s$y,e$x,e$y,lwd=3,col=4)
+for(j in 1:n1) {
+btext(m$x[j],m$y[j],pr[j,"p"],bg="white",cex=1.5)
+btext(e$x[j]+1.5,e$y[j],rownames(pr)[j],bg="lightblue", cex=1.5,adj=1)
+}
+## Outcomes
+fis <- seq(-pi/(6-n2),pi/(6-n2),length=n2)
+s <- e
+s$x <- s$x+2
+ee <- pol(4,fis)
+ee
+for(i in 1:n1){
+e$x <- s$x[i]+ee$x
+e$y <- s$y[i]+ee$y
+m <- list(x=(s$x[i]+e$x)/2,y=(s$y[i]+e$y)/2)
+segments(rep(s$x[i],n2),rep(s$y[i],n2),e$x,e$y,col=1:n2,lwd=3)
+for(j in 1:n2) { btext(m$x[j],m$y[j],pr[i,j+1],bg="white",cex=1.5,col=j)
+btext(e$x[j]+.5,e$y[j],colnames(pr)[j+1],cex=1.5,col=j,bg="grey90",adj=0)
+}
+}
+@
+
+Funkcija za risanje
+
+<<>>=
+plot.tree <- function(x){
+if(is.list(x)) { pr <- matrix(unlist(x),nrow=length(x),byrow=TRUE)
+dimnames(pr) <- list(names(x),names(x[[1]]))
+} else pr <- x
+# Besedilo na ozadju
+btext <- function(x,y,text,bg="lightblue",cex=1,border=NA,adj=0.5,...){
+# https://stackoverflow.com/questions/45366243/text-labels-with-background-colour-in-r
+#
+posCoordsVec <- c(x,y)
+myText <- text
+textHeight <- graphics::strheight(myText, cex = cex)
+textWidth <- graphics::strwidth(myText, cex = cex)
+pad <- textHeight*0.3
+rect(xleft = posCoordsVec[1] - textWidth*adj - pad,
+        ybottom = posCoordsVec[2] - textHeight/2 - pad,
+        xright = posCoordsVec[1] + textWidth*(1-adj) + pad,
+        ytop = posCoordsVec[2] + textHeight/2 + pad,
+        col = bg, border = border)
+
+## Place text:
+text(posCoordsVec[1], posCoordsVec[2], myText, cex = cex,adj=adj,...)
+}
+##
+##
+par(mar=c(1,1,1,1)*0.5)
+plot.new()
+plot.window(xlim=c(0,20),ylim=c(-10,10),asp=1)
+#box()
+n1 <- nrow(pr)
+n2 <- ncol(pr)-1
+pol <- function(r,fi) return(list(x=r*cos(fi),y=r*sin(fi)))
+fis <- seq(-pi/(6-n1),pi/(6-n1),length=n1)
+s <- pol(1,fis)
+e <- pol(rep(8,n1),fis)
+m <- list(x=(s$x+e$x)/2,y=(s$y+e$y)/2)
+segments(s$x,s$y,e$x,e$y,lwd=3,col=4)
+for(j in 1:n1) {
+btext(m$x[j],m$y[j],pr[j,"p"],bg="white",cex=1.5)
+btext(e$x[j]+1.5,e$y[j],rownames(pr)[j],bg="lightblue", cex=1.5,adj=1)
+}
+## Outcomes
+fis <- seq(-pi/(6-n2),pi/(6-n2),length=n2)
+s <- e
+s$x <- s$x+2
+ee <- pol(4,fis)
+ee
+for(i in 1:n1){
+e$x <- s$x[i]+ee$x
+e$y <- s$y[i]+ee$y
+m <- list(x=(s$x[i]+e$x)/2,y=(s$y[i]+e$y)/2)
+segments(rep(s$x[i],n2),rep(s$y[i],n2),e$x,e$y,col=1:n2,lwd=3)
+for(j in 1:n2) { btext(m$x[j],m$y[j],pr[i,j+1],bg="white",cex=1.5,col=j)
+btext(e$x[j]+.5,e$y[j],colnames(pr)[j+1],cex=1.5,col=j,bg="grey90",adj=0)
+}
+}
+
+}
+@
+
+<<>>=
+plot.tree(d)
+plot.tree(pr[,c(1,2)])
+@
+
+<<>>=
+pr
+P(h3,o1)
+@
+Konverzija tabele v drevo
+<<>>=
+as.tree <- function(pr) {apply(pr,1,function(x) {u <- list(p=x[1])
+for(i in 2:length(x)) u[[names(x)[i]]] <- list(p=x[i])
+return(u)
+})
+}
+@
+Test
+<<>>=
+P(h1,tree=as.tree(pr))
+P(h1,o3,tree=as.tree(pr))
+@
+
+<<>>=
+plot.tree(as.tree(pr))
+@
+
+\clearpage
+\section{Naloga}
+
+An electrical goods factory receive components from three suppliers known
+as A, B and C. According to the quality tests carried out by the factory
+when they receive each shipment, it is known that 10 \% of the components
+from A don’t meet the required specifications, while for B and C those
+percentages are 5 \% and 8 \% respectively.
+Given this experience, the policy of the factory has been to require
+20 \% of the orders to A, 50 \% to B and 30 \% to C. Once the shipments have
+been received and reviewed all the received components are put together.
+If a component is randomly selected from those stored and does not meet
+the specifications, what is the probability that it has been sold by A?
+
+
+<<>>=
+pr1 <- matrix(c(
+0.20, 0.10, 0.90,
+0.50, 0.05, 0.95,
+0.30, 0.08, 0.92),byrow=TRUE,nrow=3)
+dimnames(pr1) <- list(c("A","B","C"),c("p","Bad","Good"))
+pr1
+plot.tree(pr1)
+@
+
+Test
+<<>>=
+d1 <- as.tree(pr1)
+P(A,tree=d1)
+P(Bad,A,tree=d1)
+P(Bad,tree=d1)
+P(A,Bad,tree=d1)
+
+plot.tree(d1)
+
+@
+
+$$P(A|Bad)$$
+
+<<>>=
+P(A,Bad,tree=d1)
+P(A,Good,tree=d1)
+P(B,Bad,tree=d1)
+@
+
+%% knitr child handling
+%%
+%<<child='child_file.Rnw'>>=
+%@
+%<<result="hide">>=
+%out <- ""
+%for ( linija in levels(phenodata$Celicna.linija))
+%out <- paste(out,knit_child("child_file.rnw",quiet=TRUE))
+%@
+%\Sexpr{out}
+%%
+% ----------------------------------------------------------------

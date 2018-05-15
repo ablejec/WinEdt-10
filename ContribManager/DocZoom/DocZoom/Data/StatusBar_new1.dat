@@ -1,0 +1,13 @@
+END="Document Encoding"
+
+PANEL="Zoom"
+  // Custom Panel
+  VISIBLE=1
+  FIXED_WIDTH=1
+  MIN_WIDTH="Font 10pt"
+  //CAPTION="Font 10pt"
+  MACRO="Exe('%b\Menus\View\ZoomReset.edt');"
+  TEXT_COLOR="slcViewA"
+END="Zoom"
+
+PANEL="Source Specials"

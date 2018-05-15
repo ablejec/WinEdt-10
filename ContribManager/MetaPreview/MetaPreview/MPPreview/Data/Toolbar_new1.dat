@@ -1,0 +1,9 @@
+  BUTTON="|"
+  BUTTON="MetaPost_Preview_All"
+    NAME="MetaPost Preview"
+    TYPE=7
+    MENU="MetaPost_Preview_All"
+    MENU="MetaPost_Preview_One"
+  BUTTON="|"
+  // Inserted by MPPreview
+  BUTTON="MiKTeX_Options"

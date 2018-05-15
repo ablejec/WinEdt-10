@@ -6,7 +6,22 @@
 % \VignetteIndexEntry{}
 % \VignetteDepends{}
 % \VignettePackage{}
-\documentclass[a4paper,12pt]{article}
+\documentclass[a4paper,12pt]{article}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\usepackage{Sweave}
+
+
 %\usepackage[slovene]{babel}
 \usepackage[utf8]{inputenc} %% must be here for Sweave encoding check
 \input{abpkg}
@@ -19,18 +34,121 @@
 \input{mysweave}
 
 
+\setkeys{Gin}{width=0.8\textwidth}  % set graphicx parameter
+\usepackage{lmodern}
+\input{abfont}
+
+% ----------------------------------------------------------------
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+%% Sweave settings for includegraphics default plot size (Sweave default is 0.8)
+%% notice this must be after begin{document}
+%%% \setkeys{Gin}{width=0.9\textwidth}
+% ----------------------------------------------------------------
+\title{}
+\author{A. Blejec}
+%\address{}%
+%\email{}%
+%
+%\thanks{}%
+%\subjclass{}%
+%\keywords{}%
+
+%\date{}%
+%\dedicatory{}%
+%\commby{}%
+\maketitle
+% ----------------------------------------------------------------
+%\begin{abstract}
+%
+%\end{abstract}
+% ----------------------------------------------------------------
+\tableofcontents
+
+
+
+\section{}
 
 
 
 
+%% knitr child handling
+%%
+%<<child='child_file.Rnw'>>=
+%@
+%<<result="hide">>=
+%out <- ""
+%for ( linija in levels(phenodata$Celicna.linija))
+%out <- paste(out,knit_child("child_file.rnw",quiet=TRUE))
+%@
+%out
+%%
+% ----------------------------------------------------------------
+%\bibliographystyle{chicago}
+%\addcontentsline{toc}{section}{\refname}
+%\bibliography{ab-general}
+%--------------------------------------------------------------
+
+%\clearpage
+%\appendix
+%\phantomsection\addcontentsline{toc}{section}{\appendixname}
+%\section{\R\ funkcije}
+%\input{}
+
+\clearpage
+\section*{SessionInfo}
+{\small
+Windows 10 x64 (build 16299) 
+\begin{itemize}\raggedright
+  \item R Under development (unstable) (2016-07-08 r70871), \verb|x86_64-w64-mingw32|
+  \item Locale: \verb|LC_COLLATE=Slovenian_Slovenia.1250|, \verb|LC_CTYPE=Slovenian_Slovenia.1250|, \verb|LC_MONETARY=Slovenian_Slovenia.1250|, \verb|LC_NUMERIC=C|, \verb|LC_TIME=Slovenian_Slovenia.1250|
+  \item Running under: \verb|Windows 10 x64 (build 16299)|
+  \item Base packages: base, datasets, graphics, grDevices,
+    stats, utils
+  \item Other packages: knitr~1.17
+  \item Loaded via a namespace (and not attached):
+    evaluate~0.10.1, formatR~1.5, magrittr~1.5, methods~3.4.0,
+    stringi~1.1.5, stringr~1.2.0, tools~3.4.0
+\end{itemize}
+Project path: [\href{run:C:/Users/ablejec/AppData/Roaming/WinEdt Team/WinEdt 10/Templates}{link}]\\
+\texttt{C:/\\
+ Users/\\
+ ablejec/\\
+ AppData/\\
+ Roaming/\\
+ WinEdt Team/\\
+ WinEdt 10/\\
+ Templates}\\
+
+Main file :\verb' ../doc/knitr-Main.Rnw '
+
+
+\subsection*{View as vignette}
+Project files can be viewed by pasting this code to \R\ console:\\
+\begin{Schunk}
+\begin{Sinput}
+projectName <-"Templates";  mainFile <-"knitr-Main"
+ commandArgs()
+ library(tkWidgets)
+ openPDF(file.path(dirname(getwd()),"doc",
+ paste(mainFile,"PDF",sep=".")))
+ viewVignette("viewVignette", projectName,
+ file.path("../doc",paste(mainFile,"Rnw",sep=".")))
+
+\end{Sinput}
+\end{Schunk}
+
+\vfill \hrule \vspace{3pt} \footnotesize{
+%Revision \SVNId\hfill (c) A. Blejec%\input{../_COPYRIGHT.}
+%\SVNRevision ~/~ \SVNDate
+\noindent
+\texttt{Git Revision: \gitCommitterUnixDate \gitAbbrevHash{} (\gitCommitterDate)} \hfill \copyright A. Blejec\\
+\texttt{ \gitReferences} \hfill \verb'../doc/knitr-Main.Rnw'\\
+
+}
 
 
 
 
-
-
-
-
-
-
-
+\end{document}
+% ----------------------------------------------------------------

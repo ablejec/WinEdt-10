@@ -1,0 +1,4 @@
+    MACRO="SaveDocCopyAs;"
+    REQ_DOCUMENT=1
+  ITEM="-"
+  ITEM="Send_Mail"

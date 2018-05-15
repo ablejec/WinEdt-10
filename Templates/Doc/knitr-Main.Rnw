@@ -19,8 +19,10 @@
 \input{mysweave}
 
 <<include=FALSE>>=
+#outputFile <- "report-copy.pdf"
 render_sweave()
-opts_chunk$set(fig.path='./figs/bla',concordance=TRUE,tidy=TRUE)
+opts_chunk$set(fig.path='./figs/',tidy=TRUE)
+opts_knit$set(concordance=TRUE)
 @
 \setkeys{Gin}{width=0.8\textwidth}  % set graphicx parameter
 \usepackage{lmodern}
@@ -60,7 +62,7 @@ opts_chunk$set(fig.path='./figs/bla',concordance=TRUE,tidy=TRUE)
 @
 <<initialize,echo=FALSE,results='hide',message=FALSE>>=
 options(width=70)
-library(Hmisc)
+#library(Hmisc)
 #library(xlsReadWrite)
 @
 
@@ -70,8 +72,18 @@ library(Hmisc)
 
 @
 
-%<<child='encChild2.Rnw'>>=
+
+%% knitr child handling
+%%
+%<<child='child_file.Rnw'>>=
 %@
+%<<result="hide">>=
+%out <- ""
+%for ( linija in levels(phenodata$Celicna.linija))
+%out <- paste(out,knit_child("child_file.rnw",quiet=TRUE))
+%@
+%\Sexpr{out}
+%%
 % ----------------------------------------------------------------
 %\bibliographystyle{chicago}
 %\addcontentsline{toc}{section}{\refname}
@@ -90,14 +102,33 @@ library(Hmisc)
 <<sessionInfo,results='asis',echo=FALSE>>=
 cat(win.version(),"\n")
 toLatex(sessionInfo())
-cat("Project path:\\verb'",dirname(getwd()),"'\\\\\n")
-mainFile <- commandArgs(trailingOnly = TRUE)
+sdir <- gsub("/","/\\\\\\\\\n ",dirname(getwd()))
+#cat("Project path:\n\\verb'",sdir,"'\\\\\n")
+args <- commandArgs(trailingOnly = TRUE)
+mainFile <- basename(args[1])
 #
-mainFilePath <- file.path("../doc", mainFile[1])
-cat("Main file :\\verb'", mainFilePath, "'\n")
+mainFilePath <- file.path("../doc", mainFile)
+mainFilePath <- gsub("/./","/",mainFilePath)
+projectName <- rev((strsplit(dirname(getwd()), "/"))[[1]])[1]
+#
+sdir <- dirname(getwd())
+sdir <- strsplit(sdir,split="/")[[1]]
+cdir <- sapply(1:length(sdir),function(x) paste(sdir[1:x],collapse="/"))
+
+#
+cat("Project path: [\\href{run:",
+dirname(getwd()),
+"}{link}]\\\\\n\\texttt{",sep="")
+for(i in 1:length(sdir)) cat("\\href{run:",cdir[i],"}{",sdir[i],"/}\\\\\n",sep="")
+cat("}\\\\\n\n",sep="")
+
+cat("Main file :\\verb'", mainFilePath, "'\n\n")
 #
 mainFile <- strsplit(mainFile,'.',fixed=TRUE)[[1]][1]
 projectName <- rev((strsplit(dirname(getwd()), "/"))[[1]])[1]
+cat("Project file: [\\href{run:",
+file.path(dirname(getwd()),paste0(projectName,".prj")),
+"}{link}]\n",sep="")
 #
 @
 
@@ -106,22 +137,22 @@ Project files can be viewed by pasting this code to \R\ console:\\
 \begin{Schunk}
 \begin{Sinput}
 <<projectFiles,echo=FALSE,results='asis'>>=
-cat('> projectName <-"',projectName,'"; ',sep="")
+cat('projectName <-"',projectName,'"; ',sep="")
 cat(' mainFile <-"',mainFile,'"',sep="")
 #
-@
-
-\end{Sinput}
-\end{Schunk}
-<<vignette,eval=FALSE>>=
-commandArgs()
-library(tkWidgets)
-openPDF(file.path(dirname(getwd()),"doc",
-paste(mainFile,"PDF",sep=".")))
-viewVignette("viewVignette", projectName, #
-file.path("../doc",paste(mainFile,"Rnw",sep=".")))
+<<vignette,echo=FALSE,results='asis'>>=
+cat(
+' commandArgs()\n',
+'library(tkWidgets)\n',
+'openPDF(file.path(dirname(getwd()),"doc",\n',
+'paste(mainFile,"PDF",sep=".")))\n',
+'viewVignette("viewVignette", projectName,\n',
+'file.path("../doc",paste(mainFile,"Rnw",sep=".")))\n'
+)
 #
 @
+\end{Sinput}
+\end{Schunk}
 
 \vfill \hrule \vspace{3pt} \footnotesize{
 %Revision \SVNId\hfill (c) A. Blejec%\input{../_COPYRIGHT.}

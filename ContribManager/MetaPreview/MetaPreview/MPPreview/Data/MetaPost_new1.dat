@@ -1,0 +1,6 @@
+  PushTagsandRegisters;
+
+  // Delete .mpt file...
+    IfFileExists("%O\%N.mpt",!"DeleteFile('%O\%N.mpt')");
+
+  Assign('ExitCode-OK','0'); // OK Exit Code

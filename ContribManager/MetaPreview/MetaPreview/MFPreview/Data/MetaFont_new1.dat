@@ -1,0 +1,6 @@
+  PushTagsandRegisters;
+
+  // Delete .mft file...
+    IfFileExists("%O\%N.mft",!"DeleteFile('%O\%N.mft')");
+
+  Assign('ExitCode-OK','0'); // OK Exit Code

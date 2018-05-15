@@ -1,0 +1,90 @@
+
+
+```{r include=FALSE}
+#outputFile <- "report-copy.pdf"
+render_markdown()
+opts_chunk$set(fig.path='./figs/',tidy=TRUE)
+opts_knit$set(concordance=TRUE)
+```
+
+# 
+## Author: A. Blejec
+
+
+
+```{r Author:,echo=FALSE}
+###############################################
+##                                           ##
+## (c) Andrej Blejec (andrej.blejec@nib.si)  ##
+##                                           ##
+###############################################
+```
+```{r initialize,echo=FALSE,results='hide',message=FALSE}
+options(width=70)
+#library(Hmisc)
+#library(xlsReadWrite)
+```
+
+## 
+
+```{r }
+
+```
+
+
+
+
+## SessionInfo
+{
+```{r sessionInfo,results='asis',echo=FALSE}
+cat(win.version(),"\n")
+sessionInfo()
+sdir <- gsub("/","/\\\n ",dirname(getwd()))
+#cat("Project path:\n`",sdir,"`\\\\\n")
+cat("Project path:\n",sdir,"\\\\\n")
+args <- commandArgs(trailingOnly = TRUE)
+mainFile <- basename(args[1])
+#
+mainFilePath <- file.path("../doc", mainFile)
+mainFilePath <- gsub("/./","/",mainFilePath)
+cat("Main file :`", mainFilePath, "`\n")
+#
+
+mainFile <- strsplit(mainFile,'.',fixed=TRUE)[[1]][1]
+projectName <- rev((strsplit(dirname(getwd()), "/"))[[1]])[1]
+#
+```
+
+### View as vignette
+Project files can be viewed by pasting this code to \R\ console:
+```{r projectFiles,echo=FALSE,results='asis'}
+cat('projectName <-"',projectName,'"; ',sep="")
+cat(' mainFile <-"',mainFile,'"',sep="")
+#
+```{r vignette,echo=FALSE,results='asis'}
+cat(
+' commandArgs()\n',
+'library(tkWidgets)\n',
+'openPDF(file.path(dirname(getwd()),"doc",\n',
+'paste(mainFile,"PDF",sep=".")))\n',
+'viewVignette("viewVignette", projectName,\n',
+'file.path("../doc",paste(mainFile,"Rnw",sep=".")))\n'
+)
+#
+```
+
+`Git Revision: \gitCommitterUnixDate \gitAbbrevHash{` (\gitCommitterDate)} \hfill \copyright A. Blejec
+` \gitReferences` \hfill \verb'`r mainFilePath`'
+
+}
+
+```{r eval=FALSE,echo=FALSE}
+# getrootpath <- function() {
+# fp <- (strsplit(getwd(), "/"))[[1]]
+# file <- file.path(paste(fp[-length(fp)], collapse = "/"))
+# return(file)
+# }
+# fileName <- function(name="bla",ext="PDF") paste(name,ext,sep=".")
+```
+
+

@@ -13,7 +13,7 @@
 
   PushTagsandRegisters;
 
-  DosToUnix("%P",8);
+  DosToUnix("%P/",8);
 
 // NSIS? ============================================================
 

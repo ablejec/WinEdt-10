@@ -1,0 +1,153 @@
+// -*- ASCII:EDT -*-
+
+    Requires(20170214);
+
+    Prompt("This macro will install ContribManager package...%\>
+It is recommended that you close all files (or project) to make it faster.%\%\>
+                            Continue?",1,0);
+
+    Assign("Package","ContribManager");
+
+    PushTagsandRegisters;
+
+    StartWorking('Installing...');
+    ProcessMessages;
+
+    ShowConsole(1,1);
+    ResetConsole;
+    SetConsoleText("Installing...%\%\",1);
+    Call('Install_Start');
+    Call('Uninstall_Task');
+    SetConsoleText("%\Done...%\",1,1);
+
+    PopTagsandRegisters;
+
+    StopWorking;
+
+    Prompt("Installation Complete! See the Console for install info.",0,1);
+
+    Release("Filename");
+    Release("Filetype");
+    Release("Folder");
+    Release("Package");
+    Release("Old-INI");
+
+Exit;
+
+:Install_Start:: ====================================================
+
+    // Extra Task
+    IfFileExists("%b\ConfigEx\MainMenu-ContribManager.ini",>
+      !'ReadFile("%b\ConfigEx\MainMenu-ContribManager.ini",9);>
+        Assign("Old-INI","%!9");',>
+      !'Assign("Old-INI","");');
+
+    // Copy files
+    Assign("Folder","ConfigEx");
+
+      Assign("Filetype",".ini");
+      Assign("Filename","MainMenu-ContribManager");
+      Call('File_Copy');
+
+    Assign("Folder","ContribManager");
+
+      Assign("Filetype",".edt");
+      Assign("Filename","CheckAllUpdates");
+      Call('File_Copy');
+      Assign("Filename","CheckProgramUpdates");
+      Call('File_Copy');
+      Assign("Filename","CheckUpdates");
+      Call('File_Copy');
+      Assign("Filename","Cleanup");
+      Call('File_Copy');
+      Assign("Filename","CleanupUn");
+      Call('File_Copy');
+      Assign("Filename","DownloadFile");
+      Call('File_Copy');
+      Assign("Filename","Install_bibMacros");
+      Call('File_Copy');
+      Assign("Filename","SanitizeMenu");
+      Call('File_Copy');
+      Assign("Filename","SanitizeSubMenu");
+      Call('File_Copy');
+      Assign("Filename","ShowInstalled");
+      Call('File_Copy');
+      Assign("Filename","Uninstall_bibMacros");
+      Call('File_Copy');
+      Assign("Filename","Website");
+      Call('File_Copy');
+
+      Assign("Filetype",".exe");
+      Assign("Filename","WinEdt-download");
+      Call('File_Copy');
+      Assign("Filename","WinEdt-unzip");
+      Call('File_Copy');
+
+      Assign("Filetype",".db");
+      Assign("Filename","contrib");
+      Call('File_Copy');
+
+    // Update config files
+    Assign("Folder","ConfigEx");
+
+      Assign("Filetype",".ini");
+      Assign("Filename","MainMenu");
+      Call('File_Include');
+
+    // Reload personal settings
+    IfFileExists("%b\ConfigEx\UserPreferences.ini",!'LoadConfig("%b\ConfigEx\UserPreferences.ini");');
+    IfFileExists("%b\ConfigEx\Private.ini",!'LoadConfig("%b\ConfigEx\Private.ini");');
+
+Return;
+
+:File_Copy:: ========================================================
+
+    CopyFile('%C\Files\%$(|Filename|);%$(|Filetype|);',>
+      '%b\%$(|Folder|);\%$(|Filename|);%$(|Filetype|);',1,1);
+    IfOK(!'SetConsoleText("OK:      >
+File %$(|Filename|);%$(|Filetype|); copied to %$(|Folder|);.%\",1,1);',>
+         !'SetConsoleText("ERROR:   >
+File %$(|Filename|);%$(|Filetype|); not copied to %$(|Folder|);!!!%\",1,1);');
+
+Return;
+
+:File_Include:: =====================================================
+
+    IfFileExists('%b\%$(|Folder|);\%$(|Filename|);%$(|Filetype|);',!'Relax;',>
+      !'CopyFile("%B\%$(|Folder|);\%$(|Filename|);%$(|Filetype|);",>
+          "%b\%$(|Folder|);\%$(|Filename|);%$(|Filetype|);",1,1);');
+    ReadFile("%b\%$(|Folder|);\%$(|Filename|);%$(|Filetype|);",0);
+    ReadFile("%C\Data\%$(|Filename|);_add.dat",1);
+    FindInString("%!0","%$(|Filename|);-%$(|Package|);.ini",-1,-1);
+    IfOK(!'SetConsoleText("OK:      >
+File %$(|Folder|);\%$(|Filename|);%$(|Filetype|); not modified (already OK).%\",1,1);',>
+         !'SubstituteInString("%!0","[END]%\","%!1%\[END]%\");>
+           IfOK(!`SetConsoleText("OK:      >
+File %$(|Folder|);\%$(|Filename|);%$(|Filetype|); successfully updated.%\",1,1);`,>
+                !`SetConsoleText("ERROR:   >
+File %$(|Folder|);\%$(|Filename|);%$(|Filetype|); not updated!!!%\",1,1);`);');
+    WriteFile("%b\%$(|Folder|);\%$(|Filename|);%$(|Filetype|);","%!0");
+    LoadConfig("%b\%$(|Folder|);\%$(|Filename|);%$(|Filetype|);");
+
+Return;
+
+:Uninstall_Task:: ===================================================
+
+    // Copy uninstaller
+    CopyFile("%C\Uninstall.edt","%b\Uninstall\%$(|Package|);\Uninstall.edt",1,1);>
+
+    // Extra Task
+    Exe('%b\ContribManager\SanitizeMenu.edt');
+
+    // Copy uninstall files
+    ListFolderFiles(0,"%C\Data","",1,1);
+    LstEnum("%!0","%\");
+    LstGetCount(1);
+    Repeat(%!1,>
+      !`LstGetItem(2,%!c-1);>
+        CopyFile("%C\Data\%!2","%b\Uninstall\%$(|Package|);\Data\%!2",1,1);>
+        ProcessMessages;>
+       `);
+    LstRelease;
+
+Return;

@@ -40,7 +40,8 @@ SaveAllDoc;
 LetReg(5,"Install path");
 // Prompt("%!5",0,1);
 // ne vem zakaj spodnji ukaz vidi pravzaprav 'HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\R-core\R' ??? AntiVirus??
-LetReg(5,|%@('HKEY_LOCAL_MACHINE','Software\R-core\R','InstallPath')|);
+// Wow6432Node je mirror v Registry za 64bitne programe
+LetReg(5,|%@('HKEY_LOCAL_MACHINE','Software\Wow6432Node\R-core\R','InstallPath')|);
 // Prompt("%!5",0,1);
   //// The path to the R binaries can be set before calling the macro (in the menu setup)
   //// for example: LetReg(7,"c:\Program Files\R\R-2.7.1\bin\")
