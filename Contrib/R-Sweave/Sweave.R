@@ -17,9 +17,9 @@ if(!is.na(cmds[2])&&cmds[2]=="knit") {
     # cmds[4] <- "md"
     }
     if(!is.na(cmds[4])&&cmds[4]!="md") {
-        knit(filename) } else {
+        knit(filename, encoding="UTF-8") } else {
         mdFile <- paste(cmds[3],cmds[4],sep=".")
-        knit(filename, output = mdFile)
+        knit(filename, , encoding="UTF-8", output = mdFile)
         message(mdFile)
         require(markdown)
         htmlFile <- paste(cmds[3],"html",sep=".")

@@ -1,0 +1,3 @@
+    REQ_FILTER=:%$('NSIS-Installer');*"%F==%$('NSIS-Source');"|"%F=="
+  ITEM="-"
+  ITEM="Windows_Explorer"

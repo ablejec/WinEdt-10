@@ -1,0 +1,304 @@
+
+
+```{r include=FALSE, message=FALSE, warnings=FALSE, cache=FALSE}
+require(knitr)
+render_markdown()
+opts_chunk$set( fig.path='./figs/'
+    , tidy=FALSE)
+opts_knit$set( concordance=TRUE
+    , root.dir = getwd()
+    , unnamed.chunk.label = "ch"
+    , width = 70
+)
+opts_knit$get("root.dir")
+```
+
+```{r additional arguments, echo=FALSE, message=FALSE, warnings=FALSE}
+addArgs <- NULL
+addArgs[1] <- c("")[1]
+```
+
+```{r pISA projects root, include=FALSE}
+.pISAloc <- gsub("/_p_.*","",getwd())
+```
+
+```{r eval=FALSE,include=FALSE}
+require(knitr)
+if(interactive()) knit(file.path(.pISAloc,"pISA-initialize.Rnw"))
+```
+
+```{r pISA initialize, results='hide', include=FALSE, child=file.path(.pISAloc,"pISA-initialize.Rnw")}
+```
+
+
+```{r set specific arguments,results='hide',message=FALSE,warning=FALSE,echo=FALSE}
+# Argumenti
+# 1. Ime izvorne datoteke za analizo
+# 2. Izbira genov (ime stolpca v featuredata)
+#
+ .callName <- args[1]
+ .vzorci <- args[2]
+#getwd()
+#args
+```
+
+
+# 
+## Author: A. Blejec
+
+
+
+```{r Author:,echo=FALSE}
+###############################################
+##                                           ##
+## (c) Andrej Blejec (andrej.blejec@nib.si)  ##
+##                                           ##
+###############################################
+```
+```{r initialize,echo=FALSE,include=FALSE,message=FALSE,warning=FALSE}
+options(width=70)
+library(Hmisc)
+library(amisc)
+library(Biobase)
+#library(xlsReadWrite)
+library(xtable)
+#library(MASS)
+```
+## Namen
+
+KOncni dokument v poddirektoriju \file{reports}:
+```{r }
+fileName(outputFile)
+
+```
+
+## Informacija iz strukture pISA
+
+Direktorij s podatki
+
+```{r }
+.inroot
+```
+
+Direktorij za rezultate:
+
+```{r }
+.oroot
+```
+
+```{r echo=FALSE}
+catln("project:\t",     .pName)
+catln("Investigation: ",.iName)
+catln("Study:         ",.sName)
+catln("Assay:         ",.aName)
+```
+
+## Data
+
+Priporočljivo je najprej prebrati phenodata in feature data, potem pa podatke.
+To omogoča izbor spremenljivk in vzorcev takoj za tem, ko podatke preberemo.
+
+### Phenodata
+
+```{r }
+(pfn <- getDesc(.adesc
+    , "Phenodata"))
+dir(file.path(.iroot), pattern = pfn)
+phdata <- read.table(file.path(.iroot,pfn)
+  , header = TRUE
+  ,  sep = "\t"
+  , stringsAsFactors = FALSE
+  , row.names=1
+  )
+my.summary(phdata)
+dim(phdata)
+names(phdata)
+```
+
+
+Preveri obstoj stolpca za selekcijo vzorcev
+```{r }
+.aName
+selectId <- substr(gsub("-",".",.aName),2,nchar(.aName))
+selectId <- .vzorci
+selectId
+if(selectId pdata <- phdata[!is.na(phdata[,selectId]),] else
+pdata <- phdata
+dim(pdata)
+```
+
+Pregled izbranih vzorcev
+
+```{r }
+table(pdata$fermentationType, pdata$studyID)
+```
+
+```{r }
+my.summary(pdata)
+```
+
+### Featuredata
+
+```{r }
+(ffn <- getDesc(.adesc,"Featuredata"))
+```
+
+```{r }
+fdata <- read.table(file.path(.iroot,ffn)
+    , sep = "\t"
+    , header = TRUE
+    , na.strings = c("", "-")
+    , stringsAsFactors = FALSE
+    , row.names = 1
+    )
+if(interactive()) my.summary(fdata)
+```
+
+Izpisanih je le nekaj prvih stolpcev.
+
+```{r }
+fdata[,1:2]
+```
+
+### Data
+
+
+
+
+## Metadata files
+latex(.pdesc
+    , file = ""
+    , where = "!htbp"
+    , col.just = c("p{1.5in}", "p{4in}")
+    , rowname = NULL
+    , caption = "Project metadata"
+    , label = "tbl:pdesc"
+    )
+```
+```{r echo=FALSE,results='asis'}
+latex(.idesc
+    , file = ""
+    , where = "!htbp"
+    , col.just = c("p{1.5in}", "p{4in}")
+    , rowname = NULL
+    , caption = "Investigation metadata"
+    , label = "tbl:idesc"
+    )
+```
+cat("\\clearpage\n")
+latex(.sdesc
+    , file = ""
+    , where = "!htbp"
+    , col.just = c("p{1.5in}", "p{4in}")
+    , rowname = NULL
+    , caption = "Study metadata"
+    , label = "tbl:sdesc"
+    )
+cat("\\clearpage\n")
+latex(.adesc
+    , file = ""
+    , where = "!htbp"
+    , col.just = c("p{1.5in}", "p{4in}")
+    , rowname = NULL
+    , caption = "Assay metadata"
+    , label = "tbl:adesc"
+    )
+```
+
+
+## SessionInfo
+{\tiny
+```{r sessionInfo,results='asis',echo=FALSE}
+cat(win.version(),"\n")
+sessionInfo()
+```
+}
+```{r results='asis',echo=FALSE}
+sdir <- gsub("/","/\\\\\\\\\n ",dirname(getwd()))
+#cat("Project path:\n`",sdir,"`\\\\\n")
+args <- commandArgs(trailingOnly = TRUE)
+mainFile <- basename(args[1])
+#
+mainFilePath <- file.path("../doc", mainFile)
+mainFilePath <- gsub("/./","/",mainFilePath)
+projectName <- rev((strsplit(dirname(getwd()), "/"))[[1]])[1]
+#
+```
+```{r results='asis',echo=FALSE}
+sdir <- dirname(getwd())
+sdir <- strsplit(sdir,split="/")[[1]]
+cdir <- sapply(1:length(sdir),function(x) paste(sdir[1:x],collapse="/"))
+odir <- sdir
+omike <- as.logical(grep("OMIKE",dirname(getwd())))
+if(omike) {
+    odir[1] <- "O:"
+    .files <- paste("../doc",list.files("../doc","^.*\\.R"),sep="/")
+    .files <- file.copy(.files, file.path(.aroot,"scripts"))
+    }
+ldir <- sapply(1:length(odir),function(x) paste(odir[1:x],collapse="/"))
+#mc <- max(sapply(sdir,nchar))
+#sdir <- sdir <- substr(paste0(sdir,"/                                         #"),1,mc+3)
+#odir <- odir <- substr(paste0(odir,"/                                         #"),1,mc+3)
+#
+cat("\\normalsize Analysis project path: [\\href{run:",
+dirname(getwd()),
+"}{link}]\\\\\n",sep="")
+cat("\\texttt{")
+cat("\\begin{tabbing}\n")
+cat("....\\=...............................\\=................................\\kill\n")
+cat("\\>Local \\>Network\\\\")
+for(i in 1:length(sdir)) {
+cat("\\>\[",sdir[i],"](run:",cdir[i],") \\> ",sep="")
+if(omike) cat("\[",odir[i],"](run:",ldir[i],")",sep="")
+cat("\\\\\n")
+}
+cat("   \\> \n")
+cat("\\end{tabbing}\n")
+cat("}     ")
+```
+```{r results='asis',echo=FALSE}
+cat("Main file : \[", mainFilePath ,"](run:", mainFilePath, ")\n\n", sep="")
+mainFile <- strsplit(mainFile,'.',fixed=TRUE)[[1]][1]
+cat("Main file : \\href{run:../scripts/", mainFile, ".Rnw}
+{../scripts/", mainFile ,".Rnw}\n\n", sep="")
+projectName <- rev((strsplit(dirname(getwd()), "/"))[[1]])[1]
+cat("Project file: [\\href{run:",
+file.path(dirname(getwd()),paste0(projectName,".prj")),
+"}{link}]\n",sep="")
+#
+```
+### View as vignette
+{\footnotesize
+Source files can be viewed by pasting this code to \R\ console:\\}
+cat(' projectName <-"',projectName,'"\n',sep="")
+cat(' mainFile <-"',mainFile,'"',sep="")
+#
+```
+```{r vignette,echo=FALSE,results='asis'}
+cat(
+' commandArgs()\n',
+'library(tkWidgets)\n',
+'openPDF(file.path(dirname(getwd()),"doc",\n',
+'paste(mainFile,"PDF",sep=".")))\n',
+'viewVignette("viewVignette", projectName,\n',
+'file.path("../doc",paste(mainFile,"Rnw",sep=".")))\n'
+)
+#
+```
+}
+
+`Git Revision: \gitCommitterUnixDate \gitAbbrevHash{` (\gitCommitterDate)} \hfill \copyright~A. Blejec
+` \gitReferences` \hfill \verb'`r mainFilePath`'
+
+}
+
+```{r eval=FALSE,echo=FALSE}
+# getrootpath <- function() {
+# fp <- (strsplit(getwd(), "/"))[[1]]
+# file <- file.path(paste(fp[-length(fp)], collapse = "/"))
+# return(file)
+# }
+# fileName <- function(name="bla",ext="PDF") paste(name,ext,sep=".")
+```
+
+

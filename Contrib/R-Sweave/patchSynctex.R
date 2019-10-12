@@ -7,7 +7,7 @@ logFile <- sub("\\.Rnw$", ".log", filename, ignore.case = TRUE)
 message(inputFile)
 if( file.exists("_outputFile.R") ){
 source("_outputFile.R")
-message("Copying ",inputFile, " to ", outputFile, "...")
+message("Copying ",inputFile, " to \n", outputFile, "...")
 OK <- file.copy(inputFile,outputFile,overwrite=TRUE)
 if(OK)
 message("Output copied to ",outputFile)

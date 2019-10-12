@@ -59,6 +59,11 @@ SetFindStr("\\section*\{\(*\)\}");
 SetReplaceStr("## \0");
 ReplaceAll;
 // ReplaceDialog;
+// frametitle
+SetFindStr("\\frametitle*\{\(*\)\}");
+SetReplaceStr("## \0");
+ReplaceAll;
+// ReplaceDialog;
 // subsection
 SetFindStr("\\subsection*\{\(*\)\}");
 SetReplaceStr("### \0");

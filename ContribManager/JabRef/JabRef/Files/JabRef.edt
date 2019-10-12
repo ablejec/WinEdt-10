@@ -1,0 +1,40 @@
+// JabRef.edt
+// ===============
+
+  PushTagsandRegisters;
+
+  IfFileExists("%b\Exec\JabRef\JabRef.dat",>
+    !'ReadFile("%b\Exec\JabRef\JabRef.dat",0);');
+  IfFileExists("%!0",!'JMP("JabRef_Found");');
+
+  LetReg(1,"%@('HKCU','Software\ej-technologies\install4j\installations',>
+    'instdir0034-7691-1464-4754');");
+  LetReg(0,"%!1\JabRef.exe");
+  IfFileExists("%!0",>
+    !'CreateFolders("%b\Exec\JabRef",1);>
+      OpenOutput("%b\Exec\JabRef\JabRef.dat");>
+      WrS("%!0");>
+      CloseOutput;>
+      JMP("JabRef_Found");');
+
+  Browse(0,"Jar files|*.jar");
+  IfFileExists("%!0",>
+    !'CreateFolders("%b\Exec\JabRef",1);>
+      OpenOutput("%b\Exec\JabRef\JabRef.dat");>
+      WrS("%!0");>
+      CloseOutput;>
+      JMP("JabRef_Found");');
+
+  Prompt("JabRef not found!",3,1,!"PopTagsandRegisters;Exit;");
+
+:JabRef_Found:: =====================================================
+
+  SendMessage("JabRef - %f");
+  IfOK(!`LetReg(1);`,>
+    !`IfisMode("BibTeX","%!m",!'LetReg(1,"%p\%n%t");',!'LetReg(1);');`);
+  FindInString("%!0",".jar",-1,-1,0);
+  IfOK(!`Run('javaw -jar "%!0" "%!1"','%p',0,0,'',1);SetFocus('JabRef');`,>
+       !`Run('"%!0" "%!1"','%p',0,0,'',1);SetFocus('JabRef');`);
+  PopTagsandRegisters;
+
+End;
