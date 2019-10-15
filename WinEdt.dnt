@@ -54176,7 +54176,7 @@ INI;DTX;INS;STY;Binary
 2
 2
 1
-7
+8
 Default
 
 A;B
@@ -54225,46 +54225,46 @@ Light
 
 A;B
 0
-1
-#F8FAFF
-16775928
+2
+#FFFFFF
+16777215
 
 0
 
 16777216
 1
-#F4F4F8
-16315636
+#F2F2F8
+16315122
 1
-#F6F6FA
-#606080
--362831688723594496
-1
-#F4F6FC
-16578292
-#999999
-10066329
-SysNone
+#F6F6FF
+#506080
+-2543718535003392
+0
+
 16777216
-#0000FF
+
+16777216
+
+16777216
+
 16711680
-#00B0B0
-11579392
+
+16777216
 1
 2
-1
+0
 #F4F4FF
 SysNone
 -3109418883350016
 0
-0
-
-
-0
+128
+#FFFFFF
+#000000
+-1099511627008
 1
 #EEEEF8
-
--509208024078876160
+#0A0A0A
+-509207980960775424
 Dark
 
 A;B
@@ -54313,46 +54313,90 @@ Gray
 
 A;B
 0
-1
+2
 #EFEFEF
 15724527
 
 0
 
 16777216
-1
+0
 #DDDDDD
 14540253
-1
-#DDDDF0
+0
+#EEEEFF
 
--1090472542684052992
-1
-#DDDDFF
-16768477
-#999999
-10066329
-SysNone
+-4804865813380608
+0
+
 16777216
-#0000FF
+
+16777216
+
+16777216
+
 16711680
-#00B0B0
-11579392
+
+16777216
 1
 2
-1
+0
 #DDDDEE
-SysNone
--1234587730759908864
+clWindowText
+-1234587730759908608
 0
 0
 
-
+clWindowText
+256
 0
-1
 #E9EAEE
+clWindowText
+-1230915361923136768
+Black
 
--1230915361923137024
+A;B
+0
+2
+#010101
+65793
+
+0
+
+16777216
+0
+#DDDDDD
+14540253
+0
+#EEEEFF
+
+-4804865813380608
+0
+
+16777216
+
+16777216
+
+16777216
+
+16711680
+
+16777216
+1
+2
+0
+#DDDDEE
+clWindowText
+-1234587730759908608
+0
+0
+
+clWindowText
+256
+0
+#E9EAEE
+clWindowText
+-1230915361923136768
 Gradient Gray & Blue
 
 A;B
@@ -54401,7 +54445,7 @@ Bitmap
 
 A;B
 0
-2
+1
 
 16777216
 Dots-Blue.bmp
@@ -58349,7 +58393,7 @@ TeX
 0
 0
 0
-2
+9
 999
 9
 1
@@ -58562,13 +58606,13 @@ Dictionary
 <\<\<~sessionInfo
 <\@>
 <\<\<
-.testing
-mtext
- mtext("Observed"
-# area <- oa
-real
-\Sexpr
-"BG-EH"
+print(data.frame
+echo=FALSE,results='hide'
+(not treated at the moment
+pisaloc
+knit
+child
+clblack
 
 FALSE
 TRUE
@@ -62613,7 +62657,10 @@ R:Chunk
 -1
 
 <<
-27
+30
+<<
+<<
+<<
 <<
 <<
 <<
@@ -62642,7 +62689,10 @@ R:Chunk
 <<
 <<
 @
-27
+30
+@
+@
+@
 @
 @
 @
@@ -62691,7 +62741,10 @@ Beamer:frametitle
 -1
 
 \frametitle{
-27
+30
+\frametitle{
+\frametitle{
+\frametitle{
 \frametitle{
 \frametitle{
 \frametitle{
@@ -62720,7 +62773,10 @@ Beamer:frametitle
 \frametitle{
 \frametitle{
 \end{frame}
-27
+30
+\end{frame}
+\end{frame}
+\end{frame}
 \end{frame}
 \end{frame}
 \end{frame}
@@ -74724,11 +74780,11 @@ Edt
 *
 80
 Default:MiKTeX
-1
-284
-74
-1201
-1162
+0
+900
+0
+1801
+1102
 0
 0
 0
@@ -74770,7 +74826,7 @@ Default:MiKTeX
 
 *
 81
-248
+397
 400
 117
 125
@@ -74985,6 +75041,7 @@ Recorded Macro.edt
 85
 1
 1
+#' 
 %% 
   \item 
 # 
@@ -74994,7 +75051,6 @@ Recorded Macro.edt
    , 
 // 
 %%
-#
 
 
 *
