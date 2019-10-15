@@ -13624,6 +13624,18 @@ Exe('%b\macros\BeautifyR\R-paste-chunk.edt');
 49219
 
 0
+&Paste Chunk and test
+&Paste Current Chunk -> R
+SelectPar
+
+0
+0
+
+
+Exe('%b\macros\BeautifyR\R-paste-chunk-run-examples.edt');
+24797
+
+0
 &viewVignette
 &viewVignette
 
@@ -58606,13 +58618,13 @@ Dictionary
 <\<\<~sessionInfo
 <\@>
 <\<\<
-print(data.frame
-echo=FALSE,results='hide'
-(not treated at the moment
-pisaloc
-knit
-child
-clblack
+<- function
+Examples
+ <- function
+#' @Examples
+ \<- function
+\#\' \@Examples
+#' \@Examples
 
 FALSE
 TRUE
@@ -62657,7 +62669,10 @@ R:Chunk
 -1
 
 <<
-30
+33
+<<
+<<
+<<
 <<
 <<
 <<
@@ -62689,7 +62704,10 @@ R:Chunk
 <<
 <<
 @
-30
+33
+@
+@
+@
 @
 @
 @
@@ -62741,7 +62759,10 @@ Beamer:frametitle
 -1
 
 \frametitle{
-30
+33
+\frametitle{
+\frametitle{
+\frametitle{
 \frametitle{
 \frametitle{
 \frametitle{
@@ -62773,7 +62794,10 @@ Beamer:frametitle
 \frametitle{
 \frametitle{
 \end{frame}
-30
+33
+\end{frame}
+\end{frame}
+\end{frame}
 \end{frame}
 \end{frame}
 \end{frame}
@@ -74781,10 +74805,10 @@ Edt
 80
 Default:MiKTeX
 0
-900
-0
-1801
-1102
+357
+138
+1637
+1240
 0
 0
 0
@@ -74826,7 +74850,7 @@ Default:MiKTeX
 
 *
 81
-397
+273
 400
 117
 125

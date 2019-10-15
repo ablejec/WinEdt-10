@@ -1,8 +1,9 @@
 ////////////////////////////////////////////////////////
-// R-paste-chunk.edt
+// R-paste-chunk-run-examples.edt
 // Paste selected text or entire Chunk to R
+// Then run Examples from Roxygen annotation
 // $Revision: 1.1 $
-// $Date: 2007-03-12 22:28:25+01 $
+// $Date: 2019-10-15 $
 //
 // A. Blejec
 // Limitations:
@@ -12,7 +13,6 @@
 //
 /////////////////////////////////////////////////////////
 //
-//Prompt("%t");
 PushTagsandRegisters;
 //Prompt("%t");
 Assign("line","%l");
@@ -26,7 +26,20 @@ Exe("%b\Macros\R\R-paste.edt");
 SetFocus("");
 CMD("Reset Selection");
 IfIStr("%t",".Rnw","=",>
-    |IfSel("0","=",'Exe("%b\macros\BeautifyR\NextRChunk.edt")',"GetSel(0,0)");|,"Relax;");
-IfIStr("%t",".R","=",>
-    |IfSel("0","=",'Exe("%b\macros\BeautifyR\NextRTangledChunk.edt")',"GetSel(0,0)");|,"Relax;");
+    |IfSel("0","=",'Exe("%b\macros\BeautifyR\SelectExamples2.edt")',"GetSel(0,0)");|,"Relax;");
+RemoveString("#' ",0);
+Exe("%b\Macros\R\R-paste.edt");
+Undo;
+Undo;
+Undo;
+SetFocus("");
+CMD("Reset Selection");
+GotoCL("%$('col')", "%$('line')");
+CharLeft( 1 );
+CharRight( 1 );
+// Stay where you are
+//IfIStr("%t",".Rnw","=",>
+//    |IfSel("0","=",'Exe("%b\macros\BeautifyR\NextRChunk.edt")',"GetSel(0,0)");|,"Relax;");
+//IfIStr("%t",".R","=",>
+//    |IfSel("0","=",'Exe("%b\macros\BeautifyR\NextRTangledChunk.edt")',"GetSel(0,0)");|,"Relax;");
 PopTagsandRegisters;

@@ -1,0 +1,60 @@
+////////////////////////////////////////////////////////
+// SelectExamples2.edt
+// Select roxygen examples
+// $Revision: 1.1 $
+// $Date: 2019-10-16 $
+//
+// A. Blejec
+// Limitations:
+//
+// To be done:
+//  return focus to WinEdt
+//  return cursor to original position
+//
+///////////////////////////////////////////////////////// SetFindStr("<\<\<");
+SetSearchCaseSensitive(0);
+SetSearchRelaxed(0);
+SetSearchWholeWords(0);
+SetSearchInline(0);
+SetRegEx(1);
+SetSearchCurrentDoc;
+SetSearchCyclic(0);
+SetSearchForward(0);
+SetSearchEntire(0);
+SearchReset;
+Find;
+// FindDialog(0);
+SetFindStr("Examples");
+SetSearchCaseSensitive(0);
+SetSearchRelaxed(0);
+SetSearchWholeWords(0);
+SetSearchInline(0);
+SetRegEx(0);
+SetSearchCurrentDoc;
+SetSearchCyclic(0);
+SetSearchForward(1);
+SetSearchEntire(0);
+SearchReset;
+Find;
+// FindDialog(0);
+GoToBeginningOfLine(2);
+IfScrollLock(!'ScrollDown(1);',!'LineDown;');
+CMD("Set Mark");
+SetFindStr("<- function");
+SetSearchCaseSensitive(0);
+SetSearchRelaxed(0);
+SetSearchWholeWords(0);
+SetSearchInline(0);
+SetRegEx(0);
+SetSearchCurrentDoc;
+SetSearchCyclic(0);
+SetSearchForward(1);
+SetSearchEntire(0);
+SearchReset;
+Find;
+// FindDialog(0);
+GoToBeginningOfLine(2);
+CMD("Select From Mark");
+//
+// uncomment selected example
+//
